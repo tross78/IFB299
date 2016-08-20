@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cd1819c11de1b4b3bfc68dfda7011b31",
-    "content-hash": "cc288388e815225d9887a204b435aad5",
+    "hash": "15eec4a6c81c7274826b3320afad5239",
+    "content-hash": "d0496caa4556c3f11a056dc8df541753",
     "packages": [
         {
             "name": "ad7six/dsn",
