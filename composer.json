@@ -24,7 +24,10 @@
     "heroku": {
       "framework": "cakephp2",
       "document-root": "webroot",
-      "index-document": "index.php"
+      "index-document": "index.php",
+      "compile": [
+        "echo 'Copying DebugKit webroot directory' && cp -rfp $BUILD_DIR/Plugin/DebugKit/webroot $BUILD_DIR/app/webroot/debug_kit"
+      ]
     }
   }
 }
