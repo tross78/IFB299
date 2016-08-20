@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "39a9d2b97f6f6fccd5f53cefc2f964bd",
-    "content-hash": "69804839eac6cdc676c654aad63c1f3c",
+    "hash": "72174d7ecb4812c06aa763050a6482a0",
+    "content-hash": "7af0307beb1e0244c56c7d69b63ad01b",
     "packages": [
         {
             "name": "ad7six/dsn",
@@ -55,12 +55,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "3937a4f02edcfdeb3d4c0754892870f41cd0c321"
+                "reference": "d66011d0fa81d9955898ce9f9035f9038fe9a1b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/3937a4f02edcfdeb3d4c0754892870f41cd0c321",
-                "reference": "3937a4f02edcfdeb3d4c0754892870f41cd0c321",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/d66011d0fa81d9955898ce9f9035f9038fe9a1b4",
+                "reference": "d66011d0fa81d9955898ce9f9035f9038fe9a1b4",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-08-15 07:51:10"
+            "time": "2016-08-18 18:56:38"
         },
         {
             "name": "composer/installers",
