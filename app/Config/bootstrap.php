@@ -76,6 +76,7 @@ App::build(
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+ 
 CakePlugin::loadAll();
 
 if (php_sapi_name() !== 'cli' && Configure::read('debug') && in_array('DebugKit', App::objects('plugin'))) {
