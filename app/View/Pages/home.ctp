@@ -26,7 +26,7 @@ App::uses('Debugger', 'Utility');
 <h1>Test (Harrison)</h1>
 <h1>Test (Andrew)</h1>
 <h1>Test (Zane)</h1>
-<h1>Yo(Andrew Branch Test)</h1>
+<h1>Yo-yo(Andrew Branch Test)</h1>
 <h2><?php echo __d('cake_dev', 'Release Notes for CakePHP %s.', Configure::version()); ?></h2>
 <p>
 	<a href="http://cakephp.org/changelogs/<?php echo Configure::version(); ?>"><?php echo __d('cake_dev', 'Read the changelog'); ?> </a>
