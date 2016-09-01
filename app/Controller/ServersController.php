@@ -56,8 +56,8 @@ class ServersController extends AppController {
 			}
 		}
 		$students = $this->Server->Student->find('list');
-		$courses = $this->Server->Course->find('list');
-		$this->set(compact('students', 'courses'));
+		//$courses = $this->Server->Course->find('list');
+		$this->set(compact('students'));
 	}
 
 /**
@@ -83,8 +83,8 @@ class ServersController extends AppController {
 			$this->request->data = $this->Server->find('first', $options);
 		}
 		$students = $this->Server->Student->find('list');
-		$courses = $this->Server->Course->find('list');
-		$this->set(compact('students', 'courses'));
+		//$courses = $this->Server->Course->find('list');
+		$this->set(compact('students'));
 	}
 
 /**
