@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Enrolment'); ?></legend>
 	<?php
-		echo $this->Form->input('student_id', ['options' => ($students['first_name'] .  $students['last_name'])]);
+		echo $this->Form->input('student_id', ['options' => $students]);
 		echo $this->Form->input('course_id');
 		echo $this->Form->input('enrolment_date');
 	?>
