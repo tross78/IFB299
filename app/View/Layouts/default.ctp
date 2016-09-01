@@ -17,7 +17,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('Meditation Centre: Team Hawke.');
+$cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 ?>
 <!DOCTYPE html>
 <html>
