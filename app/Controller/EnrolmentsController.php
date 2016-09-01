@@ -46,8 +46,9 @@ class EnrolmentsController extends AppController {
 		//$this->set(compact('students', 'courses'));
 
 		     $enrolment = $this->Enrolment->find('first', [
-            'contain' => ['conditions', 'Enrolment', 'Student', 'Course']
+            'contain' => ['Enrolment', 'Student', 'Course']
         ]);
+		$enrolment['conditions'] = array('Enrolment.' . $this->Enrolment->primaryKey => $id);
 
         $this->set('enrolment', $enrolment);
 
