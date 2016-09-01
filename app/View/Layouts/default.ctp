@@ -17,7 +17,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
+$cakeDescription = __d('Meditation Centre: Team Hawke.');
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,11 +30,11 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 	<?php
 		//echo $this->Html->meta('icon');
 
-		//echo $this->Html->css('cake.generic');
+		echo $this->Html->css('cake.generic');
 
-		//echo $this->fetch('meta');
-		//echo $this->fetch('css');
-		//echo $this->fetch('script');
+		echo $this->fetch('meta');
+		echo $this->fetch('css');
+		echo $this->fetch('script');
 	?>
 </head>
 <body>
