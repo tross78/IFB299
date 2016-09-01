@@ -55,8 +55,6 @@ class StudentsController extends AppController {
 				$this->Flash->error(__('The student could not be saved. Please, try again.'));
 			}
 		}
-		$courses = $this->Student->Course->find('list');
-		$this->set(compact('courses'));
 	}
 
 /**
@@ -81,8 +79,6 @@ class StudentsController extends AppController {
 			$options = array('conditions' => array('Student.' . $this->Student->primaryKey => $id));
 			$this->request->data = $this->Student->find('first', $options);
 		}
-		$courses = $this->Student->Course->find('list');
-		$this->set(compact('courses'));
 	}
 
 /**
