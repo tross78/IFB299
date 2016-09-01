@@ -36,10 +36,10 @@ class EnrolmentsController extends AppController {
 		if (!$this->Enrolment->exists($id)) {
 			throw new NotFoundException(__('Invalid enrolment'));
 		}
-		$this->set('enrolments', $this->Paginator->paginate());
+		//$this->set('enrolments', $this->Paginator->paginate());
 		//$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
-		//$this->set('enrolment', $this->Enrolment->find('list', $options));
-		//$enrolment = $this->Enrolment->Student->find('list');
+		$this->set('enrolment', $enrolment);
+		//$enrolment = $this->Enrolment->Enrolment->find('list');
 		//$students = $this->Enrolment->Student->find('list');
 		//$courses = $this->Enrolment->Course->find('list');
 		//$this->set(compact('students', 'courses'));
