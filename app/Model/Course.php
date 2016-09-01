@@ -5,6 +5,7 @@ App::uses('AppModel', 'Model');
  *
  * @property Enrolment $Enrolment
  * @property Student $Student
+ * @property Student $Server
  */
 class Course extends AppModel {
 
