@@ -46,7 +46,7 @@ class EnrolmentsController extends AppController {
 		//$this->set(compact('students', 'courses'));
 		$students = $this->Enrolment->Student->find('list');
 		$courses = $this->Enrolment->Course->find('list');
-		$this->set(compact('students', 'courses'));
+		$this->Enrolment->set(compact('students', 'courses'));
 	}
 
 /**
