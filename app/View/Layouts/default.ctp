@@ -17,7 +17,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke');
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,12 +49,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', ['alt' => $cakeDescription, 'border' => '0']),
-					'http://www.cakephp.org/',
-					['target' => '_blank', 'escape' => false]
-				);
-			?>
+
 		</div>
 	</div>
 </body>
