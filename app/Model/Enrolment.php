@@ -21,7 +21,7 @@ class Enrolment extends AppModel {
 			'className' => 'Student',
 			'foreignKey' => 'student_id',
 			'conditions' => '',
-			'fields' => array('first_name', 'last_name'),
+			'fields' => '',
 			'order' => ''
 		),
 		'Course' => array(
