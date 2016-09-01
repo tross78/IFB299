@@ -39,7 +39,10 @@ class EnrolmentsController extends AppController {
 		//$this->set('enrolments', $this->Paginator->paginate());
 		$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
 		//$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
-		$this->set('enrolment', $this->Enrolment->find('first', $options));
+		
+
+		$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
+		$this->set('enrolment', $this->Enrolment->find('all', $options));
 		//$enrolment = $this->Enrolment->Enrolment->find('list');
 		//$students = $this->Enrolment->Student->find('list');
 		//$courses = $this->Enrolment->Course->find('list');
