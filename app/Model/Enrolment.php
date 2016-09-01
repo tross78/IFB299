@@ -1,12 +1,12 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Enrollment Model
+ * Enrolment Model
  *
  * @property Student $Student
  * @property Course $Course
  */
-class Enrollment extends AppModel {
+class Enrolment extends AppModel {
 
 
 	// The Associations below have been created with all possible keys, those that are not needed can be removed

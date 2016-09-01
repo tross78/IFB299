@@ -1,30 +1,30 @@
-<div class="enrollments index">
-	<h2><?php echo __('Enrollments'); ?></h2>
+<div class="enrolments index">
+	<h2><?php echo __('Enrolments'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('student_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('course_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('enrollment_date'); ?></th>
+			<th><?php echo $this->Paginator->sort('enrolment_date'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
-	<?php foreach ($enrollments as $enrollment): ?>
+	<?php foreach ($enrolments as $enrolment): ?>
 	<tr>
-		<td><?php echo h($enrollment['Enrollment']['id']); ?>&nbsp;</td>
+		<td><?php echo h($enrolment['Enrolment']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($enrollment['Student']['id'], array('controller' => 'students', 'action' => 'view', $enrollment['Student']['id'])); ?>
+			<?php echo $this->Html->link($enrolment['Student']['id'], array('controller' => 'students', 'action' => 'view', $enrolment['Student']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($enrollment['Course']['name'], array('controller' => 'courses', 'action' => 'view', $enrollment['Course']['id'])); ?>
+			<?php echo $this->Html->link($enrolment['Course']['name'], array('controller' => 'courses', 'action' => 'view', $enrolment['Course']['id'])); ?>
 		</td>
-		<td><?php echo h($enrollment['Enrollment']['enrollment_date']); ?>&nbsp;</td>
+		<td><?php echo h($enrolment['Enrolment']['enrolment_date']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $enrollment['Enrollment']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $enrollment['Enrollment']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $enrollment['Enrollment']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $enrollment['Enrollment']['id']))); ?>
+			<?php echo $this->Html->link(__('View'), array('action' => 'view', $enrolment['Enrolment']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $enrolment['Enrolment']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $enrolment['Enrolment']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $enrolment['Enrolment']['id']))); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -47,7 +47,7 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Enrollment'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('New Enrolment'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Courses'), array('controller' => 'courses', 'action' => 'index')); ?> </li>

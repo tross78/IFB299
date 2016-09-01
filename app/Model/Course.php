@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Course Model
  *
- * @property Enrollment $Enrollment
+ * @property Enrolment $Enrolment
  * @property Student $Student
  */
 class Course extends AppModel {
@@ -17,8 +17,8 @@ class Course extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'Enrollment' => array(
-			'className' => 'Enrollment',
+		'Enrolment' => array(
+			'className' => 'Enrolment',
 			'foreignKey' => 'course_id',
 			'dependent' => false,
 			'conditions' => '',

@@ -1,11 +1,12 @@
-<div class="enrollments form">
-<?php echo $this->Form->create('Enrollment'); ?>
+<div class="enrolments form">
+<?php echo $this->Form->create('Enrolment'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Enrollment'); ?></legend>
+		<legend><?php echo __('Edit Enrolment'); ?></legend>
 	<?php
+		echo $this->Form->input('id');
 		echo $this->Form->input('student_id');
 		echo $this->Form->input('course_id');
-		echo $this->Form->input('enrollment_date');
+		echo $this->Form->input('enrolment_date');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -14,7 +15,8 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Html->link(__('List Enrollments'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Enrolment.id')), array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Enrolment.id')))); ?></li>
+		<li><?php echo $this->Html->link(__('List Enrolments'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Courses'), array('controller' => 'courses', 'action' => 'index')); ?> </li>
