@@ -37,7 +37,7 @@ class EnrolmentsController extends AppController {
 			throw new NotFoundException(__('Invalid enrolment'));
 		}
 		$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
-		$this->set('enrolment', $this->Enrolment->find('first', $options));
+		$this->set('enrolment', $this->Enrolment->find('all', $options));
 	}
 
 /**
@@ -82,8 +82,8 @@ class EnrolmentsController extends AppController {
 			$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
 			$this->request->data = $this->Enrolment->find('first', $options);
 		}
-		$students = $this->Enrolment->Student->find('all');
-		$courses = $this->Enrolment->Course->find('all');
+		$students = $this->Enrolment->Student->find('list');
+		$courses = $this->Enrolment->Course->find('list');
 		$this->set(compact('students', 'courses'));
 	}
 
