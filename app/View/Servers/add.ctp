@@ -7,7 +7,7 @@
 		echo $this->Form->input('course_id');
 		echo $this->Form->input('server_role', array(
 								'type'=>'select',
-								'options'=>array("assistant-teacher" => "assistant-teacher", "kitchen-hand" => "kitchen-hand", "manager" => "manager")
+								'options'=>array("assistant-teacher" => "assistant-teacher", "kitchen-help" => "kitchen-hand", "manager" => "manager")
 							));
 	?>
 	</fieldset>
