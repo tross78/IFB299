@@ -11,11 +11,6 @@
 			<?php echo $this->Html->link($server['Student']['full_name'], array('controller' => 'students', 'action' => 'view', $server['Student']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Course Id'); ?></dt>
-		<dd>
-			<?php echo h($server['Server']['course_id']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Server Role'); ?></dt>
 		<dd>
 			<?php echo h($server['Server']['server_role']); ?>
@@ -32,5 +27,7 @@
 		<li><?php echo $this->Html->link(__('New Server'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Courses'), array('controller' => 'courses', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Course'), array('controller' => 'courses', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

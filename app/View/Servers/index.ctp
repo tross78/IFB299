@@ -5,7 +5,6 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('student_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('course_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('server_role'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -17,7 +16,6 @@
 		<td>
 			<?php echo $this->Html->link($server['Student']['full_name'], array('controller' => 'students', 'action' => 'view', $server['Student']['id'])); ?>
 		</td>
-		<td><?php echo h($server['Server']['course_id']); ?>&nbsp;</td>
 		<td><?php echo h($server['Server']['server_role']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $server['Server']['id'])); ?>
@@ -48,5 +46,7 @@
 		<li><?php echo $this->Html->link(__('New Server'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Courses'), array('controller' => 'courses', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Course'), array('controller' => 'courses', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
