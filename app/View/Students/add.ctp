@@ -9,7 +9,10 @@
 		echo $this->Form->input('first_name');
 		echo $this->Form->input('last_name');
 		echo $this->Form->input('date_of_birth');
-		echo $this->Form->input('gender');
+		echo $this->Form->input('gender', array(
+                        'type'=>'select',
+                        'options'=>array("male" => "male", "female" => "female")
+                    ));
 		echo $this->Form->input('email_address');
 		echo $this->Form->input('residential_address');
 		echo $this->Form->input('dietary_requirements');

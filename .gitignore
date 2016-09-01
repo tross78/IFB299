@@ -3,3 +3,7 @@
 /app/Config/.env
 /vendor
 /Plugin
+
+app/.DS_Store
+
+.DS_Store
