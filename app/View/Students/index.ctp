@@ -15,7 +15,6 @@
 			<th><?php echo $this->Paginator->sort('gender'); ?></th>
 			<th><?php echo $this->Paginator->sort('email_address'); ?></th>
 			<th><?php echo $this->Paginator->sort('residential_address'); ?></th>
-			<th><?php echo $this->Paginator->sort('course_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('dietary_requirements'); ?></th>
 			<th><?php echo $this->Paginator->sort('medical_requirements'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -36,9 +35,6 @@
 		<td><?php echo h($student['Student']['gender']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['email_address']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['residential_address']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($student['Course']['name'], array('controller' => 'courses', 'action' => 'view', $student['Course']['id'])); ?>
-		</td>
 		<td><?php echo h($student['Student']['dietary_requirements']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['medical_requirements']); ?>&nbsp;</td>
 		<td class="actions">

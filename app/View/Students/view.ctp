@@ -61,11 +61,6 @@
 			<?php echo h($student['Student']['residential_address']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Course'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($student['Course']['name'], array('controller' => 'courses', 'action' => 'view', $student['Course']['id'])); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Dietary Requirements'); ?></dt>
 		<dd>
 			<?php echo h($student['Student']['dietary_requirements']); ?>

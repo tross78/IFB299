@@ -13,7 +13,6 @@ class DATABASE_CONFIG {
         'database'    => 'heroku_2dfb529ea745083',
         'prefix'      => ''
     );
-	
 /**
  * Define connections using environment variables
  *

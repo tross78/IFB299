@@ -13,7 +13,6 @@
 		echo $this->Form->input('gender');
 		echo $this->Form->input('email_address');
 		echo $this->Form->input('residential_address');
-		echo $this->Form->input('course_id');
 		echo $this->Form->input('dietary_requirements');
 		echo $this->Form->input('medical_requirements');
 	?>
