@@ -45,7 +45,7 @@ class EnrolmentsController extends AppController {
 		//$courses = $this->Enrolment->Course->find('list');
 		//$this->set(compact('students', 'courses'));
 
-		     $enrolment = $this->Enrolment->getVar($id, [
+		     $enrolment = $this->Enrolment->find('all', [
             'contain' => ['Enrolment', 'Student', 'Course']
         ]);
 
