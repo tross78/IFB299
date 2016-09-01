@@ -55,8 +55,8 @@ class EnrolmentsController extends AppController {
 				$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
 			}
 		}
-		$students = $this->Enrolment->Student->find('list');
-		$courses = $this->Enrolment->Course->find('list');
+		$students = $this->Enrolment->Student->find('all');
+		$courses = $this->Enrolment->Course->find('all');
 		$this->set(compact('students', 'courses'));
 	}
 
