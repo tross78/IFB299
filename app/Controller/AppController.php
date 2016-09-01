@@ -44,6 +44,7 @@ class AppController extends Controller {
 	public $components = [
 		'RequestHandler',
 		'Session',
+		'Flash',
 		'Crud.Crud' => [
 			'listeners' => [
 				'Crud.Api',
