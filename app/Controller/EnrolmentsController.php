@@ -41,8 +41,8 @@ class EnrolmentsController extends AppController {
 		//$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
 		
 
-		$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id, 'Student', 'Course'));
-		$this->set('enrolment', $this->Enrolment->find('list', $options));
+		$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
+		$this->set('enrolment', $this->Enrolment->find('all', $options));
 		//$enrolment = $this->Enrolment->Enrolment->find('list');
 		//$students = $this->Enrolment->Student->find('list');
 		//$courses = $this->Enrolment->Course->find('list');
