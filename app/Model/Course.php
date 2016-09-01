@@ -5,7 +5,6 @@ App::uses('AppModel', 'Model');
  *
  * @property Enrolment $Enrolment
  * @property Student $Student
- * @property Server $Server
  */
 class Course extends AppModel {
 
@@ -33,19 +32,6 @@ class Course extends AppModel {
 		),
 		'Student' => array(
 			'className' => 'Student',
-			'foreignKey' => 'course_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'Server' => array(
-			'className' => 'Server',
 			'foreignKey' => 'course_id',
 			'dependent' => false,
 			'conditions' => '',
