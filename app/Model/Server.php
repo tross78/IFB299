@@ -4,6 +4,7 @@ App::uses('AppModel', 'Model');
  * Server Model
  *
  * @property Student $Student
+ * @property Course $Course
  */
 class Server extends AppModel {
 
@@ -19,6 +20,13 @@ class Server extends AppModel {
 		'Student' => array(
 			'className' => 'Student',
 			'foreignKey' => 'student_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Course' => array(
+			'className' => 'Course',
+			'foreignKey' => 'course_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

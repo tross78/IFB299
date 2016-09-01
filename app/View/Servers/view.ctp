@@ -8,12 +8,12 @@
 		</dd>
 		<dt><?php echo __('Student'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($server['Student']['id'], array('controller' => 'students', 'action' => 'view', $server['Student']['id'])); ?>
+			<?php echo $this->Html->link($server['Student']['full_name'], array('controller' => 'students', 'action' => 'view', $server['Student']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Class Assignment'); ?></dt>
+		<dt><?php echo __('Course Id'); ?></dt>
 		<dd>
-			<?php echo h($server['Server']['class_assignment']); ?>
+			<?php echo h($server['Server']['course_id']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Server Role'); ?></dt>

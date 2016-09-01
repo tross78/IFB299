@@ -4,7 +4,7 @@
 		<legend><?php echo __('Add Server'); ?></legend>
 	<?php
 		echo $this->Form->input('student_id');
-		echo $this->Form->input('class_assignment');
+		echo $this->Form->input('course_id');
 		echo $this->Form->input('server_role');
 	?>
 	</fieldset>

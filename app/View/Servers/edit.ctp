@@ -5,7 +5,7 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('student_id');
-		echo $this->Form->input('class_assignment');
+		echo $this->Form->input('course_id');
 		echo $this->Form->input('server_role');
 	?>
 	</fieldset>

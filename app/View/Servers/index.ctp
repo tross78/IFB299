@@ -5,7 +5,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('student_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('class_assignment'); ?></th>
+			<th><?php echo $this->Paginator->sort('course_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('server_role'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -15,9 +15,9 @@
 	<tr>
 		<td><?php echo h($server['Server']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($server['Student']['id'], array('controller' => 'students', 'action' => 'view', $server['Student']['id'])); ?>
+			<?php echo $this->Html->link($server['Student']['full_name'], array('controller' => 'students', 'action' => 'view', $server['Student']['id'])); ?>
 		</td>
-		<td><?php echo h($server['Server']['class_assignment']); ?>&nbsp;</td>
+		<td><?php echo h($server['Server']['course_id']); ?>&nbsp;</td>
 		<td><?php echo h($server['Server']['server_role']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $server['Server']['id'])); ?>
