@@ -13,6 +13,10 @@ class Student extends AppModel {
  *
  * @var array
  */
+ 	public $displayField = 'full_name';
+	public $virtualFields = array(
+    'full_name' => 'CONCAT(Student.first_name, " ", Student.last_name)'
+	);
 	public $validate = array(
 		'username' => array(
 			'notBlank' => array(
