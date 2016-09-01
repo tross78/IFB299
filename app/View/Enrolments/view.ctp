@@ -1,5 +1,6 @@
 <div class="enrolments view">
 <h2><?php echo __('Enrolment'); ?></h2>
+	<?php foreach ($enrolments as $enrolment): ?>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -22,6 +23,7 @@
 			&nbsp;
 		</dd>
 	</dl>
+	<?php endforeach; ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
