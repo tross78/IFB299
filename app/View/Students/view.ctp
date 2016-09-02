@@ -16,11 +16,6 @@
 			<?php echo h($student['Student']['password']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Role'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['role']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
 			<?php echo h($student['Student']['created']); ?>

@@ -6,7 +6,6 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('username'); ?></th>
 			<th><?php echo $this->Paginator->sort('password'); ?></th>
-			<th><?php echo $this->Paginator->sort('role'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th><?php echo $this->Paginator->sort('first_name'); ?></th>
@@ -26,7 +25,6 @@
 		<td><?php echo h($student['Student']['id']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['username']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['password']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['role']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['created']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['modified']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['first_name']); ?>&nbsp;</td>
