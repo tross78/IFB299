@@ -5,7 +5,6 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('student_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('server_role'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
@@ -16,7 +15,6 @@
 		<td>
 			<?php echo $this->Html->link($server['Student']['full_name'], array('controller' => 'students', 'action' => 'view', $server['Student']['id'])); ?>
 		</td>
-		<td><?php echo h($server['Server']['server_role']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $server['Server']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $server['Server']['id'])); ?>

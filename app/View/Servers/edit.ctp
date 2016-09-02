@@ -5,7 +5,6 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('student_id');
-		echo $this->Form->input('server_role');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

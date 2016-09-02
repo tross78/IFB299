@@ -11,11 +11,6 @@
 			<?php echo $this->Html->link($server['Student']['full_name'], array('controller' => 'students', 'action' => 'view', $server['Student']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Server Role'); ?></dt>
-		<dd>
-			<?php echo h($server['Server']['server_role']); ?>
-			&nbsp;
-		</dd>
 	</dl>
 </div>
 <div class="actions">
