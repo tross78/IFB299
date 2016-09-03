@@ -36,22 +36,8 @@ class EnrolmentsController extends AppController {
 		if (!$this->Enrolment->exists($id)) {
 			throw new NotFoundException(__('Invalid enrolment'));
 		}
-		//$this->set('enrolments', $this->Paginator->paginate());
-		//$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
-		//$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
-		//$this->set('enrolment', $this->Enrolment->find('all', $options));
-		//$enrolment = $this->Enrolment->Enrolment->find('list');
-		//$students = $this->Enrolment->Student->find('list');
-		//$courses = $this->Enrolment->Course->find('list');
-		//$this->set(compact('students', 'courses'));
-
-		     $enrolment = $this->Enrolment->find('first', [
-            'contain' => ['Student', 'Course']
-        ]);
-		$enrolment['conditions'] = array('Enrolment.' . $this->Enrolment->primaryKey => $id);
-
-        $this->set('enrolment', $enrolment);
-
+		$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
+		$this->set('enrolment', $this->Enrolment->find('first', $options));
 	}
 
 /**
@@ -69,9 +55,9 @@ class EnrolmentsController extends AppController {
 				$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
 			}
 		}
-		$students = $this->Enrolment->Student->find('list');
+		$users = $this->Enrolment->User->find('list');
 		$courses = $this->Enrolment->Course->find('list');
-		$this->set(compact('students', 'courses'));
+		$this->set(compact('users', 'courses'));
 	}
 
 /**
@@ -96,9 +82,9 @@ class EnrolmentsController extends AppController {
 			$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
 			$this->request->data = $this->Enrolment->find('first', $options);
 		}
-		$students = $this->Enrolment->Student->find('list');
+		$users = $this->Enrolment->User->find('list');
 		$courses = $this->Enrolment->Course->find('list');
-		$this->set(compact('students', 'courses'));
+		$this->set(compact('users', 'courses'));
 	}
 
 /**

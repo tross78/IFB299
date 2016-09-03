@@ -4,9 +4,10 @@
 		<legend><?php echo __('Edit Enrolment'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('student_id');
+		echo $this->Form->input('user_id');
 		echo $this->Form->input('course_id');
 		echo $this->Form->input('enrolment_date');
+		echo $this->Form->input('role');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -17,8 +18,8 @@
 
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Enrolment.id')), array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Enrolment.id')))); ?></li>
 		<li><?php echo $this->Html->link(__('List Enrolments'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Courses'), array('controller' => 'courses', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Course'), array('controller' => 'courses', 'action' => 'add')); ?> </li>
 	</ul>

@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Enrolment Model
  *
- * @property Student $Student
+ * @property User $User
  * @property Course $Course
  */
 class Enrolment extends AppModel {
@@ -17,9 +17,9 @@ class Enrolment extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Student' => array(
-			'className' => 'Student',
-			'foreignKey' => 'student_id',
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

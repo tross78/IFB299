@@ -6,9 +6,9 @@
 			<?php echo h($enrolment['Enrolment']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Student'); ?></dt>
+		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($enrolment['Student']['id'], array('controller' => 'students', 'action' => 'view', $enrolment['Student']['id'])); ?>
+			<?php echo $this->Html->link($enrolment['User']['id'], array('controller' => 'users', 'action' => 'view', $enrolment['User']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Course'); ?></dt>
@@ -21,6 +21,11 @@
 			<?php echo h($enrolment['Enrolment']['enrolment_date']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Role'); ?></dt>
+		<dd>
+			<?php echo h($enrolment['Enrolment']['role']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">
@@ -30,8 +35,8 @@
 		<li><?php echo $this->Form->postLink(__('Delete Enrolment'), array('action' => 'delete', $enrolment['Enrolment']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $enrolment['Enrolment']['id']))); ?> </li>
 		<li><?php echo $this->Html->link(__('List Enrolments'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Enrolment'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Courses'), array('controller' => 'courses', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Course'), array('controller' => 'courses', 'action' => 'add')); ?> </li>
 	</ul>

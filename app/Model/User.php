@@ -1,22 +1,17 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Student Model
+ * User Model
  *
  * @property Enrolment $Enrolment
- * @property Server $Server
  */
-class Student extends AppModel {
+class User extends AppModel {
 
 /**
  * Validation rules
  *
  * @var array
  */
- 	public $displayField = 'full_name';
-	public $virtualFields = array(
-    'full_name' => 'CONCAT(Student.first_name, " ", Student.last_name)'
-	);
 	public $validate = array(
 		'username' => array(
 			'notBlank' => array(
@@ -100,20 +95,7 @@ class Student extends AppModel {
 	public $hasMany = array(
 		'Enrolment' => array(
 			'className' => 'Enrolment',
-			'foreignKey' => 'student_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'Server' => array(
-			'className' => 'Server',
-			'foreignKey' => 'student_id',
+			'foreignKey' => 'user_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

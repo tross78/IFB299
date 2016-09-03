@@ -3,9 +3,10 @@
 	<fieldset>
 		<legend><?php echo __('Add Enrolment'); ?></legend>
 	<?php
-		echo $this->Form->input('student_id', ['options' => $students]);
+		echo $this->Form->input('user_id');
 		echo $this->Form->input('course_id');
 		echo $this->Form->input('enrolment_date');
+		echo $this->Form->input('role');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -15,8 +16,8 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Enrolments'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Students'), array('controller' => 'students', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student'), array('controller' => 'students', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Courses'), array('controller' => 'courses', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Course'), array('controller' => 'courses', 'action' => 'add')); ?> </li>
 	</ul>
