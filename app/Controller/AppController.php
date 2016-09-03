@@ -52,7 +52,10 @@ class AppController extends Controller {
 				'Crud.ApiQueryLog'
 			]
 		],
-		'Paginator' => ['settings' => ['paramType' => 'querystring', 'limit' => 30]]
-	];
+		'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
+		'Form' => array('className' => 'BoostCake.BoostCakeForm'),
+		'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
 
+	];
+	// 		'Paginator' => ['settings' => ['paramType' => 'querystring', 'limit' => 30]]
 }
