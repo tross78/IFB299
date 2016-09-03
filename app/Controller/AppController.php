@@ -44,9 +44,6 @@ class AppController extends Controller {
 	public $components = [
 		'RequestHandler',
 		'Session',
-		'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
-		'Form' => array('className' => 'BoostCake.BoostCakeForm'),
-		'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
 		'Flash',
 		'Crud.Crud' => [
 			'listeners' => [
@@ -55,7 +52,13 @@ class AppController extends Controller {
 				'Crud.ApiQueryLog'
 			]
 		],
-
+		
 	];
+	public $helpers = array(
+		'Session',
+		'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
+		'Form' => array('className' => 'BoostCake.BoostCakeForm'),
+		'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
+	);
 	// 		'Paginator' => ['settings' => ['paramType' => 'querystring', 'limit' => 30]]
 }
