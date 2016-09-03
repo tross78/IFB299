@@ -25,7 +25,7 @@
       "document-root": "app/webroot",
       "index-document": "index.php",
       "compile": [
-        "echo 'Copying DebugKit webroot directory' && cp -rfp $BUILD_DIR/Plugin/DebugKit/webroot $BUILD_DIR/app/webroot/app/Plugin/debug_kit"
+        "echo 'Copying DebugKit webroot directory' && cp -rfp $BUILD_DIR/Plugin/DebugKit/webroot $BUILD_DIR/app/webroot/app/Plugin/debug_kit && cp -rfp $BUILD_DIR/Plugin/BoostCake/webroot $BUILD_DIR/app/webroot/app/Plugin/BoostCake"
       ]
     }
   }
