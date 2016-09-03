@@ -14,7 +14,7 @@
 	<?php foreach ($enrolments as $enrolment): ?>
 	<tr>
 		<td>
-			<?php echo $this->Html->link($enrolment['Course']['name'], array('controller' => 'courses', 'action' => 'view', $enrolment['Course']['id'])); ?>
+			<?php echo $this->Html->link($enrolment['Course']['name'], array('controller' => 'courses', 'action' => 'view', $enrolment['Course']['name'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($enrolment['User']['full_name'], array('controller' => 'users', 'action' => 'view', $enrolment['User']['full_name'])); ?>
