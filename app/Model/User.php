@@ -23,7 +23,7 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'unique' => array(
-				'rule' => array('unique'),
+				'rule' => array('isUnique'),
 				'required' => 'create',
 			)
 		),
@@ -77,7 +77,7 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'unique' => array(
-				'rule' => array('unique'),
+				'rule' => array('isUnique'),
 				'required' => 'create',
 			),
 			'email' => array(
