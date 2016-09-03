@@ -15,7 +15,7 @@ class User extends AppModel {
 	public $validate = array(
 		'username' => array(
 			'notBlank' => array(
-				'rule' => array('notBlank'),
+				'rule' => array('notBlank', 'isUnique'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -65,7 +65,7 @@ class User extends AppModel {
 		),
 		'email_address' => array(
 			'notBlank' => array(
-				'rule' => array('notBlank'),
+				'rule' => array('notBlank', 'isUnique', 'email'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,

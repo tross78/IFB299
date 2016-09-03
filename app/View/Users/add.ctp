@@ -8,7 +8,12 @@
 		echo $this->Form->input('first_name');
 		echo $this->Form->input('last_name');
 		echo $this->Form->input('date_of_birth');
-		echo $this->Form->radio('gender', array('male' => 'male','female' => 'female'));
+		$gender_options = array('male' => 'male','female' => 'female');
+		$gender_attributes = array(
+			'legend' => false,
+			'value' => 'male'
+		);
+		echo $this->Form->radio('gender', $gender_options, $gender_attributes);
 		echo $this->Form->input('email_address');
 		echo $this->Form->input('residential_address');
 		echo $this->Form->input('dietary_requirements');
