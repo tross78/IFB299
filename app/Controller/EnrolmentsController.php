@@ -22,6 +22,12 @@ class EnrolmentsController extends AppController {
  */
 	public function index() {
 		$this->Enrolment->recursive = 0;
+		$this->Paginator->settings = array(
+        'MyModel' => array(
+            'order' => array('Course.name' => 'desc'),
+            'group' => array('Course', 'User.name', 'User.role')
+			)
+		);
 		$this->set('enrolments', $this->Paginator->paginate());
 	}
 
