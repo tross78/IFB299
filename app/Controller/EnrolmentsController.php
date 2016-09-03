@@ -25,7 +25,7 @@ class EnrolmentsController extends AppController {
 		$this->Paginator->settings = array(
         'Enrolments' => array(
             'order' => array('Course.name' => 'desc'),
-            'group' => array('Course', 'User.name', 'User.role')
+            'group' => array('Course.name', 'User.name', 'User.role')
 			)
 		);
 		$this->set('enrolments', $this->Paginator->paginate());
