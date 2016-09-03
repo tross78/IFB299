@@ -38,7 +38,6 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 	?>
 	<?php echo $this->Html->script("jquery.min") ?>
     <?php echo $this->Html->script("bootstrap.min") ?>
-    <?php echo $this->Html->script("knockout-3.0.0") ?>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
