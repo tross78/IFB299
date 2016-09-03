@@ -6,7 +6,8 @@
 		echo $this->Form->input('user_id');
 		echo $this->Form->input('course_id');
 		echo $this->Form->input('enrolment_date');
-		echo $this->Form->input('role');
+		$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper', 'manager' => 'manager');
+		echo $this->Form->input('role', $role_options);
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
