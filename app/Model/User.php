@@ -15,13 +15,17 @@ class User extends AppModel {
 	public $validate = array(
 		'username' => array(
 			'notBlank' => array(
-				'rule' => array('notBlank', 'isUnique'),
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'unique' => array(
+				'rule' => array('unique'),
+				'required' => 'create',
+			)
 		),
 		'password' => array(
 			'notBlank' => array(
@@ -65,13 +69,21 @@ class User extends AppModel {
 		),
 		'email_address' => array(
 			'notBlank' => array(
-				'rule' => array('notBlank', 'isUnique', 'email'),
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'unique' => array(
+				'rule' => array('unique'),
+				'required' => 'create',
+			),
+			'email' => array(
+				'rule' => array('email'),
+				'required' => 'create',
+			)
 		),
 		'residential_address' => array(
 			'notBlank' => array(
