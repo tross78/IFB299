@@ -30,7 +30,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 	<?php
 		//echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		//echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.min');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -54,17 +54,24 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
     <![endif]--> 
 </head>
 <body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'https://teamhawk-meditation-centre.herokuapp.com'); ?></h1>
-		</div>
-		<div id="content">
+	<div class="container">
+
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+				<a class="navbar-brand" href="#">
+					<h1><?php echo $this->Html->link($cakeDescription, 'https://teamhawk-meditation-centre.herokuapp.com'); ?></h1>
+				</a>
+				</div>
+			</div>
+		</nav>
+		<div class="content">
 
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
-		<div id="footer">
+		<div class="footer">
 
 		</div>
 	</div>
