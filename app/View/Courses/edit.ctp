@@ -11,7 +11,6 @@
 		<?php echo $this->Form->input('start_date', array(
 			'class' => 'form-control',
 			'placeholder' => 'Start Date',
-			'div' => array('class' => 'form-inline'),
 			'between' => '<div class="form-group">',
 			'separator' => '</div><div class="form-group">',
 			'after' => '</div>'
