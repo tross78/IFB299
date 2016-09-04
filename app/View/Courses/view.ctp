@@ -1,6 +1,6 @@
 <div class="courses view">
 <h2><?php echo __('Course'); ?></h2>
-	<dl>
+	<dl class="dl-horizontal">
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
 			<?php echo h($course['Course']['id']); ?>
@@ -42,7 +42,7 @@
 <div class="related">
 	<h3><?php echo __('Related Enrolments'); ?></h3>
 	<?php if (!empty($course['Enrolment'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table class="table">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('User Id'); ?></th>
