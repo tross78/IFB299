@@ -7,8 +7,8 @@
 		echo $this->Form->input('description', array('class' => 'form-control'));
 	?>
 	<?php 
-		echo $this->Form->input('start_date', ['year' => ['class' => 'form-control'], 'month' => ['class' => 'form-control'], 'day' =>    ['class' => 'form-control'] ]);
-		echo $this->Form->input('end_date', ['year' => ['class' => 'form-control'], 'month' => ['class' => 'form-control'], 'day' =>    ['class' => 'form-control'] ]);
+		echo $this->Form->input('start_date');
+		echo $this->Form->input('end_date');
 	?>
 	</fieldset>
 	<?php echo $this->Form->submit('Submit', array(
