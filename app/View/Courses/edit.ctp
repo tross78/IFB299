@@ -1,16 +1,39 @@
 <div class="courses form">
 <?php echo $this->Form->create('Course'); ?>
-	<fieldset>
+	<fieldset class="form-group">
 		<legend><?php echo __('Edit Course'); ?></legend>
 	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('name');
-		echo $this->Form->input('description');
-		echo $this->Form->input('start_date');
-		echo $this->Form->input('end_date');
+		echo $this->Form->input('name', array('class' => 'form-control'));
+		echo $this->Form->input('description', array('class' => 'form-control'));
 	?>
+
+	<?php echo $this->Form->input('start_date', array(
+        'class' => 'form-control',
+        'placeholder' => 'Start Date',
+        'div' => array('class' => 'form-inline'),
+        'between' => '<div class="form-group">',
+        'separator' => '</div><div class="form-group">',
+        'after' => '</div>'
+    ));?>
+
+	<?php echo $this->Form->input('end_date', array(
+        'class' => 'form-control',
+        'placeholder' => 'End Date',
+        'div' => array('class' => 'form-inline'),
+        'between' => '<div class="form-group">',
+        'separator' => '</div><div class="form-group">',
+        'after' => '</div>'
+    ));?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+	<?php
+		$options = array(
+			'label' => 'Submit',
+			'div' => array(
+				'class' => 'btn btn-primary',
+			)
+		);
+	echo $this->Form->end($options);
+	?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
