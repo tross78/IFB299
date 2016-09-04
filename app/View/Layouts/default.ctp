@@ -59,9 +59,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
-				<a class="navbar-brand" href="#">
-					<h1><?php echo $this->Html->link($cakeDescription, 'https://teamhawk-meditation-centre.herokuapp.com'); ?></h1>
-				</a>
+					<?php echo $this->Html->link($cakeDescription, 'https://teamhawk-meditation-centre.herokuapp.com', array('class' => 'navbar-brand')); ?>
 				</div>
 			</div>
 		</nav>
