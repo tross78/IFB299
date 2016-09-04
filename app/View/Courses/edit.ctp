@@ -7,32 +7,33 @@
 		echo $this->Form->input('description', array('class' => 'form-control'));
 	?>
 
-	<?php echo $this->Form->input('start_date', array(
-        'class' => 'form-control',
-        'placeholder' => 'Start Date',
-        'div' => array('class' => 'form-inline'),
-        'between' => '<div class="form-group">',
-        'separator' => '</div><div class="form-group">',
-        'after' => '</div>'
-    ));?>
+	<div class="form-group">
+		<?php echo $this->Form->input('start_date', array(
+			'class' => 'form-control',
+			'placeholder' => 'Start Date',
+			'div' => array('class' => 'form-inline'),
+			'between' => '<div class="form-group">',
+			'separator' => '</div><div class="form-group">',
+			'after' => '</div>'
+		));?>
+	</div>
 
-	<?php echo $this->Form->input('end_date', array(
-        'class' => 'form-control',
-        'placeholder' => 'End Date',
-        'div' => array('class' => 'form-inline'),
-        'between' => '<div class="form-group">',
-        'separator' => '</div><div class="form-group">',
-        'after' => '</div>'
-    ));?>
+	<div class="form-group">
+		<?php echo $this->Form->input('end_date', array(
+			'class' => 'form-control',
+			'placeholder' => 'End Date',
+			'div' => array('class' => 'form-inline'),
+			'between' => '<div class="form-group">',
+			'separator' => '</div><div class="form-group">',
+			'after' => '</div>'
+		));?>
+	</div>
 	</fieldset>
-	<?php
-		$options = array(
-			'label' => 'Submit',
-			'div' => array(
-				'class' => 'btn btn-primary',
-			)
-		);
-	echo $this->Form->end($options);
+	<?php echo $this->Form->submit('Submit', array(
+				'div' => false,
+				'class' => 'btn btn-primary'
+			));
+	echo $this->Form->end();
 	?>
 </div>
 <div class="actions">
