@@ -65,6 +65,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 					<li <?php if (strpos($currentUrl, '/home' !== false) || $currentUrl === '/') echo 'class="active"';  ?> ><a href="/">Home</a></li>
 					<li <?php if (strpos($currentUrl, '/about') !== false) echo 'class="active"';  ?> ><a href="/about">About</a></li>
 					<li <?php if (strpos($currentUrl, '/donations') !== false) echo 'class="active"';  ?> ><a href="/donations">Donations</a></li> 
+					<li <?php if (strpos($currentUrl, '/contact') !== false) echo 'class="active"';  ?> ><a href="/contact">Contact Us</a></li> 
 					<li <?php if (strpos($currentUrl, '/courses') !== false) echo 'class="active"';  ?> ><a href="/courses/">Courses</a></li>
 				</ul>
 				
