@@ -63,8 +63,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 				</div>
 				<?php 
 					$currentUrl = Router::normalize($this->request->here);
-					$checkedUrl = Router::normalize($myUrl);
-					$isActive = $currentUrl === $checkedUrl;
+
 				?>
 				<ul class="nav navbar-nav">
 					<li <?php if (strpos($currentUrl, '/home')) echo 'class="active"';  ?> ><a href="/">Home</a></li>
