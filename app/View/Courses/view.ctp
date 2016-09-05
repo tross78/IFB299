@@ -28,49 +28,56 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Course'), array('action' => 'edit', $course['Course']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Course'), array('action' => 'delete', $course['Course']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $course['Course']['id']))); ?> </li>
-		<li><?php echo $this->Html->link(__('List Courses'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Course'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Enrolments'), array('controller' => 'enrolments', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Enrolment'), array('controller' => 'enrolments', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
-<div class="related">
-	<h3><?php echo __('Related Enrolments'); ?></h3>
-	<?php if (!empty($course['Enrolment'])): ?>
-	<table class="table">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Course Id'); ?></th>
-		<th><?php echo __('Enrolment Date'); ?></th>
-		<th><?php echo __('Role'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($course['Enrolment'] as $enrolment): ?>
-		<tr>
-			<td><?php echo $enrolment['id']; ?></td>
-			<td><?php echo $enrolment['user_id']; ?></td>
-			<td><?php echo $enrolment['course_id']; ?></td>
-			<td><?php echo $enrolment['enrolment_date']; ?></td>
-			<td><?php echo $enrolment['role']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'enrolments', 'action' => 'view', $enrolment['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'enrolments', 'action' => 'edit', $enrolment['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'enrolments', 'action' => 'delete', $enrolment['id']), array('confirm' => __('Are you sure you want to delete # %s?', $enrolment['id']))); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
-
-	<div class="actions">
+<div class="actions" class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><?php echo __('Actions'); ?></h3>
+	<div class="panel-body">
 		<ul>
+			<li><?php echo $this->Html->link(__('Edit Course'), array('action' => 'edit', $course['Course']['id'])); ?> </li>
+			<li><?php echo $this->Form->postLink(__('Delete Course'), array('action' => 'delete', $course['Course']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $course['Course']['id']))); ?> </li>
+			<li><?php echo $this->Html->link(__('List Courses'), array('action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Course'), array('action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('List Enrolments'), array('controller' => 'enrolments', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('New Enrolment'), array('controller' => 'enrolments', 'action' => 'add')); ?> </li>
 		</ul>
+	</div>
+</div>
+<div class="related" class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><?php echo __('Related Enrolments'); ?></h3>
+	<div class="panel-body">
+		<?php if (!empty($course['Enrolment'])): ?>
+		<table class="table">
+		<tr>
+			<th><?php echo __('Id'); ?></th>
+			<th><?php echo __('User Id'); ?></th>
+			<th><?php echo __('Course Id'); ?></th>
+			<th><?php echo __('Enrolment Date'); ?></th>
+			<th><?php echo __('Role'); ?></th>
+			<th class="actions"><?php echo __('Actions'); ?></th>
+		</tr>
+		<?php foreach ($course['Enrolment'] as $enrolment): ?>
+			<tr>
+				<td><?php echo $enrolment['id']; ?></td>
+				<td><?php echo $enrolment['user_id']; ?></td>
+				<td><?php echo $enrolment['course_id']; ?></td>
+				<td><?php echo $enrolment['enrolment_date']; ?></td>
+				<td><?php echo $enrolment['role']; ?></td>
+				<td class="actions">
+					<?php echo $this->Html->link(__('View'), array('controller' => 'enrolments', 'action' => 'view', $enrolment['id'])); ?>
+					<?php echo $this->Html->link(__('Edit'), array('controller' => 'enrolments', 'action' => 'edit', $enrolment['id'])); ?>
+					<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'enrolments', 'action' => 'delete', $enrolment['id']), array('confirm' => __('Are you sure you want to delete # %s?', $enrolment['id']))); ?>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+		</table>
+		<?php endif; ?>
+
+
+		<div class="actions">
+			<ul>
+				<li><?php echo $this->Html->link(__('New Enrolment'), array('controller' => 'enrolments', 'action' => 'add')); ?> </li>
+			</ul>
+		</div>
 	</div>
 </div>
