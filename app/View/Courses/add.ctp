@@ -11,17 +11,19 @@
         'class' => 'form-control',
         'placeholder' => 'Start Date',
         'div' => array('class' => 'form-inline'),
-        'before' => '<div class="form-group">',
-        'separator' => '</div><div class="form-group">',
-        'after' => '</div>'
+        'before' => '--before--',
+		'between' => '--between--',
+        'separator' => '--sep--',
+        'after' => '--after--'
     ));?>
 	<?php echo $this->Form->input('end_date', array(
-        'class' => 'form-control',
+       'class' => 'form-control',
         'placeholder' => 'End Date',
         'div' => array('class' => 'form-inline'),
-        'before' => '<div class="form-group">',
-        'separator' => '</div><div class="form-group">',
-        'after' => '</div>'
+        'before' => '--before--',
+		'between' => '--between--',
+        'separator' => '--sep--',
+        'after' => '--after--'
     ));?>
 	</fieldset>
 	<?php echo $this->Form->submit('Submit', array(
