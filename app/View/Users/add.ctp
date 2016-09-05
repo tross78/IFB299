@@ -15,9 +15,9 @@
 		$gender_options = array('male' => 'male','female' => 'female');
 		$gender_attributes = array(
 			'legend' => false,
-			'between' => array('label' => 'Gender'),
-			'value' => 'male',
-			'class' => 'radio'
+			'before' => '<label class="col col-md-3 control-label">Radio</label>',
+			'class' => false,
+			'value' => 'male'
 		);
 		echo $this->Form->radio('gender', $gender_options, $gender_attributes);
 		echo $this->Form->input('email_address', array('class' => 'form-control', 'div' => 'form-group'));
