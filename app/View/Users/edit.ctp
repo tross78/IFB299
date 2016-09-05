@@ -15,6 +15,7 @@
 		$gender_options = array('male' => 'male','female' => 'female');
 		$gender_attributes = array(
 			'legend' => false,
+			'label' => 'Gender',
 			'value' => 'male',
 			'class' => 'form-control', 
 			'div' => 'form-group'
