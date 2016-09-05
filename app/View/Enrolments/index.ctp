@@ -46,8 +46,10 @@
 	?>
 	</div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+<div class="actions panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><?php echo __('Actions'); ?></h3></div>
+	<div class="panel-body">
 	<ul>
 		<li><?php echo $this->Html->link(__('New Enrolment'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
@@ -55,4 +57,5 @@
 		<li><?php echo $this->Html->link(__('List Courses'), array('controller' => 'courses', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Course'), array('controller' => 'courses', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
 </div>
