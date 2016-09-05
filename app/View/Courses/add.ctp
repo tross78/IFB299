@@ -6,10 +6,23 @@
 		echo $this->Form->input('name', array('class' => 'form-control'));
 		echo $this->Form->input('description', array('class' => 'form-control'));
 	?>
-	<?php 
-		echo $this->Form->input('start_date');
-		echo $this->Form->input('end_date');
-	?>
+
+	<?php echo $this->Form->input('start_date', array(
+        'class' => 'form-control',
+        'placeholder' => 'Start Date',
+        'div' => array('class' => 'form-inline'),
+        'before' => '<div class="form-group">',
+        'separator' => '</div><div class="form-group">',
+        'after' => '</div>'
+    ));?>
+	<?php echo $this->Form->input('end_date', array(
+        'class' => 'form-control',
+        'placeholder' => 'End Date',
+        'div' => array('class' => 'form-inline'),
+        'before' => '<div class="form-group">',
+        'separator' => '</div><div class="form-group">',
+        'after' => '</div>'
+    ));?>
 	</fieldset>
 	<?php echo $this->Form->submit('Submit', array(
 				'div' => false,
