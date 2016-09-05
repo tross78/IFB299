@@ -59,14 +59,14 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<?php echo $this->Html->link($cakeDescription, 'https://teamhawk-meditation-centre.herokuapp.com', array('class' => 'navbar-brand')); ?>
+					<?php echo $this->Html->link($cakeDescription, '/', array('class' => 'navbar-brand')); ?>
 				</div>
 				<?php 
 					$currentUrl = Router::normalize($this->request->here);
 
 				?>
 				<ul class="nav navbar-nav">
-					<li <?php if (strpos($currentUrl, '/home') !== false) echo 'class="active"';  ?> ><a href="/">Home</a></li>
+					<li <?php if (strpos($currentUrl, '/home') !== false || $currentUrl === $this->base) echo 'class="active"';  ?> ><a href="/">Home</a></li>
 					<li <?php if (strpos($currentUrl, '/about') !== false) echo 'class="active"';  ?> ><a href="#">About</a></li> 
 					<li <?php if (strpos($currentUrl, '/courses') !== false) echo 'class="active"';  ?> ><a href="/courses/">Courses</a></li>
 				</ul>
