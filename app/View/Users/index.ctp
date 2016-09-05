@@ -1,6 +1,6 @@
 <div class="users index">
 	<h2><?php echo __('Users'); ?></h2>
-	<table class="table" cellpadding="0" cellspacing="0">
+	<table class="table">
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('username'); ?></th>

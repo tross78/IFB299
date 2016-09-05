@@ -1,6 +1,6 @@
 <div class="enrolments index">
 	<h2><?php echo __('Enrolments'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table class="table">
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('course_id'); ?></th>
