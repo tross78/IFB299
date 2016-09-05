@@ -15,11 +15,12 @@
 		$gender_options = array('male' => 'male','female' => 'female');
 		$gender_attributes = array(
 			'legend' => false,
+			'type' => 'radio',
 			'before' => '<label class="col col-md-3 control-label">Radio</label>',
 			'class' => false,
 			'value' => 'male'
 		);
-		echo $this->Form->radio('gender', $gender_options, $gender_attributes);
+		echo $this->Form->input('gender', $gender_options, $gender_attributes);
 		echo $this->Form->input('email_address', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('residential_address', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('dietary_requirements', array('class' => 'form-control', 'div' => 'form-group'));
