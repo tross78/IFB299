@@ -66,14 +66,16 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 					<li><a href="#">About</a></li> 
 					<li><a href="/courses/">Courses</a></li>
 				</ul>
-				<div class="nav navbar-nav navbar-right">
+				
 					<?php if (AuthComponent::user('id')) { ?>
-						<p class="navbar-text">Logged in as <?= AuthComponent::user('name') ?></p>
+						<div class="nav navbar-nav navbar-right">
+							<p class="navbar-text">Logged in as <?= AuthComponent::user('full_name') ?></p>
+						</div>
 					<?php } else { ?>
-					<ul>
-					<li><a href="/users/add"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-					<li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-					</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="/users/add"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+							<li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						</ul>
 					<?php } ?>
 				</div>
 			</div>
