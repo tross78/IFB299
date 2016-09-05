@@ -54,7 +54,6 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
     <![endif]--> 
 </head>
 <body>
-		<nav class="navbar navbar-inverse">
 			<div class="container navbar navbar-inverse">
 				<div class="navbar-header">
 					<?php echo $this->Html->link($cakeDescription, '/', array('class' => 'navbar-brand')); ?>
@@ -80,7 +79,6 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 						</ul>
 					<?php } ?>
 			</div>
-		</nav>
 		<div class="content container">
 
 			<?php echo $this->Session->flash(); ?>
