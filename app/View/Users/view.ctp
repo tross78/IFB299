@@ -84,8 +84,10 @@
 		<li><?php echo $this->Html->link(__('New Enrolment'), array('controller' => 'enrolments', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-<div class="related">
-	<h3><?php echo __('Related Enrolments'); ?></h3>
+<div class="related panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><?php echo __('Related Enrolments'); ?></h3></div>
+	<div class="panel-body">
 	<?php if (!empty($user['Enrolment'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
@@ -117,5 +119,6 @@
 		<ul>
 			<li><?php echo $this->Html->link(__('New Enrolment'), array('controller' => 'enrolments', 'action' => 'add')); ?> </li>
 		</ul>
+		</div>
 	</div>
 </div>
