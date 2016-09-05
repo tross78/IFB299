@@ -52,8 +52,26 @@ class AppController extends Controller {
 				'Crud.ApiQueryLog'
 			]
 		],
-		
+		'Auth' => array(
+            'loginRedirect' => array(
+                'controller' => 'posts',
+                'action' => 'index'
+            ),
+            'logoutRedirect' => array(
+                'controller' => 'pages',
+                'action' => 'display',
+                'home'
+            ),
+            'authenticate' => array(
+                'Form' => array(
+                    'passwordHasher' => 'Blowfish'
+                )
+            )
+        )
 	];
+	public function beforeFilter() {
+        $this->Auth->allow('index', 'view');
+    }
 	public $helpers = array(
 		'Session',
 		'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
