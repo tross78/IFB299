@@ -86,7 +86,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<footer class="footer">
-			<div class="container navbar navbar-inverse">
+			<div class="container navbar navbar-fixed-bottom">
 				<p class="navbar-text">&copy; 2016 Team Hawke</p>
 			</div>
 		</footer>
