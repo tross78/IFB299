@@ -61,10 +61,15 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 				<div class="navbar-header">
 					<?php echo $this->Html->link($cakeDescription, 'https://teamhawk-meditation-centre.herokuapp.com', array('class' => 'navbar-brand')); ?>
 				</div>
+				<?php 
+					$currentUrl = Router::normalize($this->request->here);
+					$checkedUrl = Router::normalize($myUrl);
+					$isActive = $currentUrl === $checkedUrl;
+				?>
 				<ul class="nav navbar-nav">
-					<li class="<?php echo (!empty($this->params['action']) && ($this->params['action']=='home') )?'active' :'inactive' ?>"><a href="/">Home</a></li>
-					<li class="<?php echo (!empty($this->params['action']) && ($this->params['action']=='about') )?'active' :'inactive' ?>"><a href="#">About</a></li> 
-					<li class="<?php echo (!empty($this->params['action']) && ($this->params['action']=='courses') )?'active' :'inactive' ?>"><a href="/courses/">Courses</a></li>
+					<li <?php if (strpos($currentUrl, '/home')) echo 'class="active"';  ?> ><a href="/">Home</a></li>
+					<li <?php if (strpos($currentUrl, '/about')) echo 'class="active"';  ?> ><a href="#">About</a></li> 
+					<li <?php if (strpos($currentUrl, '/courses')) echo 'class="active"';  ?> ><a href="/courses/">Courses</a></li>
 				</ul>
 				
 					<?php if (AuthComponent::user('id')) { ?>
