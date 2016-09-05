@@ -30,7 +30,7 @@
 </div>
 <div class="actions panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><?php echo __('Actions'); ?></h3>
+    <h3 class="panel-title"><?php echo __('Actions'); ?></h3></div>
 	<div class="panel-body">
 		<ul>
 			<li><?php echo $this->Html->link(__('Edit Course'), array('action' => 'edit', $course['Course']['id'])); ?> </li>
@@ -44,7 +44,7 @@
 </div>
 <div class="related panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><?php echo __('Related Enrolments'); ?></h3>
+    <h3 class="panel-title"><?php echo __('Related Enrolments'); ?></h3></div>
 	<div class="panel-body">
 		<?php if (!empty($course['Enrolment'])): ?>
 		<table class="table">

@@ -29,7 +29,7 @@
 </div>
 <div class="actions" class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><?php echo __('Actions'); ?></h3>
+    <h3 class="panel-title"><?php echo __('Actions'); ?></h3></div>
 	<div class="panel-body">
 	<ul>
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Course.id')), array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Course.id')))); ?></li>
