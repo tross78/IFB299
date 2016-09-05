@@ -63,10 +63,10 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 				</div>
 				<?php 
 					$currentUrl = Router::normalize($this->request->here);
-
+					$baseUrl = Router::normalize(Router::url('/', true));
 				?>
 				<ul class="nav navbar-nav">
-					<li <?php if (strpos($currentUrl, '/home' !== false || strpos($currentUrl, Router::url('/', true) !== false))) echo 'class="active"';  ?> ><a href="/">Home</a></li>
+					<li <?php if (strpos($currentUrl, '/home' !== false) || $currentUrl === $baseUrl ) echo 'class="active"';  ?> ><a href="/">Home</a></li>
 					<li <?php if (strpos($currentUrl, '/about') !== false) echo 'class="active"';  ?> ><a href="#">About</a></li> 
 					<li <?php if (strpos($currentUrl, '/courses') !== false) echo 'class="active"';  ?> ><a href="/courses/">Courses</a></li>
 				</ul>
