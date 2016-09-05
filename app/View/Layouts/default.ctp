@@ -68,9 +68,10 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 				</ul>
 				
 					<?php if (AuthComponent::user('id')) { ?>
-						<div class="nav navbar-nav navbar-right">
-							<p class="navbar-text">Logged in as <?= AuthComponent::user('full_name') ?></p>
-						</div>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="navbar-text">Logged in as <?= AuthComponent::user('full_name') ?></li>
+							<li><?= $this->Html->link('Log out', array('controller' => 'users', 'action' => 'logout')); ?></li>
+						</ul>
 					<?php } else { ?>
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="/users/add"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
