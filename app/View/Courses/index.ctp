@@ -42,7 +42,7 @@
 	?>
 	</div>
 </div>
-<div class="actions" class="panel panel-default">
+<div class="actions panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"><?php echo __('Actions'); ?></h3>
 	<div class="panel-body">
