@@ -54,8 +54,6 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
     <![endif]--> 
 </head>
 <body>
-	<div class="container">
-
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -83,16 +81,15 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 					<?php } ?>
 			</div>
 		</nav>
-		<div class="content">
+		<div class="content container">
 
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div class="footer">
-			<div class="container navbar navbar-inverse"><p class="navbar-text">&copy; 2016 Team Hawke</p>
+			<div class="navbar navbar-inverse"><p class="navbar-text">&copy; 2016 Team Hawke</p>
       		</div>
 		</div>
-	</div>
 </body>
 </html>
