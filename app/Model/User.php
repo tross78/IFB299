@@ -105,6 +105,7 @@ class User extends AppModel {
 		),
 	);
 
+// TR: Hashes password field before saving
 public function beforeSave($options = array()) {
     if (isset($this->data[$this->alias]['password'])) {
         $passwordHasher = new BlowfishPasswordHasher();

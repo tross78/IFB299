@@ -61,6 +61,21 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 				<div class="navbar-header">
 					<?php echo $this->Html->link($cakeDescription, 'https://teamhawk-meditation-centre.herokuapp.com', array('class' => 'navbar-brand')); ?>
 				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/">Home</a></li>
+					<li><a href="#">About</a></li> 
+					<li><a href="/courses/">Courses</a></li>
+				</ul>
+				<div class="nav navbar-nav navbar-right">
+					<?php if (AuthComponent::user('id')) { ?>
+						<p class="navbar-text">Logged in as <?= AuthComponent::user('name') ?></p>
+					<?php } else { ?>
+					<ul>
+					<li><a href="/users/add"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+					<li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</ul>
+					<?php } ?>
+				</div>
 			</div>
 		</nav>
 		<div class="content">
@@ -70,7 +85,8 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div class="footer">
-
+			<div class="container navbar navbar-inverse"><p class="navbar-text">&copy; 2016 Team Hawke</p>
+      		</div>
 		</div>
 	</div>
 </body>
