@@ -28,7 +28,7 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions" class="panel panel-default">
+<div class="actions panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"><?php echo __('Actions'); ?></h3>
 	<div class="panel-body">
@@ -42,7 +42,7 @@
 		</ul>
 	</div>
 </div>
-<div class="related" class="panel panel-default">
+<div class="related panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"><?php echo __('Related Enrolments'); ?></h3>
 	<div class="panel-body">
