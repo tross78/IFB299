@@ -17,4 +17,9 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+?>
 
+<div class="col-xs-12">
+
+<h2>Centre Opening Hours</h2>
+</div>
