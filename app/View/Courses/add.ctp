@@ -3,22 +3,20 @@
 	<fieldset class="form-group">
 		<legend><?php echo __('Add Course'); ?></legend>
 	<?php
-		echo $this->Form->input('name', array('class' => 'form-control'));
-		echo $this->Form->input('description', array('class' => 'form-control'));
+		echo $this->Form->input('name', array('class' => 'form-control', 'div' => 'form-group'));
+		echo $this->Form->input('description', array('class' => 'form-control', 'div' => 'form-group'));
 	?>
 
 	<?php echo $this->Form->input('start_date', array(
         'class' => 'form-control',
         'placeholder' => 'Start Date',
-        'div' => array('class' => 'form-inline'),
-		'between' => '<div class="form-group">',
+		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'
     ));?>
 	<?php echo $this->Form->input('end_date', array(
        'class' => 'form-control',
         'placeholder' => 'End Date',
-        'div' => array('class' => 'form-inline'),
-		'between' => '<div class="form-group">',
+		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'
     ));?>
 	</fieldset>
