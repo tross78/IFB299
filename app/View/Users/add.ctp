@@ -13,7 +13,7 @@
         'placeholder' => 'Date of Birth',
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
-		$gender_options = array('male&nbsp;&nbsp;' => 'male','female' => 'female');
+		$gender_options = array('male' => 'male&nbsp;&nbsp;','female' => 'female');
 		$gender_attributes = array(
 			'legend' => false,
 			'type' => 'radio',
