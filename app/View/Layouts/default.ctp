@@ -54,8 +54,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
     <![endif]--> 
 </head>
 <body>
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
+			<div class="container navbar navbar-inverse">
 				<div class="navbar-header">
 					<?php echo $this->Html->link($cakeDescription, '/', array('class' => 'navbar-brand')); ?>
 				</div>
@@ -64,7 +63,9 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 				?>
 				<ul class="nav navbar-nav">
 					<li <?php if (strpos($currentUrl, '/home' !== false) || $currentUrl === '/') echo 'class="active"';  ?> ><a href="/">Home</a></li>
-					<li <?php if (strpos($currentUrl, '/about') !== false) echo 'class="active"';  ?> ><a href="/about">About</a></li> 
+					<li <?php if (strpos($currentUrl, '/about') !== false) echo 'class="active"';  ?> ><a href="/about">About</a></li>
+					<li <?php if (strpos($currentUrl, '/donations') !== false) echo 'class="active"';  ?> ><a href="/donations">Donations</a></li> 
+					<li <?php if (strpos($currentUrl, '/contact') !== false) echo 'class="active"';  ?> ><a href="/contact">Contact Us</a></li> 
 					<li <?php if (strpos($currentUrl, '/courses') !== false) echo 'class="active"';  ?> ><a href="/courses/">Courses</a></li>
 				</ul>
 				
@@ -80,16 +81,16 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 						</ul>
 					<?php } ?>
 			</div>
-		</nav>
 		<div class="content container">
 
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
-		<div class="footer">
-			<div class="navbar navbar-inverse"><p class="navbar-text">&copy; 2016 Team Hawke</p>
-      		</div>
-		</div>
+		<footer class="footer">
+			<div class="container navbar navbar-fixed-bottom navbar-inverse">
+				<p class="navbar-text">&copy; 2016 Team Hawke</p>
+			</div>
+		</footer>
 </body>
 </html>
