@@ -78,7 +78,7 @@ if (!defined('WEBROOT_DIR')) {
 	define('WEBROOT_DIR', basename(dirname(__FILE__)) . "/tests");
 }
 if (!defined('WWW_ROOT')) {
-	define('WWW_ROOT', dirname(__FILE__) . DS);
+	define('WWW_ROOT', dirname(__FILE__) . DS . "/tests");
 }
 
 if (!defined('CAKE_CORE_INCLUDE_PATH')) {
