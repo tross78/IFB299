@@ -28,7 +28,7 @@
 <p>To find out more about us or the courses we have on offer, feel free to browse the relevant pages on the navigation bar located at the top of this page.</p>
 <p>Thank you for checking us out. We hope to be seeing you soon.</p>
 <p> - <i>Centre Managers.</i></p>
-<p><br><br><br><sub>*strings may be attached.</sub></p>
 <h2>Centre Opening Hours</h2>
 <p>9am to 5pm Mon to Fri</p>
+<p><br><br><br><sub>*strings may be attached.</sub></p>
 </div>
