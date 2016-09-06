@@ -29,8 +29,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 	</title>
 	<?php
 		//echo $this->Html->meta('icon');
-
-		//echo $this->Html->css('cake.generic');
+		echo $this->Html->meta('favicon.ico','img/favicon.ico',array('type' => 'icon'));
 		echo $this->Html->css('bootstrap.min');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
