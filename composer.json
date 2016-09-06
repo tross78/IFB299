@@ -28,5 +28,8 @@
         "echo 'Copying DebugKit webroot directory' && cp -rfp $BUILD_DIR/Plugin/DebugKit/webroot $BUILD_DIR/app/webroot/app/Plugin/debug_kit && cp -rfp $BUILD_DIR/Plugin/BoostCake/webroot $BUILD_DIR/app/webroot/app/Plugin/BoostCake"
       ]
     }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.5"
   }
 }
