@@ -23,8 +23,12 @@
 <div class="col-xs-12 col-sm-3 img-responsive">
 <img width="200" height="200" class="pull-left" src="http://loremflickr.com/200/200/kitten">
 </div>
-<p>Twitter in anonymous coffee pikachu facebook derpina on fun games. Not Okay le friend happy friendzoned note unsave thor troll amet movies if you know what i mean gasp. Hammer crying keyboard avengers college read cuteness overload lose bottom rainbow. Rebecca Black creepy me gusta no bad le girlfriend poker face right bra nyan cat cereal guy. Michelle lois dead russia party no okay aww yeah cat challenge accepted. Eat bear y u no sit homework monocle hulk mom admire just. Joke t-rex impossibru problem? Peter griffin pokeman ba dumm tss panda mother bacon portfolio woman not bad you don't say? A basic math alcohol luke grey genius too mainstream search. On nother to do here elephant sister star wars weekend easter sandwich in. In class homer yao nap facepalm le derp 140% final week morbi all the things. Good guy gag drink vegan.</p>
-<p>Steve jobs final week clinton architect collection amet i know that feel superhero no bad rebecca black friendzoned. Movie scumbag troll michelle in phone ipsum mom simpson. Captain venenatis russia a lose easter keyboard hulk blizzard on charlie sheen. Diablo 3 meme grin 9000 lois hammer search sit like a boss money genius le girlfriend. Tank homer too mainstream left grey i'm watching u dad joke silent hill. Avengers creepy me gusta sister movies crying facebook in admire bottom angry birds. Always computer oboma aww yeah bear male no female twitter true story. Close enough note jackie chan derpina okay impossibru fun amnesia coffee pokeman all the things. Nap cellphone monday strangers top college iron man t-rex. Cereal that geek thor people in class woman good guy. Le derp sandwich.</p>
+<p>Welcome to the Mediation Centre home page. We are a local, donation based, community driven service that provides professionally developed mediation courses to enrolled members of the public.</p>
+<p>If you’d like to be a part of our ever-growing community, book a course, or even just keep up to date on our available services, then don’t hesitate to sign up today! It’s absolutely free and with no strings attached.*</p>
+<p>To find out more about us or the courses we have on offer, feel free to browse the relevant pages on the navigation bar located at the top of this page.</p>
+<p>Thank you for checking us out. We hope to be seeing you soon.</p>
+<p> - <i>Centre Managers.</i></p>
 <h2>Centre Opening Hours</h2>
 <p>9am to 5pm Mon to Fri</p>
+<p><br><br><br><sub>*strings may be attached.</sub></p>
 </div>
