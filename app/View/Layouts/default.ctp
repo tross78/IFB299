@@ -80,7 +80,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 						</ul>
 					<?php } ?>
 			</div>
-		<div class="content container">
+		<div class="content container bg-warning">
 
 			<?php echo $this->Session->flash(); ?>
 
