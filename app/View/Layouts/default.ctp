@@ -54,32 +54,34 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 </head>
 <body>
 	<div class="bg-warning">
-			<div class=" navbar navbar-inverse">
-				<div class="navbar-header">
-					<?php echo $this->Html->link($cakeDescription, '/', array('class' => 'navbar-brand')); ?>
+			<div class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<?php echo $this->Html->link($cakeDescription, '/', array('class' => 'navbar-brand')); ?>
+					</div>
+					<?php 
+						$currentUrl = Router::normalize($this->request->here);
+					?>
+					<ul class="nav navbar-nav">
+						<li <?php if (strpos($currentUrl, '/home' !== false) || $currentUrl === '/') echo 'class="active"';  ?> ><a href="/">Home</a></li>
+						<li <?php if (strpos($currentUrl, '/about') !== false) echo 'class="active"';  ?> ><a href="/about">About</a></li>
+						<li <?php if (strpos($currentUrl, '/donations') !== false) echo 'class="active"';  ?> ><a href="/donations">Donations</a></li> 
+						<li <?php if (strpos($currentUrl, '/contact') !== false) echo 'class="active"';  ?> ><a href="/contact">Contact Us</a></li> 
+						<li <?php if (strpos($currentUrl, '/courses') !== false) echo 'class="active"';  ?> ><a href="/courses/">Courses</a></li>
+					</ul>
+					
+						<?php if (AuthComponent::user('id')) { ?>
+							<ul class="nav navbar-nav navbar-right">
+								<li class="navbar-text">Logged in as <?= AuthComponent::user('full_name') ?></li>
+								<li><?= $this->Html->link('Log out', array('controller' => 'users', 'action' => 'logout')); ?></li>
+							</ul>
+						<?php } else { ?>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="/users/add"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+								<li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+							</ul>
+						<?php } ?>
 				</div>
-				<?php 
-					$currentUrl = Router::normalize($this->request->here);
-				?>
-				<ul class="nav navbar-nav">
-					<li <?php if (strpos($currentUrl, '/home' !== false) || $currentUrl === '/') echo 'class="active"';  ?> ><a href="/">Home</a></li>
-					<li <?php if (strpos($currentUrl, '/about') !== false) echo 'class="active"';  ?> ><a href="/about">About</a></li>
-					<li <?php if (strpos($currentUrl, '/donations') !== false) echo 'class="active"';  ?> ><a href="/donations">Donations</a></li> 
-					<li <?php if (strpos($currentUrl, '/contact') !== false) echo 'class="active"';  ?> ><a href="/contact">Contact Us</a></li> 
-					<li <?php if (strpos($currentUrl, '/courses') !== false) echo 'class="active"';  ?> ><a href="/courses/">Courses</a></li>
-				</ul>
-				
-					<?php if (AuthComponent::user('id')) { ?>
-						<ul class="nav navbar-nav navbar-right">
-							<li class="navbar-text">Logged in as <?= AuthComponent::user('full_name') ?></li>
-							<li><?= $this->Html->link('Log out', array('controller' => 'users', 'action' => 'logout')); ?></li>
-						</ul>
-					<?php } else { ?>
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/users/add"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-							<li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-						</ul>
-					<?php } ?>
 			</div>
 		<div class="content container">
 
