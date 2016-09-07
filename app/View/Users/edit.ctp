@@ -8,16 +8,20 @@
 		echo $this->Form->input('first_name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('last_name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('date_of_birth', array(
-        'class' => 'form-control',
-		'div' => 'form-group',
-        'placeholder' => 'Date of Birth',
-		'between' => '<div class="form-inline form-group">',
-        'after' => '</div>'));
+			'label' => 'Date of birth', 
+			'dateFormat' => 'DMY',
+			'minYear' => date('Y') - 70,
+			'maxYear' => date('Y') - 18,
+			'class' => 'form-control',
+			'div' => 'form-group',
+			'placeholder' => 'Date of Birth',
+			'between' => '<div class="form-inline form-group">',
+			'after' => '</div>'));
 		$gender_options = array('male' => 'male&nbsp;&nbsp;','female' => 'female');
 		$gender_attributes = array(
 			'legend' => false,
 			'type' => 'radio',
-			'before' => '<label class="control-label">Radio</label>',
+			'before' => '<label class="control-label">Gender</label>',
 			'options' => $gender_options,
 			'class' => false,
 			'value' => 'male'
