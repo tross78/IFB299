@@ -53,7 +53,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
     <![endif]--> 
 </head>
 <body>
-<div id="background" class="bg-warning">
+	<div class="container bg-warning">
 			<div class=" navbar navbar-inverse">
 				<div class="navbar-header">
 					<?php echo $this->Html->link($cakeDescription, '/', array('class' => 'navbar-brand')); ?>
