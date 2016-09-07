@@ -52,7 +52,6 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
     <?php echo $this->Html->script("html5shiv"); ?>
     <![endif]--> 
 </head>
-
 <body>
 			<div class="container navbar navbar-inverse">
 				<div class="navbar-header">
