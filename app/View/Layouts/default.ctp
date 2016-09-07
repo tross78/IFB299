@@ -53,6 +53,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
     <![endif]--> 
 </head>
 <body>
+<div id="background" class="bg-warning">
 			<div class=" navbar navbar-inverse">
 				<div class="navbar-header">
 					<?php echo $this->Html->link($cakeDescription, '/', array('class' => 'navbar-brand')); ?>
@@ -80,7 +81,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 						</ul>
 					<?php } ?>
 			</div>
-		<div class="content container bg-warning">
+		<div class="content container">
 
 			<?php echo $this->Session->flash(); ?>
 
@@ -91,5 +92,6 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 				<p class="navbar-text">&copy; 2016 Team Hawke</p>
 			</div>
 		</footer>
+    </div>
 </body>
 </html>
