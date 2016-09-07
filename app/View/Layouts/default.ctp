@@ -53,7 +53,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
     <![endif]--> 
 </head>
 <body>
-			<div class="container navbar navbar-inverse">
+			<div class=" navbar navbar-inverse">
 				<div class="navbar-header">
 					<?php echo $this->Html->link($cakeDescription, '/', array('class' => 'navbar-brand')); ?>
 				</div>
@@ -87,7 +87,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<footer class="footer">
-			<div class="container navbar navbar-fixed-bottom navbar-inverse">
+			<div class="navbar navbar-fixed-bottom navbar-inverse">
 				<p class="navbar-text">&copy; 2016 Team Hawke</p>
 			</div>
 		</footer>
