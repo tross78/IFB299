@@ -29,7 +29,7 @@ class UsersController extends AppController {
 		}
 
 		if ($this->action === 'edit') {
-			if ($this->User->id == $this->Session->User->id) {
+			if ($this->data[ 'User' ]['id'] == $this->Auth->user('id')) {
 				return true;
 			} else {
 				return false;
