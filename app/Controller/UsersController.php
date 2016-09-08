@@ -21,6 +21,30 @@ class UsersController extends AppController {
     	$this->Auth->allow('add', 'logout');
 	}
 
+
+	public function isAuthorized($user) {
+		// All registered users can add users
+		if ($this->action === 'add') {
+			return true;
+		}
+
+		if ($this->action === 'edit') {
+			if ($this->User->id == $this->Session->User->id) {
+				return true;
+			} else {
+				return false;
+			}
+			
+		}
+
+		// A manager can edit and delete
+		if (in_array($this->action, array('edit', 'delete'))) {
+				return true;
+		}
+
+		return parent::isAuthorized($user);
+	}
+
 	public function login() {
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {

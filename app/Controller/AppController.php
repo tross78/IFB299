@@ -66,7 +66,8 @@ class AppController extends Controller {
                 'Form' => array(
                     'passwordHasher' => 'Blowfish'
                 )
-            )
+            ),
+			'authorize' => array('Controller')
         )
 	];
 	public function beforeFilter() {
@@ -78,5 +79,15 @@ class AppController extends Controller {
 		'Form' => array('className' => 'BoostCake.BoostCakeForm'),
 		'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
 	);
+
+	public function isAuthorized($user) {
+		// Admin can access every action
+		if (isset($user['permission']) && $user['permission'] === 'manager') {
+			return true;
+		}
+
+		// Default deny
+		return false;
+	}
 	// 		'Paginator' => ['settings' => ['paramType' => 'querystring', 'limit' => 30]]
 }

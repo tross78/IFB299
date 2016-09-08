@@ -39,6 +39,7 @@
 				'class' => 'btn btn-primary'
 			));
 	echo $this->Form->end();
+	?>
 </div>
 <div class="actions panel panel-default">
   <div class="panel-heading">
