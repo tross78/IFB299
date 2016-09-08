@@ -26,6 +26,7 @@
 			<?php
 				if ($user['User']['permission'] == 'manager') {
 					echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id']));
+					echo '&nbsp;';
 					echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $user['User']['id']))); 
 				}
 			?>
