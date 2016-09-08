@@ -29,10 +29,8 @@ class UsersController extends AppController {
 		}
 
 		if ($this->action === 'edit') {
-			if ($this->alias['id'] == $this->Auth->user('id') || $this->alias['permission'] === 'manager') {
+			if ($this->alias['id'] == $this->Auth->user('id') || $this->alias['permission'] == 'manager') {
 				return true;
-			} else {
-				return false;
 			}
 			
 		}
