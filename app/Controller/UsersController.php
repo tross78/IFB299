@@ -28,7 +28,7 @@ class UsersController extends AppController {
 			return true;
 		}
 
-		if ($this->action === 'edit') {
+		if (in_array($this->action, array('edit', 'delete'))) {
 			if ($this->alias['id'] == $this->Auth->user('id')) {
 				if ($this->alias['permission'] == 'manager') {
 					return true;
@@ -39,11 +39,6 @@ class UsersController extends AppController {
 				return false;
 			}
 			
-		}
-
-		// A manager can edit and delete
-		if (in_array($this->action, array('edit', 'delete'))) {
-				return true;
 		}
 
 		return parent::isAuthorized($user);
