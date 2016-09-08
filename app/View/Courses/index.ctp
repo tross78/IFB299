@@ -19,12 +19,8 @@
 		<td><?php echo h($course['Course']['end_date']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $course['Course']['id'])); ?>
-			<?php 
-				if ($user['id'] == $this->Auth->user('id') || $user['permission'] == 'manager') {
-					echo $this->Html->link(__('Edit'), array('action' => 'edit', $course['Course']['id']));
-					echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $course['Course']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $course['Course']['id']))); 
-				}
-			?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $course['Course']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $course['Course']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $course['Course']['id']))); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
