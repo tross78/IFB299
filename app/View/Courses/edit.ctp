@@ -3,6 +3,7 @@
 	<fieldset class="form-group">
 		<legend><?php echo __('Edit Course'); ?></legend>
 	<?php
+		echo $this->Form->hidden('id');
 		echo $this->Form->input('name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('description', array('class' => 'form-control', 'div' => 'form-group'));
 	?>

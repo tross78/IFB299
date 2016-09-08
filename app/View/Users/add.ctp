@@ -3,6 +3,7 @@
 	<fieldset class="form-group">
 		<legend><?php echo __('Add User'); ?></legend>
 	<?php
+		echo $this->Form->hidden('id');
 		echo $this->Form->input('username', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('password', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('first_name', array('class' => 'form-control', 'div' => 'form-group'));

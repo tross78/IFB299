@@ -3,7 +3,6 @@
 	<table class="table">
 	<thead>
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('description'); ?></th>
 			<th><?php echo $this->Paginator->sort('start_date'); ?></th>
@@ -14,7 +13,6 @@
 	<tbody>
 	<?php foreach ($courses as $course): ?>
 	<tr>
-		<td><?php echo h($course['Course']['id']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['name']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['description']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['start_date']); ?>&nbsp;</td>
