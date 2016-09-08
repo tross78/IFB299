@@ -34,7 +34,11 @@
 		echo $this->Form->input('permission');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+	<?php echo $this->Form->submit('Submit', array(
+				'div' => false,
+				'class' => 'btn btn-primary'
+			));
+	echo $this->Form->end();
 </div>
 <div class="actions panel panel-default">
   <div class="panel-heading">
