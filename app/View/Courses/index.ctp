@@ -19,6 +19,7 @@
 		<td><?php echo h($course['Course']['end_date']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $course['Course']['id'])); ?>
+			<?php echo $this->Html->hidden(__('Enrol'), array('controller' => 'enrolments', 'action' => 'add', $course['Course']['id'])); ?>
 			<?php 
 				if (AuthComponent::user('permission') == 'manager') {
 					echo $this->Html->link(__('Edit'), array('action' => 'edit', $course['Course']['id']));
