@@ -22,7 +22,7 @@
 			<?php 
 				if (AuthComponent::user('permission') == 'manager') {
 					echo $this->Html->link(__('Edit'), array('action' => 'edit', $course['Course']['id']));
-					echo 'nbsp;';
+					echo '&nbsp;';
 					echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $course['Course']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $course['Course']['id']))); 
 				}
 			?>
