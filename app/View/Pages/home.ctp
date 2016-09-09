@@ -19,7 +19,7 @@
 
 ?>
 
-<div class="col-xs-12">
+<div class="row">
 <div class="col-xs-12 col-sm-3 img-responsive">
 <img width="200" height="200" class="pull-left" src="http://loremflickr.com/200/200/kitten">
 </div>
@@ -31,4 +31,31 @@
 <h2>Centre Opening Hours</h2>
 <p>9am to 5pm Mon to Fri</p>
 <p><br><br><br><sub>*strings may be attached.</sub></p>
+</div>
+<div class="row top10">
+
+    <div class="col-sm-4">
+        <div class="col-sm-12 thumbnail text-center">
+            <img alt="" class="img-responsive" src="http://placehold.it/200x200">
+            <div class="caption">
+                <h4>Introductory</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="col-sm-12 thumbnail text-center">
+            <img alt="" class="img-responsive" src="http://placehold.it/200x200">
+            <div class="caption">
+                <h4>Buddist</h4>
+            </div>
+        </div>
+    </div>
+        <div class="col-sm-4">
+        <div class="col-sm-12 thumbnail text-center">
+            <img alt="" class="img-responsive" src="http://placehold.it/200x200">
+            <div class="caption">
+                <h4>Body &amp; Yoga</h4>
+            </div>
+        </div>
+    </div>
 </div>
