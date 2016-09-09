@@ -11,8 +11,14 @@
         'placeholder' => 'Enrolment Date',
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
-		$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper', 'manager' => 'manager', 'class' => 'form-control', 'div' => 'form-group');
-		echo $this->Form->input('role', array("options"=>$role_options));
+		$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper', 'manager' => 'manager');
+		
+		echo $this->Form->input('role', array(
+        'class' => 'form-control',
+        'placeholder' => 'Role',
+		'options' => $role_options,
+		'between' => '<div class="form-inline form-group">',
+        'after' => '</div>'));
 	?>
 	</fieldset>
 	<?php echo $this->Form->submit('Submit', array(
