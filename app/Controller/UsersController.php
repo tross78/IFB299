@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 /**
  * Users Controller
  *
@@ -19,6 +20,14 @@ class UsersController extends AppController {
 		parent::beforeFilter();
 		// Allow users to register and logout.
     	$this->Auth->allow('add', 'logout');
+	}
+
+	public function emailWelcomeMessage() {
+		$Email = new CakeEmail();
+		$Email->from(array('admin@team-hawk@herokuapp.com' => 'Hawke Meditation Centre'))
+			->to('tyson.ross@gmail.com')
+			->subject('About')
+			->send('My message');
 	}
 
 
@@ -88,6 +97,7 @@ class UsersController extends AppController {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 				$this->Flash->success(__('The user has been saved.'));
+				$this->emailWelcomeMessage();
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Flash->error(__('The user could not be saved. Please, try again.'));
