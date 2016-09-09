@@ -17,8 +17,8 @@ class EmailConfig {
 		$this->gmail = array(
         'host' => 'ssl://smtp.gmail.com',
         'port' => 465,
-        'username' => EmailDsn::parse(env('GMAIL_USERNAME')),
-		'password' => EmailDsn::parse(env('GMAIL_PASSWORD')),
+        'username' => env('GMAIL_USERNAME'),
+		'password' => env('GMAIL_PASSWORD'),
         'transport' => 'Smtp'
 		);
 	}
