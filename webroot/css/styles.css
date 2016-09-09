@@ -1,4 +1,6 @@
 .jumbotron {
-    background-image: url("http://placehold.it/350x100");
+    background-image: url("http://placehold.it/1200x100");
+    background-position: center center;
     background-size: cover;
+    margin-bottom: 0;
 }
