@@ -30,17 +30,17 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-            <img src="http://placehold.it/1200x800" alt="">
+            <img src="http://placehold.it/1200x300" alt="">
             <div class="carousel-caption">
             </div>
             </div>
             <div class="item">
-            <img src="http://placehold.it/1200x800" alt="">
+            <img src="http://placehold.it/1200x300" alt="">
             <div class="carousel-caption">
             </div>
             </div>
             <div class="item">
-            <img src="http://placehold.it/1200x800" alt="">
+            <img src="http://placehold.it/1200x300" alt="">
             <div class="carousel-caption">
             </div>
             </div>
