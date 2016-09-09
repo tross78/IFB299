@@ -77,7 +77,16 @@ class EnrolmentsController extends AppController {
 			}
 		}
 		$users = $this->Enrolment->User->find('list');
-		$courses = $this->Enrolment->Course->find('list');
+		
+		if (isset($this->params['named']['course_id'])) {
+			$courses = $this->Enrolment->Course->find('list', array(
+				'conditions' => array(
+					"Course.id" => $this->params['named']['course_id']
+				)
+			));
+		} else {
+			$courses = $this->Enrolment->Course->find('list');
+		}
 		$this->set(compact('users', 'courses'));
 	}
 

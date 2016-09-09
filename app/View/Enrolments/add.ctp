@@ -5,16 +5,7 @@
 	<?php
 		echo $this->Form->hidden('id');
 		echo $this->Form->input('user_id', array('class' => 'form-control', 'div' => 'form-group'));
-		if (isset($this->params['named']['course_id'])) {
-			$course = $this->Enrolment->Course->find('list', array(
-				'conditions' => array(
-					"Course.id" => $this->params['named']['course_id']
-				)
-			));
-			echo h($course['name']);
-		} else {
-			echo $this->Form->input('course_id', array('class' => 'form-control', 'div' => 'form-group'));
-		}
+		echo $this->Form->input('course_id', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('enrolment_date', array(
         'class' => 'form-control',
         'placeholder' => 'Enrolment Date',
