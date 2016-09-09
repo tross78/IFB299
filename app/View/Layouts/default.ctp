@@ -31,6 +31,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 		//echo $this->Html->meta('icon');
 		echo $this->Html->meta('favicon.ico','img/favicon.ico',array('type' => 'icon'));
 		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('styles');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
