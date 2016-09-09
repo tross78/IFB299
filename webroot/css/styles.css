@@ -4,7 +4,9 @@
     background-size: cover;
     margin-bottom: 0;
 }
-
+.content {
+    margin-bottom:80px;
+}
 /* classes for margin between rows */
 .top5 { margin-top:5px; }
 .top7 { margin-top:7px; }
