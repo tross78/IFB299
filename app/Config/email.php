@@ -13,6 +13,14 @@ class EmailConfig {
 		$this->default = EmailDsn::parse(env('EMAIL_URL'));
 		$this->smtp = EmailDsn::parse(env('EMAIL_SMTP_URL'));
 		$this->fast = EmailDsn::parse(env('EMAIL_FAST_URL'));
+
+		$this->gmail = array(
+        'host' => 'ssl://smtp.gmail.com',
+        'port' => 465,
+        'username' => EmailDsn::parse(env('GMAIL_USERNAME')),
+		'password' => EmailDsn::parse(env('GMAIL_PASSWORD')),
+        'transport' => 'Smtp'
+		);
 	}
 
 }

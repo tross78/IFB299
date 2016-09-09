@@ -23,7 +23,7 @@ class UsersController extends AppController {
 	}
 
 	public function emailWelcomeMessage() {
-		$Email = new CakeEmail('default');
+		$Email = new CakeEmail('gmail');
 		$Email->sender('tross_gapps@tysonross.com', 'Hawke Meditation Centre');
 		$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));
 		$Email->to('tyson.ross@gmail.com');
