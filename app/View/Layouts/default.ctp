@@ -55,6 +55,7 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 </head>
 <body>
 	<div class="bg-warning">
+	<div class="jumbotron"></div>
 			<div class="navbar navbar-inverse">
 				<div class="container-fluid">
 					<div class="navbar-header">
