@@ -15,6 +15,21 @@ class EnrolmentsController extends AppController {
  */
 	public $components = array('Paginator');
 
+
+	public function isAuthorized($user) {
+
+		if (in_array($this->action, array('add', 'edit', 'delete'))) {
+			if ($user['id'] == $this->Auth->user('id') || $user['permission'] == 'manager') {
+				return true;
+			} else {
+				return false;
+			}
+			
+		}
+
+		return parent::isAuthorized($user);
+	}
+
 /**
  * index method
  *

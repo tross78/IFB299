@@ -14,20 +14,23 @@
 	<tbody>
 	<?php foreach ($enrolments as $enrolment): ?>
 	<tr>
-		<td>
-			<?php echo $this->Html->link($enrolment['Course']['name'], array('controller' => 'courses', 'action' => 'view', $enrolment['Course']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $this->Html->link($enrolment['User']['full_name'], array('controller' => 'users', 'action' => 'view', $enrolment['User']['id'])); ?>
-		</td>
-		<td><?php echo h($enrolment['User']['gender']); ?>&nbsp;</td>
-		<td><?php echo h($enrolment['Enrolment']['enrolment_date']); ?>&nbsp;</td>
-		<td><?php echo h($enrolment['Enrolment']['role']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $enrolment['Enrolment']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $enrolment['Enrolment']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $enrolment['Enrolment']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $enrolment['Enrolment']['id']))); ?>
-		</td>
+		<?php
+			if (AuthComponent::user('permission') == 'manager' || AuthComponent::user('id') == $enrolment['User']['id']):?>
+			<td>
+				<?php echo $this->Html->link($enrolment['Course']['name'], array('controller' => 'courses', 'action' => 'view', $enrolment['Course']['id'])); ?>
+			</td>
+			<td>
+				<?php echo $this->Html->link($enrolment['User']['full_name'], array('controller' => 'users', 'action' => 'view', $enrolment['User']['id'])); ?>
+			</td>
+			<td><?php echo h($enrolment['User']['gender']); ?>&nbsp;</td>
+			<td><?php echo h($enrolment['Enrolment']['enrolment_date']); ?>&nbsp;</td>
+			<td><?php echo h($enrolment['Enrolment']['role']); ?>&nbsp;</td>
+			<td class="actions">
+				<?php echo $this->Html->link(__('View'), array('action' => 'view', $enrolment['Enrolment']['id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $enrolment['Enrolment']['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $enrolment['Enrolment']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $enrolment['Enrolment']['id']))); ?>
+			</td>
+		<?php endif; ?>
 	</tr>
 <?php endforeach; ?>
 	</tbody>
