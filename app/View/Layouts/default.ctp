@@ -70,6 +70,9 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 						<li <?php if (strpos($currentUrl, '/donations') !== false) echo 'class="active"';  ?> ><a href="/donations">Donations</a></li> 
 						<li <?php if (strpos($currentUrl, '/contact') !== false) echo 'class="active"';  ?> ><a href="/contact">Contact Us</a></li> 
 						<li <?php if (strpos($currentUrl, '/courses') !== false) echo 'class="active"';  ?> ><a href="/courses/">Courses</a></li>
+						<?php if (AuthComponent::user('id')):?>
+							<li <?php if (strpos($currentUrl, '/enrolments') !== false) echo 'class="active"';  ?> ><a href="/enrolments/">Enrolments</a></li>
+						<?php endif;?>
 					</ul>
 					
 						<?php if (AuthComponent::user('id')) { ?>
