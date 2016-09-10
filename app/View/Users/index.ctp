@@ -53,14 +53,3 @@
 		</ul>
 	<?php endif; ?>
 </div>
-<div class="actions panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><?php echo __('Actions'); ?></h3></div>
-	<div class="panel-body">
-	<ul>
-		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Enrolments'), array('controller' => 'enrolments', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Enrolment'), array('controller' => 'enrolments', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
-</div>
