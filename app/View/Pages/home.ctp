@@ -30,17 +30,17 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-            <img src="../../../webroot/img/1200x300GirlSunset.jpg" alt="">
+            <img src="images/1200x300GirlSunset.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
             <div class="item">
-            <img src="../../../webroot/img/1200x300GirlSunset.jpg" alt="">
+            <img src="images/1200x300GirlSunset.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
             <div class="item">
-            <img src="../../../webroot/img/1200x300Girl.jpg" alt="">
+            <img src="images/1200x300Thanks.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
