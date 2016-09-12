@@ -31,14 +31,7 @@ class CoursesController extends AppController {
 				))
 				) > 0;
 
-		//$this->set('courses', $this->Paginator->paginate());
-		$this->set('courses', $this->Course->find('list', array(
-				'conditions' => array(
-					'DATE(Enrolment.enrolment_date) < ' => $current_date,
-					'Enrolment.user_id' => AuthComponent::user('id')
-				))
-				));
-		//$this->set('is_old', $old_compare);
+		$this->set('courses', $this->Paginator->paginate());
 
 		//$enrolments = $this->Course->Enrolment->find('list');
 	}
