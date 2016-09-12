@@ -13,7 +13,7 @@
 			'before' => '<label class="control-label">Days</label>',
 			'options' => $days_options,
 			'class' => false,
-			'value' => 'male'
+			'value' => '3'
 		);
 		echo $this->Form->input('days', $days_attributes);
 	?>
