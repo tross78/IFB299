@@ -10,7 +10,6 @@
 	<fieldset class="form-group">
 		<legend><?php echo __('Add Enrolment'); ?></legend>
 	<?php
-		echo date('Y-m-d');
 		echo $this->Form->hidden('id');
 		echo AuthComponent::user('full_name');
 		echo $this->Form->input('course_id', array('class' => 'form-control', 'div' => 'form-group'));

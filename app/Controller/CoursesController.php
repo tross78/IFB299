@@ -22,8 +22,25 @@ class CoursesController extends AppController {
  */
 	public function index() {
 		$this->Course->recursive = 0;
-		$this->set('courses', $this->Paginator->paginate());
-		$enrolments = $this->Course->Enrolment->find('list');
+
+		$current_date = date('Y-m-d');
+		$old_compare = $this->Course->Enrolment->find('count', array(
+				'conditions' => array(
+					'DATE(enrolment_date) < ' => $current_date,
+					'user_id' => AuthComponent::user('id')
+				))
+				) > 0;
+
+		//$this->set('courses', $this->Paginator->paginate());
+		$this->set('courses', $this->Course->find('list', array(
+				'conditions' => array(
+					'DATE(Enrolment.enrolment_date) < ' => $current_date,
+					'Enrolment.user_id' => AuthComponent::user('id')
+				))
+				));
+		//$this->set('is_old', $old_compare);
+
+		//$enrolments = $this->Course->Enrolment->find('list');
 	}
 
 /**
