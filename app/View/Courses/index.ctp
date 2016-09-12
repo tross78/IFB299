@@ -1,11 +1,5 @@
 <div class="courses index">
 	<h2><?php echo __('Courses'); ?></h2>
-	<p>gendered test</p>
-	<?php foreach ($gender_specific_courses as $gendered):
-		echo h($gender_specific_courses['name']);
-	endforeach; 
-	?>
-	</p>
 	<table class="table">
 	<thead>
 	<tr>
@@ -18,7 +12,7 @@
 	</tr>
 	</thead>
 	<tbody>
-	<?php foreach ($courses as $course): ?>
+	<?php foreach ($gender_specific_courses as $course): ?>
 	<tr>
 		<td><?php echo h($course['Course']['name']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['gender']); ?>&nbsp;</td>
