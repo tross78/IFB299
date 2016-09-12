@@ -12,7 +12,7 @@
 	<?php
 		echo date('Y-m-d');
 		echo $this->Form->hidden('id');
-		echo $this->Form->input('user_id', array('class' => 'form-control', 'div' => 'form-group'));
+		echo AuthComponent::user('full_name');
 		echo $this->Form->input('course_id', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('enrolment_date', array(
         'class' => 'form-control',
