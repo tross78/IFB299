@@ -82,7 +82,7 @@ class EnrolmentsController extends AppController {
 		$old_compare = $this->Enrolment->find('count', array(
 				'conditions' => array(
 					'DATE(enrolment_date) < ' => $current_date,
-					'User.id' => AuthComponent::user('id')
+					'user_id' => AuthComponent::user('id')
 				))
 				) > 0;
 		$this->set('is_old', $old_compare);
