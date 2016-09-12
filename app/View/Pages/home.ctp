@@ -30,17 +30,17 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-            <img src="images/1200x300GirlSunset.jpg" alt="">
+            <img src="https://lh3.googleusercontent.com/-qkrIPZha2Zw/VfRVMwhcTLI/AAAAAAAAAAA/sBtXBEjDF78/w1200-h300-n/event_theme.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
             <div class="item">
-            <img src="images/1200x300GirlSunset.jpg" alt="">
+            <img src="http://www.spinealign.net.au/wp-content/uploads/2016/01/header-Carla-Gasparin.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
             <div class="item">
-            <img src="images/1200x300Thanks.jpg" alt="">
+            <img src="https://www.bioconcepts.com.au/system/comfy/cms/files/1467/files/original/cheersbigears.png" alt="">
             <div class="carousel-caption">
             </div>
             </div>
