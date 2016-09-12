@@ -14,7 +14,7 @@
 	<tbody>
 	<?php 
 		// TR: Only allow non logged in users to see all gendered courses
-		if (!AuthComponent::user('id')) { 
+		if (AuthComponent::user('id')) { 
 			$courses = $gender_specific_courses;
 		}
 		foreach ($courses as $course): 
