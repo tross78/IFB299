@@ -1,5 +1,12 @@
 <div class="enrolments form">
 <?php echo $this->Form->create('Enrolment'); ?>
+<p>
+<?php 
+	if ($is_old) {
+		echo 'student has completed prior course';
+	}
+?>
+</p>
 	<fieldset class="form-group">
 		<legend><?php echo __('Add Enrolment'); ?></legend>
 	<?php
