@@ -6,7 +6,7 @@
 		echo $this->Form->hidden('id');
 		echo $this->Form->input('name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('description', array('class' => 'form-control', 'div' => 'form-group'));
-		$days_options = array('3' => '3&nbsp;&nbsp;','10' => '10&nbsp;&nbsp;', '30', '30');
+		$days_options = array('3' => '3&nbsp;&nbsp;','10' => '10&nbsp;&nbsp;', '30' => '30');
 		$days_attributes = array(
 			'legend' => false,
 			'type' => 'radio',
