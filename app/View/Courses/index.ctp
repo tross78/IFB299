@@ -20,7 +20,9 @@
 		<td><?php echo h($course['Course']['description']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['start_date']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['end_date']); ?>&nbsp;</td>
-		<td><?php echo h($course['Course']['enrolments']); ?>&nbsp;</td>
+		<td>Male: <?php echo h($course['Course']['enrolments_male']); ?>/26
+		<br/>
+		Female: <?php echo h($course['Course']['enrolments_female']); ?>/26</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $course['Course']['id'])); ?>
 			<?php echo $this->Html->link(__('Enrol'), array('controller' => 'enrolments', 'action' => 'add', 'course_id' => $course['Course']['id'])); ?>
