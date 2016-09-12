@@ -23,6 +23,8 @@ class CoursesController extends AppController {
 	public function index() {
 		$this->Course->recursive = 0;
 		$this->set('courses', $this->Paginator->paginate());
+		$options = array('conditions' => array('Course.' . $this->Course->gender => $this->Auth->user('gender')));
+		$this->set('gender_specific_courses', $this->Course->find('all', $options));
 	}
 
 /**

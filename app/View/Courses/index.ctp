@@ -1,9 +1,16 @@
 <div class="courses index">
 	<h2><?php echo __('Courses'); ?></h2>
+	<p>gendered test</p>
+	<?php foreach ($gender_specific_courses as $gendered):
+		echo h($gender_specific_courses['Course']['name']);
+	endforeach; 
+	?>
+	</p>
 	<table class="table">
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
+			<th><?php echo $this->Paginator->sort('gender'); ?></th>
 			<th><?php echo $this->Paginator->sort('description'); ?></th>
 			<th><?php echo $this->Paginator->sort('start_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('end_date'); ?></th>
@@ -14,6 +21,7 @@
 	<?php foreach ($courses as $course): ?>
 	<tr>
 		<td><?php echo h($course['Course']['name']); ?>&nbsp;</td>
+		<td><?php echo h($course['Course']['gender']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['description']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['start_date']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['end_date']); ?>&nbsp;</td>

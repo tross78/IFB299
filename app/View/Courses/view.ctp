@@ -11,6 +11,11 @@
 			<?php echo h($course['Course']['name']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Gender'); ?></dt>
+		<dd>
+			<?php echo h($course['Course']['gender']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Description'); ?></dt>
 		<dd>
 			<?php echo h($course['Course']['description']); ?>
