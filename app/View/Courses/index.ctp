@@ -12,7 +12,13 @@
 	</tr>
 	</thead>
 	<tbody>
-	<?php foreach ($gender_specific_courses as $course): ?>
+	<?php 
+		// TR: Only allow logged in users to see all gendered courses
+		if (!AuthComponent::user('id')) { 
+			$courses = $gender_specific_courses;
+		}
+		foreach ($courses as $course): 
+	?>
 	<tr>
 		<td><?php echo h($course['Course']['name']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['gender']); ?>&nbsp;</td>
