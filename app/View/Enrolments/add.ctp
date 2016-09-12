@@ -2,7 +2,7 @@
 <?php echo $this->Form->create('Enrolment'); ?>
 <p>
 <?php 
-	if ($this->$is_old) {
+	if ($this->is_old) {
 		echo 'student has completed prior course';
 	}
 ?>
