@@ -2,7 +2,7 @@
 	<h2><?php echo __('Courses'); ?></h2>
 	<p>gendered test</p>
 	<?php foreach ($gender_specific_courses as $gendered):
-		echo h($gender_specific_courses['Course']['name']);
+		echo h($gender_specific_courses['name']);
 	endforeach; 
 	?>
 	</p>
