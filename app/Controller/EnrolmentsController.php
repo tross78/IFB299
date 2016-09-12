@@ -78,9 +78,10 @@ class EnrolmentsController extends AppController {
 		$users = $this->Enrolment->User->find('list');
 
 		//select * from enrolments where enrolment_date < {current date}
+		$current_date = date('Y-m-d');
 		$this->set('is_old', $this->Enrolment->find('count', array(
 				'conditions' => array(
-					'Enrolment.enrolment_date <' => date('Y-m-d H:i:s')
+					'DATE(Enrolment.enrolment_date) < ' => $current_date
 				))
 				) > 0);
 		
