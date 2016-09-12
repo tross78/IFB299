@@ -14,7 +14,6 @@ class EnrolmentsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-	public $is_old = FALSE;
 
 	public function isAuthorized($user) {
 
@@ -79,11 +78,11 @@ class EnrolmentsController extends AppController {
 		$users = $this->Enrolment->User->find('list');
 
 		//select * from enrolments where enrolment_date < {current date}
-		$this->is_old = $this->Enrolment->find('count', array(
+		$this->set('is_old', $this->Enrolment->find('count', array(
 				'conditions' => array(
 					'Enrolment.enrolment_date <' => date('Y-m-d')
 				))
-				) > 0;
+				) > 0);
 		
 		if (isset($this->params['named']['course_id'])) {
 			$courses = $this->Enrolment->Course->find('list', array(
