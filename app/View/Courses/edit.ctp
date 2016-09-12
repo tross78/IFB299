@@ -6,6 +6,16 @@
 		echo $this->Form->hidden('id');
 		echo $this->Form->input('name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('description', array('class' => 'form-control', 'div' => 'form-group'));
+		$days_options = array('3' => '3&nbsp;&nbsp;','10' => '10&nbsp;&nbsp;', '30', '30');
+		$days_attributes = array(
+			'legend' => false,
+			'type' => 'radio',
+			'before' => '<label class="control-label">Days</label>',
+			'options' => $days_options,
+			'class' => false,
+			'value' => 'male'
+		);
+		echo $this->Form->input('days', $days_attributes);
 	?>
 
 	<?php echo $this->Form->input('start_date', array(

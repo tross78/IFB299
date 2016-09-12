@@ -16,6 +16,11 @@
 			<?php echo h($course['Course']['description']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Days'); ?></dt>
+		<dd>
+			<?php echo h($course['Course']['days']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Start Date'); ?></dt>
 		<dd>
 			<?php echo h($course['Course']['start_date']); ?>

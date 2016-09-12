@@ -5,6 +5,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('description'); ?></th>
+			<th><?php echo $this->Paginator->sort('days'); ?></th>
 			<th><?php echo $this->Paginator->sort('start_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('end_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('enrolments'); ?></th>
@@ -18,6 +19,7 @@
 	<tr>
 		<td><?php echo h($course['Course']['name']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['description']); ?>&nbsp;</td>
+		<td><?php echo h($course['Course']['days']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['start_date']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['end_date']); ?>&nbsp;</td>
 		<td>Male: <?php echo h($course['Course']['enrolments_male']); ?>/26
