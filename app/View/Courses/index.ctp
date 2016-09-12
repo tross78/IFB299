@@ -4,7 +4,6 @@
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('gender'); ?></th>
 			<th><?php echo $this->Paginator->sort('description'); ?></th>
 			<th><?php echo $this->Paginator->sort('start_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('end_date'); ?></th>
@@ -14,15 +13,10 @@
 	</thead>
 	<tbody>
 	<?php 
-		// TR: Only allow non logged in users to see all gendered courses
-		if (AuthComponent::user('id')) { 
-			$courses = $gender_specific_courses;
-		}
 		foreach ($courses as $course): 
 	?>
 	<tr>
 		<td><?php echo h($course['Course']['name']); ?>&nbsp;</td>
-		<td><?php echo h($course['Course']['gender']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['description']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['start_date']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['end_date']); ?>&nbsp;</td>

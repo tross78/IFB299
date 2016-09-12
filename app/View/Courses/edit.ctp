@@ -5,16 +5,6 @@
 	<?php
 		echo $this->Form->hidden('id');
 		echo $this->Form->input('name', array('class' => 'form-control', 'div' => 'form-group'));
-		$gender_options = array('male' => 'male&nbsp;&nbsp;','female' => 'female');
-		$gender_attributes = array(
-			'legend' => false,
-			'type' => 'radio',
-			'before' => '<label class="control-label">Gender</label>',
-			'options' => $gender_options,
-			'class' => false,
-			'value' => 'male'
-		);
-		echo $this->Form->input('gender', $gender_attributes);
 		echo $this->Form->input('description', array('class' => 'form-control', 'div' => 'form-group'));
 	?>
 
