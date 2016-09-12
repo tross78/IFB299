@@ -79,11 +79,9 @@ class EnrolmentsController extends AppController {
 
 		//select * from enrolments where enrolment_date < {current date}
 		$current_date = date('Y-m-d');
-		$this->set('is_old', $this->Enrolment->find('count', array(
-				'conditions' => array(
-					'DATE(enrolment_date) < ' => $current_date
-				))
-				) > 0);
+		$old_amt = $this->Enrolment->find('count', array('conditions' => array('DATE(enrolment_date) < ' => $current_date)));
+		$old_cmp = $old_amt > 0;
+		$this->set('is_old', $old_cmp);
 		
 		if (isset($this->params['named']['course_id'])) {
 			$courses = $this->Enrolment->Course->find('list', array(
