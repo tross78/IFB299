@@ -35,14 +35,14 @@ class CoursesController extends AppController {
 				) > 0;
 
 		// if not old, filter to only ten day courses
-		if (!$is_old) {
-			$options = array(
-				'conditions' => array(
-					'Course.days = ' => 'ten'
-				)
-			);
-			$this->Paginator->settings = $options;
-		}
+		// if (!$is_old) {
+		// 	$options = array(
+		// 		'conditions' => array(
+		// 			'Course.days = ' => 'ten'
+		// 		)
+		// 	);
+		// 	$this->Paginator->settings = $options;
+		// }
 
 		
 		$this->set('courses', $this->Paginator->paginate('Courses'));
