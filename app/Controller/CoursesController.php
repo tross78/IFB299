@@ -25,27 +25,27 @@ class CoursesController extends AppController {
 		$this->Course->recursive = 0;
 
 		// find only 10 day courses unless old student
-		// $current_date = date('Y-m-d');
-		// $is_old = $this->Enrolment->find('count', array(
-		// 		'conditions' => array(
-		// 			'DATE(enrolment_date) < ' => $current_date,
-		// 			'user_id' => AuthComponent::user('id'),
-		// 			'Course.days' => 'ten'
-		// 		))
-		// 		) > 0;
+		$current_date = date('Y-m-d');
+		$is_old = $this->Course->Enrolment->find('count', array(
+				'conditions' => array(
+					'DATE(enrolment_date) < ' => $current_date,
+					'user_id' => AuthComponent::user('id'),
+					'Course.days' => 'ten'
+				))
+				) > 0;
 
 		// if not old, filter to only ten day courses
-		// if (!$is_old) {
-		// 	$options = array(
-		// 		'conditions' => array(
-		// 			'Course.days = ' => 'ten'
-		// 		)
-		// 	);
-		// 	$this->Paginator->settings = $options;
-		// }
+		if (!$is_old) {
+			$options = array(
+				'conditions' => array(
+					'Course.days = ' => 'ten'
+				)
+			);
+			$this->Paginator->settings = $options;
+		}
 
 		
-		$this->set('courses', $this->Paginator->paginate());
+		$this->set('courses', $this->Paginator->paginate('Courses'));
 		
 
 		//$enrolments = $this->Course->Enrolment->find('list');
