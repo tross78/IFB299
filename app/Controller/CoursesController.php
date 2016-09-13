@@ -40,7 +40,7 @@ class CoursesController extends AppController {
 			if (!$is_old) {
 				$options = array(
 					'conditions' => array(
-						'Course.days = ' => 'ten'
+						'Course.days' => 'ten'
 					)
 				);
 				$this->Paginator->settings = $options;
@@ -51,7 +51,7 @@ class CoursesController extends AppController {
 		} else {
 			$options = array(
 				'conditions' => array(
-					'Course.days = ' => 'ten'
+					'Course.days' => 'ten'
 				)
 			);
 			$this->Paginator->settings = $options;
