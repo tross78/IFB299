@@ -38,8 +38,8 @@ class CoursesController extends AppController {
 					))
 					) > 0;
 
-			// if not old, filter to only ten day courses
-			if (!$is_old) {
+			// if not old and is not manager, filter to only ten day courses 
+			if (!$is_old && $user['permission'] != 'manager') {
 				$options = array(
 					'conditions' => array(
 						'Course.days' => 'ten'
