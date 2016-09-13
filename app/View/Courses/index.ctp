@@ -23,20 +23,23 @@
 		<td><?php echo h($course['Course']['start_date']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['end_date']); ?>&nbsp;</td>
 		<td>	
+	<h6>Male</h6>
 	<div class="progress">
 		<?php 
-			$enrolments_male_percent =  ($course['Course']['enrolments_male'] / 26)*100;
+			$enrolments_male_percent =  ((int)$course['Course']['enrolments_male'] / 26)*100;
 			 ?>
 	 	 <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $enrolments_male_percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $enrolments_male_percent; ?>%">
-    		<?php echo (26-$course['Course']['enrolments_male']) . ' male places remaining'; ?>
+    		<?php echo $enrolments_male_percent; ?>%
 		</div>
 	</div>
+	<h6>Female</h6>
 	<div class="progress">
 		<?php 
-			$enrolments_female_percent = ($course['Course']['enrolments_female'] / 26)*100;
+			$enrolments_female_percent = ((int)$course['Course']['enrolments_female'] / 26)*100;
 			 ?>
+		<
 		<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $enrolments_female_percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $enrolments_female_percent; ?>%">
-			<?php echo (26-$course['Course']['enrolments_female']) . ' female places remaining'; ?>
+			<?php echo $enrolments_female_percent; ?>%
 		</div>
 	</div>
 	</td>
