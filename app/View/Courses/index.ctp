@@ -22,9 +22,24 @@
 		<td><?php echo h($course['Course']['days']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['start_date']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['end_date']); ?>&nbsp;</td>
-		<td>Male: <?php echo h($course['Course']['enrolments_male']); ?>/26
-		<br/>
-		Female: <?php echo h($course['Course']['enrolments_female']); ?>/26</td>
+		<td>	
+	<div class="progress">
+		<?php 
+			$this->set("enrolments_male_percent", ($course['Course']['enrolments_male'] / 26)*100);
+			 ?>
+	  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $this->enrolments_male_percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $this->enrolments_male_percent; ?>%">
+    <span class="sr-only"><?php echo $course['Course']['enrolments_male'] . 'male places remaining'; ?></span>
+		</div>
+	</div>
+	<div class="progress">
+		<?php 
+			$this->set("enrolments_female_percent", ($course['Course']['enrolments_female'] / 26)*100);
+			 ?>
+		<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $this->enrolments_female_percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $this->enrolments_female_percent; ?>%">
+			<span class="sr-only"><?php echo $course['Course']['enrolments_female'] . 'female places remaining'; ?></span>
+		</div>
+	</div>
+	</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $course['Course']['id'])); ?>
 			<?php echo $this->Html->link(__('Enrol'), array('controller' => 'enrolments', 'action' => 'add', 'course_id' => $course['Course']['id'])); ?>
