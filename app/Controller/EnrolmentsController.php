@@ -80,6 +80,8 @@ class EnrolmentsController extends AppController {
 		//select * from enrolments where enrolment_date < {current date}
 		$current_date = date('Y-m-d');
 		$old_compare = $this->Enrolment->find('count', array(
+				'fields' => array('Enrolment.id', 'Enrolment.enrolment_date', 'Enrolment.user_id', 'Course.days'),
+				'contain' => array('Course'),
 				'conditions' => array(
 					'DATE(enrolment_date) < ' => $current_date,
 					'user_id' => AuthComponent::user('id'),
