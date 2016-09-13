@@ -27,8 +27,8 @@
 		<?php 
 			$this->set("enrolments_male_percent", ($course['Course']['enrolments_male'] / 26)*100);
 			 ?>
-	  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $this->enrolments_male_percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $this->enrolments_male_percent; ?>%">
-    <span class="sr-only"><?php echo $course['Course']['enrolments_male'] . 'male places remaining'; ?></span>
+	 	 <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $this->enrolments_male_percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $this->enrolments_male_percent; ?>%">
+    		<span class="sr-only"><?php echo $course['Course']['enrolments_male'] . 'male places remaining'; ?></span>
 		</div>
 	</div>
 	<div class="progress">

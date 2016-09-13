@@ -76,8 +76,8 @@ class CoursesController extends AppController {
 		}
 
 		
-		
-		
+		$this->set("enrolments_male_percent", 0);
+		$this->set("enrolments_female_percent", 0);
 
 		//$enrolments = $this->Course->Enrolment->find('list');
 	}
