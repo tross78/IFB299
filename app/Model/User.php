@@ -103,6 +103,12 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'tos' => array(
+			'notEmpty' => array(
+				'rule' => array('comparison', '!=', 0),
+				'required' => true,
+				'message' => 'Please agree to the terms of service before proceeding.'),
+			),
 	);
 
 // TR: Hashes password field before saving
