@@ -29,6 +29,8 @@ class CoursesController extends AppController {
 			// find only 10 day courses unless old student
 			$current_date = date('Y-m-d');
 			$is_old = $this->Course->Enrolment->find('count', array(
+				    'fields' => array('Enrolment.id', 'Enrolment.enrolment_date', 'Enrolment.user_id', 'Course.days'),
+					'contain' => array('Course'),
 					'conditions' => array(
 						'DATE(enrolment_date) < ' => $current_date,
 						'user_id' => AuthComponent::user('id'),
