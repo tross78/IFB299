@@ -45,7 +45,7 @@ class CoursesController extends AppController {
 		// }
 
 		
-		$this->set('courses', $this->Paginator->paginate('Courses'));
+		$this->set('courses', $this->Paginator->paginate());
 		
 
 		//$enrolments = $this->Course->Enrolment->find('list');
