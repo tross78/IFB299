@@ -41,12 +41,26 @@ class CoursesController extends AppController {
 				$options = array(
 					'conditions' => array(
 						'Course.days' => 'ten'
-					)
+					),
+					'fields' => array(
+						'Course.id',
+						'Course.name',
+						'Course.description',
+						'Course.start_date',
+						'Course.end_date',
+						'Course.enrolments',
+						'Course.enrolments_male',
+						'Course.enrolments_female',
+					),
+					'order' => array(
+						'Course.name' => 'DESC'
+					),
+					'limit' => 10
 				);
 				$this->Paginator->settings = $options;
 			}
 
-			$this->set('courses', $this->Paginator->paginate());
+			$this->set('courses', $this->Paginator->paginate('Course'));
 
 		} else {
 			$options = array(
@@ -55,7 +69,7 @@ class CoursesController extends AppController {
 				)
 			);
 			$this->Paginator->settings = $options;
-			$this->set('courses', $this->Paginator->paginate());
+			$this->set('courses', $this->Paginator->paginate('Course'));
 		}
 
 		
