@@ -46,7 +46,7 @@ class CoursesController extends AppController {
 				$this->Paginator->settings = $options;
 			}
 
-			$this->set('courses', $this->Paginator->paginate('Courses'));
+			$this->set('courses', $this->Paginator->paginate());
 
 		} else {
 			$options = array(
@@ -55,7 +55,7 @@ class CoursesController extends AppController {
 				)
 			);
 			$this->Paginator->settings = $options;
-			$this->set('courses', $this->Paginator->paginate('Courses'));
+			$this->set('courses', $this->Paginator->paginate());
 		}
 
 		
