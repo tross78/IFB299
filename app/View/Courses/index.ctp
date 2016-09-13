@@ -28,7 +28,7 @@
 			$enrolments_male_percent =  ($course['Course']['enrolments_male'] / 26)*100;
 			 ?>
 	 	 <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $enrolments_male_percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $enrolments_male_percent; ?>%">
-    		<span class="sr-only"><?php echo $course['Course']['enrolments_male'] . 'male places remaining'; ?></span>
+    		<?php echo (26-$course['Course']['enrolments_male']) . 'male places remaining'; ?>
 		</div>
 	</div>
 	<div class="progress">
@@ -36,7 +36,7 @@
 			$enrolments_female_percent = ($course['Course']['enrolments_female'] / 26)*100;
 			 ?>
 		<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $enrolments_female_percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $enrolments_female_percent; ?>%">
-			<span class="sr-only"><?php echo $course['Course']['enrolments_female'] . 'female places remaining'; ?></span>
+			<?php echo (26-$course['Course']['enrolments_female']) . 'female places remaining'; ?>
 		</div>
 	</div>
 	</td>
