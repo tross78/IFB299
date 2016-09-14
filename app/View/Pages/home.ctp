@@ -19,6 +19,20 @@
 
 ?>
 <div class="row">
+    <div class="col-sm-12 text-center"><h2>Featured Programs</h2>
+    <p>Cras vel dolor magna. Nulla pellentesque, elit non gravida tempor, lacus nisl rutrum ipsum, eu convallis odio lorem non nunc. Nam dictum lorem in arcu tempus, vitae gravida metus tempor. Aenean consectetur, tortor nec imperdiet tincidunt, neque quam porta augue, et placerat nisl tellus in nulla. Vestibulum eu consequat nisl. Morbi faucibus nec nunc at ullamcorper.</p>
+        <?php if (AuthComponent::user('id')) { ?>
+
+        <?php } else { ?>
+            <a href="/users/add" class="btn btn-primary">Become a Member</a>
+        <?php } ?>
+
+
+
+     </div>
+</div>
+
+<div class="row">
     <div id="feature-carousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -57,19 +71,7 @@
         </a>
     </div>
 </div>
-<div class="row">
-    <div class="col-sm-12 text-center"><h2>Featured Programs</h2>
-    <p>Cras vel dolor magna. Nulla pellentesque, elit non gravida tempor, lacus nisl rutrum ipsum, eu convallis odio lorem non nunc. Nam dictum lorem in arcu tempus, vitae gravida metus tempor. Aenean consectetur, tortor nec imperdiet tincidunt, neque quam porta augue, et placerat nisl tellus in nulla. Vestibulum eu consequat nisl. Morbi faucibus nec nunc at ullamcorper.</p>
-        <?php if (AuthComponent::user('id')) { ?>
 
-        <?php } else { ?>
-            <a href="/users/add" class="btn btn-primary">Become a Member</a>
-        <?php } ?>
-
-
-
-     </div>
-</div>
 <div class="row top30">
     <div class="col-xs-12 col-sm-3 top10 bottom10 img-responsive">
     <img width="200" height="200" class="pull-left" src="http://loremflickr.com/200/200/kitten">
