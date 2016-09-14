@@ -14,7 +14,6 @@ class EnrolmentsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-	public $studCap = 2;
 
 	public function isAuthorized($user) {
 
@@ -67,6 +66,7 @@ class EnrolmentsController extends AppController {
  * @return void
  */
 	public function add() {
+		$studCap = 2;
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course'),
