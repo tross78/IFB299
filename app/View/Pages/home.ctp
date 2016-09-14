@@ -80,7 +80,7 @@
     <p>Thank you for checking us out. We hope to be seeing you soon.</p>
     <p> - <i>Centre Managers.</i></p>
     <h2>Centre Opening Hours</h2>
-    <p>9am to 5pm Mon to Fri</p>
+    <p>9am to 5pm - Monday to Friday</p>
     <p><br><br><br><sub>*strings may be attached.</sub></p>
 </div>
 <div class="row top30">
