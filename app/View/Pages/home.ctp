@@ -20,14 +20,6 @@
 ?>
 <div class="row">
     <div class="col-sm-12 text-center"><h2>Featured Programs</h2>
-    <p>Cras vel dolor magna. Nulla pellentesque, elit non gravida tempor, lacus nisl rutrum ipsum, eu convallis odio lorem non nunc. Nam dictum lorem in arcu tempus, vitae gravida metus tempor. Aenean consectetur, tortor nec imperdiet tincidunt, neque quam porta augue, et placerat nisl tellus in nulla. Vestibulum eu consequat nisl. Morbi faucibus nec nunc at ullamcorper.</p>
-        <?php if (AuthComponent::user('id')) { ?>
-
-        <?php } else { ?>
-            <a href="/users/add" class="btn btn-primary">Become a Member</a>
-        <?php } ?>
-
-
 
      </div>
 </div>
@@ -69,6 +61,12 @@
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
+
+        <?php if (AuthComponent::user('id')) { ?>
+
+        <?php } else { ?>
+            <a href="/users/add" class="btn btn-primary">Become a Member</a>
+        <?php } ?>
     </div>
 </div>
 
