@@ -19,7 +19,12 @@
 
 ?>
 <div class="row">
-    <div class="col-sm-12 text-center"><h2>Featured Programs</h2>
+    <div class="col-sm-12 text-center">
+        <?php if (AuthComponent::user('id')) { ?>
+
+        <?php } else { ?>
+            <a href="/users/add" class="btn btn-primary">Become a Member</a>
+        <?php } ?>
 
      </div>
 </div>
@@ -61,12 +66,6 @@
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-
-        <?php if (AuthComponent::user('id')) { ?>
-
-        <?php } else { ?>
-            <a href="/users/add" class="btn btn-primary">Become a Member</a>
-        <?php } ?>
     </div>
 </div>
 
