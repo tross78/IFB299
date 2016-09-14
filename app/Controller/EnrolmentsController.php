@@ -67,7 +67,7 @@ class EnrolmentsController extends AppController {
  * @return void
  */
 	public function add() {
-		$studCap = 3;
+		$studCap = 3;	//for now this value is set to 3 for testing purposes, not sure if it's in the right space either...
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course'),
@@ -83,6 +83,10 @@ class EnrolmentsController extends AppController {
 			$this->Enrolment->create();
 			if ($this->Enrolment->save($this->request->data)) {
 				$this->Flash->success(__('The enrolment has been saved.'));
+				if ($course_full) {
+					$waitData = array('id'=>50,'waitlist'=>1);
+					$this->Enrolments->save($waitData);
+				}
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
