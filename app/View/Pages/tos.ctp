@@ -1,4 +1,4 @@
-<h2>About Us</h2>
+<h2>About</h2>
 <p>We are a donation based meditation centre residing in the beautiful sunshine state of Queensland!
 Since the 1990s, we've been offering people from all walks of life the oppurtunity to attend several
 meditation courses that span different periods, and all this time funding these courses completely
