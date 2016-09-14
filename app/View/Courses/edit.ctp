@@ -17,6 +17,19 @@
 		);
 		echo $this->Form->input('days', $days_attributes);
 	?>
+		<?php
+		echo $this->Form->hidden('id');
+		$gender_options = array('male' => 'male&nbsp;&nbsp;', 'female&nbpsp;&nbsp;&nbsp;' => 'female', 'mixed' => 'mixed');
+		$gender_attributes = array(
+			'legend' => false,
+			'type' => 'radio',
+			'before' => '<label class="control-label">Gender</label>',
+			'options' => $gender_options,
+			'class' => false,
+			'value' => 'male'
+		);
+		echo $this->Form->input('gender', $gender_attributes)
+		?>
 
 	<?php echo $this->Form->input('start_date', array(
         'class' => 'form-control',
