@@ -14,6 +14,7 @@ class EnrolmentsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	private $studCap = 26;
 
 	public function isAuthorized($user) {
 
@@ -72,7 +73,7 @@ class EnrolmentsController extends AppController {
 					'conditions' => array(
 						"Course.id" => $this->params['named']['course_id']
 					))
-			) >= 26;
+			) >= $studCap;
 		if ($course_full) {
 			echo "COURSE FULL!";
 		}
