@@ -89,23 +89,23 @@
         <div class="col-sm-12 thumbnail text-center">
             <img alt="" class="img-responsive" src="http://3.thailandcamp.com/wp-content/uploads/2012/06/yogapose.jpg">
             <div class="caption">
-                <h4>Introductory</h4>
+                <h4>Introductory (10 day)</h4>
             </div>
         </div>
     </div>
     <div class="col-sm-4">
         <div class="col-sm-12 thumbnail text-center">
-            <img alt="" class="img-responsive" src="https://image.spreadshirtmedia.net/image-server/v1/compositions/119596348/views/1,width=300,height=300,appearanceId=29,version=1469440032/buddha-statue-meditation-buddhism-t-shirts-womens-premium-t-shirt.jpg">
+            <img alt="" class="img-responsive" src="http://blog.posturepodiatry.com/wp-content/uploads/2014/11/Yoga-1-300x300.jpg">
             <div class="caption">
-                <h4>Buddist</h4>
+                <h4>Express (3 day)</h4>
             </div>
         </div>
     </div>
         <div class="col-sm-4">
         <div class="col-sm-12 thumbnail text-center">
-            <img alt="" class="img-responsive" src="http://blog.posturepodiatry.com/wp-content/uploads/2014/11/Yoga-1-300x300.jpg">
+            <img alt="" class="img-responsive" src="https://image.spreadshirtmedia.net/image-server/v1/compositions/119596348/views/1,width=300,height=300,appearanceId=29,version=1469440032/buddha-statue-meditation-buddhism-t-shirts-womens-premium-t-shirt.jpg">
             <div class="caption">
-                <h4>Body &amp; Yoga</h4>
+                <h4>Buddhist (30 day)</h4>
             </div>
         </div>
     </div>
