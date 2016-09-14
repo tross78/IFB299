@@ -66,6 +66,17 @@ class EnrolmentsController extends AppController {
  * @return void
  */
 	public function add() {
+		$course_full = $this->Enrolment->find('count', array(
+					'fields' => array('Course.id'),
+					'contain' => array('Course'),
+					'conditions' => array(
+						"Course.id" => $this->params['named']['course_id']
+					))
+			) >= 26;
+		if ($course_full) {
+			echo "COURSE FULL!";
+		}
+
 		if ($this->request->is('post')) {
 			$this->Enrolment->create();
 			if ($this->Enrolment->save($this->request->data)) {
