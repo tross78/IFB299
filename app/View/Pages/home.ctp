@@ -60,7 +60,7 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-12 text-center"><h2>Welcome to the Hawke Mediation Centre home page</h2>
+    <div class="col-sm-12 text-center"><h2>Welcome to the Hawke Mediation Centre</h2>
         <?php if (AuthComponent::user('id')) { ?>
 
         <?php } else { ?>
