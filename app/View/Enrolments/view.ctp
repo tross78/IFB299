@@ -26,7 +26,7 @@
 			<?php echo h($enrolment['Enrolment']['role']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Waitlisted?'); ?></dt>
+		<dt><?php echo __('Waitlist Position'); ?></dt>
 		<dd>
 			<?php echo h($enrolment['Enrolment']['waitlist']); ?>
 			&nbsp;
