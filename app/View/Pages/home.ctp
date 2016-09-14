@@ -31,7 +31,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-            <img src="https://lh3.googleusercontent.com/-qkrIPZha2Zw/VfRVMwhcTLI/AAAAAAAAAAA/sBtXBEjDF78/w1200-h300-n/event_theme.jpg" alt="">
+            <img src="http://www.i.imgur.com/a/KE9dH.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
