@@ -18,16 +18,6 @@
  */
 
 ?>
-<div class="row">
-    <div class="col-sm-12 text-center">
-        <?php if (AuthComponent::user('id')) { ?>
-
-        <?php } else { ?>
-            <a href="/users/add" class="btn btn-primary">Become a Member</a>
-        <?php } ?>
-
-     </div>
-</div>
 
 <div class="row">
     <div id="feature-carousel" class="carousel slide" data-ride="carousel">
@@ -67,6 +57,17 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 text-center"><h2>Welcome to the Hawke Mediation Centre home page</h2>
+        <?php if (AuthComponent::user('id')) { ?>
+
+        <?php } else { ?>
+            <a href="/users/add" class="btn btn-primary">Become a Member</a>
+        <?php } ?>
+
+     </div>
 </div>
 
 <div class="row top30">
