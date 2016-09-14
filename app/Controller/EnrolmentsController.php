@@ -14,7 +14,7 @@ class EnrolmentsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-	private $studCap = 2;
+	public $studCap = 2;
 
 	public function isAuthorized($user) {
 
