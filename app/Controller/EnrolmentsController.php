@@ -83,9 +83,10 @@ class EnrolmentsController extends AppController {
 			$this->Enrolment->create();
 			if ($this->Enrolment->save($this->request->data)) {
 				$this->Flash->success(__('The enrolment has been saved.'));
+				//Botched attempt that failed. Was just trying to see if I could set id to 
 				if ($course_full) {
 					$waitData = array('id'=>50,'waitlist'=>1);
-					$this->Enrolments->save($waitData);
+					$this->Enrolment->save($waitData);
 				}
 				return $this->redirect(array('action' => 'index'));
 			} else {
