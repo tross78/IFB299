@@ -19,7 +19,7 @@
 	?>
         <?php
 		echo $this->Form->hidden('id');
-		$gender_options = array('male' => 'male&nbsp;&nbsp;', 'female' => 'female&nbpsp;&nbsp;&nbsp;', 'mixed' => 'mixed');
+		$gender_options = array('male' => 'male&nbsp;&nbsp;', 'female' => 'female&nbsp;&nbsp;&nbsp;', 'mixed' => 'mixed');
 		$gender_attributes = array(
 			'legend' => false,
 			'type' => 'radio',
