@@ -9,4 +9,5 @@ when it comes to putting your new meditative skills to use! We hope to see you s
 <h3>What we Offer:</h3>
 <p>We currently offer 3 types of courses. We have 3 day courses, 10 day courses or our deluxe 30 day courses. All courses are gender segregated with boarding and meals provided. Notice: We only provide vegeterian meals.<p>
 <p><br>If you would like further information about any of our services, please feel free to get in touch with us. You can find our contact information by visiting the “Contact Us” page.</p>
+<p><br>You can vie our Terms of Service <a href="/tos">here</a>
 </div>
