@@ -49,6 +49,7 @@ class CoursesController extends AppController {
 						'Course.name',
 						'Course.description',
 						'Course.days',
+						'Course.gender',
 						'Course.start_date',
 						'Course.end_date',
 						'Course.enrolments',
