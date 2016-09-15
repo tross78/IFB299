@@ -11,6 +11,16 @@ class Enrolment extends AppModel {
 
 	// The Associations below have been created with all possible keys, those that are not needed can be removed
 
+public $validate = array(
+		'course_id' => array(
+			'unique' => array(
+				'rule' => array('isUnique'),
+				'required' => 'create',
+				'message' => 'User already enrolled into course'
+			)
+		)
+);
+
 /**
  * belongsTo associations
  *
