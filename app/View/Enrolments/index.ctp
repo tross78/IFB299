@@ -6,8 +6,9 @@
 			<th><?php echo $this->Paginator->sort('course_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('User.gender'); ?></th>
-			<th><?php echo $this->Paginator->sort('enrolment_date'); ?></th>
+			<th><?php echo $this->Paginator->sort('enrolment_date');?></th>
 			<th><?php echo $this->Paginator->sort('role'); ?></th>
+			<th><?php echo $this->Paginator->sort('waitlist'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
@@ -25,6 +26,7 @@
 			<td><?php echo h($enrolment['User']['gender']); ?>&nbsp;</td>
 			<td><?php echo h($enrolment['Enrolment']['enrolment_date']); ?>&nbsp;</td>
 			<td><?php echo h($enrolment['Enrolment']['role']); ?>&nbsp;</td>
+			<td><?php echo h($enrolment['Enrolment']['waitlist']); ?>&nbsp;</td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('action' => 'view', $enrolment['Enrolment']['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $enrolment['Enrolment']['id'])); ?>

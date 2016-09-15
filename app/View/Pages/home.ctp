@@ -18,6 +18,7 @@
  */
 
 ?>
+
 <div class="row">
     <div id="feature-carousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -30,7 +31,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-            <img src="https://lh3.googleusercontent.com/-qkrIPZha2Zw/VfRVMwhcTLI/AAAAAAAAAAA/sBtXBEjDF78/w1200-h300-n/event_theme.jpg" alt="">
+            <img src="http://i.imgur.com/NQpW6hm.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
@@ -40,7 +41,7 @@
             </div>
             </div>
             <div class="item">
-            <img src="https://www.bioconcepts.com.au/system/comfy/cms/files/1467/files/original/cheersbigears.png" alt="">
+            <img src="http://i.imgur.com/biVYjls.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
@@ -57,19 +58,18 @@
         </a>
     </div>
 </div>
+
 <div class="row">
-    <div class="col-sm-12 text-center"><h2>Featured Programs</h2>
-    <p>Cras vel dolor magna. Nulla pellentesque, elit non gravida tempor, lacus nisl rutrum ipsum, eu convallis odio lorem non nunc. Nam dictum lorem in arcu tempus, vitae gravida metus tempor. Aenean consectetur, tortor nec imperdiet tincidunt, neque quam porta augue, et placerat nisl tellus in nulla. Vestibulum eu consequat nisl. Morbi faucibus nec nunc at ullamcorper.</p>
+    <div class="col-sm-12 text-center"><h2>Welcome to the Hawke Mediation Centre</h2>
         <?php if (AuthComponent::user('id')) { ?>
 
         <?php } else { ?>
             <a href="/users/add" class="btn btn-primary">Become a Member</a>
         <?php } ?>
 
-
-
      </div>
 </div>
+
 <div class="row top30">
     <div class="col-xs-12 col-sm-3 top10 bottom10 img-responsive">
     <img width="200" height="200" class="pull-left" src="http://loremflickr.com/200/200/kitten">
@@ -80,7 +80,7 @@
     <p>Thank you for checking us out. We hope to be seeing you soon.</p>
     <p> - <i>Centre Managers.</i></p>
     <h2>Centre Opening Hours</h2>
-    <p>9am to 5pm Mon to Fri</p>
+    <p>9am to 5pm - Monday to Friday</p>
     <p><br><br><br><sub>*strings may be attached.</sub></p>
 </div>
 <div class="row top30">
