@@ -28,16 +28,18 @@ class CoursesController extends AppController {
 		if (AuthComponent::user('id')) {
 			// find only 10 day courses unless old student
 			$current_date = date('Y-m-d');
-			$is_old = $this->Course->Enrolment->find('count', array(
-				    'fields' => array('Enrolment.id', 'Enrolment.enrolment_date', 'Enrolment.user_id', 'Course.days'),
-					'contain' => array('Course'),
-					'conditions' => array(
-						'DATE(enrolment_date) < ' => $current_date,
-						'user_id' => AuthComponent::user('id'),
-						'Course.days' => 'ten'
-					))
-					) > 0;
+			// TR: currently bugged
+			// $is_old = $this->Course->Enrolment->find('count', array(
+			// 	    'fields' => array('Enrolment.id', 'Enrolment.enrolment_date', 'Enrolment.user_id', 'Course.days'),
+			// 		'contain' => array('Course'),
+			// 		'conditions' => array(
+			// 			'DATE(enrolment_date) < ' => $current_date,
+			// 			'user_id' => AuthComponent::user('id'),
+			// 			'Course.days' => 'ten'
+			// 		))
+			// 		) > 0;
 
+			$is_old = TRUE;
 			// if not old and is not manager, filter to only ten day courses 
 			if (!$is_old && AuthComponent::user('permission') != 'manager') {
 				$options = array(

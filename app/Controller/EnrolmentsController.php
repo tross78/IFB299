@@ -96,7 +96,7 @@ class EnrolmentsController extends AppController {
 		}
 		$users = $this->Enrolment->User->find('list');
 
-		//select * from enrolments where enrolment_date < {current date}
+		//TR: select * from enrolments where enrolment_date < {current date} and course days is ten
 		$current_date = date('Y-m-d');
 		$old_compare = $this->Enrolment->find('count', array(
 				'fields' => array('Enrolment.id', 'Enrolment.enrolment_date', 'Enrolment.user_id', 'Course.days'),
@@ -109,6 +109,7 @@ class EnrolmentsController extends AppController {
 				) > 0;
 		$this->set('is_old', $old_compare);
 		
+		// if course_id set in params show just that course
 		if (isset($this->params['named']['course_id'])) {
 			$courses = $this->Enrolment->Course->find('list', array(
 				'conditions' => array(
@@ -116,6 +117,7 @@ class EnrolmentsController extends AppController {
 				)
 			));
 		} else {
+			// if not, show every course
 			$courses = $this->Enrolment->Course->find('list');
 		}
 		$this->set(compact('users', 'courses'));
