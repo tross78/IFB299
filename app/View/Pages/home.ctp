@@ -66,11 +66,11 @@
     <p>To find out more about us or the courses we have on offer, feel free to browse the relevant pages on the navigation bar located at the top of this page.</p>
     <p>Thank you for checking us out. We hope to be seeing you soon.</p>
     <p> - <i>Centre Managers.</i></p>
-    <?php if (AuthComponent::user('id')) { ?>
-
-        <?php } else { ?>
-            <a href="/users/add" class="text-center btn btn-lg btn-primary">Become a Member</a>
-        <?php } ?>
+    <?php if (!AuthComponent::user('id')): ?>
+            <div class="text-center">
+                <a href="/users/add" class="text-center btn btn-lg btn-primary">Become a Member</a>
+            </div>
+        <?php endif; ?>
         </div>
 </div>
 <div class="row top30">
