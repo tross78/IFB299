@@ -1,7 +1,5 @@
 .jumbotron {
-    background-image: url("http://placehold.it/1200x100");
-    background-position: center center;
-    background-size: cover;
+    background-image: url("/img/wov.png");
     margin-bottom: 0;
 }
 .content {
