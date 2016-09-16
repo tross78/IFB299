@@ -59,29 +59,19 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-sm-12 text-center"><h2>Welcome to the Hawke Mediation Centre</h2>
-        <?php if (AuthComponent::user('id')) { ?>
-
-        <?php } else { ?>
-            <a href="/users/add" class="btn btn-primary">Become a Member</a>
-        <?php } ?>
-
-     </div>
-</div>
-
 <div class="row top30">
-    <div class="col-xs-12 col-sm-3 top10 bottom10 img-responsive">
-    <img width="200" height="200" class="pull-left" src="http://loremflickr.com/200/200/kitten">
-    </div>
+<div class="col-sm-12 text-center"><h2>Welcome to the Hawke Mediation Centre</h2>
     <p>Welcome to the Mediation Centre home page. We are a local, donation based, community driven service that provides professionally developed mediation courses to enrolled members of the public.</p>
     <p>If you’d like to be a part of our ever-growing community, book a course, or even just keep up to date on our available services, then don’t hesitate to sign up today! It’s absolutely free and with no strings attached.*</p>
     <p>To find out more about us or the courses we have on offer, feel free to browse the relevant pages on the navigation bar located at the top of this page.</p>
     <p>Thank you for checking us out. We hope to be seeing you soon.</p>
     <p> - <i>Centre Managers.</i></p>
-    <h2>Centre Opening Hours</h2>
-    <p>9am to 5pm - Monday to Friday</p>
-    <p><br><br><br><sub>*strings may be attached.</sub></p>
+    <?php if (AuthComponent::user('id')) { ?>
+
+        <?php } else { ?>
+            <a href="/users/add" class="btn btn-primary">Become a Member</a>
+        <?php } ?>
+        </div>
 </div>
 <div class="row top30">
 

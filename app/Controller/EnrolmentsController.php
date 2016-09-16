@@ -68,6 +68,7 @@ class EnrolmentsController extends AppController {
  */
 	public function add() {
 		$studCap = 26;	//lower this value to test full courses
+		//TODO: try to move this to the POST check below, in case params are null
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course'),
