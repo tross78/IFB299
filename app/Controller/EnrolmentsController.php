@@ -77,24 +77,23 @@ class EnrolmentsController extends AppController {
 						"Course.id" => $this->params['named']['course_id']
 					))
 			) >= $studCap;
+
+
+					
+		//Code to set waitlist to 1 if course is full. But need code to obtain the new id instead of '50' that I have now. 
+		//TR: Fixed by altering request data then resaving
+		//TODO: check waitlist count < 8
+
 		if ($course_full) {
 			echo "COURSE FULL!";
+			$this->request->data['Enrolment']['waitlist'] = 1;
 		}
+
 
 		if ($this->request->is('post')) {
 			$this->Enrolment->create();
-			$save_id = $this->Enrolment->id;
-			debug($save_id);
 			if ($this->Enrolment->save($this->request->data)) {
 				$this->Flash->success(__('The enrolment has been saved.'));
-				
-			//Code to set waitlist to 1 if course is full. But need code to obtain the new id instead of '50' that I have now. 
-			//TR: Fixed by altering request data then resaving
-			//TODO: check waitlist count < 8
-				if ($course_full) {
-					$waitData = array('id'=>$save_id,'waitlist'=>1);
-					$this->Enrolment->save($waitData);
-				}
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
