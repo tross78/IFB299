@@ -84,6 +84,7 @@ class EnrolmentsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Enrolment->create();
 			$save_id = $this->request->data['Enrolment']['id'];
+			debug($save_id);
 			if ($this->Enrolment->save($this->request->data)) {
 				$this->Flash->success(__('The enrolment has been saved.'));
 				
