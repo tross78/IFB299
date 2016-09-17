@@ -78,6 +78,7 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $studCap;
 
+		$this->set("course_full", FALSE);
 
 					
 		//Code to set waitlist to 1 if course is full. But need code to obtain the new id instead of '50' that I have now. 
@@ -85,7 +86,7 @@ class EnrolmentsController extends AppController {
 		//TODO: check waitlist count < 8
 
 		if ($course_full) {
-			echo "COURSE FULL!";
+			$this->set("course_full", TRUE);
 			$this->request->data['Enrolment']['waitlist'] = 1;
 		}
 
