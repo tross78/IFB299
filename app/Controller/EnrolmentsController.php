@@ -83,6 +83,7 @@ class EnrolmentsController extends AppController {
 
 		if ($this->request->is('post')) {
 			$this->Enrolment->create();
+			$save_id = $this->request->data['Enrolment']['id'];
 			if ($this->Enrolment->save($this->request->data)) {
 				$this->Flash->success(__('The enrolment has been saved.'));
 				
@@ -90,8 +91,7 @@ class EnrolmentsController extends AppController {
 			//TR: Fixed by altering request data then resaving
 			//TODO: check waitlist count < 8
 				if ($course_full) {
-					$waitData = array('id'=>$this->request->data['Enrolment']['id'],'waitlist'=>1);
-					echo $this->request->data['Enrolment']['id'];
+					$waitData = array('id'=>$save_id,'waitlist'=>1);
 					$this->Enrolment->save($waitData);
 				}
 				return $this->redirect(array('action' => 'index'));
