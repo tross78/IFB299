@@ -69,12 +69,12 @@ class CoursesController extends AppController {
 			$this->set('courses', $this->Paginator->paginate('Course'));
 
 		} else {
-			$options = array(
-				'conditions' => array(
-					'Course.days' => 'ten'
-				)
-			);
-			$this->Paginator->settings = $options;
+			// $options = array(
+			// 	'conditions' => array(
+			// 		'Course.days' => 'ten'
+			// 	)
+			// );
+			// $this->Paginator->settings = $options;
 			$this->set('courses', $this->Paginator->paginate('Course'));
 		}
 
