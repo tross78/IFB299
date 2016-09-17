@@ -91,6 +91,7 @@ class EnrolmentsController extends AppController {
 			//TODO: check waitlist count < 8
 				if ($course_full) {
 					$waitData = array('id'=>$this->request->data['Enrolment']['id'],'waitlist'=>1);
+					echo $this->request->data['Enrolment']['id'];
 					$this->Enrolment->save($waitData);
 				}
 				return $this->redirect(array('action' => 'index'));
