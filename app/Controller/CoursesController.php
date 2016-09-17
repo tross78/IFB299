@@ -23,7 +23,7 @@ class CoursesController extends AppController {
  */
 	public function index() {
 		$this->Course->recursive = 0;
-
+		$this->set('is_old', FALSE);
 
 		// if user logged in, filter courses
 		if (AuthComponent::user('id')) {
