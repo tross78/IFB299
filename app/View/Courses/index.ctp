@@ -46,7 +46,12 @@
 	</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $course['Course']['id'])); ?>
-			<?php echo $this->Html->link(__('Enrol'), array('controller' => 'enrolments', 'action' => 'add', 'course_id' => $course['Course']['id'])); ?>
+			<?php
+				if ($this->is_old) {
+					echo $this->Html->link(__('Enrol'), array('controller' => 'enrolments', 'action' => 'add', 'course_id' => $course['Course']['id']));
+				}
+			?>
+
 			<?php 
 				if (AuthComponent::user('permission') == 'manager') {
 					echo $this->Html->link(__('Edit'), array('action' => 'edit', $course['Course']['id']));
