@@ -22,7 +22,7 @@ public $validate = array(
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'unique' => array(
-				'rule' => array('isUnique'),
+				'rule' => array('isUnique', array('course_id', 'user_id'), false),
 				'required' => 'create',
 				'message' => 'User already enrolled into course'
 			)
