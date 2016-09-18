@@ -22,17 +22,3 @@
 	echo $this->Form->end();
 	?>
 </div>
-<div class="actions panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><?php echo __('Actions'); ?></h3></div>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Enrolment.id')), array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Enrolment.id')))); ?></li>
-		<li><?php echo $this->Html->link(__('List Enrolments'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Courses'), array('controller' => 'courses', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Course'), array('controller' => 'courses', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
-</div>
