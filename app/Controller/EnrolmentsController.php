@@ -68,7 +68,7 @@ class EnrolmentsController extends AppController {
  */
 	public function add() {
 		$studCap = 2;	//lower this value to test full courses
-		$waitCap = 1;	//lower this value to test full waitlists
+		$waitCap = 2;	//lower this value to test full waitlists
 
 		//TODO: try to move this to the POST check below, in case params are null
 		$course_full = $this->Enrolment->find('count', array(
