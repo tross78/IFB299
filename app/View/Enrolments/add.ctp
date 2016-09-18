@@ -5,6 +5,9 @@
 	if ($is_old) {
 		echo 'student has completed prior course';
 	}
+	if($wrong_gender) {
+		echo "wrong gender";
+	}
 	if ($course_full): ?>
 		<div class="alert alert-danger">This course is full, If you continue to enrol you will be waitlisted and notified via email when a placement becomes avaliable.</div>
 	<?php endif;
