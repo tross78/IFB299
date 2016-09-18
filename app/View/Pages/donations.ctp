@@ -1,4 +1,4 @@
-<div class="row top30">
+<div class="row top15">
   <div class="col-sm-12 well">
   <h2>Donations</h2>
     <p>For over 25 years, the Hawke Meditation centre has continuously stood as a non-profit organisation, completely driven by donations contributed by the community around us.
