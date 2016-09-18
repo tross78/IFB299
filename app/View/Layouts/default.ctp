@@ -55,7 +55,9 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 </head>
 <body>
 	<div class="bg-warning">
-	<div class="jumbotron"></div>
+	<div class="jumbotron"><div class="block-center text-center"><img src="http://meditationwordpresstheme.en.websitesexamples.com/wp-content/uploads/2015/05/logo_meditation.png?quality=100.3016082509160" class="" style="
+    max-height: 80px;
+"></div></div>
 			<div class="navbar navbar-inverse">
 				<div class="container-fluid">
 					<div class="navbar-header">

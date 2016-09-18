@@ -14,7 +14,7 @@ class CoursesController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-	
+	public $is_old = FALSE;
 
 /**
  * index method
@@ -23,8 +23,9 @@ class CoursesController extends AppController {
  */
 	public function index() {
 		$this->Course->recursive = 0;
+		$this->set('is_old', FALSE);
 
-
+		// if user logged in, filter courses
 		if (AuthComponent::user('id')) {
 			// find only 10 day courses unless old student
 			$current_date = date('Y-m-d');
@@ -37,6 +38,7 @@ class CoursesController extends AppController {
 						'Course.days' => 'ten'
 					))
 					) > 0;
+			$this->set('is_old', TRUE);
 
 			// if not old and is not manager, filter to only ten day courses 
 			if (!$is_old && AuthComponent::user('permission') != 'manager') {
@@ -49,6 +51,7 @@ class CoursesController extends AppController {
 						'Course.name',
 						'Course.description',
 						'Course.days',
+						'Course.gender',
 						'Course.start_date',
 						'Course.end_date',
 						'Course.enrolments',
@@ -66,12 +69,12 @@ class CoursesController extends AppController {
 			$this->set('courses', $this->Paginator->paginate('Course'));
 
 		} else {
-			$options = array(
-				'conditions' => array(
-					'Course.days' => 'ten'
-				)
-			);
-			$this->Paginator->settings = $options;
+			// $options = array(
+			// 	'conditions' => array(
+			// 		'Course.days' => 'ten'
+			// 	)
+			// );
+			// $this->Paginator->settings = $options;
 			$this->set('courses', $this->Paginator->paginate('Course'));
 		}
 

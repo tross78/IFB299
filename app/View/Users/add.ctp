@@ -32,7 +32,7 @@
 		echo $this->Form->input('residential_address', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('dietary_requirements', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('medical_requirements', array('class' => 'form-control', 'div' => 'form-group'));
-		echo $this->Form->input('tos', array('type'=>'checkbox', 'label'=>__('I confirm I have read the <a href="/tos">terms of service</a>.', true), 'hiddenField' => false, 'value' => '0'));
+		echo $this->Form->input('tos', array('type'=>'checkbox', 'label'=>__('I confirm I have read the <a href="/tos">Terms of Service</a>.', true), 'hiddenField' => false, 'value' => '0'));
 	?>
 	</fieldset>
 	<?php echo $this->Form->submit('Submit', array(

@@ -18,6 +18,7 @@
  */
 
 ?>
+
 <div class="row">
     <div id="feature-carousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -30,7 +31,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-            <img src="https://lh3.googleusercontent.com/-qkrIPZha2Zw/VfRVMwhcTLI/AAAAAAAAAAA/sBtXBEjDF78/w1200-h300-n/event_theme.jpg" alt="">
+            <img src="http://i.imgur.com/NQpW6hm.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
@@ -40,7 +41,7 @@
             </div>
             </div>
             <div class="item">
-            <img src="https://www.bioconcepts.com.au/system/comfy/cms/files/1467/files/original/cheersbigears.png" alt="">
+            <img src="http://i.imgur.com/biVYjls.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
@@ -57,55 +58,53 @@
         </a>
     </div>
 </div>
-<div class="row">
-    <div class="col-sm-12 text-center"><h2>Featured Programs</h2>
-    <p>Cras vel dolor magna. Nulla pellentesque, elit non gravida tempor, lacus nisl rutrum ipsum, eu convallis odio lorem non nunc. Nam dictum lorem in arcu tempus, vitae gravida metus tempor. Aenean consectetur, tortor nec imperdiet tincidunt, neque quam porta augue, et placerat nisl tellus in nulla. Vestibulum eu consequat nisl. Morbi faucibus nec nunc at ullamcorper.</p>
-        <?php if (AuthComponent::user('id')) { ?>
 
-        <?php } else { ?>
-            <a href="/users/add" class="btn btn-primary">Become a Member</a>
-        <?php } ?>
-
-
-
-     </div>
-</div>
 <div class="row top30">
-    <div class="col-xs-12 col-sm-3 top10 bottom10 img-responsive">
-    <img width="200" height="200" class="pull-left" src="http://loremflickr.com/200/200/kitten">
-    </div>
+<div class="col-sm-12 well"><h2 class="text-center">Welcome to the Hawke Mediation Centre</h2>
     <p>Welcome to the Mediation Centre home page. We are a local, donation based, community driven service that provides professionally developed mediation courses to enrolled members of the public.</p>
-    <p>If you’d like to be a part of our ever-growing community, book a course, or even just keep up to date on our available services, then don’t hesitate to sign up today! It’s absolutely free and with no strings attached.*</p>
+    <p>If you’d like to be a part of our ever-growing community, book a course, or even just keep up to date on our available services, then don’t hesitate to sign up today! It’s absolutely free and with no strings attached.</p>
     <p>To find out more about us or the courses we have on offer, feel free to browse the relevant pages on the navigation bar located at the top of this page.</p>
-    <p>Thank you for checking us out. We hope to be seeing you soon.</p>
+    <p>Thank you for visiting our page. We hope to be seeing you soon!</p>
     <p> - <i>Centre Managers.</i></p>
-    <h2>Centre Opening Hours</h2>
-    <p>9am to 5pm Mon to Fri</p>
-    <p><br><br><br><sub>*strings may be attached.</sub></p>
+    <?php if (!AuthComponent::user('id')): ?>
+            <div class="text-center">
+                <a href="/users/add" class="text-center btn btn-lg btn-primary">Become a Member</a>
+            </div>
+        <?php endif; ?>
+        </div>
 </div>
+
+<div class = "row top30">
+  <div class = "col-sm-12 well">
+    <h2>Ready to enrol in a course?</h2>
+    <p>Once signed up, please feel free to enrol in the course of your choice below. All new students must first complete the 10 day Introductory course before you can enrol in the Express or Buddhist courses.</p>
+    <p>After completing the Introductory course, members are welcome to enrol again in any other course as a student or a volunteer server. To find out more about becoming a server, please visit the 'About' page.</p>
+  </div>
+</div>
+
 <div class="row top30">
 
     <div class="col-sm-4">
         <div class="col-sm-12 thumbnail text-center">
             <img alt="" class="img-responsive" src="http://3.thailandcamp.com/wp-content/uploads/2012/06/yogapose.jpg">
             <div class="caption">
-                <h4>Introductory</h4>
+                <h4>Introductory (10 day)</h4>
             </div>
         </div>
     </div>
     <div class="col-sm-4">
         <div class="col-sm-12 thumbnail text-center">
-            <img alt="" class="img-responsive" src="https://image.spreadshirtmedia.net/image-server/v1/compositions/119596348/views/1,width=300,height=300,appearanceId=29,version=1469440032/buddha-statue-meditation-buddhism-t-shirts-womens-premium-t-shirt.jpg">
+            <img alt="" class="img-responsive" src="http://blog.posturepodiatry.com/wp-content/uploads/2014/11/Yoga-1-300x300.jpg">
             <div class="caption">
-                <h4>Buddist</h4>
+                <h4>Express (3 day)</h4>
             </div>
         </div>
     </div>
         <div class="col-sm-4">
         <div class="col-sm-12 thumbnail text-center">
-            <img alt="" class="img-responsive" src="http://blog.posturepodiatry.com/wp-content/uploads/2014/11/Yoga-1-300x300.jpg">
+            <img alt="" class="img-responsive" src="https://image.spreadshirtmedia.net/image-server/v1/compositions/119596348/views/1,width=300,height=300,appearanceId=29,version=1469440032/buddha-statue-meditation-buddhism-t-shirts-womens-premium-t-shirt.jpg">
             <div class="caption">
-                <h4>Body &amp; Yoga</h4>
+                <h4>Buddhist (30 day)</h4>
             </div>
         </div>
     </div>

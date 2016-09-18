@@ -14,7 +14,8 @@ class EnrolmentsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-
+	
+	
 	public function isAuthorized($user) {
 
 		if (in_array($this->action, array('add', 'edit', 'delete'))) {
@@ -66,6 +67,30 @@ class EnrolmentsController extends AppController {
  * @return void
  */
 	public function add() {
+		$studCap = 2;	//lower this value to test full courses
+
+		//TODO: try to move this to the POST check below, in case params are null
+		$course_full = $this->Enrolment->find('count', array(
+					'fields' => array('Course.id'),
+					'contain' => array('Course'),
+					'conditions' => array(
+						"Course.id" => $this->params['named']['course_id']
+					))
+			) >= $studCap;
+
+		$this->set("course_full", FALSE);
+
+					
+		//Code to set waitlist to 1 if course is full. But need code to obtain the new id instead of '50' that I have now. 
+		//TR: Fixed by altering request data then resaving
+		//TODO: check waitlist count < 8
+
+		if ($course_full) {
+			$this->set("course_full", TRUE);
+			$this->request->data['Enrolment']['waitlist'] = 1;
+		}
+
+
 		if ($this->request->is('post')) {
 			$this->Enrolment->create();
 			if ($this->Enrolment->save($this->request->data)) {
@@ -77,7 +102,7 @@ class EnrolmentsController extends AppController {
 		}
 		$users = $this->Enrolment->User->find('list');
 
-		//select * from enrolments where enrolment_date < {current date}
+		//TR: select * from enrolments where enrolment_date < {current date} and course days is ten
 		$current_date = date('Y-m-d');
 		$old_compare = $this->Enrolment->find('count', array(
 				'fields' => array('Enrolment.id', 'Enrolment.enrolment_date', 'Enrolment.user_id', 'Course.days'),
@@ -90,6 +115,7 @@ class EnrolmentsController extends AppController {
 				) > 0;
 		$this->set('is_old', $old_compare);
 		
+		// if course_id set in params show just that course
 		if (isset($this->params['named']['course_id'])) {
 			$courses = $this->Enrolment->Course->find('list', array(
 				'conditions' => array(
@@ -97,6 +123,7 @@ class EnrolmentsController extends AppController {
 				)
 			));
 		} else {
+			// if not, show every course
 			$courses = $this->Enrolment->Course->find('list');
 		}
 		$this->set(compact('users', 'courses'));

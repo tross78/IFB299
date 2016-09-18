@@ -5,10 +5,21 @@
 	if ($is_old) {
 		echo 'student has completed prior course';
 	}
+	if ($course_full): ?>
+		<div class="alert alert-danger">This course is full, please waitlist this course.</div>
+	<?php endif;
 ?>
 </p>
 	<fieldset class="form-group">
-		<legend><?php echo __('Add Enrolment'); ?></legend>
+		<?php
+			if ($course_full) { ?>
+			<legend><?php echo __('Waitlist Enrolment'); ?></legend>
+		<?php 
+			} else { ?>
+			<legend><?php echo __('Add Enrolment'); ?></legend>
+		<?php
+			}
+		?>
 	<?php
 		echo $this->Form->hidden('id');
 		echo $this->Form->hidden('user_id', array('value'=>$authUser['id']));
