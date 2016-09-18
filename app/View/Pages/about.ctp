@@ -10,8 +10,15 @@
 </div>
 
 <div>
-  <h3>What we offer</h3>
-    <p>We currently offer 3 types of courses. We have 3 day courses, 10 day courses or our deluxe 30 day courses. All courses are gender segregated with boarding and meals provided. Notice: We only provide vegeterian meals.<p>
-    <p><br>If you would like further information about any of our services, please feel free to get in touch with us. You can find our contact information by visiting the “Contact Us” page.</p>
-    <p>You can view our Terms of Service <a href="/tos">here</a>
+  <div class = "col-md-6 well">
+    <h3>What we offer</h3>
+      <p>We currently offer 3 types of courses. We have 3 day courses, 10 day courses or our deluxe 30 day courses. All courses are gender segregated with boarding and meals provided. Notice: We only provide vegeterian meals.<p>
+      <p><br>If you would like further information about any of our services, please feel free to get in touch with us. You can find our contact information by visiting the “Contact Us” page.</p>
+      <p>You can view our Terms of Service <a href="/tos">here</a>
+  </div>
+
+  <div class = "col-md-6 well">
+    <h3>What to expect during your stay</h3>
+    <p>asdfhjasdhfkjasdhfkjasdhfkjasdf asdfhjaskdhfakjsdhfkjasdhfkjasdf asdfhasjdfhajksdhfkjasdhfkjashdfkjasdjs sdjfhsdfhdsfjsdf asdfhasjdfhajsdfhjasdf asdhfjasdhfjasdhf asdjfhasdkjfhasdf asdfjhasdfkjh asdfjhkasdfjh</p>
+  </div>
 </div>
