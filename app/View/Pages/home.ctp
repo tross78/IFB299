@@ -102,9 +102,9 @@
     </div>
         <div class="col-sm-4">
         <div class="col-sm-12 thumbnail text-center">
-            <img alt="" class="img-responsive" src="https://image.spreadshirtmedia.net/image-server/v1/compositions/119596348/views/1,width=300,height=300,appearanceId=29,version=1469440032/buddha-statue-meditation-buddhism-t-shirts-womens-premium-t-shirt.jpg">
+        <a href = "https://teamhawk-meditation-centre.herokuapp.com/enrolments/"> <img alt="" class="img-responsive" src="https://image.spreadshirtmedia.net/image-server/v1/compositions/119596348/views/1,width=300,height=300,appearanceId=29,version=1469440032/buddha-statue-meditation-buddhism-t-shirts-womens-premium-t-shirt.jpg"></a>
             <div class="caption">
-                <h4>Buddhist (30 day)</h4>
+                <h4><a href = "https://teamhawk-meditation-centre.herokuapp.com/enrolments/">Buddhist (30 day)</a></h4>
             </div>
         </div>
     </div>
