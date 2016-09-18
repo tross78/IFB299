@@ -1,4 +1,4 @@
-<div class="col-sm-12" style = "background-color:pink;">
+<div class="col-sm-12 well">
 <h2>Contact Us</h2>
 <p>If you have any queries or concerns of any kind, please feel free to contact us via any of the available channels listed below.</p>
 <p><b><strong>Address:</strong></b> 2 George Street, Brisbane, Queensland, 4000 </p>
