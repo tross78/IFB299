@@ -68,6 +68,7 @@ class EnrolmentsController extends AppController {
  */
 	public function add() {
 		$studCap = 2;	//lower this value to test full courses
+		$waitCap = 1;	//lower this value to test full waitlists
 
 		//TODO: try to move this to the POST check below, in case params are null
 		$course_full = $this->Enrolment->find('count', array(
@@ -77,8 +78,16 @@ class EnrolmentsController extends AppController {
 						"Course.id" => $this->params['named']['course_id']
 					))
 			) >= $studCap;
-
+		
+		$wait_full = $this->Enrolment->find('count', array(
+					'fields' => array('Course.id'),
+					'contain' => array('Course'),
+					'conditions' => array("Enrolment.waitlist" => '1'
+					))
+			) >= $waitCap;
+		
 		$this->set("course_full", FALSE);
+		$this->set("wait_full", FALSE);
 
 					
 		//Code to set waitlist to 1 if course is full. But need code to obtain the new id instead of '50' that I have now. 
@@ -90,7 +99,11 @@ class EnrolmentsController extends AppController {
 			$this->request->data['Enrolment']['waitlist'] = 1;
 		}
 
-
+		if ($wait_full) {
+			$this->set("wait_full", TRUE);
+			echo "WAITLIST FULL!";
+		}
+		
 		if ($this->request->is('post')) {
 			$this->Enrolment->create();
 			if ($this->Enrolment->save($this->request->data)) {
