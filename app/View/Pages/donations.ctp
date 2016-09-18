@@ -1,11 +1,14 @@
 <h2>Donations</h2>
-<p>Our meditation centre is a community driven, non-profit organisation. Nonetheless we still require finances and other help from volunteers (called servers) for general operations and the maintenance of our beloved centre.</p>
-<p>At the end of each course, we encourage students to make a voluntary financial contribution (i.e., donation). Donations can be made to either the "General Fund" or the "Building Fund".</p>
+<p>For over 25 years, the Hawke Meditation centre has continuously stood as a non-profit organisation, completely driven by donations contributed by the community around us.
+We accept donations all year round in any amount, with all donations being funded straight back into the centre to finance all general operations and maintenance of our beloved centre.</p>
+<p>At the end of each course, we encourage students to make a voluntary financial contribution in any amount. Whether its $5 or $50, we have deep gratitude to every person that continues to help support our organisation.</p>
+<p>The general public have been of great help over the years, making gracious donations to assist in supporting the centre while asking nothing in return. A true act of kindness we believe. For contractual reasons we cannot accept donations via our website, however if you would like to make a donation, please feel free to phone or email the centre. Our contact details can be found under the ‘Contact Us’ tab.</p>
+<p>All donations can either be made towards the “General Fund” or the “Building Fund”. Over the years, we’ve found that the community and students tend to dedicate 50% of their contributions to each fund.</p>
+<p>We thank you for your support!</p>
 <h3>General Fund:</h3>
 <p>Donations made into the "General Fund" will help finance running of the courses themselves. This includes covering costs such as equipment, meals and the running of day-to-day course activities. Without the generous donations from the community, these courses would not have been possible to run.</p>
 <h3>Building Fund:</h3>
 <p>Donations made into the "Building Fund" go towards covering the costs of water/electrical bills, building maintenance, renovations, and even entirely new facilities for the centre. We have big plans for the improvement and expansion of our centre and we hope through its use, we can give back to the community.</p>
-<h3>How You Can Help:</h3>
-<p> The general public is also encouraged to make donations throughout the year to assist in supporting the centre. For contractual reasons the Meditation centre does not currently accept donations via our website. However, if you graciously wish to assist, then please phone the centre on "#### ####" or email us at email.address@mail.com with the subject heading "Building Fund Donation" or "General Fund Donation" depending on which fund you would like to make a donation to</p>
-<p> Thank you for your contribution and continued support.</p>
+<h3>Interested in volunteering?</h3>
+<p></p>
 </div>
