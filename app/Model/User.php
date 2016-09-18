@@ -105,7 +105,7 @@ class User extends AppModel {
 		),
 		'tos' => array(
 			'notEmpty' => array(
-				'rule' => array('comparison', '!=', 0),
+				'rule' => array('comparison', '!=', 1),
 				'required' => true,
 				'message' => 'Please agree to the terms of service before proceeding.'
 				),
