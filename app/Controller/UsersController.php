@@ -27,6 +27,8 @@ class UsersController extends AppController {
 		$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
 		$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));
 		$Email->returnPath('admin@team-hawk.herokuapp.com');
+		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
+		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
 		$Email->to($this->request->data['User']['email_address']);
 		$Email->subject('About');
 		$Email->send('Hi '. $this->request->data['User']['first_name'] . ', Welcome to Hawke Meditation Centre!');
