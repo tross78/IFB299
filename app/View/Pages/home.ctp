@@ -73,6 +73,14 @@
         <?php endif; ?>
         </div>
 </div>
+
+<div class = "row top30">
+  <div class = "col-sm-12 well">
+    <p>Once signed up, please feel free to enrol in the course of your choice below. All new students must first complete the 10 day Introductory course before you can enrol in the Express or Buddhist courses.</p>
+    <p>After students have completed the Introductory course, members are welcome to enrol again in any other course as a student or a volunteer server. To find out more about becoming a server, please visit the 'About' page.</p>
+  </div>
+</div>
+
 <div class="row top30">
 
     <div class="col-sm-4">
