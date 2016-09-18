@@ -140,6 +140,21 @@ class EnrolmentsController extends AppController {
 			$courses = $this->Enrolment->Course->find('list');
 		}
 		$this->set(compact('users', 'courses'));
+
+        //gender seg
+        $wrong_gender = $this->Enrolment->find('count', array(
+                    'fields' => array('Course.id'),
+                    'contain' => array('Course'),
+                    'conditions' => array(
+                        "Course.gender" => $this->params['gender']['course_gender']
+                    ))
+
+            ) > 0;
+        $this->set('wrong_gender', FALSE);
+
+        if ($wrong_gender) {
+            $this->set("wrong_gender", TRUE);
+        }
 	}
 
 /**
