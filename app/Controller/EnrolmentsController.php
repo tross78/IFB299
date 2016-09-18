@@ -155,7 +155,6 @@ class EnrolmentsController extends AppController {
             ) > 0;
         $this->set('wrong_gender', FALSE);
         echo $wrong_gender;
-        echo h($users['User']['gender']);
         if ($wrong_gender) {
             $this->set("wrong_gender", TRUE);
             echo "Wrong gender";
