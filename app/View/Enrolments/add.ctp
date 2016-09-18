@@ -6,7 +6,10 @@
 		echo 'student has completed prior course';
 	}
 	if ($course_full): ?>
-		<div class="alert alert-danger">This course is full, please waitlist this course.</div>
+		<div class="alert alert-danger">This course is full, If you continue to enrol you will be waitlisted and notified via email when a placement becomes avaliable.</div>
+	<?php endif;
+	if ($wait_full): ?>
+		<div class="alert alert-danger">This course's waitlist is full, we are no longer taking aplications. Sorry for the inconvenience.</div>
 	<?php endif;
 ?>
 </p>

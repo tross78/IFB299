@@ -68,7 +68,7 @@ class EnrolmentsController extends AppController {
  */
 	public function add() {
 		$studCap = 2;	//lower this value to test full courses
-		$waitCap = 2;	//lower this value to test full waitlists
+		$waitCap = 1;	//lower this value to test full waitlists
 
 		//TODO: try to move this to the POST check below, in case params are null
 		$course_full = $this->Enrolment->find('count', array(
@@ -99,18 +99,20 @@ class EnrolmentsController extends AppController {
 			$this->request->data['Enrolment']['waitlist'] = 1;
 		}
 
-		if ($wait_full) {
-			$this->set("wait_full", TRUE);
-			echo "WAITLIST FULL!";
-		}
+		
 		
 		if ($this->request->is('post')) {
-			$this->Enrolment->create();
-			if ($this->Enrolment->save($this->request->data)) {
-				$this->Flash->success(__('The enrolment has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+			if ($wait_full) {
+				$this->set("wait_full", TRUE);
+				$this->Flash->error(__('This course is full. Your enrolment has not be saved.'));
 			} else {
-				$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
+				$this->Enrolment->create();
+				if ($this->Enrolment->save($this->request->data)) {
+					$this->Flash->success(__('The enrolment has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
+				}
 			}
 		}
 		$users = $this->Enrolment->User->find('list');
