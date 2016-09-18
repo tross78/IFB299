@@ -62,9 +62,9 @@
 <div class="row top30">
 <div class="col-sm-12 well"><h2 class="text-center">Welcome to the Hawke Mediation Centre</h2>
     <p>Welcome to the Mediation Centre home page. We are a local, donation based, community driven service that provides professionally developed mediation courses to enrolled members of the public.</p>
-    <p>If you’d like to be a part of our ever-growing community, book a course, or even just keep up to date on our available services, then don’t hesitate to sign up today! It’s absolutely free and with no strings attached.*</p>
+    <p>If you’d like to be a part of our ever-growing community, book a course, or even just keep up to date on our available services, then don’t hesitate to sign up today! It’s absolutely free and with no strings attached.</p>
     <p>To find out more about us or the courses we have on offer, feel free to browse the relevant pages on the navigation bar located at the top of this page.</p>
-    <p>Thank you for checking us out. We hope to be seeing you soon.</p>
+    <p>Thank you for visiting our page. We hope to be seeing you soon!</p>
     <p> - <i>Centre Managers.</i></p>
     <?php if (!AuthComponent::user('id')): ?>
             <div class="text-center">
