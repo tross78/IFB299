@@ -84,7 +84,6 @@ class EnrolmentsController extends AppController {
 					'contain' => array('Course'),
 					'conditions' => array(
 						'Enrolment.waitlist' => '1',
-						'Enrolment.id' => $this->Enrolment->id,
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $waitCap;
