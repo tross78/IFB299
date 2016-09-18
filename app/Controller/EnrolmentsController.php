@@ -102,10 +102,10 @@ class EnrolmentsController extends AppController {
 		
 		
 		if ($this->request->is('post')) {
-			if ($wait_full) {
-				$this->set("wait_full", TRUE);
-				$this->Flash->error(__('This course is full. Your enrolment has not be saved.'));
-			} else {
+			// if ($wait_full) {
+				// $this->set("wait_full", TRUE);
+				// $this->Flash->error(__('This course is full. Your enrolment has not be saved.'));
+			// } else {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($this->request->data)) {
 					$this->Flash->success(__('The enrolment has been saved.'));
