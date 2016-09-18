@@ -142,6 +142,7 @@ class EnrolmentsController extends AppController {
 		$this->set(compact('users', 'courses'));
 
         //gender seg
+        //not really sure what i am doing at the moment, slowly trying to learn how to get the gender value from the user and the course to compare
         $wrong_gender = $this->Enrolment->find('count', array(
                     'fields' => array('Course.id'),
                     'contain' => array('Course'),
@@ -152,7 +153,7 @@ class EnrolmentsController extends AppController {
             ) > 0;
         $this->set('wrong_gender', FALSE);
         echo $wrong_gender;
-
+        echo h($users['User']['gender']);
         if ($wrong_gender) {
             $this->set("wrong_gender", TRUE);
             echo "Wrong gender";
