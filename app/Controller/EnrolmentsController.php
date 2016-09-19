@@ -120,14 +120,21 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $kitchenCap;
 			
-		$is_student = $this->data['Enrolment']['role'] == 'student';	//not working, needs to search what the user has in the role drop down box from the Add enrolements page.
-		
+		$is_student = $this->data['Enrolment']['role'] == 'student';	//seems to be working.
+		$is_manager = $this->data['Enrolment']['role'] == 'manager';
+		$is_teacher = $this->data['Enrolment']['role'] == 'assistant-teacher';
+		$is_kitchen = $this->data['Enrolment']['role'] == 'kitchen-helper';
 		
 		$this->set("course_full", $course_full);
 		$this->set("wait_full", $wait_full);
 		$this->set("manager_full", $manager_full);
 		$this->set("teacher_full", $teacher_full);
 		$this->set("kitchen_full", $kitchen_full);
+		
+		$this->set("is_student", $is_student);
+		$this->set("is_manager", $is_manager);
+		$this->set("is_teacher", $is_teacher);
+		$this->set("is_kitchen", $is_kitchen);
 
 					
 		//Code to set waitlist to 1 if course is full.
@@ -138,11 +145,14 @@ class EnrolmentsController extends AppController {
 		if ($this->request->is('post')) {
 	//AG: was going to do the following for each type of server but that won't work, we need to find out what the current user is enrolling as and then determine what the checks are. eg, we should only check if the manager roles are full if the current user is trying to enrole as a manager.
 	
-			// if ($manager_full){
-				// $this->Flash->error(__('This course is full. There is no waitlist for managers.'));
-			// } else
-			if ($wait_full){
-				$this->Flash->error(__('This course is full. Your enrolment has not be saved.'));
+			if ($manager_full && $is_manager){
+				$this->Flash->error(__('This course is full. There is no waitlist for managers.'));
+			} elseif ($teacher_full && $is_teacher){
+				$this->Flash->error(__('This course is full. There is no waitlist for assistant-teachers.'));
+			} elseif ($kitchen_full && $is_kitchen){
+				$this->Flash->error(__('This course is full. There is no waitlist for kitchen-helpers.'));
+			} elseif ($wait_full && $is_student){
+				$this->Flash->error(__('This course and its waitlist is full. Your enrolment has not be saved.'));
 			} else {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($this->request->data)) {
