@@ -99,7 +99,7 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $serverCap;
 			
-		$is_student = $this->Enrolment->role => 'student';
+		$is_student = $this->Enrolment->role == 'student';
 		
 		
 		$this->set("course_full", FALSE);
