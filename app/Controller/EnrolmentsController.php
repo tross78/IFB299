@@ -120,18 +120,18 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $kitchenCap;
 			
-		$is_student = $this->Enrolment->role == 'student';	//not working, needs to search what the user has in the role drop down box from the Add enrolements page.
+		$is_student = $this->data['Enrolment']['role'] == 'student';	//not working, needs to search what the user has in the role drop down box from the Add enrolements page.
 		
 		
-		$this->set("course_full", FALSE);
-		$this->set("wait_full", FALSE);
-		$this->set("manager_full", FALSE);
-		$this->set("teacher_full", FALSE);
-		$this->set("kitchen_full", FALSE);
+		$this->set("course_full", $course_full);
+		$this->set("wait_full", $wait_full);
+		$this->set("manager_full", $manager_full);
+		$this->set("teacher_full", $teacher_full);
+		$this->set("kitchen_full", $kitchen_full);
 
 					
 		//Code to set waitlist to 1 if course is full.
-		if ($course_full && $is_student) {		//AG: this line is not working atm because $is_student is broken.
+		if ($course_full && $is_student) {		//TR: rewrote is_student so may work
 			$this->request->data['Enrolment']['waitlist'] = 1;
 		}
 		
