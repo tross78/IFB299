@@ -246,4 +246,20 @@ class EnrolmentsController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+	
+/**
+ * delete method
+ *
+ * @return void
+ */
+	//a function to handle the enrolment of the user who has been on the waitlist for the longest
+	public function waitlistEnrol(){
+		//$enrollee = 
+		echo $this->Enrolment->field(
+			'course_id',
+			array('created <' => date('Y-m-d H:i:s')),
+			'created ASC'
+		);
+		//return null;
+	}
 }
