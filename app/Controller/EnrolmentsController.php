@@ -67,8 +67,9 @@ class EnrolmentsController extends AppController {
  * @return void
  */
 	public function add() {
-		$studCap = 2;	//lower this value to test full courses
+		$studCap = 2;	//lower this value to test full students
 		$waitCap = 1;	//lower this value to test full waitlists
+		$severCap = 1; //lower this value to test full servers
 
 		//TODO: try to move this to the POST check below, in case params are null
 		$course_full = $this->Enrolment->find('count', array(
@@ -88,16 +89,19 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $waitCap;
 		
-		$is_server = $this->Enrolment->find('all', array(
+		$server_full = $this->Enrolment->find('count', array(
+					'fields' => array('Course.id'),
+					'contain' => array('Course'),
 					'conditions' => array(
-						"Enrolment.role !=" => "student",
+						'Enrolment.role !=' => "student",
 						'Course.id' => $this->params['named']['course_id']
-						)
-					));
+					))
+			) >= $serverCap;
+		
 		
 		$this->set("course_full", FALSE);
 		$this->set("wait_full", FALSE);
-		$this->set("is_server", FALSE);
+		$this->set("server_full", FALSE);
 
 					
 		//Code to set waitlist to 1 if course is full.
@@ -109,8 +113,8 @@ class EnrolmentsController extends AppController {
 		
 		
 		if ($this->request->is('post')) {
-			if ($is_server){
-				$this->set("is_server", TRUE);
+			if ($server_full){
+				$this->set("server_full", TRUE);
 				$this->Flash->error(__('This course is full. There is no waitlist for servers.'));
 			} elseif ($wait_full){
 				$this->set("wait_full", TRUE);
