@@ -98,6 +98,13 @@ class EnrolmentsController extends AppController {
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $serverCap;
+			
+		$is_student = $this->Enrolment->find('first', array(
+					'conditions' => array(
+						'Enrolment.role' => 'student',
+						'Course.id' => $this->params['named']['course_id']
+					))
+			);
 		
 		
 		$this->set("course_full", FALSE);
@@ -106,7 +113,7 @@ class EnrolmentsController extends AppController {
 
 					
 		//Code to set waitlist to 1 if course is full.
-		if ($course_full) {
+		if ($course_full && $is_student) {
 			$this->set("course_full", TRUE);
 			$this->request->data['Enrolment']['waitlist'] = 1;
 		}
