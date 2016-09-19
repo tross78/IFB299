@@ -120,10 +120,10 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $kitchenCap;
 			
-		$is_student = $this->data['Enrolment']['role'] == 'student';	//seems to be working.
-		$is_manager = $this->data['Enrolment']['role'] == 'manager';
-		$is_teacher = $this->data['Enrolment']['role'] == 'assistant-teacher';
-		$is_kitchen = $this->data['Enrolment']['role'] == 'kitchen-helper';
+		$is_student = $this->request->data['Enrolment']['role'] == 'student';	//seems to be working.
+		$is_manager = $this->request->data['Enrolment']['role'] == 'manager';
+		$is_teacher = $this->request->data['Enrolment']['role'] == 'assistant-teacher';
+		$is_kitchen = $this->request->data['Enrolment']['role'] == 'kitchen-helper';
 		
 		$this->set("course_full", $course_full);
 		$this->set("wait_full", $wait_full);
