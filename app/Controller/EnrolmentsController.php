@@ -90,7 +90,7 @@ class EnrolmentsController extends AppController {
 		
 		$is_server = $this->Enrolment->find('all', array(
 					'conditions' => array(
-						"Enrolment.role !=" => "student"
+						"Enrolment.role !=" => "student",
 						'Course.id' => $this->params['named']['course_id']
 						)
 					));
