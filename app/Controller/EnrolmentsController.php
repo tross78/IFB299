@@ -93,7 +93,7 @@ class EnrolmentsController extends AppController {
 					'fields' => array('Course.id'),
 					'contain' => array('Course'),
 					'conditions' => array(
-						'Enrolment.role !=' => "student",
+						"NOT" => array('Enrolment.role' => "student"),
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $serverCap;
