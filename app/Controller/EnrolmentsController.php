@@ -99,12 +99,7 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $serverCap;
 			
-		$is_student = $this->Enrolment->find('first', array(
-					'conditions' => array(
-						'Enrolment.role' => 'student',
-						'Course.id' => $this->params['named']['course_id']
-					))
-			);
+		$is_student = $this->Enrolment->role => 'student';
 		
 		
 		$this->set("course_full", FALSE);
