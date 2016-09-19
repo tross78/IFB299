@@ -88,14 +88,19 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $waitCap;
 		
+		$is_server = $this->Enrolment->find('all', array(
+					'conditions' => array(
+						"Enrolment.role !=" => "student"
+						'Course.id' => $this->params['named']['course_id']
+						)
+					));
+		
 		$this->set("course_full", FALSE);
 		$this->set("wait_full", FALSE);
+		$this->set("is_server", FALSE);
 
 					
-		//Code to set waitlist to 1 if course is full. But need code to obtain the new id instead of '50' that I have now. 
-		//TR: Fixed by altering request data then resaving
-		//TODO: check waitlist count < 8
-
+		//Code to set waitlist to 1 if course is full.
 		if ($course_full) {
 			$this->set("course_full", TRUE);
 			$this->request->data['Enrolment']['waitlist'] = 1;
@@ -104,7 +109,10 @@ class EnrolmentsController extends AppController {
 		
 		
 		if ($this->request->is('post')) {
-			if ($wait_full) {
+			if ($is_server){
+				$this->set("is_server", TRUE);
+				$this->Flash->error(__('This course is full. There is no waitlist for servers.'));
+			} elseif ($wait_full){
 				$this->set("wait_full", TRUE);
 				$this->Flash->error(__('This course is full. Your enrolment has not be saved.'));
 			} else {
