@@ -67,9 +67,12 @@ class EnrolmentsController extends AppController {
  * @return void
  */
 	public function add() {
-		$studCap = 2;	//lower this value to test full students
-		$waitCap = 1;	//lower this value to test full waitlists
-		$serverCap = 1; //lower this value to test full servers
+		$studentCap = 2;	//lower this value to test full students
+		$waitCap = 1;	//lower this value to test full waitlist
+		$managerCap = 1; //lower this value to test full managers
+		$teacherCap = 1; //lower this value to test full assitant-teachers
+		$kitchenCap = 1; //lower this value to test full kitchen-helpers
+		
 
 		//TODO: try to move this to the POST check below, in case params are null
 		$course_full = $this->Enrolment->find('count', array(
@@ -79,7 +82,7 @@ class EnrolmentsController extends AppController {
 						'Enrolment.role' => 'student',
 						"Course.id" => $this->params['named']['course_id']
 					))
-			) >= $studCap;
+			) >= $studentCap;
 		
 		$wait_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
@@ -90,37 +93,55 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $waitCap;
 		
-		$server_full = $this->Enrolment->find('count', array(
+		$manager_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course'),
 					'conditions' => array(
-						"NOT" => array('Enrolment.role' => "student"),
+						'Enrolment.role' => 'manager',
 						'Course.id' => $this->params['named']['course_id']
 					))
-			) >= $serverCap;
+			) >= $managerCap;
 			
-		$is_student = $this->Enrolment->role == 'student';
+		$teacher_full = $this->Enrolment->find('count', array(
+					'fields' => array('Course.id'),
+					'contain' => array('Course'),
+					'conditions' => array(
+						'Enrolment.role' => 'assistant-teacher',
+						'Course.id' => $this->params['named']['course_id']
+					))
+			) >= $teacherCap;
+			
+		$kitchen_full = $this->Enrolment->find('count', array(
+					'fields' => array('Course.id'),
+					'contain' => array('Course'),
+					'conditions' => array(
+						'Enrolment.role' => 'kitchen-helper',
+						'Course.id' => $this->params['named']['course_id']
+					))
+			) >= $kitchenCap;
+			
+		$is_student = $this->Enrolment->role == 'student';	//not working, needs to search what the user has in the role drop down box from the Add enrolements page.
 		
 		
 		$this->set("course_full", FALSE);
 		$this->set("wait_full", FALSE);
-		$this->set("server_full", FALSE);
+		$this->set("manager_full", FALSE);
+		$this->set("teacher_full", FALSE);
+		$this->set("kitchen_full", FALSE);
 
 					
 		//Code to set waitlist to 1 if course is full.
-		if ($course_full && $is_student) {
-			$this->set("course_full", TRUE);
+		if ($course_full && $is_student) {		//AG: this line is not working atm because $is_student is broken.
 			$this->request->data['Enrolment']['waitlist'] = 1;
 		}
-
-		
 		
 		if ($this->request->is('post')) {
-			if ($server_full){
-				$this->set("server_full", TRUE);
-				$this->Flash->error(__('This course is full. There is no waitlist for servers.'));
-			} elseif ($wait_full){
-				$this->set("wait_full", TRUE);
+	//AG: was going to do the following for each type of server but that won't work, we need to find out what the current user is enrolling as and then determine what the checks are. eg, we should only check if the manager roles are full if the current user is trying to enrole as a manager.
+	
+			// if ($manager_full){
+				// $this->Flash->error(__('This course is full. There is no waitlist for managers.'));
+			// } else
+			if ($wait_full){
 				$this->Flash->error(__('This course is full. Your enrolment has not be saved.'));
 			} else {
 				$this->Enrolment->create();
