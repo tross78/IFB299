@@ -73,15 +73,14 @@ class EnrolmentsController extends AppController {
 		$teacherCap = 1; //lower this value to test full assitant-teachers
 		$kitchenCap = 1; //lower this value to test full kitchen-helpers
 		
-		//$is_male = AuthComponent::user('gender') == 'male';
-		$user_gender = AuthComponent::user('gender');
+		$is_male = AuthComponent::user('gender') == 'male';
 		
 		
 		$is_mixed = $this->Enrolment->Course->find('all', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Enrolment'),
 					'conditions' => array(
-						'Course.gender' => $user_gender,
+						'Course.gender' => 'mixed',
 						"Course.id" => $this->params['named']['course_id']
 					))
 			);
@@ -296,17 +295,18 @@ class EnrolmentsController extends AppController {
 		}
 
 		$c_date = date('Y-m-d');
+		
 		$commenced = $this->Enrolment->Course->find('all', array(
 			'fields' => array('Course.start_date'),
 					'contain' => array('Enrolment'),
 					'conditions' => array(
-						'Course.id' => $this->Enrolment->course_id
+						'Course.id' => $this->params['named']['course_id']
 					))
 			) > $c_date;
 
 
 		$this->request->allowMethod('post', 'delete');
-		if (!$commenced){
+		if ($commenced){
 			if ($this->Enrolment->delete()) {
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
