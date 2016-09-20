@@ -44,14 +44,15 @@ class CoursesController extends AppController {
 			if (!$is_old && AuthComponent::user('permission') != 'manager') {
 				$options = array(
 					'conditions' => array(
-						'Course.days' => 'ten'
+						'Course.days' => 'ten',
+                        'Course.gender' => 'male'
 					),
 					'fields' => array(
 						'Course.id',
 						'Course.name',
 						'Course.description',
 						'Course.days',
-						'Course.gender' => 'male',
+						'Course.gender',
 						'Course.start_date',
 						'Course.end_date',
 						'Course.enrolments',
