@@ -22,3 +22,7 @@
 .progress {
     background-color: #756d59;
 }
+
+#page-container {
+    height:100vh;
+}
