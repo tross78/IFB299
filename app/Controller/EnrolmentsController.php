@@ -73,7 +73,12 @@ class EnrolmentsController extends AppController {
 		$teacherCap = 1; //lower this value to test full assitant-teachers
 		$kitchenCap = 1; //lower this value to test full kitchen-helpers
 		
-
+		$is_mixed = this->Course->gender == 'mixed';
+		
+		if ($is_mixed){
+			echo "Mixed Course";
+		}
+		
 		//TODO: try to move this to the POST check below, in case params are null
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
