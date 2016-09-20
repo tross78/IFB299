@@ -24,7 +24,8 @@
 		<td><?php echo h($course['Course']['gender']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['start_date']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['end_date']); ?>&nbsp;</td>
-		<td>	
+		<td>
+            <?php if ($course['Course']['gender'] == "male") { ?>
 	<h6>Male</h6>
 	<div class="progress">
 		<?php 
@@ -34,6 +35,7 @@
     		<?php echo $enrolments_male_percent; ?>%
 		</div>
 	</div>
+        <?php } else if ($course['Course']['gender'] == "female") { ?>
 	<h6>Female</h6>
 	<div class="progress">
 		<?php 
@@ -43,6 +45,26 @@
 			<?php echo $enrolments_female_percent; ?>%
 		</div>
 	</div>
+            <?php } else { ?>
+            <h6>Male</h6>
+	<div class="progress">
+		<?php
+			$enrolments_male_percent =  intval(($course['Course']['enrolments_male'] / 26)*100);
+			 ?>
+            <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $enrolments_male_percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $enrolments_male_percent; ?>%">
+                <?php echo $enrolments_male_percent; ?>%
+            </div>
+</div>
+            <h6>Female</h6>
+	<div class="progress">
+		<?php
+			$enrolments_female_percent = intval(($course['Course']['enrolments_female'] / 26)*100);
+			 ?>
+            <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $enrolments_female_percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $enrolments_female_percent; ?>%">
+                <?php echo $enrolments_female_percent; ?>%
+            </div>
+</div>
+            <?php }?>
 	</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $course['Course']['id'])); ?>
