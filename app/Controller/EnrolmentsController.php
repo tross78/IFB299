@@ -120,21 +120,13 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $kitchenCap;
 			
-		$is_student = $this->request->data['Enrolment']['role'] == 'student';	//seems to be working.
-		$is_manager = $this->request->data['Enrolment']['role'] == 'manager';
-		$is_teacher = $this->request->data['Enrolment']['role'] == 'assistant-teacher';
-		$is_kitchen = $this->request->data['Enrolment']['role'] == 'kitchen-helper';
+	
 		
 		$this->set("course_full", $course_full);
 		$this->set("wait_full", $wait_full);
 		$this->set("manager_full", $manager_full);
 		$this->set("teacher_full", $teacher_full);
 		$this->set("kitchen_full", $kitchen_full);
-		
-		$this->set("is_student", $is_student);
-		$this->set("is_manager", $is_manager);
-		$this->set("is_teacher", $is_teacher);
-		$this->set("is_kitchen", $is_kitchen);
 
 					
 		//Code to set waitlist to 1 if course is full.
@@ -143,6 +135,18 @@ class EnrolmentsController extends AppController {
 		}
 		
 		if ($this->request->is('post')) {
+
+
+		$is_student = $this->request->data['Enrolment']['role'] == 'student';	//seems to be working.
+		$is_manager = $this->request->data['Enrolment']['role'] == 'manager';
+		$is_teacher = $this->request->data['Enrolment']['role'] == 'assistant-teacher';
+		$is_kitchen = $this->request->data['Enrolment']['role'] == 'kitchen-helper';
+
+		$this->set("is_student", $is_student);
+		$this->set("is_manager", $is_manager);
+		$this->set("is_teacher", $is_teacher);
+		$this->set("is_kitchen", $is_kitchen);
+		
 	//AG: was going to do the following for each type of server but that won't work, we need to find out what the current user is enrolling as and then determine what the checks are. eg, we should only check if the manager roles are full if the current user is trying to enrole as a manager.
 	
 			if ($manager_full && $is_manager){
