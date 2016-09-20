@@ -74,11 +74,11 @@ class EnrolmentsController extends AppController {
 		$kitchenCap = 1; //lower this value to test full kitchen-helpers
 		
 		$is_male = $this->Enrolment->User->find('all', array(
-					'fields' => array('Enrolement.id'),
+					'fields' => array('Enrolment.id'),
 					'contain' => array('Enrolment'),
 					'conditions' => array(
 						'User.gender' => 'male',
-						"Enrolement.id" => $this->params['named']['id']
+						"Enrolment.id" => $this->params['named']['id']
 					))
 			);
 		
@@ -93,7 +93,7 @@ class EnrolmentsController extends AppController {
 			);
 			
 		if ($is_male){
-			echo "Mixed Course";
+			echo "Male User";
 		}
 		
 		//TODO: try to move this to the POST check below, in case params are null
