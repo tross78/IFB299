@@ -73,7 +73,7 @@ class EnrolmentsController extends AppController {
 		$teacherCap = 1; //lower this value to test full assitant-teachers
 		$kitchenCap = 1; //lower this value to test full kitchen-helpers
 		
-		$is_mixed = this->Course->gender == 'mixed';
+		$is_mixed = $this->Course->gender == 'mixed';
 		
 		if ($is_mixed){
 			echo "Mixed Course";
