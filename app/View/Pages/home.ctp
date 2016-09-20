@@ -26,6 +26,10 @@
             <li data-target="#feature-carousel" data-slide-to="0" class="active"></li>
             <li data-target="#feature-carousel" data-slide-to="1"></li>
             <li data-target="#feature-carousel" data-slide-to="2"></li>
+            <li data-target="#feature-carousel" data-slide-to="3"></li>
+            <li data-target="#feature-carousel" data-slide-to="4"></li>
+            <li data-target="#feature-carousel" data-slide-to="5"></li>
+            <li data-target="#feature-carousel" data-slide-to="6"></li>
         </ol>
 
         <!-- Wrapper for slides -->
@@ -46,7 +50,17 @@
             </div>
             </div>
             <div class="item">
-            <img src="http://i.imgur.com/ZRPAqcV.jpg" alt="">
+            <img src="http://i.imgur.com/nFccCyJ.jpg" alt="">
+            <div class="carousel-caption">
+            </div>
+            </div>
+            <div class="item">
+            <img src="http://i.imgur.com/iUAgoH3.jpg" alt="">
+            <div class="carousel-caption">
+            </div>
+            </div>
+            <div class="item">
+            <img src="http://i.imgur.com/fx2QdlW.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
