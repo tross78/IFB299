@@ -25,4 +25,5 @@
 
 #page-container {
     height:100vh;
+    background: url(img/bg-pattern.png) repeat;
 }
