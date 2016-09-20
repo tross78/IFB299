@@ -292,19 +292,21 @@ class EnrolmentsController extends AppController {
 			throw new NotFoundException(__('Invalid enrolment'));
 		}
 
-		$c_date = date('Y-m-d');
-		$start_date = $this->Enrolment->Course->find('start_date');
+		//$c_date = date('Y-m-d');
+		//$start_date = $this->Enrolment->Course->find('all', array(
+		//	'conditions' => array('Course.id' => ''
+
 
 		$this->request->allowMethod('post', 'delete');
-		if ($c_date < $start_date){
+		//if ($c_date < $start_date){
 			if ($this->Enrolment->delete()) {
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
 				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
 			}
-		} else {
-			$this->Flash->error(_('You cannot withdraw from a course after it has commenced.'));
-		}
+		//} else {
+		//	$this->Flash->error(_('You cannot withdraw from a course after it has commenced.'));
+		//}
 		return $this->redirect(array('action' => 'index'));
 	}
 	
