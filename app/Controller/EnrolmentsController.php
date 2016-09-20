@@ -250,35 +250,6 @@ class EnrolmentsController extends AppController {
 //JM: added check to make sure you cannot withdraw from a courese
 //once the start date has been reached, or passed.
 
-//ATTN: Code left here wile testing, will delete, using for reference.
-
-/*	$is_student = $this->request->data['Enrolment']['role'] == 'student';	//seems to be working.
-
-		//TR: select * from enrolments where enrolment_date < {current date} and course days is ten
-		$current_date = date('Y-m-d');
-		$old_compare = $this->Enrolment->find('count', array(
-				'fields' => array('Enrolment.id', 'Enrolment.enrolment_date', 'Enrolment.user_id', 'Course.days'),
-				'contain' => array('Course'),
-				'conditions' => array(
-					'DATE(enrolment_date) < ' => $current_date,
-					'user_id' => AuthComponent::user('id'),
-					'Course.days' => 'ten'
-				)
-			)
-		) > 0;
-		$this->set('is_old', $old_compare);*/
-
-/*				$kitchen_full = $this->Enrolment->find('count', array(
-					'fields' => array('Course.id'),
-					'contain' => array('Course'),
-					'conditions' => array(
-						'Enrolment.role' => 'kitchen-helper',
-						'Course.id' => $this->params['named']['course_id']
-					))
-			) >= $kitchenCap;*/
-
-			//$is_mixed = $this->Course->gender == 'mixed';
-
 	public function delete($id = null) {
 		$this->Enrolment->id = $id;
 		if (!$this->Enrolment->exists()) {
