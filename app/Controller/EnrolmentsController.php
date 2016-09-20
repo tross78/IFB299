@@ -73,8 +73,17 @@ class EnrolmentsController extends AppController {
 		$teacherCap = 1; //lower this value to test full assitant-teachers
 		$kitchenCap = 1; //lower this value to test full kitchen-helpers
 		
-		$is_mixed = $this->Enrolment->Course->gender == 'mixed';
+		//$is_mixed = $this->Enrolment->Course->find('first',)gender == 'mixed';
 		
+		$is_mixed = $this->Enrolment->Course->find('all', array(
+					'fields' => array('Course.id'),
+					'contain' => array('Enrolment'),
+					'conditions' => array(
+						'Course.gender' => 'mixed',
+						"Course.id" => $this->params['named']['course_id']
+					))
+			);
+			
 		if ($is_mixed){
 			echo "Mixed Course";
 		}
