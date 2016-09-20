@@ -65,7 +65,32 @@ class CoursesController extends AppController {
 					'limit' => 10
 				);
 				$this->Paginator->settings = $options;
-			}
+			} else if ($is_old && AuthComponent::user('permission') != 'manager') {
+                $options = array(
+                    'conditions' => array(
+                        'Course.days' => 'three',
+                        'Course.gender' => array(AuthComponent::user('gender'), 'mixed')
+                    ),
+                    'fields' => array(
+                        'Course.id',
+                        'Course.name',
+                        'Course.description',
+                        'Course.days',
+                        'Course.gender',
+                        'Course.start_date',
+                        'Course.end_date',
+                        'Course.enrolments',
+                        'Course.enrolments_male',
+                        'Course.enrolments_female',
+                    ),
+                    'order' => array(
+                        'Course.name' => 'DESC'
+                    ),
+                    'limit' => 10
+                );
+                $this->Paginator->settings = $options;
+
+            }
 
 			$this->set('courses', $this->Paginator->paginate('Course'));
 
