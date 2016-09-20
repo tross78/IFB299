@@ -273,7 +273,7 @@ class EnrolmentsController extends AppController {
 		}
 
 		$c_date = date('Y-m-d');
-		$start_date = $this->request->data['Enrolment']['enrolment_date'];
+		$commence_date = $this->request->data['courses']['start_date'];
 
 		$this->request->allowMethod('post', 'delete');
 		if ($c_date < $start_date){
