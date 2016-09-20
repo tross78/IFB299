@@ -184,7 +184,6 @@ class EnrolmentsController extends AppController {
 		
 		// if course_id set in params show just that course
 		if (isset($this->params['named']['course_id'])) {
-		    echo "waddup snizzers";
 			$courses = $this->Enrolment->Course->find('list', array(
 				'conditions' => array(
 					"Course.id" => $this->params['named']['course_id'],
