@@ -73,14 +73,15 @@ class EnrolmentsController extends AppController {
 		$teacherCap = 1; //lower this value to test full assitant-teachers
 		$kitchenCap = 1; //lower this value to test full kitchen-helpers
 		
-		$is_male = AuthComponent::user('gender') == 'male';
+		//$is_male = AuthComponent::user('gender') == 'male';
+		$user_gender = AuthComponent::user('gender');
 		
 		
 		$is_mixed = $this->Enrolment->Course->find('all', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Enrolment'),
 					'conditions' => array(
-						'Course.gender' => 'mixed',
+						'Course.gender' => $user_gender,
 						"Course.id" => $this->params['named']['course_id']
 					))
 			);
