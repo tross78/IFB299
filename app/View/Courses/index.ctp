@@ -55,7 +55,6 @@
                 <?php echo $enrolments_male_percent; ?>%
             </div>
 </div>
-            }
             <h6>Female</h6>
 	<div class="progress">
 		<?php
