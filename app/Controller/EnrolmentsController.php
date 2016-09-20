@@ -288,7 +288,7 @@ class EnrolmentsController extends AppController {
 			'fields' => array('Course.start_date', 'Course.id'),
 					'contain' => array('Enrolment'),
 					'conditions' => array(
-						'DATE(Course.start_date) < ' => $current_date,
+						'DATE(Course.start_date) < ' => $c_date,
 						'Course.id' => $this->params['named']['course_id']
 					))
 			);
