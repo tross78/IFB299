@@ -43,7 +43,12 @@
         'placeholder' => 'Enrolment Date',
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
-		$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper', 'manager' => 'manager');
+		
+		if ($is_old) {
+			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper', 'manager' => 'manager');
+		} else{
+			$role_options = array('student' => 'student');
+		}
 		
 		echo $this->Form->input('role', array(
         'class' => 'form-control',
