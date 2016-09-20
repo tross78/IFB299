@@ -183,10 +183,11 @@ class EnrolmentsController extends AppController {
 		$this->set('is_old', $old_compare);
 		
 		// if course_id set in params show just that course
-		if (isset($this->params['named']['course_id'])) {
+		if (isset($this->params['named']['course_id']) && isset($this->params['named']['course_gender'])) {
 			$courses = $this->Enrolment->Course->find('list', array(
 				'conditions' => array(
-					"Course.id" => $this->params['named']['course_id']
+					"Course.id" => $this->params['named']['course_id'],
+                    "Course.gender" => $this->params['named']['course_gender']
 				)
 			));
 		} else {
@@ -195,22 +196,6 @@ class EnrolmentsController extends AppController {
 		}
 		$this->set(compact('users', 'courses'));
 
-        //gender seg
-        //not really sure what i am doing at the moment, slowly trying to learn how to get the gender value from the user and the course to compare
-        $wrong_gender = $this->Enrolment->find('count', array(
-                    'fields' => array('Course.id'),
-                    'contain' => array('Course'),
-                    'conditions' => array(
-                        "Course.gender" => $this->params['gender']['course_gender']
-                    ))
-
-            ) > 0;
-        $this->set('wrong_gender', FALSE);
-        echo $wrong_gender;
-        if ($wrong_gender) {
-            $this->set("wrong_gender", TRUE);
-            echo "Wrong gender";
-        }
 	}
 
 /**
