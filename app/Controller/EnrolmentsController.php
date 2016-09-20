@@ -266,6 +266,8 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $kitchenCap;*/
 
+			//$is_mixed = $this->Course->gender == 'mixed';
+
 	public function delete($id = null) {
 		$this->Enrolment->id = $id;
 		if (!$this->Enrolment->exists()) {
@@ -273,7 +275,7 @@ class EnrolmentsController extends AppController {
 		}
 
 		$c_date = date('Y-m-d');
-		$start_date = $this->request->data['enrolment_date'];
+		$start_date = $this->Course->start_date;
 
 		$this->request->allowMethod('post', 'delete');
 		if ($c_date < $start_date){
