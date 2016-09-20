@@ -286,27 +286,41 @@ class EnrolmentsController extends AppController {
 
 			//$is_mixed = $this->Course->gender == 'mixed';
 
+/*			$is_mixed = $this->Enrolment->Course->find('all', array(
+					'fields' => array('Course.id'),
+					'contain' => array('Enrolment'),
+					'conditions' => array(
+						'Course.gender' => 'mixed',
+						"Course.id" => $this->params['named']['course_id']
+					))
+			);*/
+
 	public function delete($id = null) {
 		$this->Enrolment->id = $id;
 		if (!$this->Enrolment->exists()) {
 			throw new NotFoundException(__('Invalid enrolment'));
 		}
 
-		//$c_date = date('Y-m-d');
-		//$start_date = $this->Enrolment->Course->find('all', array(
-		//	'conditions' => array('Course.id' => ''
+		$c_date = date('Y-m-d');
+		$commenced = $this->Enrolment->Course->find('all', array(
+			'fields' => array('start_date'),
+					'contain' => array('Enrolment'),
+					'conditions' => array(
+						"Course.id" => $this->params['named']['course_id']
+					))
+			) > $c_date;;
 
 
 		$this->request->allowMethod('post', 'delete');
-		//if ($c_date < $start_date){
+		if ($c_date < $start_date){
 			if ($this->Enrolment->delete()) {
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
 				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
 			}
-		//} else {
-		//	$this->Flash->error(_('You cannot withdraw from a course after it has commenced.'));
-		//}
+		} else {
+			$this->Flash->error(_('You cannot withdraw from a course after it has commenced.'));
+		}
 		return $this->redirect(array('action' => 'index'));
 	}
 	

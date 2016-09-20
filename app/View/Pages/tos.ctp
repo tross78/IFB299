@@ -25,4 +25,4 @@
 <p>By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.</p>
 <p><strong>Contact Us</strong></p>
 <p>If you have any questions about these Terms, please contact us.
-<br> Our contact information can be found <a href="/contact">here</a></p>
+<br> Our contact information can be found <a href="/contact">here.</a></p>
