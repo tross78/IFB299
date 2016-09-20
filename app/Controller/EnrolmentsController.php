@@ -73,7 +73,7 @@ class EnrolmentsController extends AppController {
 		$teacherCap = 1; //lower this value to test full assitant-teachers
 		$kitchenCap = 1; //lower this value to test full kitchen-helpers
 		
-		$is_male = AuthComponent::user('gender') == 'male';
+		$user_gender = AuthComponent::user('gender');
 		
 		
 		$is_mixed = $this->Enrolment->Course->find('all', array(
@@ -84,17 +84,14 @@ class EnrolmentsController extends AppController {
 						"Course.id" => $this->params['named']['course_id']
 					))
 			);
-			
-		if ($is_male){
-			echo "Male User";
-		}
 		
 		//TODO: try to move this to the POST check below, in case params are null
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
-					'contain' => array('Course'),
+					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.role' => 'student',
+						'User.gender' => $user_gender,
 						"Course.id" => $this->params['named']['course_id']
 					))
 			) >= $studentCap;
