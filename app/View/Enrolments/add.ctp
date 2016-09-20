@@ -41,7 +41,7 @@
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
 		
-		if (AuthComponent::user('permission') = 'manager') {
+		if (AuthComponent::user('permission') == 'manager') {
 			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper', 'manager' => 'manager');
 		} elseif($is_old){
 			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper');		
