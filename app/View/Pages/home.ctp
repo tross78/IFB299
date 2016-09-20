@@ -39,17 +39,17 @@
             </div>
             </div>
             <div class="item">
-            <img src="http://www.spinealign.net.au/wp-content/uploads/2016/01/header-Carla-Gasparin.jpg" alt="">
-            <div class="carousel-caption">
-            </div>
-            </div>
-            <div class="item">
-            <img src="http://i.imgur.com/biVYjls.jpg" alt="">
+            <img src="http://i.imgur.com/aau5RP1.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
             <div class="item">
             <img src="http://i.imgur.com/V4m81xU.jpg" alt="">
+            <div class="carousel-caption">
+            </div>
+            </div>
+            <div class="item">
+            <img src="http://i.imgur.com/biVYjls.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
