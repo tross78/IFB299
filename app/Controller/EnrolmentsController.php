@@ -77,7 +77,7 @@ class EnrolmentsController extends AppController {
 		
 		$is_mixed = $this->Enrolment->Course->find('all', array(
 					'fields' => array('Course.id'),
-					'contain' => array('Course'),
+					'contain' => array('Enrolment'),
 					'conditions' => array(
 						'Course.gender' => 'mixed',
 						"Course.id" => $this->params['named']['course_id']
