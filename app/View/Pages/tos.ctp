@@ -1,3 +1,4 @@
+<div class="col-sm-12 well">
 <h1>Terms of Service ("Terms")</h1>
 <p>Last updated: September 14, 2016</p>
 <p>Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://teamhawk-meditation-centre.herokuapp.com/ website (the "Service") operated by Hawke Meditation Centre ("us", "we", or "our").</p>
@@ -26,3 +27,4 @@
 <p><strong>Contact Us</strong></p>
 <p>If you have any questions about these Terms, please contact us.
 <br> Our contact information can be found <a href="/contact">here.</a></p>
+</div>
