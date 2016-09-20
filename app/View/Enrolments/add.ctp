@@ -8,7 +8,9 @@
 	if($wrong_gender) {
 		echo "wrong gender";
 	}
-	if ($course_full): ?>
+	if ($wait_full): ?>
+		<div class="alert alert-danger">This course's student waitlist is full, we are no longer taking student aplications.</div>
+	<?php elseif ($course_full): ?>
 		<div class="alert alert-danger">The student capacity for this course has been reached, If you continue to enrol you will be waitlisted and notified via email when a placement becomes avaliable.</div>
 	<?php endif;
 	if ($manager_full): ?>
@@ -19,9 +21,6 @@
 	<?php endif;
 	if ($kitchen_full): ?>
 		<div class="alert alert-danger">The kitchen-helper capacity for this course has been reached. Please choose another role.</div>
-	<?php endif;
-	if ($wait_full): ?>
-		<div class="alert alert-danger">This course's student waitlist is full, we are no longer taking student aplications.</div>
 	<?php endif;
 ?>
 </p>
@@ -39,7 +38,7 @@
 		echo $this->Form->hidden('id');
 		echo $this->Form->hidden('user_id', array('value'=>$authUser['id']));
 		echo $this->Form->input('course_id', array('class' => 'form-control', 'div' => 'form-group'));
-		echo $this->Form->hidden('enrolment_date', array(
+		echo $this->Form->disabled('enrolment_date', array(
         'class' => 'form-control',
         'placeholder' => 'Enrolment Date',
 		'between' => '<div class="form-inline form-group">',
