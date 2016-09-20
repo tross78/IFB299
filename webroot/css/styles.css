@@ -1,3 +1,6 @@
+body {
+    height: 100vh;
+}
 .jumbotron {
     background-image: url("/img/wov.png");
     padding: 15px 0px 15px 0px;
