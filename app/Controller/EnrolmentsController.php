@@ -302,7 +302,7 @@ class EnrolmentsController extends AppController {
 					'conditions' => array(
 						'Course.id' => $this->Enrolment->course_id;
 					))
-			) > $c_date;;
+			) > $c_date;
 
 
 		$this->request->allowMethod('post', 'delete');
