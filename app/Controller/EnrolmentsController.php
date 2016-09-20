@@ -73,7 +73,7 @@ class EnrolmentsController extends AppController {
 		$teacherCap = 1; //lower this value to test full assitant-teachers
 		$kitchenCap = 1; //lower this value to test full kitchen-helpers
 		
-		$is_male = AuthComponent::user('gender') == 'male';
+		$user_gender = AuthComponent::user('gender');
 		
 		
 		$is_mixed = $this->Enrolment->Course->find('all', array(
@@ -84,17 +84,14 @@ class EnrolmentsController extends AppController {
 						"Course.id" => $this->params['named']['course_id']
 					))
 			);
-			
-		if ($is_male){
-			echo "Male User";
-		}
 		
 		//TODO: try to move this to the POST check below, in case params are null
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
-					'contain' => array('Course'),
+					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.role' => 'student',
+						'User.gender' => $user_gender,
 						"Course.id" => $this->params['named']['course_id']
 					))
 			) >= $studentCap;
@@ -110,32 +107,35 @@ class EnrolmentsController extends AppController {
 		
 		$manager_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
-					'contain' => array('Course'),
+					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.role' => 'manager',
+						'User.gender' => $user_gender,
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $managerCap;
 			
 		$teacher_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
-					'contain' => array('Course'),
+					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.role' => 'assistant-teacher',
+						'User.gender' => $user_gender,
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $teacherCap;
 			
 		$kitchen_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
-					'contain' => array('Course'),
+					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.role' => 'kitchen-helper',
+						'User.gender' => $user_gender,
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $kitchenCap;
 			
-		$this->set("is_male", $is_male);
+		$this->set("user_gender", $user_gender);
 		$this->set("is_mixed", $is_mixed);
 		
 		$this->set("course_full", $course_full);
@@ -171,7 +171,7 @@ class EnrolmentsController extends AppController {
 				$this->Flash->error(__('This course is full. There is no waitlist for assistant-teachers.'));
 			} elseif ($kitchen_full && $is_kitchen){
 				$this->Flash->error(__('This course is full. There is no waitlist for kitchen-helpers.'));
-			} elseif ($wait_full && $is_student){
+			} elseif ($course_full && $wait_full && $is_student){
 				$this->Flash->error(__('This course and its waitlist is full. Your enrolment has not be saved.'));
 			} else {
 				$this->Enrolment->create();
@@ -279,15 +279,6 @@ class EnrolmentsController extends AppController {
 
 			//$is_mixed = $this->Course->gender == 'mixed';
 
-/*			$is_mixed = $this->Enrolment->Course->find('all', array(
-					'fields' => array('Course.id'),
-					'contain' => array('Enrolment'),
-					'conditions' => array(
-						'Course.gender' => 'mixed',
-						"Course.id" => $this->params['named']['course_id']
-					))
-			);*/
-
 	public function delete($id = null) {
 		$this->Enrolment->id = $id;
 		if (!$this->Enrolment->exists()) {
@@ -295,17 +286,19 @@ class EnrolmentsController extends AppController {
 		}
 
 		$c_date = date('Y-m-d');
+		
 		$commenced = $this->Enrolment->Course->find('all', array(
-			'fields' => array('Course.start_date'),
+			'fields' => array('Course.start_date', 'Course.id'),
 					'contain' => array('Enrolment'),
 					'conditions' => array(
+						'DATE(Course.start_date) < ' => $c_date,
 						'Course.id' => $this->params['named']['course_id']
 					))
-			) > $c_date;;
+			);
 
 
 		$this->request->allowMethod('post', 'delete');
-		if ($c_date < $start_date){
+		if (!$commenced){
 			if ($this->Enrolment->delete()) {
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
