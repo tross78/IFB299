@@ -31,7 +31,6 @@
 	Router::connect('/donations', ['controller' => 'pages', 'action' => 'display', 'donations']);
 	Router::connect('/contact', ['controller' => 'pages', 'action' => 'display', 'contact']);
 	Router::connect('/tos', ['controller' => 'pages', 'action' => 'display', 'tos']);
-//	Router::connect('/courses/login.php', ['controller' => 'pages', 'action' => 'display', 'login_page']);
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */

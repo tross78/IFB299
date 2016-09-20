@@ -1,12 +1,3 @@
-<?php
-
-session_start();
-
-if(!(isset($_SESSION['login']) && $_SESSION['login'] != '')){
-	header("Location:https://teamhawk-meditation-centre.herokuapp.com/users/login");
-}
-?>
-
 <div class="courses index">
 	<h2><?php echo __('Courses'); ?></h2>
 	<table class="table">
