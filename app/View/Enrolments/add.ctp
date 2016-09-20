@@ -5,9 +5,6 @@
 	if ($is_old) {
 		echo 'student has completed prior course';
 	}
-	if($wrong_gender) {
-		echo "wrong gender";
-	}
 	if ($wait_full): ?>
 		<div class="alert alert-danger">This course's student waitlist is full, we are no longer taking student aplications.</div>
 	<?php elseif ($course_full): ?>
