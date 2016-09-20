@@ -78,7 +78,7 @@ class User extends AppModel {
 		'email_address' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
-				'message' => 'email address is required'
+				'message' => 'Email address is required'
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
