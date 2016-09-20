@@ -231,16 +231,45 @@ class EnrolmentsController extends AppController {
  * @param string $id
  * @return void
  */
+//JM: added check to make sure you cannot withdraw from a courese
+//once the start date has been reached, or passed.
+
+//ATTN: Code left here wile testing, will delete, using for reference.
+
+/*	$is_student = $this->request->data['Enrolment']['role'] == 'student';	//seems to be working.
+
+		//TR: select * from enrolments where enrolment_date < {current date} and course days is ten
+		$current_date = date('Y-m-d');
+		$old_compare = $this->Enrolment->find('count', array(
+				'fields' => array('Enrolment.id', 'Enrolment.enrolment_date', 'Enrolment.user_id', 'Course.days'),
+				'contain' => array('Course'),
+				'conditions' => array(
+					'DATE(enrolment_date) < ' => $current_date,
+					'user_id' => AuthComponent::user('id'),
+					'Course.days' => 'ten'
+				)
+			)
+		) > 0;
+		$this->set('is_old', $old_compare);*/
+
 	public function delete($id = null) {
 		$this->Enrolment->id = $id;
 		if (!$this->Enrolment->exists()) {
 			throw new NotFoundException(__('Invalid enrolment'));
 		}
+
+		$c_date = date('Y-m-d');
+		$start_date = $this->request->data['Enrolment']['enrolment_date'];
+
 		$this->request->allowMethod('post', 'delete');
-		if ($this->Enrolment->delete()) {
-			$this->Flash->success(__('The enrolment has been deleted.'));
+		if (c_date < start_date){
+			if ($this->Enrolment->delete()) {
+				$this->Flash->success(__('The enrolment has been deleted.'));
+			} else {
+				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
+			}
 		} else {
-			$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
+			$this->Flash->error(_('You cannot withdraw from a course after it has commenced.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
