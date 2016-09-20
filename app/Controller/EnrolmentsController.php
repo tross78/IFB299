@@ -262,7 +262,7 @@ class EnrolmentsController extends AppController {
 		$start_date = $this->request->data['Enrolment']['enrolment_date'];
 
 		$this->request->allowMethod('post', 'delete');
-		if (c_date < start_date){
+		if ($c_date < $start_date){
 			if ($this->Enrolment->delete()) {
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
