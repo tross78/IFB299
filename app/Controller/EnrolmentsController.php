@@ -305,7 +305,7 @@ class EnrolmentsController extends AppController {
 
 
 		$this->request->allowMethod('post', 'delete');
-		if ($commenced){
+		if (!$commenced){
 			if ($this->Enrolment->delete()) {
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
