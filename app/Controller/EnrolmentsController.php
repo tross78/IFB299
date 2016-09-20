@@ -299,13 +299,13 @@ class EnrolmentsController extends AppController {
 			'fields' => array('Course.start_date'),
 					'contain' => array('Enrolment'),
 					'conditions' => array(
-						'Course.id' => $this->params['named']['course_id']
+						"Course.id" => $this->params['named']['course_id']
 					))
 			) > $c_date;;
 
 
 		$this->request->allowMethod('post', 'delete');
-		if ($c_date < $start_date){
+		if ($commenced){
 			if ($this->Enrolment->delete()) {
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
