@@ -49,7 +49,7 @@
             </div>
             </div>
             <div class="item">
-            <img src="http://i.imgur.com/nFccCyJ.jpg" alt="">
+            <img src="http://i.imgur.com/Y2dJ450.jpg" alt="">
             <div class="carousel-caption">
             </div>
             </div>
