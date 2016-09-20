@@ -29,7 +29,6 @@
             <li data-target="#feature-carousel" data-slide-to="3"></li>
             <li data-target="#feature-carousel" data-slide-to="4"></li>
             <li data-target="#feature-carousel" data-slide-to="5"></li>
-            <li data-target="#feature-carousel" data-slide-to="6"></li>
         </ol>
 
         <!-- Wrapper for slides -->
