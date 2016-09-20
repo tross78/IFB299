@@ -288,9 +288,10 @@ class EnrolmentsController extends AppController {
 			'fields' => array('Course.start_date', 'Course.id'),
 					'contain' => array('Enrolment'),
 					'conditions' => array(
+						'DATE(Course.start_date) < ' => $current_date,
 						'Course.id' => $this->params['named']['course_id']
 					))
-			) > $c_date;
+			);
 
 
 		$this->request->allowMethod('post', 'delete');
