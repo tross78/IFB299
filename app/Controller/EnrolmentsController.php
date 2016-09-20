@@ -107,7 +107,7 @@ class EnrolmentsController extends AppController {
 		
 		$manager_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
-					'contain' => array('Course'),
+					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.role' => 'manager',
 						'User.gender' => $user_gender,
@@ -117,7 +117,7 @@ class EnrolmentsController extends AppController {
 			
 		$teacher_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
-					'contain' => array('Course'),
+					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.role' => 'assistant-teacher',
 						'User.gender' => $user_gender,
@@ -127,7 +127,7 @@ class EnrolmentsController extends AppController {
 			
 		$kitchen_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
-					'contain' => array('Course'),
+					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.role' => 'kitchen-helper',
 						'User.gender' => $user_gender,
