@@ -104,17 +104,17 @@
 
     <div class="col-sm-4">
         <div class="col-sm-12 thumbnail text-center">
-            <img alt="" class="img-responsive" src="http://3.thailandcamp.com/wp-content/uploads/2012/06/yogapose.jpg">
+            <a href = "https://teamhawk-meditation-centre.herokuapp.com/courses/"> <img alt="" class="img-responsive" src="http://3.thailandcamp.com/wp-content/uploads/2012/06/yogapose.jpg"></a>
             <div class="caption">
-                <h4>Introductory (10 day)</h4>
+                <h4><a href = "https://teamhawk-meditation-centre.herokuapp.com/courses/">Introductory (10 day)</a></h4>
             </div>
         </div>
     </div>
     <div class="col-sm-4">
         <div class="col-sm-12 thumbnail text-center">
-            <img alt="" class="img-responsive" src="http://blog.posturepodiatry.com/wp-content/uploads/2014/11/Yoga-1-300x300.jpg">
+            <a href = "https://teamhawk-meditation-centre.herokuapp.com/courses/"> <img alt="" class="img-responsive" src="http://blog.posturepodiatry.com/wp-content/uploads/2014/11/Yoga-1-300x300.jpg"></a>
             <div class="caption">
-                <h4>Express (3 day)</h4>
+                <h4><a href = "https://teamhawk-meditation-centre.herokuapp.com/courses/">Express (3 day)</a></h4>
             </div>
         </div>
     </div>
