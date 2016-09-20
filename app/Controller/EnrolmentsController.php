@@ -110,6 +110,7 @@ class EnrolmentsController extends AppController {
 					'contain' => array('Course'),
 					'conditions' => array(
 						'Enrolment.role' => 'manager',
+						'User.gender' => $user_gender,
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $managerCap;
@@ -119,6 +120,7 @@ class EnrolmentsController extends AppController {
 					'contain' => array('Course'),
 					'conditions' => array(
 						'Enrolment.role' => 'assistant-teacher',
+						'User.gender' => $user_gender,
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $teacherCap;
@@ -128,6 +130,7 @@ class EnrolmentsController extends AppController {
 					'contain' => array('Course'),
 					'conditions' => array(
 						'Enrolment.role' => 'kitchen-helper',
+						'User.gender' => $user_gender,
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $kitchenCap;
