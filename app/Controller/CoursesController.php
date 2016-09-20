@@ -68,7 +68,6 @@ class CoursesController extends AppController {
 			} else if ($is_old && AuthComponent::user('permission') != 'manager') {
                 $options = array(
                     'conditions' => array(
-                        'Course.days' => 'three',
                         'Course.gender' => array(AuthComponent::user('gender'), 'mixed')
                     ),
                     'fields' => array(
