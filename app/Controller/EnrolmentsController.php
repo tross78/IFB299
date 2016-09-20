@@ -171,7 +171,7 @@ class EnrolmentsController extends AppController {
 				$this->Flash->error(__('This course is full. There is no waitlist for assistant-teachers.'));
 			} elseif ($kitchen_full && $is_kitchen){
 				$this->Flash->error(__('This course is full. There is no waitlist for kitchen-helpers.'));
-			} elseif ($wait_full && $is_student){
+			} elseif ($course_full && $wait_full && $is_student){
 				$this->Flash->error(__('This course and its waitlist is full. Your enrolment has not be saved.'));
 			} else {
 				$this->Enrolment->create();
