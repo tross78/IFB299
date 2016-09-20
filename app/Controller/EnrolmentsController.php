@@ -86,6 +86,9 @@ class EnrolmentsController extends AppController {
 					))
 			);
 			
+		if ($is_male){
+			echo "Male User";
+		}
 		
 		//TODO: try to move this to the POST check below, in case params are null
 		$course_full = $this->Enrolment->find('count', array(
@@ -295,11 +298,11 @@ class EnrolmentsController extends AppController {
 		$c_date = date('Y-m-d');
 		$commenced = $this->Enrolment->Course->find('all', array(
 			'fields' => array('Course.start_date'),
-					'contain' => array('Course'),
+					'contain' => array('Enrolment'),
 					'conditions' => array(
-						'Course.id' => $this->params['named']['course_id']
+						'Course.id' => $this->Enrolment->course_id
 					))
-			) > $c_date;;
+			) > $c_date;
 
 
 		$this->request->allowMethod('post', 'delete');
