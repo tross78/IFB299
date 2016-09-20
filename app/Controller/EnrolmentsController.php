@@ -135,7 +135,7 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $kitchenCap;
 			
-		$this->set("is_male", $is_male);
+		$this->set("user_gender", $user_gender);
 		$this->set("is_mixed", $is_mixed);
 		
 		$this->set("course_full", $course_full);
