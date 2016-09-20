@@ -45,7 +45,7 @@ class CoursesController extends AppController {
 				$options = array(
 					'conditions' => array(
 						'Course.days' => 'ten',
-                        'Course.gender' => 'male'
+                        'Course.gender' => AuthComponent::user('gender')
 					),
 					'fields' => array(
 						'Course.id',
