@@ -11,8 +11,9 @@
 
 <div>
   <div class = "col-md-8 well">
-    <h3>Course Information</h3>
-      <p>We currently offer an 10 day introductory course for all new students, while old students that have completed the introductory have the option of enrolling in our 3 day Express, or 30 day Buddhist course as well.<p>
+    <h3>Course Information &amp; Registration</h3>
+      <h4>Courses</h4>
+      <p>We currently offer an 10 day introductory course for all new students, while returning students that have completed the introductory course have the option of enrolling in our 3 day Express, or 30 day Buddhist course as well.<p>
       <h4>Meditation Classes</h4>
       <p>Within these courses we offer 6 classes that students will rotate between during their stay, all classes are designed to suit beginner levels up to advanced. While each of these classes revolve around practicing meditation, each class varies in their content in order to boost overall mental and physical well being, while giving students a taste of a variety of meditative based practices.</p>
       <br></br>
@@ -30,6 +31,7 @@
       <h4>Meals</h4>
       <p>For meals, the Hawke Centre currently provides free daily vegetarian meals to all students for the duration of the course they’re attending.</p>
       <p>We do cater for medical and dietary meal requirements, which can be specified by students while registering for an account. E.g vegan, kosher, nut/peanut allergies.</p>
+      <br></br>
     <h4>Gender segregated lodging</h4>
       <p>All students must be adults (18+), and are required to stay in the centre throughout the course duration. Lodging is also completely free. At the moment the centre can accomodate only 26 males and 26 females and hence only one course will run at a time at the centre.</p>
       <p>While the centre offers male and female courses together, complete gender segregation is maintained in lodging and meal times.</p>
