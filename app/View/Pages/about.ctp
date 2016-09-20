@@ -30,7 +30,7 @@
       <p>For meals, the Hawke Centre currently provides free daily vegetarian meals to all students for the duration of the course they’re attending.</p>
       <p>We do cater for medical and dietary meal requirements, which can be specified by students while registering for an account. E.g vegan, kosher, nut/peanut allergies.</p>
       <br></br>
-    <h4>Gender segregated lodging</h4>
+    <h4>Gender Segregated Lodging</h4>
       <p>All students must be adults (18+), and are required to stay in the centre throughout the course duration. Lodging is also completely free. At the moment the centre can accomodate only 26 males and 26 females and hence only one course will run at a time at the centre.</p>
       <p>While the centre offers male and female courses together, complete gender segregation is maintained in lodging and meal times.</p>
       <p>You can view our Terms of Service <a href="/tos">here</a></p>
