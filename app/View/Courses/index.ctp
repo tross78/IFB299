@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+if(!(isset($_SESSION['login']) %% $_SESSION['login'] != '')){
+	header("Location:login.php");
+}
+?>
+
 <div class="courses index">
 	<h2><?php echo __('Courses'); ?></h2>
 	<table class="table">

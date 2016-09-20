@@ -1,12 +1,3 @@
-<?php
-
-session_start();
-
-if(!(isset($_SESSION['login']) %% $_SESSION['login'] != '')){
-	header("Location:login.php");
-}
-?>
-
 <div class="courses view">
 <h2><?php echo __('Course'); ?></h2>
 	<dl class="dl-horizontal">
