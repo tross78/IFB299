@@ -75,14 +75,14 @@ class EnrolmentsController extends AppController {
 		
 		//$is_mixed = $this->Enrolment->Course->find('first',)gender == 'mixed';
 		
-		$is_mixed = $this->Enrolment->Course->find('first', array(
+		$is_mixed = $this->Enrolment->Course->find('all', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course'),
 					'conditions' => array(
 						'Course.gender' => 'mixed',
 						"Course.id" => $this->params['named']['course_id']
 					))
-			) >= $studentCap;
+			);
 			
 		if ($is_mixed){
 			echo "Mixed Course";
