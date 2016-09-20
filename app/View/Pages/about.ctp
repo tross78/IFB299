@@ -23,7 +23,6 @@
       <p>Once a course becomes full, the centre continues to accept registrations for up to 7 more people and puts each registrant on a waiting list.</p>
       <h4>Registrant Confirmation</h4>
       <p>The centre sends an email ten days earlier than the course commencement date to all registered students to confirm their attendance. If the centre doesn’t receive a reply within 2 days or the registered student declines the offer, the vacant place is made available to students on the waiting list if they exist.</p>
-      <p>You can view our Terms of Service <a href="/tos">here</a>
   </div>
 
   <div class = "col-md-4 well">
@@ -35,6 +34,7 @@
     <h4>Gender segregated lodging</h4>
       <p>All students must be adults (18+), and are required to stay in the centre throughout the course duration. Lodging is also completely free. At the moment the centre can accomodate only 26 males and 26 females and hence only one course will run at a time at the centre.</p>
       <p>While the centre offers male and female courses together, complete gender segregation is maintained in lodging and meal times.</p>
+      <p>You can view our Terms of Service <a href="/tos">here</a></p>
   </div>
 
 </div>
