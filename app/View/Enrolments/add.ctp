@@ -38,7 +38,7 @@
 		echo $this->Form->hidden('id');
 		echo $this->Form->hidden('user_id', array('value'=>$authUser['id']));
 		echo $this->Form->input('course_id', array('class' => 'form-control', 'div' => 'form-group'));
-		echo $this->Form->disabled('enrolment_date', array(
+		echo $this->Form->input('enrolment_date', array(
         'class' => 'form-control',
         'placeholder' => 'Enrolment Date',
 		'between' => '<div class="form-inline form-group">',
