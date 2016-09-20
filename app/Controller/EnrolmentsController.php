@@ -127,12 +127,6 @@ class EnrolmentsController extends AppController {
 		$this->set("manager_full", $manager_full);
 		$this->set("teacher_full", $teacher_full);
 		$this->set("kitchen_full", $kitchen_full);
-
-					
-		//Code to set waitlist to 1 if course is full.
-		if ($course_full && $is_student) {		//TR: rewrote is_student so may work
-			$this->request->data['Enrolment']['waitlist'] = 1;
-		}
 		
 		if ($this->request->is('post')) {
 
@@ -146,7 +140,13 @@ class EnrolmentsController extends AppController {
 		$this->set("is_manager", $is_manager);
 		$this->set("is_teacher", $is_teacher);
 		$this->set("is_kitchen", $is_kitchen);
-		
+
+							
+		//Code to set waitlist to 1 if course is full.
+		if ($course_full) {		//TR: rewrote is_student so may work
+			$this->request->data['Enrolment']['waitlist'] = 1;
+		}
+
 	//AG: was going to do the following for each type of server but that won't work, we need to find out what the current user is enrolling as and then determine what the checks are. eg, we should only check if the manager roles are full if the current user is trying to enrole as a manager.
 	
 			if ($manager_full && $is_manager){
