@@ -85,9 +85,6 @@ class EnrolmentsController extends AppController {
 					))
 			);
 			
-		if ($is_male){
-			echo "Male User";
-		}
 		
 		//TODO: try to move this to the POST check below, in case params are null
 		$course_full = $this->Enrolment->find('count', array(
