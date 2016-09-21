@@ -24,7 +24,10 @@ html,body{height:100%;}
 .progress {
     background-color: #756d59;
 }
-
+.navbar-brand {
+    min-width: 220px;
+    margin-left: 20px;
+}
 
 .page-container {
     background: url(/img/bg-pattern.png) repeat #fcf8e3;
