@@ -8,6 +8,7 @@ Testing process:
 		- If the bug/issues were more complicated and required new checks, tests, or functionality, then they were recorded by the finder in the Issues section of our Github repository.
 		-The users who were assigned to those particular stories that had bugs/issues would then solve the bugs and then test to make sure that the issues had been solved.
 		- when the issues were solved, the person who had implemented the fix would close the issue tracking on the github repository.
+		- as explained during the demo, we should have been recording the times it took to solve each individual issue here, but we didn't. This is something we will improve on in future sprints/releases.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 Manager Login: 
@@ -20,6 +21,8 @@ username: fflintstone
 password: 123
 
 When logged in with that account you will be able to see all of the courses and enrolments, and enrol in a course in any role (student, assistant-teacher, kitchen-helper, manager). The only minor issue with having access to everything is that at the moment, managers can enrol into courses of the opposite gender. In theory this shouldn't be possible but we haven’t implemented a gender check for managers at this point because we still want them to have total access for testing purposes.
+
+Also, there is a third privilege rank there are managers and new students (which we demonstrated both), but there are also old students who are students who have completed at least one 10-day course. Old students can enroll in the 3 and 30 day courses, and can also enroll as 2 extra roles: (student, manager). But they don't have the ability to add/edit/delete courses like managers do, and they can only see the courses they are enrolled in, unlike managers who can see all enrolments.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 What is implemented: 
