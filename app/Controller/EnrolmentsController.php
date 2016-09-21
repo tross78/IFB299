@@ -259,13 +259,13 @@ class EnrolmentsController extends AppController {
 		$c_date = date('Y-m-d');
 		
 		$commenced = $this->Enrolment->Course->find('all', array(
-			'fields' => array('Course.start_date', 'Course.id'),
+			'fields' => array('Course.start_date',),
 					'contain' => array('Enrolment'),
 					'conditions' => array(
-						'DATE(Course.start_date) < ' => $c_date,
+						'DATE(Course.start_date)' => date('Y-m-d'),
 						'Course.id' => $this->params['named']['course_id']
 					))
-			);
+			) < $c_date;
 
 
 		$this->request->allowMethod('post', 'delete');
