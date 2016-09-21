@@ -248,7 +248,7 @@ class EnrolmentsController extends AppController {
  * @return void
  */
 //JM: added check to make sure you cannot withdraw from a courese
-//once the start date has been reached, or passed.
+//once the start date has been reached, or passed (BUGGED - needs editing)
 
 	public function delete($id = null) {
 		$this->Enrolment->id = $id;
