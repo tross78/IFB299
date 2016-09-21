@@ -67,15 +67,19 @@ class EnrolmentsController extends AppController {
  * @return void
  */
 	public function add() {
-		$studentCap = 2;	//lower this value to test full students
-		$waitCap = 1;	//lower this value to test full waitlist
-		$managerCap = 1; //lower this value to test full managers
-		$teacherCap = 1; //lower this value to test full assitant-teachers
-		$kitchenCap = 1; //lower this value to test full kitchen-helpers
+		//AG: the following are the capacities for each possible enrolment role in a course, (students -> kitchen-helpers -> assistant-teachers -> managers) 
+		$studentCap = 2;	//set to 2 for testing purposes to test '$course_full', normal student capacity will be 26.
+		$kitchenCap = 1; //set to 1 for testing purposes to test '$kitchen_full', normal student capacity will be 5.
+		$teacherCap = 1; //normal assistant-teacher capacity is 1.
+		$managerCap = 1; //normal manager capacity is 1.
 		
+		//AG: this sets the capacity of the waitlist for students when the sudent capacity has been met. Only students get a waitlisted.
+		$waitCap = 1;	//set to 1 for testing purposes to test '$wait_full', normal waitlist capacity will be 7.
+		
+		//AG: Grabs the gender of the user currently logged in.
 		$user_gender = AuthComponent::user('gender');
 		
-		
+		//AG: Unused variable to determine wether the current course is of mixed gender. May need it in the future though.
 		$is_mixed = $this->Enrolment->Course->find('all', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Enrolment'),
@@ -85,7 +89,7 @@ class EnrolmentsController extends AppController {
 					))
 			);
 		
-		//TODO: try to move this to the POST check below, in case params are null
+		//AG: says 'course_full' but is actually to check if the number of students enrolled in this course has reached the student capacity. 
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course', 'User'),
@@ -96,6 +100,7 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $studentCap;
 		
+		//AG: to check if the number of students on the waitlist for this course has reached the waitlist capacity.
 		$wait_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course'),
@@ -105,6 +110,7 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $waitCap;
 		
+		//AG: to check if the number of managers enrolled in this course has reached the manager capacity.
 		$manager_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course', 'User'),
@@ -114,7 +120,8 @@ class EnrolmentsController extends AppController {
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $managerCap;
-			
+		
+		//AG: to check if the number of assistant-teachers enrolled in this course has reached the teacher capacity.		
 		$teacher_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course', 'User'),
@@ -125,6 +132,7 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $teacherCap;
 			
+		//AG: to check if the number of kitchen-helpers enrolled in this course has reached the kitchen capacity.
 		$kitchen_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course', 'User'),
@@ -135,36 +143,37 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $kitchenCap;
 			
+		//AG: sets
 		$this->set("user_gender", $user_gender);
 		$this->set("is_mixed", $is_mixed);
-		
 		$this->set("course_full", $course_full);
 		$this->set("wait_full", $wait_full);
 		$this->set("manager_full", $manager_full);
 		$this->set("teacher_full", $teacher_full);
 		$this->set("kitchen_full", $kitchen_full);
 		
+		//AG: post conditions after the enrolment form has been submitted
 		if ($this->request->is('post')) {
-
-
-		$is_student = $this->request->data['Enrolment']['role'] == 'student';	//seems to be working.
+		
+		//AG: checks to see what the current user has attempted to enroll as
+		$is_student = $this->request->data['Enrolment']['role'] == 'student';	
 		$is_manager = $this->request->data['Enrolment']['role'] == 'manager';
 		$is_teacher = $this->request->data['Enrolment']['role'] == 'assistant-teacher';
 		$is_kitchen = $this->request->data['Enrolment']['role'] == 'kitchen-helper';
-
+		
+		//AG: More sets
 		$this->set("is_student", $is_student);
 		$this->set("is_manager", $is_manager);
 		$this->set("is_teacher", $is_teacher);
 		$this->set("is_kitchen", $is_kitchen);
 
 							
-		//Code to set waitlist to 1 if course is full.
-		if ($course_full && $is_student) {		//TR: rewrote is_student so may work
+		//AG: Code to set waitlist to 1 if course is full.
+		if ($course_full && $is_student) {		
 			$this->request->data['Enrolment']['waitlist'] = 1;
 		}
 
-	//AG: was going to do the following for each type of server but that won't work, we need to find out what the current user is enrolling as and then determine what the checks are. eg, we should only check if the manager roles are full if the current user is trying to enrole as a manager.
-	
+	//AG: The following displays error messages to the user if they are unable to enroll. Otherwise, it enrols them and saves the data in the database.
 			if ($manager_full && $is_manager){
 				$this->Flash->error(__('This course is full. There is no waitlist for managers.'));
 			} elseif ($teacher_full && $is_teacher){
