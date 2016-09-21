@@ -54,7 +54,8 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
     <![endif]--> 
 </head>
 <body>
-	<div id="page-container" class="bg-warning">
+	<div class="bg-warning">
+	<div class="page-container">
 	<div class="jumbotron"><div class="block-center text-center"><img src="http://meditationwordpresstheme.en.websitesexamples.com/wp-content/uploads/2015/05/logo_meditation.png?quality=100.3016082509160" class="" style="
     max-height: 80px;
 "></div></div>
@@ -102,5 +103,6 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 			</div>
 		</footer>
     </div>
+	</div>
 </body>
 </html>
