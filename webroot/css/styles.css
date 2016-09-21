@@ -31,4 +31,5 @@ html,body{height:100%;}
 
 .page-container {
     background: url(/img/bg-pattern.png) repeat #fcf8e3;
+    min-height:100%;
 }
