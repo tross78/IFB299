@@ -26,7 +26,7 @@ html,body{height:100%;}
 }
 .navbar-brand {
     min-width: 220px;
-    margin-left: 20px;
+    margin-left: 20px !important;
 }
 
 .page-container {
