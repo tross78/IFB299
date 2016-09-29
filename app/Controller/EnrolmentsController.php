@@ -308,10 +308,10 @@ class EnrolmentsController extends AppController {
 	}
 
 	//checking which courses have a start date is 10 days from the current date
-	//this function has to be automatically executed each day, cornjob looked like a good method
+	//this function has to be automatically executed each day, cronjob looked like a good method
 	public function checkForConfirmationDate() {
 
-		//boolean variable that is true if cu
+		//boolean variable that is true if current date matches desired date to send out confirmation email
 		$dateMatches = FALSE;
 
 		//current day, year and month
@@ -349,7 +349,7 @@ class EnrolmentsController extends AppController {
 		}
 
 
-		
+
 	}
 
 }
