@@ -5,7 +5,6 @@
 	<?php
 		echo $this->Form->hidden('id');
 		echo $this->Form->input('username', array('class' => 'form-control', 'div' => 'form-group'));
-		echo $this->Form->hidden('password');
 		echo $this->Form->input('first_name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('last_name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('date_of_birth', array(
@@ -33,6 +32,7 @@
 		echo $this->Form->input('dietary_requirements', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('medical_requirements', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('permission');
+		echo $this->Form->input('tos', array('type'=>'checkbox', 'label'=>__('I confirm I have read the <a href="/tos">Terms of Service</a>.', true), 'hiddenField' => true, 'value' => '1')
 	?>
 	</fieldset>
 	<?php echo $this->Form->submit('Submit', array(

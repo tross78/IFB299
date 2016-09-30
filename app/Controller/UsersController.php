@@ -126,8 +126,6 @@ class UsersController extends AppController {
 				$this->Flash->success(__('The user has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				debug($this->User->validationErrors); //show validationErrors
-				debug($this->User->getDataSource()->getLog(false, false));
 				$this->Flash->error(__('The user could not be saved. Please, try again.'));
 			}
 		} else {
