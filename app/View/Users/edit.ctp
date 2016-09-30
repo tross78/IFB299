@@ -1,10 +1,11 @@
 <div class="users form">
 <?php echo $this->Form->create('User'); ?>
-	<fieldset>
+	<fieldset class="form-group">
 		<legend><?php echo __('Edit User'); ?></legend>
 	<?php
 		echo $this->Form->hidden('id');
 		echo $this->Form->input('username', array('class' => 'form-control', 'div' => 'form-group'));
+		echo $this->Form->hidden('password');
 		echo $this->Form->input('first_name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('last_name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('date_of_birth', array(
