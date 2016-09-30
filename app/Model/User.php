@@ -107,7 +107,8 @@ class User extends AppModel {
 			'notEmpty' => array(
 				'rule' => array('comparison', '!=', 1),
 				'required' => true,
-				'message' => 'Please agree to the terms of service before proceeding.'
+				'message' => 'Please agree to the terms of service before proceeding.',
+				'on' => 'create'
 				),
 			),
 	);
