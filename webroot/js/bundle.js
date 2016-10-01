@@ -54,6 +54,7 @@
 	__webpack_require__(2);
 	__webpack_require__(35);
 	__webpack_require__(173);
+	__webpack_require__(425);
 
 /***/ },
 /* 2 */
@@ -40195,6 +40196,133 @@
 	exports.bootstrapUtils = _bootstrapUtils;
 	exports.createChainedFunction = _createChainedFunction3['default'];
 	exports.ValidComponentChildren = _ValidComponentChildren3['default'];
+
+/***/ },
+/* 425 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var carouselInstance = React.createElement(
+	  Carousel,
+	  null,
+	  React.createElement(
+	    Carousel.Item,
+	    null,
+	    React.createElement("img", { width: 900, height: 500, alt: " ", src: "http://i.imgur.com/NQpW6hm.jpg" }),
+	    React.createElement(
+	      Carousel.Caption,
+	      null,
+	      React.createElement(
+	        "h3",
+	        null,
+	        "First slide label"
+	      ),
+	      React.createElement(
+	        "p",
+	        null,
+	        "Nulla vitae elit libero, a pharetra augue mollis interdum."
+	      )
+	    )
+	  ),
+	  React.createElement(
+	    Carousel.Item,
+	    null,
+	    React.createElement("img", { width: 900, height: 500, alt: " ", src: "http://i.imgur.com/aau5RP1.jpg" }),
+	    React.createElement(
+	      Carousel.Caption,
+	      null,
+	      React.createElement(
+	        "h3",
+	        null,
+	        "Second slide label"
+	      ),
+	      React.createElement(
+	        "p",
+	        null,
+	        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+	      )
+	    )
+	  ),
+	  React.createElement(
+	    Carousel.Item,
+	    null,
+	    React.createElement("img", { width: 900, height: 500, alt: " ", src: "http://i.imgur.com/eV91kxn.jpg" }),
+	    React.createElement(
+	      Carousel.Caption,
+	      null,
+	      React.createElement(
+	        "h3",
+	        null,
+	        "Third slide label"
+	      ),
+	      React.createElement(
+	        "p",
+	        null,
+	        "Praesent commodo cursus magna, vel scelerisque nisl consectetur."
+	      )
+	    )
+	  ),
+	  React.createElement(
+	    Carousel.Item,
+	    null,
+	    React.createElement("img", { width: 900, height: 500, alt: " ", src: "http://i.imgur.com/biVYjls.jpg" }),
+	    React.createElement(
+	      Carousel.Caption,
+	      null,
+	      React.createElement(
+	        "h3",
+	        null,
+	        "Third slide label"
+	      ),
+	      React.createElement(
+	        "p",
+	        null,
+	        "Praesent commodo cursus magna, vel scelerisque nisl consectetur."
+	      )
+	    )
+	  ),
+	  React.createElement(
+	    Carousel.Item,
+	    null,
+	    React.createElement("img", { width: 900, height: 500, alt: " ", src: "http://i.imgur.com/sZRaO9v.jpg" }),
+	    React.createElement(
+	      Carousel.Caption,
+	      null,
+	      React.createElement(
+	        "h3",
+	        null,
+	        "Third slide label"
+	      ),
+	      React.createElement(
+	        "p",
+	        null,
+	        "Praesent commodo cursus magna, vel scelerisque nisl consectetur."
+	      )
+	    )
+	  ),
+	  React.createElement(
+	    Carousel.Item,
+	    null,
+	    React.createElement("img", { width: 900, height: 500, alt: " ", src: "http://i.imgur.com/zQr7xWv.jpg" }),
+	    React.createElement(
+	      Carousel.Caption,
+	      null,
+	      React.createElement(
+	        "h3",
+	        null,
+	        "Third slide label"
+	      ),
+	      React.createElement(
+	        "p",
+	        null,
+	        "Praesent commodo cursus magna, vel scelerisque nisl consectetur."
+	      )
+	    )
+	  )
+	);
+
+	ReactDOM.render(carouselInstance, document.getElementById('feature-carousel'));
 
 /***/ }
 /******/ ]);
