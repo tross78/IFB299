@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/tross78/IFB299#readme",
   "dependencies": {
+    "react": "^15.3.2",
+    "react-bootstrap": "^0.30.3",
+    "react-dom": "^15.3.2",
     "webpack": "^1.13.2"
   }
 }
