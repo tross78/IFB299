@@ -40221,11 +40221,11 @@
 	  _reactBootstrap2.default,
 	  null,
 	  _react2.default.createElement(
-	    _reactBootstrap2.default.Item,
+	    _reactBootstrap2.default,
 	    null,
 	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/NQpW6hm.jpg' }),
 	    _react2.default.createElement(
-	      _reactBootstrap2.default.Caption,
+	      _reactBootstrap2.default,
 	      null,
 	      _react2.default.createElement(
 	        'h3',
@@ -40240,11 +40240,11 @@
 	    )
 	  ),
 	  _react2.default.createElement(
-	    _reactBootstrap2.default.Item,
+	    _reactBootstrap2.default,
 	    null,
 	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/aau5RP1.jpg' }),
 	    _react2.default.createElement(
-	      _reactBootstrap2.default.Caption,
+	      _reactBootstrap2.default,
 	      null,
 	      _react2.default.createElement(
 	        'h3',
@@ -40259,11 +40259,11 @@
 	    )
 	  ),
 	  _react2.default.createElement(
-	    _reactBootstrap2.default.Item,
+	    _reactBootstrap2.default,
 	    null,
 	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/eV91kxn.jpg' }),
 	    _react2.default.createElement(
-	      _reactBootstrap2.default.Caption,
+	      _reactBootstrap2.default,
 	      null,
 	      _react2.default.createElement(
 	        'h3',
@@ -40278,11 +40278,11 @@
 	    )
 	  ),
 	  _react2.default.createElement(
-	    _reactBootstrap2.default.Item,
+	    _reactBootstrap2.default,
 	    null,
 	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/biVYjls.jpg' }),
 	    _react2.default.createElement(
-	      _reactBootstrap2.default.Caption,
+	      _reactBootstrap2.default,
 	      null,
 	      _react2.default.createElement(
 	        'h3',
@@ -40297,11 +40297,11 @@
 	    )
 	  ),
 	  _react2.default.createElement(
-	    _reactBootstrap2.default.Item,
+	    _reactBootstrap2.default,
 	    null,
 	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/sZRaO9v.jpg' }),
 	    _react2.default.createElement(
-	      _reactBootstrap2.default.Caption,
+	      _reactBootstrap2.default,
 	      null,
 	      _react2.default.createElement(
 	        'h3',
@@ -40316,11 +40316,11 @@
 	    )
 	  ),
 	  _react2.default.createElement(
-	    _reactBootstrap2.default.Item,
+	    _reactBootstrap2.default,
 	    null,
 	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/zQr7xWv.jpg' }),
 	    _react2.default.createElement(
-	      _reactBootstrap2.default.Caption,
+	      _reactBootstrap2.default,
 	      null,
 	      _react2.default.createElement(
 	        'h3',
