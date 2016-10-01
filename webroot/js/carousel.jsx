@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Carousel from 'react-bootstrap';
 import CarouselItem from 'react-bootstrap';
+import Carousel from 'react-bootstrap';
+
 const carouselInstance = (
   <Carousel>
     <Carousel.Item>
