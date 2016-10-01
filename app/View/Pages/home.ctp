@@ -21,8 +21,11 @@
 
 <div class="row">
     <div id="feature-carousel">
+    <div class="carousel slide"><ol class="carousel-indicators"><li class="active"></li><li></li><li></li><li></li><li></li><li></li></ol><div class="carousel-inner"><div class="item active"><img width="1200" height="300" alt=" " src="http://i.imgur.com/NQpW6hm.jpg"><div class="carousel-caption"></div></div><div class="item"><img width="1200" height="300" alt=" " src="http://i.imgur.com/aau5RP1.jpg"><div class="carousel-caption"></div></div><div class="item"><img width="1200" height="300" alt=" " src="http://i.imgur.com/eV91kxn.jpg"><div class="carousel-caption"></div></div><div class="item"><img width="1200" height="300" alt=" " src="http://i.imgur.com/biVYjls.jpg"><div class="carousel-caption"></div></div><div class="item"><img width="1200" height="300" alt=" " src="http://i.imgur.com/sZRaO9v.jpg"><div class="carousel-caption"></div></div><div class="item"><img width="1200" height="300" alt=" " src="http://i.imgur.com/zQr7xWv.jpg"><div class="carousel-caption"></div></div></div><a class="carousel-control left" role="button" href=""><span class="glyphicon glyphicon-chevron-left"></span></a><a class="carousel-control right" role="button" href=""><span class="glyphicon glyphicon-chevron-right"></span></a></div>
     </div>
 </div>
+
+
 
 <div class="row top30">
 <div class="col-sm-12 well"><h2 class="text-center">Welcome to the Hawke Mediation Centre</h2>
