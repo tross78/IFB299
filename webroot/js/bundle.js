@@ -40215,6 +40215,7 @@
 
 	var Carousel = __webpack_require__(284);
 	var CarouselItem = __webpack_require__(286);
+	var CarouselCaption = __webpack_require__(285);
 
 	var carouselInstance = _react2.default.createElement(
 	  Carousel,

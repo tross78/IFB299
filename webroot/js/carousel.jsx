@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 const Carousel = require('react-bootstrap/lib/Carousel');
 const CarouselItem = require('react-bootstrap/lib/CarouselItem');
+const CarouselCaption = require('react-bootstrap/lib/CarouselCaption');
 
 const carouselInstance = (
   <Carousel>
