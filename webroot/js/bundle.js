@@ -40223,116 +40223,38 @@
 	  _react2.default.createElement(
 	    CarouselItem,
 	    null,
-	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/NQpW6hm.jpg' }),
-	    _react2.default.createElement(
-	      CarouselCaption,
-	      null,
-	      _react2.default.createElement(
-	        'h3',
-	        null,
-	        'First slide label'
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        'Nulla vitae elit libero, a pharetra augue mollis interdum.'
-	      )
-	    )
+	    _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/NQpW6hm.jpg' }),
+	    _react2.default.createElement(CarouselCaption, null)
 	  ),
 	  _react2.default.createElement(
 	    CarouselItem,
 	    null,
-	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/aau5RP1.jpg' }),
-	    _react2.default.createElement(
-	      CarouselCaption,
-	      null,
-	      _react2.default.createElement(
-	        'h3',
-	        null,
-	        'Second slide label'
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-	      )
-	    )
+	    _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/aau5RP1.jpg' }),
+	    _react2.default.createElement(CarouselCaption, null)
 	  ),
 	  _react2.default.createElement(
 	    CarouselItem,
 	    null,
-	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/eV91kxn.jpg' }),
-	    _react2.default.createElement(
-	      CarouselCaption,
-	      null,
-	      _react2.default.createElement(
-	        'h3',
-	        null,
-	        'Third slide label'
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
-	      )
-	    )
+	    _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/eV91kxn.jpg' }),
+	    _react2.default.createElement(CarouselCaption, null)
 	  ),
 	  _react2.default.createElement(
 	    CarouselItem,
 	    null,
-	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/biVYjls.jpg' }),
-	    _react2.default.createElement(
-	      CarouselCaption,
-	      null,
-	      _react2.default.createElement(
-	        'h3',
-	        null,
-	        'Third slide label'
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
-	      )
-	    )
+	    _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/biVYjls.jpg' }),
+	    _react2.default.createElement(CarouselCaption, null)
 	  ),
 	  _react2.default.createElement(
 	    CarouselItem,
 	    null,
-	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/sZRaO9v.jpg' }),
-	    _react2.default.createElement(
-	      CarouselCaption,
-	      null,
-	      _react2.default.createElement(
-	        'h3',
-	        null,
-	        'Third slide label'
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
-	      )
-	    )
+	    _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/sZRaO9v.jpg' }),
+	    _react2.default.createElement(CarouselCaption, null)
 	  ),
 	  _react2.default.createElement(
 	    CarouselItem,
 	    null,
-	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/zQr7xWv.jpg' }),
-	    _react2.default.createElement(
-	      CarouselCaption,
-	      null,
-	      _react2.default.createElement(
-	        'h3',
-	        null,
-	        'Third slide label'
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
-	      )
-	    )
+	    _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/zQr7xWv.jpg' }),
+	    _react2.default.createElement(CarouselCaption, null)
 	  )
 	);
 
