@@ -40203,10 +40203,6 @@
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -40215,17 +40211,21 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _reactBootstrap = __webpack_require__(173);
+
+	var _reactBootstrap2 = _interopRequireDefault(_reactBootstrap);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var carouselInstance = _react2.default.createElement(
-	  Carousel,
+	  _reactBootstrap2.default,
 	  null,
 	  _react2.default.createElement(
-	    Carousel.Item,
+	    _reactBootstrap2.default.Item,
 	    null,
 	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/NQpW6hm.jpg' }),
 	    _react2.default.createElement(
-	      Carousel.Caption,
+	      _reactBootstrap2.default.Caption,
 	      null,
 	      _react2.default.createElement(
 	        'h3',
@@ -40240,11 +40240,11 @@
 	    )
 	  ),
 	  _react2.default.createElement(
-	    Carousel.Item,
+	    _reactBootstrap2.default.Item,
 	    null,
 	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/aau5RP1.jpg' }),
 	    _react2.default.createElement(
-	      Carousel.Caption,
+	      _reactBootstrap2.default.Caption,
 	      null,
 	      _react2.default.createElement(
 	        'h3',
@@ -40259,11 +40259,11 @@
 	    )
 	  ),
 	  _react2.default.createElement(
-	    Carousel.Item,
+	    _reactBootstrap2.default.Item,
 	    null,
 	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/eV91kxn.jpg' }),
 	    _react2.default.createElement(
-	      Carousel.Caption,
+	      _reactBootstrap2.default.Caption,
 	      null,
 	      _react2.default.createElement(
 	        'h3',
@@ -40278,11 +40278,11 @@
 	    )
 	  ),
 	  _react2.default.createElement(
-	    Carousel.Item,
+	    _reactBootstrap2.default.Item,
 	    null,
 	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/biVYjls.jpg' }),
 	    _react2.default.createElement(
-	      Carousel.Caption,
+	      _reactBootstrap2.default.Caption,
 	      null,
 	      _react2.default.createElement(
 	        'h3',
@@ -40297,11 +40297,11 @@
 	    )
 	  ),
 	  _react2.default.createElement(
-	    Carousel.Item,
+	    _reactBootstrap2.default.Item,
 	    null,
 	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/sZRaO9v.jpg' }),
 	    _react2.default.createElement(
-	      Carousel.Caption,
+	      _reactBootstrap2.default.Caption,
 	      null,
 	      _react2.default.createElement(
 	        'h3',
@@ -40316,11 +40316,11 @@
 	    )
 	  ),
 	  _react2.default.createElement(
-	    Carousel.Item,
+	    _reactBootstrap2.default.Item,
 	    null,
 	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/zQr7xWv.jpg' }),
 	    _react2.default.createElement(
-	      Carousel.Caption,
+	      _reactBootstrap2.default.Caption,
 	      null,
 	      _react2.default.createElement(
 	        'h3',
@@ -40337,8 +40337,6 @@
 	);
 
 	_reactDom2.default.render(carouselInstance, document.getElementById('feature-carousel'));
-
-	exports.default = Carousel;
 
 /***/ }
 /******/ ]);
