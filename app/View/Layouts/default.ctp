@@ -36,9 +36,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-	<?php echo $this->Html->script("jquery.min") ?>
-    <?php echo $this->Html->script("bootstrap.min") ?>
-
+	<?php echo $this->Html->script("bundle") ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
