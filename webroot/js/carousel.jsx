@@ -49,5 +49,3 @@ const carouselInstance = (
 );
 
 ReactDOM.render(carouselInstance, document.getElementById('feature-carousel'));
-
-export default Carousel;
