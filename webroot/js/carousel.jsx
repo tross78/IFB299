@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Glyphicon, Carousel, CarouselItem, CarouselCaption } from 'react-bootstrap';
+const Carousel = require('react-bootstrap/lib/Carousel');
+const CarouselItem = require('react-bootstrap/lib/CarouselItem');
 
 const carouselInstance = (
   <Carousel>
