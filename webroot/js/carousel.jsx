@@ -1,4 +1,5 @@
-
+import React from 'react';
+import ReactDOM from 'react-dom';
 const carouselInstance = (
   <Carousel>
     <Carousel.Item>
@@ -48,3 +49,5 @@ const carouselInstance = (
 );
 
 ReactDOM.render(carouselInstance, document.getElementById('feature-carousel'));
+
+export default Carousel;

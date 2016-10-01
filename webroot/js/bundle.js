@@ -40199,130 +40199,146 @@
 
 /***/ },
 /* 425 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	var carouselInstance = React.createElement(
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(35);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var carouselInstance = _react2.default.createElement(
 	  Carousel,
 	  null,
-	  React.createElement(
+	  _react2.default.createElement(
 	    Carousel.Item,
 	    null,
-	    React.createElement("img", { width: 900, height: 500, alt: " ", src: "http://i.imgur.com/NQpW6hm.jpg" }),
-	    React.createElement(
+	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/NQpW6hm.jpg' }),
+	    _react2.default.createElement(
 	      Carousel.Caption,
 	      null,
-	      React.createElement(
-	        "h3",
+	      _react2.default.createElement(
+	        'h3',
 	        null,
-	        "First slide label"
+	        'First slide label'
 	      ),
-	      React.createElement(
-	        "p",
+	      _react2.default.createElement(
+	        'p',
 	        null,
-	        "Nulla vitae elit libero, a pharetra augue mollis interdum."
+	        'Nulla vitae elit libero, a pharetra augue mollis interdum.'
 	      )
 	    )
 	  ),
-	  React.createElement(
+	  _react2.default.createElement(
 	    Carousel.Item,
 	    null,
-	    React.createElement("img", { width: 900, height: 500, alt: " ", src: "http://i.imgur.com/aau5RP1.jpg" }),
-	    React.createElement(
+	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/aau5RP1.jpg' }),
+	    _react2.default.createElement(
 	      Carousel.Caption,
 	      null,
-	      React.createElement(
-	        "h3",
+	      _react2.default.createElement(
+	        'h3',
 	        null,
-	        "Second slide label"
+	        'Second slide label'
 	      ),
-	      React.createElement(
-	        "p",
+	      _react2.default.createElement(
+	        'p',
 	        null,
-	        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+	        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 	      )
 	    )
 	  ),
-	  React.createElement(
+	  _react2.default.createElement(
 	    Carousel.Item,
 	    null,
-	    React.createElement("img", { width: 900, height: 500, alt: " ", src: "http://i.imgur.com/eV91kxn.jpg" }),
-	    React.createElement(
+	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/eV91kxn.jpg' }),
+	    _react2.default.createElement(
 	      Carousel.Caption,
 	      null,
-	      React.createElement(
-	        "h3",
+	      _react2.default.createElement(
+	        'h3',
 	        null,
-	        "Third slide label"
+	        'Third slide label'
 	      ),
-	      React.createElement(
-	        "p",
+	      _react2.default.createElement(
+	        'p',
 	        null,
-	        "Praesent commodo cursus magna, vel scelerisque nisl consectetur."
+	        'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
 	      )
 	    )
 	  ),
-	  React.createElement(
+	  _react2.default.createElement(
 	    Carousel.Item,
 	    null,
-	    React.createElement("img", { width: 900, height: 500, alt: " ", src: "http://i.imgur.com/biVYjls.jpg" }),
-	    React.createElement(
+	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/biVYjls.jpg' }),
+	    _react2.default.createElement(
 	      Carousel.Caption,
 	      null,
-	      React.createElement(
-	        "h3",
+	      _react2.default.createElement(
+	        'h3',
 	        null,
-	        "Third slide label"
+	        'Third slide label'
 	      ),
-	      React.createElement(
-	        "p",
+	      _react2.default.createElement(
+	        'p',
 	        null,
-	        "Praesent commodo cursus magna, vel scelerisque nisl consectetur."
+	        'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
 	      )
 	    )
 	  ),
-	  React.createElement(
+	  _react2.default.createElement(
 	    Carousel.Item,
 	    null,
-	    React.createElement("img", { width: 900, height: 500, alt: " ", src: "http://i.imgur.com/sZRaO9v.jpg" }),
-	    React.createElement(
+	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/sZRaO9v.jpg' }),
+	    _react2.default.createElement(
 	      Carousel.Caption,
 	      null,
-	      React.createElement(
-	        "h3",
+	      _react2.default.createElement(
+	        'h3',
 	        null,
-	        "Third slide label"
+	        'Third slide label'
 	      ),
-	      React.createElement(
-	        "p",
+	      _react2.default.createElement(
+	        'p',
 	        null,
-	        "Praesent commodo cursus magna, vel scelerisque nisl consectetur."
+	        'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
 	      )
 	    )
 	  ),
-	  React.createElement(
+	  _react2.default.createElement(
 	    Carousel.Item,
 	    null,
-	    React.createElement("img", { width: 900, height: 500, alt: " ", src: "http://i.imgur.com/zQr7xWv.jpg" }),
-	    React.createElement(
+	    _react2.default.createElement('img', { width: 900, height: 500, alt: ' ', src: 'http://i.imgur.com/zQr7xWv.jpg' }),
+	    _react2.default.createElement(
 	      Carousel.Caption,
 	      null,
-	      React.createElement(
-	        "h3",
+	      _react2.default.createElement(
+	        'h3',
 	        null,
-	        "Third slide label"
+	        'Third slide label'
 	      ),
-	      React.createElement(
-	        "p",
+	      _react2.default.createElement(
+	        'p',
 	        null,
-	        "Praesent commodo cursus magna, vel scelerisque nisl consectetur."
+	        'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
 	      )
 	    )
 	  )
 	);
 
-	ReactDOM.render(carouselInstance, document.getElementById('feature-carousel'));
+	_reactDom2.default.render(carouselInstance, document.getElementById('feature-carousel'));
+
+	exports.default = Carousel;
 
 /***/ }
 /******/ ]);
