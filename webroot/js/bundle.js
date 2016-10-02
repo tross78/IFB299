@@ -26167,6 +26167,7 @@
 	  render: function render() {
 	    return React.createElement(DatePicker, {
 	      dateFormat: 'DD/MM/YYYY',
+	      includeDates: [moment().substract(70, 'years'), moment().substract(18, 'years')],
 	      selected: this.state.startDate,
 	      onChange: this.handleChange });
 	  }
