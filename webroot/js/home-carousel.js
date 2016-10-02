@@ -40,4 +40,4 @@ const carouselInstance = (
   
 );
 
-ReactDOM.render(carouselInstance, mountNode);
+ReactDOM.render(carouselInstance);
