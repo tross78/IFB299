@@ -4,7 +4,7 @@ const Carousel = require('react-bootstrap/lib/Carousel');
 const CarouselItem = require('react-bootstrap/lib/CarouselItem');
 const CarouselCaption = require('react-bootstrap/lib/CarouselCaption');
 
-class HomeCarousel extends React.Component {
+export default class HomeCarousel extends React.Component {
    constructor() {
         super();
    }
