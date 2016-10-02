@@ -26143,6 +26143,9 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	var React = __webpack_require__(9);
 	var DatePicker = __webpack_require__(286);
 	var moment = __webpack_require__(287);
@@ -26172,6 +26175,7 @@
 	      onChange: this.handleChange });
 	  }
 	});
+	exports.default = HawkeDatePicker;
 
 /***/ },
 /* 286 */
