@@ -22493,6 +22493,8 @@
 
 	'use strict';
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(9);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -22503,69 +22505,75 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var Carousel = __webpack_require__(181);
 	var CarouselItem = __webpack_require__(278);
 	var CarouselCaption = __webpack_require__(268);
 
-	var ControlledCarousel = _react2.default.createClass({
-	  displayName: 'ControlledCarousel',
-	  getInitialState: function getInitialState() {
-	    return {
-	      index: 0,
-	      direction: null
-	    };
-	  },
-	  handleSelect: function handleSelect(selectedIndex, e) {
-	    this.setState({
-	      index: selectedIndex,
-	      direction: e.direction
-	    });
-	  },
-	  render: function render() {
-	    return _react2.default.createElement(
-	      Carousel,
-	      null,
-	      _react2.default.createElement(
-	        CarouselItem,
-	        null,
-	        _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/NQpW6hm.jpg' }),
-	        _react2.default.createElement(CarouselCaption, null)
-	      ),
-	      _react2.default.createElement(
-	        CarouselItem,
-	        null,
-	        _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/aau5RP1.jpg' }),
-	        _react2.default.createElement(CarouselCaption, null)
-	      ),
-	      _react2.default.createElement(
-	        CarouselItem,
-	        null,
-	        _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/eV91kxn.jpg' }),
-	        _react2.default.createElement(CarouselCaption, null)
-	      ),
-	      _react2.default.createElement(
-	        CarouselItem,
-	        null,
-	        _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/biVYjls.jpg' }),
-	        _react2.default.createElement(CarouselCaption, null)
-	      ),
-	      _react2.default.createElement(
-	        CarouselItem,
-	        null,
-	        _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/sZRaO9v.jpg' }),
-	        _react2.default.createElement(CarouselCaption, null)
-	      ),
-	      _react2.default.createElement(
-	        CarouselItem,
-	        null,
-	        _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/zQr7xWv.jpg' }),
-	        _react2.default.createElement(CarouselCaption, null)
-	      )
-	    );
-	  }
-	});
+	var ControlledCarousel = function (_React$Component) {
+	  _inherits(ControlledCarousel, _React$Component);
 
-	_reactDom2.default.render(_react2.default.createElement(ControlledCarousel, null));
+	  function ControlledCarousel(props) {
+	    _classCallCheck(this, ControlledCarousel);
+
+	    return _possibleConstructorReturn(this, (ControlledCarousel.__proto__ || Object.getPrototypeOf(ControlledCarousel)).call(this, props));
+	  }
+
+	  _createClass(ControlledCarousel, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        Carousel,
+	        null,
+	        _react2.default.createElement(
+	          CarouselItem,
+	          null,
+	          _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/NQpW6hm.jpg' }),
+	          _react2.default.createElement(CarouselCaption, null)
+	        ),
+	        _react2.default.createElement(
+	          CarouselItem,
+	          null,
+	          _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/aau5RP1.jpg' }),
+	          _react2.default.createElement(CarouselCaption, null)
+	        ),
+	        _react2.default.createElement(
+	          CarouselItem,
+	          null,
+	          _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/eV91kxn.jpg' }),
+	          _react2.default.createElement(CarouselCaption, null)
+	        ),
+	        _react2.default.createElement(
+	          CarouselItem,
+	          null,
+	          _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/biVYjls.jpg' }),
+	          _react2.default.createElement(CarouselCaption, null)
+	        ),
+	        _react2.default.createElement(
+	          CarouselItem,
+	          null,
+	          _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/sZRaO9v.jpg' }),
+	          _react2.default.createElement(CarouselCaption, null)
+	        ),
+	        _react2.default.createElement(
+	          CarouselItem,
+	          null,
+	          _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/zQr7xWv.jpg' }),
+	          _react2.default.createElement(CarouselCaption, null)
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ControlledCarousel;
+	}(_react2.default.Component);
+
+	;
 
 /***/ },
 /* 181 */
