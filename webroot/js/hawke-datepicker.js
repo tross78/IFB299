@@ -24,7 +24,8 @@ var HawkeDatePicker = React.createClass({
         dateFormat="DD/MM/YYYY"
         minDate={moment().subtract(70, 'years')}
         maxDate={moment().subtract(18, 'years')}
-        selected={moment().subtract(18, 'years')}
+        selected={this.state.startDate}
+        placeholder={moment().subtract(18, 'years')}
         onChange={this.handleChange} />;
   }
 });
