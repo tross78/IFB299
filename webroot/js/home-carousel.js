@@ -4,7 +4,23 @@ const Carousel = require('react-bootstrap/lib/Carousel');
 const CarouselItem = require('react-bootstrap/lib/CarouselItem');
 const CarouselCaption = require('react-bootstrap/lib/CarouselCaption');
 
-const carouselInstance = (
+const ControlledCarousel = React.createClass({
+  getInitialState() {
+    return {
+      index: 0,
+      direction: null
+    };
+  },
+
+  handleSelect(selectedIndex, e) {
+    this.setState({
+      index: selectedIndex,
+      direction: e.direction
+    });
+  },
+
+  render() {
+    return (
   <Carousel>
     <CarouselItem>
       <img width={1200} height={300} alt=" " src="http://i.imgur.com/NQpW6hm.jpg"/>
@@ -37,7 +53,8 @@ const carouselInstance = (
       </CarouselCaption>
     </CarouselItem>
   </Carousel>
-  
-);
+   );
+  }
+});
 
-ReactDOM.render(carouselInstance);
+ReactDOM.render(<ControlledCarousel />);

@@ -22507,48 +22507,65 @@
 	var CarouselItem = __webpack_require__(278);
 	var CarouselCaption = __webpack_require__(268);
 
-	var carouselInstance = _react2.default.createElement(
-	  Carousel,
-	  null,
-	  _react2.default.createElement(
-	    CarouselItem,
-	    null,
-	    _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/NQpW6hm.jpg' }),
-	    _react2.default.createElement(CarouselCaption, null)
-	  ),
-	  _react2.default.createElement(
-	    CarouselItem,
-	    null,
-	    _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/aau5RP1.jpg' }),
-	    _react2.default.createElement(CarouselCaption, null)
-	  ),
-	  _react2.default.createElement(
-	    CarouselItem,
-	    null,
-	    _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/eV91kxn.jpg' }),
-	    _react2.default.createElement(CarouselCaption, null)
-	  ),
-	  _react2.default.createElement(
-	    CarouselItem,
-	    null,
-	    _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/biVYjls.jpg' }),
-	    _react2.default.createElement(CarouselCaption, null)
-	  ),
-	  _react2.default.createElement(
-	    CarouselItem,
-	    null,
-	    _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/sZRaO9v.jpg' }),
-	    _react2.default.createElement(CarouselCaption, null)
-	  ),
-	  _react2.default.createElement(
-	    CarouselItem,
-	    null,
-	    _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/zQr7xWv.jpg' }),
-	    _react2.default.createElement(CarouselCaption, null)
-	  )
-	);
+	var ControlledCarousel = _react2.default.createClass({
+	  displayName: 'ControlledCarousel',
+	  getInitialState: function getInitialState() {
+	    return {
+	      index: 0,
+	      direction: null
+	    };
+	  },
+	  handleSelect: function handleSelect(selectedIndex, e) {
+	    this.setState({
+	      index: selectedIndex,
+	      direction: e.direction
+	    });
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      Carousel,
+	      null,
+	      _react2.default.createElement(
+	        CarouselItem,
+	        null,
+	        _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/NQpW6hm.jpg' }),
+	        _react2.default.createElement(CarouselCaption, null)
+	      ),
+	      _react2.default.createElement(
+	        CarouselItem,
+	        null,
+	        _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/aau5RP1.jpg' }),
+	        _react2.default.createElement(CarouselCaption, null)
+	      ),
+	      _react2.default.createElement(
+	        CarouselItem,
+	        null,
+	        _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/eV91kxn.jpg' }),
+	        _react2.default.createElement(CarouselCaption, null)
+	      ),
+	      _react2.default.createElement(
+	        CarouselItem,
+	        null,
+	        _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/biVYjls.jpg' }),
+	        _react2.default.createElement(CarouselCaption, null)
+	      ),
+	      _react2.default.createElement(
+	        CarouselItem,
+	        null,
+	        _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/sZRaO9v.jpg' }),
+	        _react2.default.createElement(CarouselCaption, null)
+	      ),
+	      _react2.default.createElement(
+	        CarouselItem,
+	        null,
+	        _react2.default.createElement('img', { width: 1200, height: 300, alt: ' ', src: 'http://i.imgur.com/zQr7xWv.jpg' }),
+	        _react2.default.createElement(CarouselCaption, null)
+	      )
+	    );
+	  }
+	});
 
-	_reactDom2.default.render(carouselInstance);
+	_reactDom2.default.render(_react2.default.createElement(ControlledCarousel, null));
 
 /***/ },
 /* 181 */
