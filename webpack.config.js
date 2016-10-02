@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+
 //entry: ["./webroot/js/entry.js", "./webroot/js/jquery.min.js", "./webroot/js/bootstrap.min.js"],
 module.exports = {
   entry: ["./webroot/js/entry.js"],
@@ -14,7 +15,8 @@ module.exports = {
                  query: {
                      presets: ['es2015', 'react']
                  }
-             }
+             },
+             { test: /\.css$/, loader: "style-loader!css-loader" }
          ]
      },
   plugins: [

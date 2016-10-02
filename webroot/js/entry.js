@@ -1,7 +1,7 @@
 import ReactHabitat             from 'react-habitat';
 import HomeCarousel             from './home-carousel';
 import ReactPasswordStrength    from 'react-password-strength';
-
+import HawkeDatePicker          from './hawke-datepicker';
 class TeamHawkeMeditation extends ReactHabitat.Bootstrapper {
     constructor(){
         super();
@@ -12,6 +12,7 @@ class TeamHawkeMeditation extends ReactHabitat.Bootstrapper {
         // Register your top level component(s) (ie mini/child apps)
         container.register('HomeCarousel', HomeCarousel);
         container.register('ReactPasswordStrength', ReactPasswordStrength);
+        container.register('HawkeDatePicker', HawkeDatePicker);
         // Finally, set the container
         this.setContainer(container);
     }
