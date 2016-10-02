@@ -26,7 +26,7 @@
 		'placeholder' => 'Date of Birth',
 		'between' => '<div class="form-inline form-group">',
 		'after' => '</div>',
-		'value' => date('d/m/Y')));
+		'value' => date("d/m/Y", strtotime("-18 years"))));
 		$gender_options = array('male' => 'male&nbsp;&nbsp;','female' => 'female');
 		$gender_attributes = array(
 			'legend' => false,
