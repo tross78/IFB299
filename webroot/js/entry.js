@@ -1,5 +1,6 @@
-import ReactHabitat                 from 'react-habitat';
+import ReactHabitat             from 'react-habitat';
 import HomeCarousel             from './home-carousel';
+import ReactPasswordStrength    from 'react-password-strength';
 
 class TeamHawkeMeditation extends ReactHabitat.Bootstrapper {
     constructor(){
@@ -10,7 +11,7 @@ class TeamHawkeMeditation extends ReactHabitat.Bootstrapper {
 
         // Register your top level component(s) (ie mini/child apps)
         container.register('HomeCarousel', HomeCarousel);
-
+        container.register('ReactPasswordStrength', ReactPasswordStrength);
         // Finally, set the container
         this.setContainer(container);
     }

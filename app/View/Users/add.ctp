@@ -5,7 +5,7 @@
 	<?php
 		echo $this->Form->hidden('id');
 		echo $this->Form->input('username', array('class' => 'form-control', 'div' => 'form-group'));
-		echo $this->Form->input('password', array('class' => 'form-control', 'div' => 'form-group'));
+		echo $this->Form->input('password', array('data-component' => 'ReactPasswordStrength', 'class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('first_name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('last_name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('date_of_birth', array(
