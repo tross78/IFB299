@@ -20,10 +20,9 @@
   },
   "homepage": "https://github.com/tross78/IFB299#readme",
   "dependencies": {
-    "moment": "^2.15.1",
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.3",
-    "react-datepicker": "^0.29.0",
+    "react-date-picker": "^5.3.28",
     "react-dom": "^15.3.2",
     "react-habitat": "^0.3.1",
     "react-password-strength": "^1.0.2",

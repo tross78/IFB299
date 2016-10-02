@@ -1,32 +1,10 @@
-var React = require('react');
-var DatePicker = require('react-datepicker');
-var moment = require('moment');
+import React from 'react'
+import { DateField } from 'react-date-picker'
+import 'react-date-picker/index.css'
 
-require('react-datepicker/dist/react-datepicker.css');
-
-var HawkeDatePicker = React.createClass({
-  displayName: 'Example',
-
-  getInitialState: function() {
-    return {
-      startDate: moment()
-    };
-  },
-
-  handleChange: function(date) {
-    this.setState({
-      startDate: date
-    });
-  },
-
-  render: function() {
-    return <DatePicker
-        dateFormat="DD/MM/YYYY"
-        minDate={moment().subtract(70, 'years')}
-        maxDate={moment().subtract(18, 'years')}
-        selected={this.state.startDate}
-        placeholder={moment().subtract(18, 'years')}
-        onChange={this.handleChange} />;
-  }
-});
+var HawkeDatePicker = function() {
+  return <DateField
+    dateFormat="YYYY-MM-DD"
+  />
+}
 export default HawkeDatePicker;
