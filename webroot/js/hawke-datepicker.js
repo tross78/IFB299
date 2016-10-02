@@ -22,7 +22,7 @@ var HawkeDatePicker = React.createClass({
   render: function() {
     return <DatePicker
         dateFormat="DD/MM/YYYY"
-        includeDates={[moment().substract(70, 'years'), moment().substract(18, 'years')]}
+        includeDates={[moment().subtract(70, 'years'), moment().subtract(18, 'years')]}
         selected={this.state.startDate}
         onChange={this.handleChange} />;
   }
