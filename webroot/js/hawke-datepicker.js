@@ -6,7 +6,7 @@ var HawkeDatePicker = function() {
   return <DateField
     forceValidDate
     defaultValue={"01-01-1998"}
-    dateFormat="DD-MM-YYYY"
+    dateFormat="YYYY-MM-DD"
   />
 }
 export default HawkeDatePicker;
