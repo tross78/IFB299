@@ -4,9 +4,9 @@ const Carousel = require('react-bootstrap/lib/Carousel');
 const CarouselItem = require('react-bootstrap/lib/CarouselItem');
 const CarouselCaption = require('react-bootstrap/lib/CarouselCaption');
 
-class ControlledCarousel extends React.Component {
-   constructor(props) {
-        super(props);
+class HomeCarousel extends React.Component {
+   constructor() {
+        super();
    }
   render() {
     return (

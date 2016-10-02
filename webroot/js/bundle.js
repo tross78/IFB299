@@ -22515,16 +22515,16 @@
 	var CarouselItem = __webpack_require__(278);
 	var CarouselCaption = __webpack_require__(268);
 
-	var ControlledCarousel = function (_React$Component) {
-	  _inherits(ControlledCarousel, _React$Component);
+	var HomeCarousel = function (_React$Component) {
+	  _inherits(HomeCarousel, _React$Component);
 
-	  function ControlledCarousel(props) {
-	    _classCallCheck(this, ControlledCarousel);
+	  function HomeCarousel() {
+	    _classCallCheck(this, HomeCarousel);
 
-	    return _possibleConstructorReturn(this, (ControlledCarousel.__proto__ || Object.getPrototypeOf(ControlledCarousel)).call(this, props));
+	    return _possibleConstructorReturn(this, (HomeCarousel.__proto__ || Object.getPrototypeOf(HomeCarousel)).call(this));
 	  }
 
-	  _createClass(ControlledCarousel, [{
+	  _createClass(HomeCarousel, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -22570,7 +22570,7 @@
 	    }
 	  }]);
 
-	  return ControlledCarousel;
+	  return HomeCarousel;
 	}(_react2.default.Component);
 
 	;
