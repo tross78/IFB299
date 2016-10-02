@@ -1,5 +1,11 @@
 <?php
 App::uses('AppController', 'Controller');
+//JM: Possibly need this to use enrolments deletion in this file
+// App::import('Controller', 'Enrolments');
+// // Instantiation
+// $Enrolments = new EnrolmentsController;
+// // Call a method from
+// $Enrolments->delete(useridhere)
 /**
  * Courses Controller
  *
@@ -170,7 +176,13 @@ class CoursesController extends AppController {
  * @param string $id
  * @return void
  */
+
+//JM: Editing funciton to delete enrolled users from the course at the same time
 	public function delete($id = null) {
+/*		$enrolled_user = $this->Course->find('all', array('fields' => array('User.id'),
+			'contain' => array('Course', 'User'),
+			'conditions' => array("Course.id" => $this->params['named']['course_id'])));*/
+
 		$this->Course->id = $id;
 		if (!$this->Course->exists()) {
 			throw new NotFoundException(__('Invalid course'));
