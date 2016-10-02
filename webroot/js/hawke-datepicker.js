@@ -27,3 +27,4 @@ var HawkeDatePicker = React.createClass({
         onChange={this.handleChange} />;
   }
 });
+export default HawkeDatePicker;
