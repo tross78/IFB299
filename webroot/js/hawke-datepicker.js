@@ -5,7 +5,7 @@ import 'react-date-picker/index.css'
 var HawkeDatePicker = function() {
   return <DateField
     forceValidDate
-    defaultValue={"01-01-1998"}
+    defaultValue={"1998-01-01"}
     dateFormat="YYYY-MM-DD"
   />
 }
