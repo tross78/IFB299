@@ -18,7 +18,14 @@
 		// 	'placeholder' => 'Date of Birth',
 		// 	'between' => '<div class="form-inline form-group">',
 		// 	'after' => '</div>'));
-		echo $this->Form->input('date_of_birth', array('type' => 'text'));
+		echo $this->Form->input('date_of_birth', 
+		array('type' => 'text',
+		'data-component' => 'HawkeDatePicker',
+		'class' => 'form-control',
+		'div' => 'form-group',
+		'placeholder' => 'Date of Birth',
+		'between' => '<div class="form-inline form-group">',
+		'after' => '</div>'));
 		$gender_options = array('male' => 'male&nbsp;&nbsp;','female' => 'female');
 		$gender_attributes = array(
 			'legend' => false,
