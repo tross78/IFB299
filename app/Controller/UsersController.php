@@ -22,10 +22,6 @@ class UsersController extends AppController {
     	$this->Auth->allow('add', 'logout');
 	}
 
-	public function beforeSave($options = array()) {
-		$this->data['User']['date_of_birth'] = $this->data['User']['date_of_birth'].substr(0, 10);
-	}
-
 	public function emailWelcomeMessage() {
 		$Email = new CakeEmail('gmail');
 		$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
@@ -102,6 +98,7 @@ class UsersController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			$this->data['User']['date_of_birth'] = $this->data['User']['date_of_birth'].substr(0, 10);
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 				$this->Flash->success(__('The user has been saved.'));
