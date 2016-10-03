@@ -1,11 +1,10 @@
 <?php
 App::uses('AppController', 'Controller');
 //JM: Possibly need this to use enrolments deletion in this file
-// App::import('Controller', 'Enrolments');
-// // Instantiation
-// $Enrolments = new EnrolmentsController;
-// // Call a method from
-// $Enrolments->delete(useridhere)
+App::import('Controller', 'Enrolments');
+// Instantiation
+$Enrolments = new EnrolmentsController;
+
 /**
  * Courses Controller
  *
@@ -179,9 +178,7 @@ class CoursesController extends AppController {
 
 //JM: Editing funciton to delete enrolled users from the course at the same time
 	public function delete($id = null) {
-/*		$enrolled_user = $this->Course->find('all', array('fields' => array('User.id'),
-			'contain' => array('Course', 'User'),
-			'conditions' => array("Course.id" => $this->params['named']['course_id'])));*/
+		$query = $this->Enrolments->id->find('all', array('conditions' => array("Course.id" => $this->params['named']['course_id'])));
 
 		$this->Course->id = $id;
 		if (!$this->Course->exists()) {
@@ -189,6 +186,12 @@ class CoursesController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Course->delete()) {
+
+			foreach($query as $id) {
+				// Call a method from
+				$Enrolments->delete($id)
+			}
+
 			$this->Flash->success(__('The course has been deleted.'));
 		} else {
 			$this->Flash->error(__('The course could not be deleted. Please, try again.'));
