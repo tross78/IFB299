@@ -6,28 +6,25 @@
 		echo $this->Form->hidden('id');
 		echo $this->Form->input('username', array('class' => 'form-control', 'div' => 'form-group'));
 		// echo $this->Form->input('password', array('data-component' => 'ReactPasswordStrength', 'class' => 'form-control', 'div' => 'form-group'));
-		echo '<div data-component="HawkePasswordStrength"></div>';
+		echo '<div data-component="HawkePasswordStrength">
+    <div data-reactroot="" class="ReactPasswordStrength">
+        <input type="password" class="ReactPasswordStrength-input" value="">
+        <div class="ReactPasswordStrength-strength-bar"></div>
+        <span class="ReactPasswordStrength-strength-desc"></span>
+    </div>
+</div>';
 		echo $this->Form->input('first_name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('last_name', array('class' => 'form-control', 'div' => 'form-group'));
-		// echo $this->Form->input('date_of_birth', array(
-		// 	'label' => 'Date of birth', 
-		// 	'dateFormat' => 'DMY',
-		// 	'minYear' => date('Y') - 70,
-		// 	'maxYear' => date('Y') - 18,
-		// 	'class' => 'form-control',
-		// 	'div' => 'form-group',
-		// 	'placeholder' => 'Date of Birth',
-		// 	'between' => '<div class="form-inline form-group">',
-		// 	'after' => '</div>'));
-		echo $this->Form->input('date_of_birth', 
-		array('type' => 'text',
-		'data-component' => 'HawkeDatePicker',
-		'class' => 'form-control',
-		'div' => 'form-group',
-		'placeholder' => 'Date of Birth',
-		'between' => '<div class="form-inline form-group">',
-		'after' => '</div>',
-		'value' => date("Y/m/d", strtotime("-18 years"))));
+		?>
+			<span data-component="HawkeDatePicker">
+				<div data-reactroot="" class="react-flex react-date-field react-date-field--theme-default react-date-field--picker-position-bottom react-flex-v2--align-items-center react-flex-v2--row react-flex-v2--display-inline-flex">
+					<input id="UserDateOfBirth" required="required" type="text" name="data[User][date_of_birth]" class="form-control" placeholder="Date of Birth" value=<?php date("Y/m/d", strtotime("-18 years")) ?> class="react-date-field__input">
+					<div class="react-date-field__calendar-icon">
+						<div class="react-date-field__calendar-icon-inner"></div>
+					</div>
+				</div>
+			</span>
+<?php
 		$gender_options = array('male' => 'male&nbsp;&nbsp;','female' => 'female');
 		$gender_attributes = array(
 			'legend' => false,
