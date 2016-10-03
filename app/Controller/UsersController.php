@@ -22,9 +22,9 @@ class UsersController extends AppController {
     	$this->Auth->allow('add', 'logout');
 	}
 
-	// public function beforeSave($options = array()) {
-	// 	$this->data['User']['date_of_birth'] = DateTime::createFromFormat('j-M-Y', $this->data['User']['date_of_birth']);
-	// }
+	public function beforeSave($options = array()) {
+		$this->data['User']['date_of_birth'] = $this->data['User']['date_of_birth'].substr(0, 10);
+	}
 
 	public function emailWelcomeMessage() {
 		$Email = new CakeEmail('gmail');
