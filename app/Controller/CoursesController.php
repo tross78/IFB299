@@ -178,7 +178,7 @@ class CoursesController extends AppController {
 
 //JM: Editing funciton to delete enrolled users from the course at the same time
 	public function delete($id = null) {
-		$query = $this->Enrolments->id->find('all', array('conditions' => array("Course.id" => $this->params['named']['course_id'])));
+		$query = $this->Course->Enrolments->find('all', array('conditions' => array("Course.id" => $this->params['named']['course_id'])));
 
 		$this->Course->id = $id;
 		if (!$this->Course->exists()) {
