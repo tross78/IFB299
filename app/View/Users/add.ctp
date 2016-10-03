@@ -25,7 +25,7 @@
 			<div class="form-group">
 			<div data-component="HawkeDatePicker">
 				<div data-reactroot="" class="react-flex react-date-field react-date-field--theme-default react-date-field--picker-position-bottom react-flex-v2--align-items-center react-flex-v2--row react-flex-v2--display-inline-flex">
-					<input id="UserDateOfBirth" required="required" type="text" name="data[User][date_of_birth]" class="react-date-field__input form-control" placeholder="Date of Birth" value=<?php echo date("d/m/Y", strtotime("-18 years")); ?> >
+					<?php echo $this->Form->input('date_of_birth'); ?>
 					<div class="react-date-field__calendar-icon">
 						<div class="react-date-field__calendar-icon-inner"></div>
 					</div>
