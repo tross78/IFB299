@@ -124,7 +124,7 @@ public function beforeSave($options = array()) {
     return true;
 }
 public function beforeValidate($options = array()) {
-	if (isset($this->data[$this->alias]['date_of_birth'])) {
+	if (!empty($this->data[$this->alias]['date_of_birth'])) {
 		$this->data[$this->alias]['date_of_birth'] = $this->data[$this->alias]['date_of_birth'].substr(0, 10);
 	}
 	return parent::beforeValidate($options);
