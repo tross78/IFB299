@@ -127,7 +127,7 @@ public function beforeValidate($options = array()) {
 	if (!empty($this->data[$this->alias]['date_of_birth'])) {
 		$this->data[$this->alias]['date_of_birth'] = $this->data[$this->alias]['date_of_birth'].substr(0, 10);
 	}
-	return parent::beforeValidate($options);
+	return true;
 }
 
 	// The Associations below have been created with all possible keys, those that are not needed can be removed
