@@ -1,6 +1,7 @@
 import ReactHabitat             from 'react-habitat';
 import HomeCarousel             from './home-carousel';
-import HawkePasswordStrength    from './hawke-password-strength';
+import HawkePasswordStrength    from 'react-proxy?name=pwstrength!./hawke-password-strength';
+//import HawkePasswordStrength    from '/hawke-password-strength';
 import HawkeDatePicker          from './hawke-datepicker';
 
 class TeamHawkeMeditation extends ReactHabitat.Bootstrapper {

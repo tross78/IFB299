@@ -1,13 +1,11 @@
 import React from 'react'
-import { DateField } from 'react-date-picker'
-import 'react-date-picker/index.css'
+import DatePicker from 'react-bootstrap-date-picker'
 
 var HawkeDatePicker = function() {
-  return <DateField
-    forceValidDate
-    defaultValue={"1998-01-01"}
-    dateFormat="YYYY-MM-DD"
-    inputProps={{ id:"UserDateOfBirth", name: "data[User][date_of_birth]", required:"required", placeholder:"Date of Birth"}}
-  />
+  return <FormGroup>
+      <ControlLabel>Label</ControlLabel>
+      <DatePicker value={this.state.value} onChange={this.handleChange} inputProps={{ id:"UserDateOfBirth", name: "data[User][date_of_birth]", required:"required", placeholder:"Date of Birth"}} />
+      <HelpBlock>Help</HelpBlock>
+    </FormGroup>
 }
 export default HawkeDatePicker;

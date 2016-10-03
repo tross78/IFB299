@@ -13,8 +13,7 @@ module.exports = {
                  test: /\.js$/,
                  loader: 'babel-loader',
                  query: {
-                     presets: ['es2015', 'react'],
-                     compact: false
+                     presets: ['es2015', 'react']
                  }
              },
              { test: /\.css$/, loader: "style-loader!css-loader" }
