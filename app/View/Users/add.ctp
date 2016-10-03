@@ -7,6 +7,7 @@
 		echo $this->Form->input('username', array('class' => 'form-control', 'div' => 'form-group'));
 		// echo $this->Form->input('password', array('data-component' => 'ReactPasswordStrength', 'class' => 'form-control', 'div' => 'form-group'));
 	?>
+	<label for="UserPassword">Password</label>
 	<div data-component="HawkePasswordStrength">
 		<div data-reactroot="" class="ReactPasswordStrength">
 			<input type="password" class="ReactPasswordStrength-input" value="">
@@ -18,6 +19,7 @@
 		echo $this->Form->input('first_name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('last_name', array('class' => 'form-control', 'div' => 'form-group'));
 		?>
+			<label for="UserDateOfBirth">Date of Birth</label>
 			<span data-component="HawkeDatePicker">
 				<div data-reactroot="" class="react-flex react-date-field react-date-field--theme-default react-date-field--picker-position-bottom react-flex-v2--align-items-center react-flex-v2--row react-flex-v2--display-inline-flex">
 					<input id="UserDateOfBirth" required="required" type="text" name="data[User][date_of_birth]" class="react-date-field__input form-control" placeholder="Date of Birth" value=<?php date("Y/m/d", strtotime("-18 years")); ?> >

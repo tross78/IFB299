@@ -6,7 +6,7 @@ var HawkePasswordStrength = function() {
   minLength={5}
   minScore={2}
   scoreWords={['weak', 'okay', 'good', 'strong', 'stronger']}
-  inputProps={{ id:"UserPassword", name: "data[User][password]", autocomplete: "off", required:"required"}}
+  inputProps={{ id:"UserPassword", name: "data[User][password]", placeholder:"Password", autocomplete: "off", required:"required"}}
 />
 }
 export default HawkePasswordStrength;
