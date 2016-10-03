@@ -12,7 +12,6 @@ class TeamHawkeMeditation extends ReactHabitat.Bootstrapper {
 
         // Register your top level component(s) (ie mini/child apps)
         container.register('HomeCarousel', HomeCarousel);
-        container.register('ReactPasswordStrength', ReactPasswordStrength);
         container.register('HawkeDatePicker', HawkeDatePicker);
         container.register('HawkePasswordStrength', HawkePasswordStrength);
         // Finally, set the container
