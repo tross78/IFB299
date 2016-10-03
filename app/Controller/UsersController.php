@@ -97,11 +97,9 @@ class UsersController extends AppController {
  * @return void
  */
 	public function add() {
-		if ($this->request->data) {
-			$this->request->data = $this->User->formatDOB($this->request->data);
-		}
 		if ($this->request->is('post')) {
 			$this->User->create();
+			$this->request->data = $this->User->formatDOB($this->request->data);
 			if ($this->User->save($this->request->data)) {
 				$this->Flash->success(__('The user has been saved.'));
 				$this->emailWelcomeMessage();
