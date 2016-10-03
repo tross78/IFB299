@@ -1,5 +1,5 @@
-require('react');
-require('react-bootstrap-date-picker');
+import React from 'react';
+import DatePicker from 'react-bootstrap-date-picker';
 
 
 var HawkeDatePicker = React.createClass({
