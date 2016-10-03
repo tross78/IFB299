@@ -6,13 +6,13 @@ var HawkeDatePicker = React.createClass({
   getInitialState: function(){
     var value = new Date().toISOString();
     return {
-      value: value.slice(0, 10)
+      value: value
     }
   },
   handleChange: function(value) {
     // value is an ISO String.
     this.setState({
-      value: value.slice(0, 10)
+      value: value
     });
   },
   render: function(){
