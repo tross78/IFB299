@@ -5,7 +5,14 @@
 	<?php
 		echo $this->Form->hidden('id');
 		echo $this->Form->input('username', array('class' => 'form-control', 'div' => 'form-group'));
-		echo $this->Form->input('password', array('data-component' => 'ReactPasswordStrength', 'class' => 'form-control', 'div' => 'form-group'));
+		// echo $this->Form->input('password', array('data-component' => 'ReactPasswordStrength', 'class' => 'form-control', 'div' => 'form-group'));
+		echo '<div data-component="HawkePasswordStrength">
+    <div data-reactroot="" class="ReactPasswordStrength">
+        <input type="password" class="ReactPasswordStrength-input" value="">
+        <div class="ReactPasswordStrength-strength-bar"></div>
+        <span class="ReactPasswordStrength-strength-desc">weak</span>
+    </div>
+</div>';
 		echo $this->Form->input('first_name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('last_name', array('class' => 'form-control', 'div' => 'form-group'));
 		// echo $this->Form->input('date_of_birth', array(
