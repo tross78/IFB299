@@ -17,7 +17,7 @@ var HawkeDatePicker = React.createClass({
   },
   render: function(){
     return <div class="form-group">
-      <DatePicker value={this.state.value.substr(0, 10)} onChange={this.handleChange} id="UserDateOfBirth" name="data[User][date_of_birth]"/>
+      <DatePicker value={this.state.value} onChange={this.handleChange} id="UserDateOfBirth" name="data[User][date_of_birth]"/>
     </div>;
   }
 });
