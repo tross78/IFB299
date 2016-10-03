@@ -21,7 +21,7 @@
 		echo $this->Form->input('first_name', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('last_name', array('class' => 'form-control', 'div' => 'form-group'));
 		?>
-		<?php echo $this->Form->input('date_of_birth', array('type' => 'text')); ?>
+		<?php echo $this->Form->input('date_of_birth', array('type' => 'text', 'data-component' => 'HawkeDatePicker')); ?>
 		<!---
 			<label for="UserDateOfBirth">Date of Birth</label>
 			<div class="form-group">
