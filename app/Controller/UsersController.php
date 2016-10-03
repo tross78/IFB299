@@ -98,6 +98,9 @@ class UsersController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+				if (isset($this->data[$this->alias]['date_of_birth'])) {
+					$this->data[$this->alias]['date_of_birth'] = $this->data[$this->alias]['date_of_birth'].substr(0, 10);
+				}
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 				$this->Flash->success(__('The user has been saved.'));

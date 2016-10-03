@@ -121,9 +121,6 @@ public function beforeSave($options = array()) {
             $this->data[$this->alias]['password']
         );
     }
-	if (isset($this->data[$this->alias]['date_of_birth'])) {
-		$this->data[$this->alias]['date_of_birth'] = $this->data[$this->alias]['date_of_birth'].substr(0, 10);
-	}
     return true;
 }
 
