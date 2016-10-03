@@ -189,7 +189,7 @@ class CoursesController extends AppController {
 
 			foreach($query as $id) {
 				// Call a method from
-				$Enrolments->delete($id)
+				$Enrolments->delete($id);
 			}
 
 			$this->Flash->success(__('The course has been deleted.'));
