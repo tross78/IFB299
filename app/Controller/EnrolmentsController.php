@@ -80,6 +80,9 @@ class EnrolmentsController extends AppController {
 		//AG: Grabs the gender of the user currently logged in.
 		$user_gender = AuthComponent::user('gender');
 
+        //HG: current date
+        $current_date = date('Y-m-d');
+
 		//AG: Unused variable to determine wether the current course is of mixed gender. May need it in the future though.
 		$is_mixed = $this->Enrolment->Course->find('all', array(
 					'fields' => array('Course.id'),
@@ -144,6 +147,17 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $kitchenCap;
 
+        //HG: check if the course has already commenced
+        $course_started = $this->Enrolment->find('all', array(
+                    'fields' => array('Course.id'),
+                    'contain' => array('Course'),
+                    'conditions' => array(
+                        'Course.id' => $this->params['named']['course_id'],
+                        strtotime('Course.start_date') < $current_date,
+                        strtotime('Course.end_date') > $current_date
+                    )
+        ));
+
 		//AG: sets
 		$this->set("user_gender", $user_gender);
 		$this->set("is_mixed", $is_mixed);
@@ -152,6 +166,9 @@ class EnrolmentsController extends AppController {
 		$this->set("manager_full", $manager_full);
 		$this->set("teacher_full", $teacher_full);
 		$this->set("kitchen_full", $kitchen_full);
+
+        //HG: sets lol
+        $this->set("course_started", $course_started);
 
 		//AG: post conditions after the enrolment form has been submitted
 		if ($this->request->is('post')) {
@@ -183,7 +200,10 @@ class EnrolmentsController extends AppController {
 				$this->Flash->error(__('This course is full. There is no waitlist for kitchen-helpers.'));
 			} elseif ($course_full && $wait_full && $is_student){
 				$this->Flash->error(__('This course and its waitlist is full. Your enrolment has not be saved.'));
-			} else {
+
+			} elseif($course_started) {
+                $this->Flash->error(__('This course has already started. Your enrolment has not be saved.'));
+            } else {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($this->request->data)) {
 					$this->Flash->success(__('The enrolment has been saved.'));
