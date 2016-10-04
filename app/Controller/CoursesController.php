@@ -193,6 +193,7 @@ class CoursesController extends AppController {
                 'DATE(Course.end_date) >' => $current_date
             )
         ));
+        echo $course_started;
 
         //HG: sets lol
         $this->set("course_started", $course_started);
