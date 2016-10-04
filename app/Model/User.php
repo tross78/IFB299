@@ -124,7 +124,7 @@ public function beforeSave($options = array()) {
     return true;
 }
 public function formatDOB($data) {
-		$data['User']['date_of_birth'] = $data['User']['date_of_birth'].substr(0, 10);
+		$data['User']['date_of_birth'] = substr($data['User']['date_of_birth'], 0, 10);
 	return $data;
 }
 
