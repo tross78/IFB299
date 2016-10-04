@@ -144,17 +144,6 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $kitchenCap;
 
-        //HG: check if the course has already commenced
-        $course_started = $this->Enrolment->find('all', array(
-                    'fields' => array('Course.id'),
-                    'contain' => array('Course'),
-                    'conditions' => array(
-                        'Course.id' => $this->params['named']['course_id'],
-                        'Course.start_date' < $current_date,
-                        'Course.end_date' > $current_date
-                    )
-        ));
-
 		//AG: sets
 		$this->set("user_gender", $user_gender);
 		$this->set("is_mixed", $is_mixed);
