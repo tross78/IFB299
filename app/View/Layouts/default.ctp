@@ -17,7 +17,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
+$cakeDescription = __d('cake_dev', 'Hawke Meditation');
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,9 +36,6 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-	<?php echo $this->Html->script("jquery.min") ?>
-    <?php echo $this->Html->script("bootstrap.min") ?>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -79,7 +76,8 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 					
 						<?php if (AuthComponent::user('id')) { ?>
 							<ul class="nav navbar-nav navbar-right">
-								<li class="navbar-text">Logged in as <?= AuthComponent::user('full_name') ?></li>
+								<li class="navbar-text"><span class="glyphicon glyphicon-user"></span> <?= AuthComponent::user('full_name') ?></li>
+								<li class="nav navbr-text" style="margin:0;"><a href="/users/edit/<?= AuthComponent::user('id') ?>">Edit</a></li>
 								<li><?= $this->Html->link('Log out', array('controller' => 'users', 'action' => 'logout')); ?></li>
 							</ul>
 						<?php } else { ?>
@@ -102,5 +100,6 @@ $cakeDescription = __d('cake_dev', 'Meditation Centre: Team Hawke.');
 			</div>
 		</footer>
     </div>
+		<?php echo $this->Html->script("bundle") ?>
 </body>
 </html>

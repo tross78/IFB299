@@ -66,8 +66,8 @@ class User extends AppModel {
 			),
 		),
 		'date_of_birth' => array(
-			'date' => array(
-				'rule' => array('date'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				'message' => 'DOB is required'
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -107,7 +107,8 @@ class User extends AppModel {
 			'notEmpty' => array(
 				'rule' => array('comparison', '!=', 1),
 				'required' => true,
-				'message' => 'Please agree to the terms of service before proceeding.'
+				'message' => 'Please agree to the terms of service before proceeding.',
+				'on' => 'create'
 				),
 			),
 	);
@@ -121,6 +122,10 @@ public function beforeSave($options = array()) {
         );
     }
     return true;
+}
+public function formatDOB($data) {
+		$data['User']['date_of_birth'] = substr($data['User']['date_of_birth'], 0, 10);
+	return $data;
 }
 
 	// The Associations below have been created with all possible keys, those that are not needed can be removed

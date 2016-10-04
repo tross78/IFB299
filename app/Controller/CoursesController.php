@@ -1,5 +1,10 @@
 <?php
 App::uses('AppController', 'Controller');
+//JM: Possibly need this to use enrolments deletion in this file
+/*App::import('Controller', 'Enrolments');
+// Instantiation
+$Enrolments = new EnrolmentsController;*/
+
 /**
  * Courses Controller
  *
@@ -170,17 +175,48 @@ class CoursesController extends AppController {
  * @param string $id
  * @return void
  */
+
+//JM: Editing funciton to delete enrolled users from the course at the same time
 	public function delete($id = null) {
+/*		$query = $this->Course->Enrolments->find('all', array('conditions' => array("Course.id" => $this->params['named']['course_id'])));*/
+        $current_date = date('Y-m-d');
+
 		$this->Course->id = $id;
+
+        //HG: check if the course has already commenced
+        //dosen't work yet!
+
+        $course_started = $this->Course->Enrolment->find('count', array(
+            'fields' => array('Course.id', 'Course.start_date', 'Course.end_date'),
+            'contain' => array('Course'),
+            'conditions' => array(
+                'DATE(Course.start_date) <' => $current_date,
+                'DATE(Course.end_date) >' => $current_date,
+                'Course.id' => $this->params['named']['course_id']
+            )
+        )) > 0;
+        //HG: set
+        $this->set("course_started", $course_started);
+
+        if($course_started) {
+            throw new CourseStartedException(__('Course already started'));
+        }
 		if (!$this->Course->exists()) {
 			throw new NotFoundException(__('Invalid course'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Course->delete()) {
+
+/*			foreach($query as $id) {
+				// Call a method from
+				$Enrolments->delete($id);
+			}*/
+
 			$this->Flash->success(__('The course has been deleted.'));
 		} else {
 			$this->Flash->error(__('The course could not be deleted. Please, try again.'));
 		}
+        $this->Flash->success(__($course_started));
 		return $this->redirect(array('action' => 'index'));
 	}
 }

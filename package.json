@@ -1,0 +1,43 @@
+{
+  "name": "team-hawke-meditation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tross78/IFB299.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tross78/IFB299/issues"
+  },
+  "homepage": "https://github.com/tross78/IFB299#readme",
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-bootstrap": "^0.30.3",
+    "react-bootstrap-date-picker": "^3.7.0",
+    "react-dom": "^15.3.2",
+    "react-habitat": "^0.3.1",
+    "react-password-strength": "^1.0.2",
+    "webpack": "^1.13.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.16.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-1": "^6.16.0",
+    "css-loader": "^0.25.0",
+    "react-habitat": "^0.3.1",
+    "react-proxy-loader": "^0.3.4",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2"
+  }
+}

@@ -1,6 +1,6 @@
 <div class="users form">
 <?php echo $this->Form->create('User'); ?>
-	<fieldset>
+	<fieldset class="form-group">
 		<legend><?php echo __('Edit User'); ?></legend>
 	<?php
 		echo $this->Form->hidden('id');
@@ -31,7 +31,19 @@
 		echo $this->Form->input('residential_address', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('dietary_requirements', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('medical_requirements', array('class' => 'form-control', 'div' => 'form-group'));
-		echo $this->Form->input('permission');
+		$permission_options = array('student' => 'student&nbsp;&nbsp;','manager' => 'manager');
+		$permission_attributes = array(
+			'legend' => false,
+			'type' => 'radio',
+			'before' => '<label class="control-label">Permissions</label>',
+			'options' => $permission_options,
+			'class' => false,
+			'value' => 'student'
+		);
+		// only managers can elevate permissions
+		if (AuthComponent::user('permission') == 'manager') {
+			echo $this->Form->input('permission', $permission_attributes);
+		}
 	?>
 	</fieldset>
 	<?php echo $this->Form->submit('Submit', array(
