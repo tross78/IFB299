@@ -188,6 +188,7 @@ class CoursesController extends AppController {
             'fields' => array('Course.id', 'Course.start_date', 'Course.end_Date'),
             'contain' => array('Course'),
             'conditions' => array(
+                'Course.id' => $this->params['named']['course_id'],
                 'DATE(Course.start_date) <' => $current_date,
                 'DATE(Course.end_date) >' => $current_date
             )
