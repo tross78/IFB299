@@ -188,15 +188,14 @@ class CoursesController extends AppController {
             'fields' => array('Course.id', 'Course.start_date', 'Course.end_Date'),
             'contain' => array('Course'),
             'conditions' => array(
-                'Course.id' => $this->params['named']['course_id'],
                 'DATE(Course.start_date) <' => $current_date,
                 'DATE(Course.end_date) >' => $current_date
             )
         ));
-        echo $course_started;
-
         //HG: sets lol
         $this->set("course_started", $course_started);
+        echo $course_started;
+
         if($course_started) {
             $this->Flash->error(__('This course has already started. Your enrolment has not be saved.'));
         }
