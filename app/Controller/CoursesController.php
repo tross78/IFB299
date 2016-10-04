@@ -197,10 +197,9 @@ class CoursesController extends AppController {
         )) > 0;
         //HG: sets lol
         $this->set("course_started", $course_started);
-        echo $course_started;
 
         if($course_started) {
-            $this->Flash->error(__('This course has already started. Your enrolment has not be saved.'));
+            throw new CourseStartedException(__('Course already started'));
         }
 		if (!$this->Course->exists()) {
 			throw new NotFoundException(__('Invalid course'));
