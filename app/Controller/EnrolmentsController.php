@@ -80,21 +80,6 @@ class EnrolmentsController extends AppController {
 		//AG: Grabs the gender of the user currently logged in.
 		$user_gender = AuthComponent::user('gender');
 
-        $current_date = date('Y-m-d');
-        //HG: check if the course has already commenced
-        //dosen't work yet!
-
-        $course_started = $this->Course->Enrolment->find('count', array(
-                'fields' => array('Course.id', 'Course.start_date', 'Course.end_Date'),
-                'contain' => array('Course'),
-                'conditions' => array(
-                    'DATE(Course.start_date) <' => $current_date,
-                    'DATE(Course.end_date) >' => $current_date,
-                    'Course.id' => $this->params['named']['course_id']
-                )
-            )) > 0;
-
-
 
 		//AG: Unused variable to determine wether the current course is of mixed gender. May need it in the future though.
 		$is_mixed = $this->Enrolment->Course->find('all', array(
@@ -169,9 +154,6 @@ class EnrolmentsController extends AppController {
 		$this->set("teacher_full", $teacher_full);
 		$this->set("kitchen_full", $kitchen_full);
 
-        //HG: sets lol
-        $this->set("course_started", $course_started);
-
 		//AG: post conditions after the enrolment form has been submitted
 		if ($this->request->is('post')) {
 
@@ -193,13 +175,7 @@ class EnrolmentsController extends AppController {
 			$this->request->data['Enrolment']['waitlist'] = 1;
 		}
 
-		//HG:
-        if($course_started) {
-            $this->Flash->error(__('This course has already started. Your enrolment has not be saved.'));
-        }
-
-
-            //AG: The following displays error messages to the user if they are unable to enroll. Otherwise, it enrols them and saves the data in the database.
+	//AG: The following displays error messages to the user if they are unable to enroll. Otherwise, it enrols them and saves the data in the database.
 			if ($manager_full && $is_manager){
 				$this->Flash->error(__('This course is full. There is no waitlist for managers.'));
 			} elseif ($teacher_full && $is_teacher){
