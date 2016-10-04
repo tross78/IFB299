@@ -187,7 +187,7 @@ class CoursesController extends AppController {
         //dosen't work yet!
 
         $course_started = $this->Course->Enrolment->find('count', array(
-            'fields' => array('Course.id', 'Course.start_date', 'Course.end_Date'),
+            'fields' => array('Course.id', 'Course.start_date', 'Course.end_date'),
             'contain' => array('Course'),
             'conditions' => array(
                 'DATE(Course.start_date) <' => $current_date,
@@ -195,7 +195,7 @@ class CoursesController extends AppController {
                 'Course.id' => $this->params['named']['course_id']
             )
         )) > 0;
-        //HG: sets lol
+        //HG: set
         $this->set("course_started", $course_started);
 
         if($course_started) {
