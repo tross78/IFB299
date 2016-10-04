@@ -66,7 +66,7 @@ class User extends AppModel {
 			),
 		),
 		'date_of_birth' => array(
-			'date' => array(
+			'notBlank' => array(
 				'rule' => array('date'),
 				'message' => 'DOB is required'
 				//'allowEmpty' => false,
@@ -122,6 +122,10 @@ public function beforeSave($options = array()) {
         );
     }
     return true;
+}
+public function formatDOB($data) {
+		$data['User']['date_of_birth'] = $data['User']['date_of_birth'].substr(0, 10);
+	return $data;
 }
 
 	// The Associations below have been created with all possible keys, those that are not needed can be removed
