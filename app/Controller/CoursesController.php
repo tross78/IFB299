@@ -183,7 +183,7 @@ class CoursesController extends AppController {
 		$this->Course->id = $id;
 
         //HG: check if the course has already commenced
-        $course_started = $this->Enrolment->find('all', array(
+        $course_started = $this->Enrolment->find('count', array(
             'fields' => array('Course.id'),
             'contain' => array('Course'),
             'conditions' => array(
@@ -191,7 +191,7 @@ class CoursesController extends AppController {
                 'Course.start_date <' => $current_date,
                 'Course.end_date >' => $current_date
             )
-        ));
+        )) > 0;
         //HG: sets lol
         $this->set("course_started", $course_started);
         if($course_started) {
