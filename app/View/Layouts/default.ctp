@@ -76,7 +76,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 					
 						<?php if (AuthComponent::user('id')) { ?>
 							<ul class="nav navbar-nav navbar-right">
-								<li class="navbar-text"><span class="glyphicon glyphicon-user"></span> <a href="/users/view/<?= AuthComponent::user('id') ?>"><?= AuthComponent::user('full_name') ?></a></li>
+								<li class="nav navbar-text" style="margin:0;"><span class="glyphicon glyphicon-user"></span> <a href="/users/view/<?= AuthComponent::user('id') ?>"><?= AuthComponent::user('full_name') ?></a></li>
 								<li class="nav navbr-text" style="margin:0;"><a href="/users/edit/<?= AuthComponent::user('id') ?>">Edit</a></li>
 								<li><?= $this->Html->link('Log out', array('controller' => 'users', 'action' => 'logout')); ?></li>
 							</ul>
