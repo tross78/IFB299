@@ -179,8 +179,24 @@ class CoursesController extends AppController {
 //JM: Editing funciton to delete enrolled users from the course at the same time
 	public function delete($id = null) {
 /*		$query = $this->Course->Enrolments->find('all', array('conditions' => array("Course.id" => $this->params['named']['course_id'])));*/
-
+        $current_date = date('Y-m-d');
 		$this->Course->id = $id;
+
+        //HG: check if the course has already commenced
+        $course_started = $this->Enrolment->find('all', array(
+            'fields' => array('Course.id'),
+            'contain' => array('Course'),
+            'conditions' => array(
+                'Course.id' => $this->params['named']['course_id'],
+                'Course.start_date <' => $current_date,
+                'Course.end_date >' => $current_date
+            )
+        ));
+        //HG: sets lol
+        $this->set("course_started", $course_started);
+        if($course_started) {
+            $this->Flash->error(__('This course has already started. Your enrolment has not be saved.'));
+        }
 		if (!$this->Course->exists()) {
 			throw new NotFoundException(__('Invalid course'));
 		}
