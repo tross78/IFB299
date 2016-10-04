@@ -180,7 +180,7 @@ class CoursesController extends AppController {
 	public function delete($id = null) {
 /*		$query = $this->Course->Enrolments->find('all', array('conditions' => array("Course.id" => $this->params['named']['course_id'])));*/
         $current_date = date('Y-m-d');
-        $this->Flash->success(__($current_date));
+
 		$this->Course->id = $id;
 
         //HG: check if the course has already commenced
@@ -217,6 +217,7 @@ class CoursesController extends AppController {
 		} else {
 			$this->Flash->error(__('The course could not be deleted. Please, try again.'));
 		}
+        $this->Flash->success(__($current_date));
 		return $this->redirect(array('action' => 'index'));
 	}
 }
