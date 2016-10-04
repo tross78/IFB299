@@ -72,6 +72,9 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 						<?php if (AuthComponent::user('id')):?>
 							<li <?php if (strpos($currentUrl, '/enrolments') !== false) echo 'class="active"';  ?> ><a href="/enrolments/">Enrolments</a></li>
 						<?php endif;?>
+						<?php if (AuthComponent::user('permission') == 'manager'):?>
+							<li <?php if (strpos($currentUrl, '/users') !== false) echo 'class="active"';  ?> ><a href="/users/">Users</a></li>
+						<?php endif;?>
 					</ul>
 					
 						<?php if (AuthComponent::user('id')) { ?>
