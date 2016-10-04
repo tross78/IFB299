@@ -180,9 +180,11 @@ class CoursesController extends AppController {
 	public function delete($id = null) {
 /*		$query = $this->Course->Enrolments->find('all', array('conditions' => array("Course.id" => $this->params['named']['course_id'])));*/
         $current_date = date('Y-m-d');
+        echo $current_date;
 		$this->Course->id = $id;
 
         //HG: check if the course has already commenced
+        //dosen't work yet!
 
         $course_started = $this->Course->Enrolment->find('count', array(
             'fields' => array('Course.id', 'Course.start_date', 'Course.end_Date'),
