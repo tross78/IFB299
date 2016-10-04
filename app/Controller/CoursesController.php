@@ -216,6 +216,7 @@ class CoursesController extends AppController {
 		} else {
 			$this->Flash->error(__('The course could not be deleted. Please, try again.'));
 		}
+        $this->Flash->success(__($course_started));
 		return $this->redirect(array('action' => 'index'));
 	}
 }
