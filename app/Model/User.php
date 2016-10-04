@@ -67,7 +67,7 @@ class User extends AppModel {
 		),
 		'date_of_birth' => array(
 			'notBlank' => array(
-				'rule' => array('date'),
+				'rule' => array('notBlank'),
 				'message' => 'DOB is required'
 				//'allowEmpty' => false,
 				//'required' => false,
