@@ -257,7 +257,7 @@ class EnrolmentsController extends AppController {
 		}
 
 		$c_date = date('Y-m-d');
-
+//commented cause it was giving me an error and idk why
 /*		$commenced = $this->Enrolment->Course->find('all', array(
 			'fields' => array('Course.start_date', 'Course.id'),
 					'contain' => array('Course', 'Enrolment'),
@@ -269,7 +269,7 @@ class EnrolmentsController extends AppController {
 */
 
 		$this->request->allowMethod('post', 'delete');
-		if (!$commenced){
+//		if (!$commenced){
 			if ($this->Enrolment->delete()) {
 				$this->waitlistEnrol();
 				$this->request->data['Enrolment']['waitlist'] = 0;
@@ -277,9 +277,9 @@ class EnrolmentsController extends AppController {
 			} else {
 				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
 			}
-		} else {
-			$this->Flash->error(_('You cannot withdraw from a course after it has commenced.'));
-		}
+//		} else {
+//			$this->Flash->error(_('You cannot withdraw from a course after it has commenced.'));
+//		}
 		return $this->redirect(array('action' => 'index'));
 	}
 
