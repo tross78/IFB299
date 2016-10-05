@@ -200,11 +200,13 @@ class EnrolmentsController extends AppController {
 
 		// if course_id set in params show just that course
 		if (isset($this->params['named']['course_id'])) {
-			$courses = $this->Enrolment->Course->find('list', array(
+			$courses = $this->Enrolment->Course->find('all', array(
 				'conditions' => array(
 					"Course.id" => $this->params['named']['course_id'],
+					'limit'=>1
 				)
 			));
+			
 		} else {
 			// if not, show every course
 			$courses = $this->Enrolment->Course->find('list');
