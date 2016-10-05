@@ -292,14 +292,14 @@ class EnrolmentsController extends AppController {
 	public function waitlistEnrol(){
 		$studentCap = 2;
 		$longest = $this->Enrolment->find('first', array(
-					'fields' => array('MAX(Enrolment.id)', 'Enrolment.course_id'),
+					'fields' => array('MAX(Enrolment.id) AS id', 'Enrolment.course_id'),
 					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.id' => 1,
 						"Course.id" => $this->params['named']['course_id']
 					))
 			);
-			echo $this->element('sql_dump');
+			echo $this->Enrolment('sql_dump');
 
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
@@ -310,10 +310,10 @@ class EnrolmentsController extends AppController {
 						"Course.id" => $this->params['named']['course_id']
 					))
 			) >= $studentCap;
-			echo $this->element('sql_dump');
+			echo $this->Enrolment('sql_dump');
 
 			$this->set("course_full", $course_full);
-
+			$this->flash->success(__($course_full));
 			if(!$course_full) {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($longest->request->data)) {
