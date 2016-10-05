@@ -272,6 +272,7 @@ class EnrolmentsController extends AppController {
 		if (!$commenced){
 			if ($this->Enrolment->delete()) {
 				$this->waitlistEnrol();
+				$this->request->data['Enrolment']['waitlist'] = 0;
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
 				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
@@ -291,7 +292,7 @@ class EnrolmentsController extends AppController {
 	public function waitlistEnrol(){
 		$studentCap = 2;
 		$longest = $this->Enrolment->Course->find('first', array(
-					'fields' => array('MAX(Enrolment.id) as id', 'Course.id'),
+					'fields' => array('MAX(Enrolment.id)', 'Course.id'),
 					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.id' => 1,
