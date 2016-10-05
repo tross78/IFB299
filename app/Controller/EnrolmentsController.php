@@ -203,8 +203,8 @@ class EnrolmentsController extends AppController {
 			$courses = $this->Enrolment->Course->find('all', array(
 				'conditions' => array(
 					"Course.id" => $this->params['named']['course_id'],
-					'limit'=>1
-				)
+				),
+				'limit'=>1
 			));
 			
 		} else {
