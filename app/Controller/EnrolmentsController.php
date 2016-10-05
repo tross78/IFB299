@@ -306,7 +306,6 @@ class EnrolmentsController extends AppController {
 					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.role' => 'student',
-						'User.gender' => $user_gender,
 						"Course.id" => $this->params['named']['course_id']
 					))
 			) >= $studentCap;
