@@ -299,7 +299,7 @@ class EnrolmentsController extends AppController {
 						"Course.id" => $this->params['named']['course_id']
 					))
 			);
-			echo $this->Enrolment('sql_dump');
+			//echo $this('sql_dump');
 
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
@@ -310,7 +310,7 @@ class EnrolmentsController extends AppController {
 						"Course.id" => $this->params['named']['course_id']
 					))
 			) >= $studentCap;
-			echo $this->Enrolment('sql_dump');
+		//	echo $this->Enrolment('sql_dump');
 
 			$this->set("course_full", $course_full);
 			$this->flash->success(__($course_full));
