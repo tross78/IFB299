@@ -31,7 +31,7 @@
 		echo $this->Form->input('residential_address', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('dietary_requirements', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('medical_requirements', array('class' => 'form-control', 'div' => 'form-group'));
-		$permission_options = array('student' => 'student&nbsp;&nbsp;','manager' => 'manager');
+		$permission_options = array('student' => 'student&nbsp;&nbsp;','manager' => 'manager&nbsp;&nbsp;','terminated' => 'terminated',);
 		$permission_attributes = array(
 			'legend' => false,
 			'type' => 'radio',
