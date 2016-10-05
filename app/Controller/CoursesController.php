@@ -202,7 +202,7 @@ class CoursesController extends AppController {
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Course->delete()) {
 
-			$this->Courses->Enrolments->deleteAll(['Course.id' => $id], $cascade = false, $callbacks = false;);
+			$this->Courses->Enrolments->deleteAll(['Course.id' => $id], $cascade = false, $callbacks = false);
 
 			$this->Flash->success(__('The course has been deleted.'));
 		} else {
