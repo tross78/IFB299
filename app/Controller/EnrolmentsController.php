@@ -258,7 +258,7 @@ class EnrolmentsController extends AppController {
 
 		$c_date = date('Y-m-d');
 
-		$commenced = $this->Enrolment->Course->find('all', array(
+/*		$commenced = $this->Enrolment->Course->find('all', array(
 			'fields' => array('Course.start_date', 'Course.id'),
 					'contain' => array('Course', 'Enrolment'),
 					'conditions' => array(
@@ -266,7 +266,7 @@ class EnrolmentsController extends AppController {
 						//'Course.id' => $this->params['named']['course_id']
 					))
 			);
-
+*/
 
 		$this->request->allowMethod('post', 'delete');
 		if (!$commenced){
