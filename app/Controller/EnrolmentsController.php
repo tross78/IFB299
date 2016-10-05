@@ -257,6 +257,7 @@ class EnrolmentsController extends AppController {
 		}
 
 		$c_date = date('Y-m-d');
+
 //commented cause it was giving me an error and idk why
 /*		$commenced = $this->Enrolment->Course->find('all', array(
 			'fields' => array('Course.start_date', 'Course.id'),
@@ -271,7 +272,7 @@ class EnrolmentsController extends AppController {
 		$this->request->allowMethod('post', 'delete');
 //		if (!$commenced){
 			if ($this->Enrolment->delete()) {
-				$this->waitlistEnrol();
+				waitlistEnrol();
 				$this->request->data['Enrolment']['waitlist'] = 0;
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
