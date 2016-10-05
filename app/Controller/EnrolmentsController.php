@@ -260,7 +260,7 @@ class EnrolmentsController extends AppController {
 
 		$commenced = $this->Enrolment->Course->find('all', array(
 			'fields' => array('Course.start_date', 'Course.id'),
-					'contain' => array('Enrolment'),
+					'contain' => array('Course'),
 					'conditions' => array(
 						'DATE(Course.start_date) < ' => $c_date,
 						'Course.id' => $this->params['named']['course_id']
