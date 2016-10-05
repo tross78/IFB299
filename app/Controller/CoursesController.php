@@ -202,7 +202,7 @@ class CoursesController extends AppController {
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Course->delete()) {
 
-			$this->Course->Enrolment->deleteAll(array('Enrolment.course_id' => $id, false, false))
+			$this->Course->Enrolment->deleteAll(array('Enrolment.course_id' => $id, false, false));
 
 			$this->Flash->success(__('The course has been deleted.'));
 		} else {
