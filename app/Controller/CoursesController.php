@@ -181,7 +181,7 @@ class CoursesController extends AppController {
         //HG: check if the course has already commenced
         //dosen't work yet!
 
-        $course_started = $this->Course->Enrolment->find('count', array(
+/*        $course_started = $this->Course->Enrolment->find('count', array(
             'fields' => array('Course.id', 'Course.start_date', 'Course.end_date'),
             'contain' => array('Course'),
             'conditions' => array(
@@ -191,14 +191,14 @@ class CoursesController extends AppController {
             )
         )) > 0;
         //HG: set
-        $this->set("course_started", $course_started);
+        $this->set("course_started", $course_started);*/
 
-        if($course_started) {
+/*        if($course_started) {
             throw new CourseStartedException(__('Course already started'));
         }
 		if (!$this->Course->exists()) {
 			throw new NotFoundException(__('Invalid course'));
-		}
+		}*/
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Course->delete()) {
 
