@@ -1,6 +1,5 @@
 <?php
 App::uses('AppController', 'Controller');
-use Cake\ORM\TableRegistry;
 /**
  * Enrolments Controller
  *
@@ -68,20 +67,15 @@ class EnrolmentsController extends AppController {
  * @return void
  */
 	public function add() {
-		//AG: the following are the capacities for each possible enrolment role in a course, (students -> kitchen-helpers -> assistant-teachers -> managers)
-		$studentCap = 2;	//set to 2 for testing purposes to test '$course_full', normal student capacity will be 26.
-		$kitchenCap = 1; //set to 1 for testing purposes to test '$kitchen_full', normal student capacity will be 5.
-		$teacherCap = 1; //normal assistant-teacher capacity is 1.
-		$managerCap = 1; //normal manager capacity is 1.
+		$studentCap = 2;	//lower this value to test full students
+		$waitCap = 1;	//lower this value to test full waitlist
+		$managerCap = 1; //lower this value to test full managers
+		$teacherCap = 1; //lower this value to test full assitant-teachers
+		$kitchenCap = 1; //lower this value to test full kitchen-helpers
 
-		//AG: this sets the capacity of the waitlist for students when the sudent capacity has been met. Only students get a waitlisted.
-		$waitCap = 1;	//set to 1 for testing purposes to test '$wait_full', normal waitlist capacity will be 7.
-
-		//AG: Grabs the gender of the user currently logged in.
 		$user_gender = AuthComponent::user('gender');
 
 
-		//AG: Unused variable to determine wether the current course is of mixed gender. May need it in the future though.
 		$is_mixed = $this->Enrolment->Course->find('all', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Enrolment'),
@@ -91,7 +85,7 @@ class EnrolmentsController extends AppController {
 					))
 			);
 
-		//AG: says 'course_full' but is actually to check if the number of students enrolled in this course has reached the student capacity.
+		//TODO: try to move this to the POST check below, in case params are null
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course', 'User'),
@@ -102,7 +96,6 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $studentCap;
 
-		//AG: to check if the number of students on the waitlist for this course has reached the waitlist capacity.
 		$wait_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course'),
@@ -112,7 +105,6 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $waitCap;
 
-		//AG: to check if the number of managers enrolled in this course has reached the manager capacity.
 		$manager_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course', 'User'),
@@ -123,7 +115,6 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $managerCap;
 
-		//AG: to check if the number of assistant-teachers enrolled in this course has reached the teacher capacity.
 		$teacher_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course', 'User'),
@@ -134,7 +125,6 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $teacherCap;
 
-		//AG: to check if the number of kitchen-helpers enrolled in this course has reached the kitchen capacity.
 		$kitchen_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course', 'User'),
@@ -145,37 +135,36 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $kitchenCap;
 
-		//AG: sets
 		$this->set("user_gender", $user_gender);
 		$this->set("is_mixed", $is_mixed);
+
 		$this->set("course_full", $course_full);
 		$this->set("wait_full", $wait_full);
 		$this->set("manager_full", $manager_full);
 		$this->set("teacher_full", $teacher_full);
 		$this->set("kitchen_full", $kitchen_full);
 
-		//AG: post conditions after the enrolment form has been submitted
 		if ($this->request->is('post')) {
 
-		//AG: checks to see what the current user has attempted to enroll as
-		$is_student = $this->request->data['Enrolment']['role'] == 'student';
+
+		$is_student = $this->request->data['Enrolment']['role'] == 'student';	//seems to be working.
 		$is_manager = $this->request->data['Enrolment']['role'] == 'manager';
 		$is_teacher = $this->request->data['Enrolment']['role'] == 'assistant-teacher';
 		$is_kitchen = $this->request->data['Enrolment']['role'] == 'kitchen-helper';
 
-		//AG: More sets
 		$this->set("is_student", $is_student);
 		$this->set("is_manager", $is_manager);
 		$this->set("is_teacher", $is_teacher);
 		$this->set("is_kitchen", $is_kitchen);
 
 
-		//AG: Code to set waitlist to 1 if course is full.
-		if ($course_full && $is_student) {
+		//Code to set waitlist to 1 if course is full.
+		if ($course_full && $is_student) {		//TR: rewrote is_student so may work
 			$this->request->data['Enrolment']['waitlist'] = 1;
 		}
 
-	//AG: The following displays error messages to the user if they are unable to enroll. Otherwise, it enrols them and saves the data in the database.
+	//AG: was going to do the following for each type of server but that won't work, we need to find out what the current user is enrolling as and then determine what the checks are. eg, we should only check if the manager roles are full if the current user is trying to enrole as a manager.
+
 			if ($manager_full && $is_manager){
 				$this->Flash->error(__('This course is full. There is no waitlist for managers.'));
 			} elseif ($teacher_full && $is_teacher){
@@ -259,7 +248,7 @@ class EnrolmentsController extends AppController {
  * @return void
  */
 //JM: added check to make sure you cannot withdraw from a courese
-//once the start date has been reached, or passed (BUGGED - needs editing)
+//once the start date has been reached, or passed.
 
 	public function delete($id = null) {
 		$this->Enrolment->id = $id;
@@ -293,7 +282,7 @@ class EnrolmentsController extends AppController {
 	}
 
 /**
- * delete method
+ * waitlistAutoEnrol method
  *
  * @return void
  */
@@ -342,50 +331,4 @@ class EnrolmentsController extends AppController {
 		);
 		return null; */
 	}
-
-	//checking which courses have a start date is 10 days from the current date
-	//this function has to be automatically executed each day, cronjob looked like a good method
-	public function checkForConfirmationDate() {
-
-		//boolean variable that is true if current date matches desired date to send out confirmation email
-		$dateMatches = FALSE;
-
-		//current day, year and month
-		$current_day = date('d');
-		$current_month = date('m');
-		$current_year = date('Y');
-
-		//get the start date of a course
-		$start_date = array('fields' => array('Course.start_date'));
-
-		//divide the start date of the course into individual variables
-		$start_day = date('d', $start_date);
-		$start_month = date('m', $start_date);
-		$start_year = date('Y', $start_date);
-
-		//check that is the same month and year, and current day is 10 days prior to start day
-		if ($current_month == $start_month && $current_year == $start_year && $current_day == $start_day - 10) {
-			$dateMatches = TRUE;
-		}
-
-		//check which course the matched date applies to, and send emails to participants enrolled in that course
-		$query = TableRegistry::get('courses')->find();
-
-		$row_count = 3; //needs to be based on how many participants enrolled in the relative course
-		for($i = 0; $i < $row_count; $i++) { //maybe using a foreach instead would be better, not sure how to yet
-			$Email = new CakeEmail('gmail');
-			$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
-			$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));
-			$Email->returnPath('admin@team-hawk.herokuapp.com');
-			$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
-			$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
-			$Email->to($this->request->data['User']['email_address']);
-			$Email->subject('About');
-			$Email->send('Hi '. $this->request->data['User']['first_name'] . ', Welcome to Hawke Meditation Centre!');
-		}
-
-
-
-	}
-
 }
