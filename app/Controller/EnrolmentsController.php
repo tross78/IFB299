@@ -207,7 +207,7 @@ class EnrolmentsController extends AppController {
 				),
 				'limit'=>1
 			));
-			
+
 		} else {
 			// if not, show every course
 			$courses = $this->Enrolment->Course->find('list');
@@ -275,7 +275,7 @@ class EnrolmentsController extends AppController {
 		$this->request->allowMethod('post', 'delete');
 //		if (!$commenced){
 			if ($this->Enrolment->delete()) {
-				waitlistEnrol();
+				$this->waitlistEnrol();
 				$this->request->data['Enrolment']['waitlist'] = 0;
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
@@ -294,6 +294,7 @@ class EnrolmentsController extends AppController {
  */
 	//a function to handle the enrolment of the user who has been on the waitlist for the longest
 	public function waitlistEnrol(){
+		echo "it's ya boy";
 		$studentCap = 2;
 		$longest = $this->Enrolment->find('first', array(
 					'fields' => array('MAX(Enrolment.id) AS id', 'Enrolment.course_id'),
