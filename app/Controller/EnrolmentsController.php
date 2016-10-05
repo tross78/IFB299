@@ -14,8 +14,8 @@ class EnrolmentsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-	
-	
+
+
 	public function isAuthorized($user) {
 
 		if (in_array($this->action, array('add', 'edit', 'delete'))) {
@@ -24,7 +24,7 @@ class EnrolmentsController extends AppController {
 			} else {
 				return false;
 			}
-			
+
 		}
 
 		return parent::isAuthorized($user);
@@ -72,10 +72,10 @@ class EnrolmentsController extends AppController {
 		$managerCap = 1; //lower this value to test full managers
 		$teacherCap = 1; //lower this value to test full assitant-teachers
 		$kitchenCap = 1; //lower this value to test full kitchen-helpers
-		
+
 		$user_gender = AuthComponent::user('gender');
-		
-		
+
+
 		$is_mixed = $this->Enrolment->Course->find('all', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Enrolment'),
@@ -84,7 +84,7 @@ class EnrolmentsController extends AppController {
 						"Course.id" => $this->params['named']['course_id']
 					))
 			);
-		
+
 		//TODO: try to move this to the POST check below, in case params are null
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
@@ -95,7 +95,7 @@ class EnrolmentsController extends AppController {
 						"Course.id" => $this->params['named']['course_id']
 					))
 			) >= $studentCap;
-		
+
 		$wait_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course'),
@@ -104,7 +104,7 @@ class EnrolmentsController extends AppController {
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $waitCap;
-		
+
 		$manager_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course', 'User'),
@@ -114,7 +114,7 @@ class EnrolmentsController extends AppController {
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $managerCap;
-			
+
 		$teacher_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course', 'User'),
@@ -124,7 +124,7 @@ class EnrolmentsController extends AppController {
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $teacherCap;
-			
+
 		$kitchen_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
 					'contain' => array('Course', 'User'),
@@ -134,16 +134,16 @@ class EnrolmentsController extends AppController {
 						'Course.id' => $this->params['named']['course_id']
 					))
 			) >= $kitchenCap;
-			
+
 		$this->set("user_gender", $user_gender);
 		$this->set("is_mixed", $is_mixed);
-		
+
 		$this->set("course_full", $course_full);
 		$this->set("wait_full", $wait_full);
 		$this->set("manager_full", $manager_full);
 		$this->set("teacher_full", $teacher_full);
 		$this->set("kitchen_full", $kitchen_full);
-		
+
 		if ($this->request->is('post')) {
 
 
@@ -157,14 +157,14 @@ class EnrolmentsController extends AppController {
 		$this->set("is_teacher", $is_teacher);
 		$this->set("is_kitchen", $is_kitchen);
 
-							
+
 		//Code to set waitlist to 1 if course is full.
 		if ($course_full && $is_student) {		//TR: rewrote is_student so may work
 			$this->request->data['Enrolment']['waitlist'] = 1;
 		}
 
 	//AG: was going to do the following for each type of server but that won't work, we need to find out what the current user is enrolling as and then determine what the checks are. eg, we should only check if the manager roles are full if the current user is trying to enrole as a manager.
-	
+
 			if ($manager_full && $is_manager){
 				$this->Flash->error(__('This course is full. There is no waitlist for managers.'));
 			} elseif ($teacher_full && $is_teacher){
@@ -197,7 +197,7 @@ class EnrolmentsController extends AppController {
 				))
 				) > 0;
 		$this->set('is_old', $old_compare);
-		
+
 		// if course_id set in params show just that course
 		if (isset($this->params['named']['course_id'])) {
 			$courses = $this->Enrolment->Course->find('list', array(
@@ -257,7 +257,7 @@ class EnrolmentsController extends AppController {
 		}
 
 		$c_date = date('Y-m-d');
-		
+
 		$commenced = $this->Enrolment->Course->find('all', array(
 			'fields' => array('Course.start_date', 'Course.id'),
 					'contain' => array('Enrolment'),
@@ -280,7 +280,7 @@ class EnrolmentsController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
-	
+
 /**
  * waitlistAutoEnrol method
  *
@@ -288,12 +288,47 @@ class EnrolmentsController extends AppController {
  */
 	//a function to handle the enrolment of the user who has been on the waitlist for the longest
 	public function waitlistEnrol(){
-		//$enrollee = 
+		$studentCap = 2;
+		$longest = $this->Enrolment->Course->find('first', array(
+					'fields' => array('MAX(Enrolment.id) as id', 'Course.id'),
+					'contain' => array('Course', 'User'),
+					'conditions' => array(
+						'Enrolment.id' => 1,
+						"Course.id" => $this->params['named']['course_id']
+					))
+			);
+			echo $this->element('sql_dump');
+
+		$course_full = $this->Enrolment->find('count', array(
+					'fields' => array('Course.id'),
+					'contain' => array('Course', 'User'),
+					'conditions' => array(
+						'Enrolment.role' => 'student',
+						'User.gender' => $user_gender,
+						"Course.id" => $this->params['named']['course_id']
+					))
+			) >= $studentCap;
+			echo $this->element('sql_dump');
+
+			$this->set("course_full", $course_full);
+
+			if(!$course_full) {
+				$this->Enrolment->create();
+				if ($this->Enrolment->save($longest->request->data)) {
+					$this->Flash->success(__('The enrolment has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
+				}
+			}
+
+		/*
+		$enrollee =
 		echo $this->Enrolment->field(
 			'course_id',
 			array('created <' => date('Y-m-d H:i:s')),
 			'created ASC'
 		);
-		//return null;
+		return null; */
 	}
 }
