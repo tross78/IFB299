@@ -310,7 +310,6 @@ class EnrolmentsController extends AppController {
 		//	echo $this->Enrolment('sql_dump');
 
 			$this->set("course_full", $course_full);
-			$this->flash->success(__($course_full));
 			if(!$course_full) {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($longest->request->data)) {
