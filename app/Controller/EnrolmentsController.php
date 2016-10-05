@@ -263,7 +263,7 @@ class EnrolmentsController extends AppController {
 					'contain' => array('Course'),
 					'conditions' => array(
 						'DATE(Course.start_date) < ' => $c_date,
-						'Course.id' => $this->params['named']['course_id']
+						//'Course.id' => $this->params['named']['course_id']
 					))
 			);
 
@@ -296,7 +296,6 @@ class EnrolmentsController extends AppController {
 					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.id' => 1,
-						"Course.id" => $this->params['named']['course_id']
 					))
 			);
 			//echo $this('sql_dump');
@@ -306,7 +305,6 @@ class EnrolmentsController extends AppController {
 					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.role' => 'student',
-						"Course.id" => $this->params['named']['course_id']
 					))
 			) >= $studentCap;
 		//	echo $this->Enrolment('sql_dump');
