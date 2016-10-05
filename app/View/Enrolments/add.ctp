@@ -42,7 +42,7 @@
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
 
-		echo $enrolment['Course']['start_date'];
+		echo $courses['Course']['start_date'];
 		
 		if (AuthComponent::user('permission') == 'manager') {
 			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper', 'manager' => 'manager');
