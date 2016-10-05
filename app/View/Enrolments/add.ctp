@@ -36,13 +36,13 @@
 		echo $this->Form->hidden('user_id', array('value'=>$authUser['id']));
 		echo $this->Form->input('course_id', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('enrolment_date', array(
-		'selected' => $courses['start_date'],
+		'selected' => $courses['Course']['start_date'],
         'class' => 'form-control',
         'placeholder' => 'Enrolment Date',
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
 
-		echo $courses['start_date'];
+		echo $courses['Course']['start_date'];
 		
 		if (AuthComponent::user('permission') == 'manager') {
 			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper', 'manager' => 'manager');
