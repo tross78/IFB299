@@ -29,6 +29,13 @@ public $validate = array(
 		)
 );
 
+public function beforeSave($options = array()) {
+    if (empty($this->id) && empty($this->data[$this->alias][$this->primaryKey])) {
+        $this->data[$this->alias]['enrolment_date'] = $course_enrolment_date;
+    }
+    return true;
+}
+
 /**
  * belongsTo associations
  *
