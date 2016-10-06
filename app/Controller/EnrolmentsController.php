@@ -206,7 +206,7 @@ class EnrolmentsController extends AppController {
 					"Course.id" => $this->params['named']['course_id'],
 				),
 				'limit'=>1
-			));
+			))[0];
 
 		} else {
 			// if not, show every course
