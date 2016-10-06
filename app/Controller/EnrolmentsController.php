@@ -206,7 +206,7 @@ class EnrolmentsController extends AppController {
 				'conditions' => array(
 					"Course.id" => $this->params['named']['course_id'],
 				),
-				'fields' => array('Course.id', 'Course.start_date'),
+				'fields' => array('Course.id', 'Course.name', 'Course.start_date'),
 				'limit'=>1
 			));
 
