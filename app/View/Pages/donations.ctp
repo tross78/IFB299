@@ -1,3 +1,61 @@
+<?php
+
+public function confirmationEmail() {
+
+  //ZT: the date the email should be sent must be 10 days prior to the starting course date,
+  //    therefore the starting date must equal the current date plus 10 days
+  $current_date_plus_ten = date('Y-m-d', strtotime('+10 days'));
+
+  //ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
+  // Extraction: from COURSES table
+  $retrieveStartDates = $this->Enrolment->Course->find('all', array(
+    'fields' => array('Course.id'),
+        'conditions' => array(
+          'DATE(Course.start_date) == ' => $current_date_plus_ten,
+        ))
+    );
+
+  //ZT: find user ID's that have the same course Id has the one that relates to start date retrieved
+  // Extraction: from ENROLMENTS table
+  $retrieveUserIDs = $this->Enrolment->find('all', array(
+    'fields' => array('Enrolment.course_id', 'Enrolment.user_id'),
+        'conditions' => array(
+          'Enrolment.course_id == ' => $retrieveStartDates,
+        ))
+    );
+
+  //ZT: find emails of users which have a user ID in the '$retrieveUserEmail' array
+  // Extraction: from USERS table
+  for ($i = 0; $i < sizeof($retrieveUserIDs); $i++) {
+
+    $retrieveUserEmail = $this->Enrolment->User->find('all', array(
+      'fields' => array('User.email_address'),
+          'conditions' => array(
+            'User.id == ' => $retrieveUserIDs[$i],
+          ))
+      );
+
+      $Email = new CakeEmail('gmail');
+  		$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
+  		$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));
+  		$Email->returnPath('admin@team-hawk.herokuapp.com');
+  		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
+  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
+  		$Email->to($retrieveUserEmail[0]);
+  		$Email->subject('About');
+  		$Email->send('Hi, this is a confirmation email for your Meditation course.');
+
+  }
+
+}
+
+if(isset($_POST['select'])){
+    confirmationEmail();
+}
+
+?>
+
+
 <div class="row top30">
   <div class="col-sm-12 well">
   <h2>Donations</h2>
@@ -19,4 +77,7 @@
       <h3>Building Fund</h3>
       <p>Donations made into the "Building Fund" go towards covering the costs of water/electrical bills, building maintenance, renovations, and even entirely new facilities for the centre. We have big plans for the improvement and expansion of our centre and we hope through its use, we can give back to the community.</p>
     </div>
+    <form>
+      <input type="submit" name="select" value="select" >
+    </form>
 </div>
