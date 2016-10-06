@@ -30,7 +30,7 @@ public $validate = array(
 );
 
 public function beforeSave($options = array()) {
-    	$this->data[$this->alias]['enrolment_date'] = $this->course_enrolment_date;
+    	$this->data[$this->alias]['enrolment_date'] = $this->data[$this->alias]['course_enrolment_date'];
     return true;
 }
 
