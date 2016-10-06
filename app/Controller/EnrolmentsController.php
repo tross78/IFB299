@@ -14,7 +14,6 @@ class EnrolmentsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-	public $course_enrolment_date;
 
 	public function isAuthorized($user) {
 
@@ -206,7 +205,7 @@ class EnrolmentsController extends AppController {
 					"Course.id" => $this->params['named']['course_id'],
 				)
 			));
-			$course_enrolment_date = $this->Enrolment->Course->find('first', array(
+			$this->Enrolment->course_enrolment_date = $this->Enrolment->Course->find('first', array(
 				'fields' => array('Course.start_date'),
 				'conditions' => array(
 					"Course.id" => $this->params['named']['course_id'],
