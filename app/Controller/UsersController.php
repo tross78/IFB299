@@ -54,11 +54,11 @@ class UsersController extends AppController {
 	}
 
 	public function login() {
-		/*if ($user['permission'] == 'terminated'){
+		if ($user['permission'] == 'terminated'){
 			$this->Flash->error(__('This account has been terminated by a manager. You will not be able to login.'));
-		}*/
+		}
 
-		if ($this->request->is('post')) {
+		elseif ($this->request->is('post')) {
 			if ($this->Auth->login()) {
 				return $this->redirect($this->Auth->redirectUrl());
 			}
