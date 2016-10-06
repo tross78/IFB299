@@ -211,7 +211,7 @@ class EnrolmentsController extends AppController {
 				'conditions' => array(
 					"Course.id" => $this->params['named']['course_id'],
 				)
-			));
+			))['Course']['start_date'];
 		} else {
 			// if not, show every course
 			$courses = $this->Enrolment->Course->find('list');
