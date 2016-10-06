@@ -197,24 +197,26 @@ class EnrolmentsController extends AppController {
 				))
 				) > 0;
 		$this->set('is_old', $old_compare);
+		$course_enrolment_date = NULL;
 
 		// if course_id set in params show just that course
 		if (isset($this->params['named']['course_id'])) {
 			$courses = $this->Enrolment->Course->find('list', array(
-				'keyField' => 'id',
-				'valueField' => 'name',
 				'conditions' => array(
 					"Course.id" => $this->params['named']['course_id'],
-				),
-				'fields' => array('Course.id', 'Course.name', 'Course.start_date'),
-				'limit'=>1
+				)
 			));
-
+			$course_enrolment_date = $this->Enrolment->Course->find('first', array(
+				'fields' => array('Course.start_date'),
+				'conditions' => array(
+					"Course.id" => $this->params['named']['course_id'],
+				)
+			));
 		} else {
 			// if not, show every course
 			$courses = $this->Enrolment->Course->find('list');
 		}
-		$this->set(compact('users', 'courses'));
+		$this->set(compact('users', 'courses', 'course_enrolment_date'));
 
 	}
 
