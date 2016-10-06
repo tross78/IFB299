@@ -8,8 +8,6 @@ App::uses('AppModel', 'Model');
  */
 class Enrolment extends AppModel {
 
-public $course_enrolment_date;
-
 	// The Associations below have been created with all possible keys, those that are not needed can be removed
 
 public $validate = array(
@@ -31,7 +29,7 @@ public $validate = array(
 );
 
 public function beforeSave($options = array()) {
-    	$this->request->data[$this->alias]['enrolment_date'] = $this->course_enrolment_date;
+    	$this->data[$this->alias]['enrolment_date'] = $this->data['Course']['start_date'];
     return true;
 }
 
