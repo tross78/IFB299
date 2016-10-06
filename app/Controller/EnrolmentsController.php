@@ -212,7 +212,7 @@ class EnrolmentsController extends AppController {
 					"Course.id" => $this->params['named']['course_id'],
 				)
 			))['Course']['start_date'];
-			$this->request->data['Enrolment']['course_start_date'] = $course_enrolment_date;
+			$this->Enrolment->course_enrolment_date = $course_enrolment_date;
 		} else {
 			// if not, show every course
 			$courses = $this->Enrolment->Course->find('list');
