@@ -206,7 +206,7 @@ class EnrolmentsController extends AppController {
 				)
 			));
 
-			$this->request->data['Course']['start_date'] = $this->Enrolment->Course->find('first', array(
+			$this->request->data['Enrolment']['course_start_date'] = $this->Enrolment->Course->find('first', array(
 				'fields' => array('Course.start_date'),
 				'conditions' => array(
 					"Course.id" => $this->params['named']['course_id'],
