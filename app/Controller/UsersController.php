@@ -54,9 +54,12 @@ class UsersController extends AppController {
 	}
 
 	public function login() {
+
+		$permision_check = AuthComponent::user('permission');	
+
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
-				if ($user['permission'] == 'terminated'){
+				if ($permision_check == 'terminated'){
 					$this->Flash->error(__('This account has been terminated by a manager. You will not be able to login.'));
 				}
 				else {
