@@ -60,14 +60,13 @@ class UsersController extends AppController {
 
 				if ($permision_check == 'terminated'){
 					$this->Flash->error(__('This account has been terminated by a manager. You will not be able to login.'));
-				}
-				else if{
-					return $this->redirect($this->Auth->redirectUrl());
+					logout();
 				}
 				else {
-					$this->Flash->error(__('Invalid username or password, try again'));
+					return $this->redirect($this->Auth->redirectUrl());
 				}
 			}
+			$this->Flash->error(__('Invalid username or password, try again'));
 		}
 	}
 
