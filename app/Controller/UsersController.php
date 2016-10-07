@@ -64,7 +64,7 @@ class UsersController extends AppController {
 
 				if ($permision_check == 'terminated'){
 					$this->Flash->error(__('This account has been terminated by a manager. You will not be able to login.'));
-					logout();
+					return $this->redirect($this->Auth->logout());
 				}
 				else {
 					return $this->redirect($this->Auth->redirectUrl());
