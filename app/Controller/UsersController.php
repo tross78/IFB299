@@ -54,19 +54,14 @@ class UsersController extends AppController {
 	}
 
 	public function login() {
-
-		$permission_check = $this->User->find('all', array(
-			'fields' => array('Permission'),
-			'conditions' => array(
-				'username' => $this->params['named']['username'])));
-
 		if ($this->request->is('post')) {
-			if ($permission_check == 'terminated'){
-				$this->Flash->error(__('This account has been terminated by a manager. You will not be able to login.'));
-			}
-
-			elseif ($this->Auth->login()) {
-				return $this->redirect($this->Auth->redirectUrl());
+			if ($this->Auth->login()) {
+				if ($user['permission'] == 'terminated'){
+					$this->Flash->error(__('This account has been terminated by a manager. You will not be able to login.'));
+				}
+				else {
+					return $this->redirect($this->Auth->redirectUrl());
+				}
 			}
 			$this->Flash->error(__('Invalid username or password, try again'));
 		}
