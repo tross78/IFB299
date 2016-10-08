@@ -40,7 +40,7 @@
         'class' => 'form-control',
         'placeholder' => 'Enrolment Date',
 		'dateFormat' => 'DYM',
-		'minYear' => date('Y'),
+		'minYear' => date('Y'),	//unfortunately, there is no built-in minMonth or minDay, Don't really need it here though seeing as we will parse in the current date every time.
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
 		
