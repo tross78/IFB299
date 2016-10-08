@@ -39,6 +39,8 @@
 		'selected' => $course_enrolment_date,
         'class' => 'form-control',
         'placeholder' => 'Enrolment Date',
+		'dateFormat' => 'DYM',
+		'minYear' => date('Y'),
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
 		
