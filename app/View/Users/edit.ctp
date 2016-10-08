@@ -31,7 +31,7 @@
 		echo $this->Form->input('residential_address', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('dietary_requirements', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->input('medical_requirements', array('class' => 'form-control', 'div' => 'form-group'));
-		$permission_options = array('student' => 'student&nbsp;&nbsp;','manager' => 'manager&nbsp;&nbsp;','terminated' => 'terminated',);
+		$permission_options = array('student' => 'student&nbsp;&nbsp;','server' => 'server&nbsp;&nbsp;','manager' => 'manager&nbsp;&nbsp;','terminated' => 'terminated',);
 		$permission_attributes = array(
 			'legend' => false,
 			'type' => 'radio',
@@ -41,6 +41,7 @@
 			'value' => 'student'
 		);
 		// only managers can elevate permissions
+		// Would like to make it that managers can't edit other managers but not really a priority.
 		if (AuthComponent::user('permission') == 'manager') {
 			echo $this->Form->input('permission', $permission_attributes);
 		}
