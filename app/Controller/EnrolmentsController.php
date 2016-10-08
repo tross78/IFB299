@@ -230,6 +230,10 @@ class EnrolmentsController extends AppController {
 					'Course.days' => 'ten'
 				))
 				) > 0;
+		//added this so if they are old they will be given server permissions. If anything is broken this is it. 
+		if ($old_compare) {
+			$this->Enrolment->User->saveField('permission',"server"); 
+		}
 		$this->set('is_old', $old_compare);
 		$course_enrolment_date = NULL;
 
