@@ -79,7 +79,7 @@ class EnrolmentsController extends AppController {
 		//AG: Grabs the gender of the user currently logged in.
 		$user_gender = AuthComponent::user('gender');
 
-
+		
 		//AG: Unused Variable to determine wether the current course is of mixed gender. May need it in the future though.
 		$is_mixed = $this->Enrolment->Course->find('all', array(
 					'fields' => array('Course.id'),
@@ -231,8 +231,9 @@ class EnrolmentsController extends AppController {
 				))
 				) > 0;
 		//added this so if they are old they will be given server permissions. If anything is broken this is it. 
-		if ($old_compare) {
-			$this->Enrolment->User->saveField('permission',"server"); 
+		if (($old_compare) && ($user_permission == "student")) {
+			$this->User->id = AuthComponent::user('id');
+			$this->User->saveField('permission',"server"); 
 		}
 		$this->set('is_old', $old_compare);
 		$course_enrolment_date = NULL;
