@@ -17,11 +17,6 @@ export default class HomeCarousel extends React.Component {
         </CarouselCaption>
       </CarouselItem>
       <CarouselItem>
-        <img width={1200} height={300} alt=" " src="http://i.imgur.com/aau5RP1.jpg"/>
-        <CarouselCaption>
-        </CarouselCaption>
-      </CarouselItem>
-      <CarouselItem>
         <img width={1200} height={300} alt=" " src="http://i.imgur.com/eV91kxn.jpg"/>
         <CarouselCaption>
         </CarouselCaption>
