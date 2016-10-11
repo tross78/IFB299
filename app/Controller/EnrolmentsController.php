@@ -351,6 +351,7 @@ class EnrolmentsController extends AppController {
 						'Enrolment.id' => 1,
 					))
 			);
+			echo $longest;
 
 			//echo $this('sql_dump');
 
@@ -371,7 +372,6 @@ class EnrolmentsController extends AppController {
 					$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
 				}
 			}
-			$this->Flash->success(__($longest));
 	}
 
 	//checking which courses have a start date is 10 days from the current date
