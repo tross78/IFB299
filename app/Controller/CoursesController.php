@@ -131,17 +131,27 @@ class CoursesController extends AppController {
 		
 		
 		if ($this->request->is('post')) {
+			//AG: course length in days
 			$cdays = $this->request->data['Course']['days'];
-			//Ag: Manually set end date to correct date
-			if ($cdays == "three"){
-				$edate = new DateTime(implode('-', array(
+			
+			//AG: course start date to be incremented below depending on course length
+			$sdate = new DateTime(implode('-', array(
 					$this->request->data['Course']['start_date']['year'],
 					$this->request->data['Course']['start_date']['month'],
 					$this->request->data['Course']['start_date']['day']
 					)));
-				$edate->add(new DateInterval('P3D'));
-				$this->request->data['Course']['end_date'] = $edate->format('Y-m-d');
+			
+			//Ag: Manually set end date to correct date depending on length
+			if ($cdays == "three"){
+				$sdate->add(new DateInterval('P3D'));
+			}else if ($cdays == "ten"){
+				$sdate->add(new DateInterval('P10D'));
+			}else{
+				$sdate->add(new DateInterval('P30D'));	
 			}
+			
+			//AG: updates new end date.
+			$this->request->data['Course']['end_date'] = $sdate->format('Y-m-d');
 			
 			
 			$this->Course->create();
