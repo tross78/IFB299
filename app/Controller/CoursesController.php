@@ -133,15 +133,12 @@ class CoursesController extends AppController {
 			//AG: course length in days
 			$cdays = $this->request->data['Course']['days'];
 			
-			//AG: course start date
-			$sdate = new DateTime(implode('-', array(
+			//AG: end date. Set initially as the start date to be modified below
+			$edate = new DateTime(implode('-', array(
 					$this->request->data['Course']['start_date']['year'],
 					$this->request->data['Course']['start_date']['month'],
 					$this->request->data['Course']['start_date']['day']
 					)));
-			
-			//AG: end date. Set initially as the start date to be modified below
-			$edate = $sdate;
 			
 			//Ag: Manually set end date to correct date depending on length
 			if ($cdays == "three"){
@@ -154,6 +151,13 @@ class CoursesController extends AppController {
 			
 			//AG: updates new end date.
 			$this->request->data['Course']['end_date'] = $edate->format('Y-m-d');
+			
+			//AG: course start date
+			$sdate = new DateTime(implode('-', array(
+					$this->request->data['Course']['start_date']['year'],
+					$this->request->data['Course']['start_date']['month'],
+					$this->request->data['Course']['start_date']['day']
+					)));
 			
 			if (($sdate->format('Y-m-d')) < $current_date){
 				$this->Flash->error(__('You cannot schedule a course for a date that has already past.'));
@@ -186,7 +190,6 @@ class CoursesController extends AppController {
 			//AG: course length in days
 			$cdays = $this->request->data['Course']['days'];
 			
-		
 			//AG: end date. Set initially as the start date to be modified below
 			$edate =  new DateTime(implode('-', array(
 					$this->request->data['Course']['start_date']['year'],
