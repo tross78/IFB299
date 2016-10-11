@@ -128,7 +128,13 @@ class CoursesController extends AppController {
  * @return void
  */
 	public function add() {
+		
+		
 		if ($this->request->is('post')) {
+			
+			//Ag: Manually set end date to current date
+			$this->request->data['Course']['end_date'] = date('Y-m-d');
+			
 			$this->Course->create();
 			if ($this->Course->save($this->request->data)) {
 				$this->Flash->success(__('The course has been saved.'));

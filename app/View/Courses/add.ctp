@@ -34,10 +34,12 @@
 	<?php echo $this->Form->input('start_date', array(
         'class' => 'form-control',
         'placeholder' => 'Start Date',
+		'dateFormat' => 'DYM',
+		'minYear' => date('Y'),
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'
     ));?>
-	<?php echo $this->Form->input('end_date', array(
+	<?php echo $this->Form->hidden('end_date', array(
        'class' => 'form-control',
         'placeholder' => 'End Date',
 		'between' => '<div class="form-inline form-group">',
