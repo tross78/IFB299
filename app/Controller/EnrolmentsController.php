@@ -233,7 +233,7 @@ class EnrolmentsController extends AppController {
 				))
 				) > 0;
 		//added this so if they are old they will be given server permissions. If anything is broken this is it.
-		if ((($old_compare) && (AuthComponent::user('permission') == "student")) || (AuthComponent::user('permission') == "server")) {
+		if (($old_compare) && (AuthComponent::user('permission') == "student")) {
 			$this->Enrolment->User->id = AuthComponent::user('id');
 			$this->Enrolment->User->saveField('permission',"server");
 		}

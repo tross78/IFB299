@@ -46,7 +46,7 @@
 		
 		if (AuthComponent::user('permission') == 'manager') {
 			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper', 'manager' => 'manager');
-		} elseif($is_old){
+		} elseif($is_old || (AuthComponent::user('permission') == "server")){
 			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper');		
 		} else {
 			$role_options = array('student' => 'student');
