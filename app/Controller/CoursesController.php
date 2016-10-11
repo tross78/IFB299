@@ -135,7 +135,7 @@ class CoursesController extends AppController {
 			//Ag: Manually set end date to correct date
 			if ($cdays == "three"){
 				$edate = $this->request->data['Course']['start_date'];
-				//$edate->add(new DateInterval('P3D'));
+				$edate->add(new DateInterval('P3D'));
 				$this->request->data['Course']['end_date'] = $edate;
 			}
 			
