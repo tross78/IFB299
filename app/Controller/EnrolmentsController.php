@@ -371,7 +371,7 @@ class EnrolmentsController extends AppController {
 					$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
 				}
 			}
-			$this->Flash->success(__($longest);
+			$this->Flash->success(__($longest));
 	}
 
 	//checking which courses have a start date is 10 days from the current date
