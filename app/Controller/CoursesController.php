@@ -132,8 +132,13 @@ class CoursesController extends AppController {
 		
 		if ($this->request->is('post')) {
 			
-			//Ag: Manually set end date to current date
-			$this->request->data['Course']['end_date'] = date('Y-m-d');
+			//Ag: Manually set end date to correct date
+			if ($this->request->data['Course']['days'] == "three"){
+				$date = $this->request->data['Course']['start_date'];
+				$date->add(new DateInterval('P3D'));
+				$this->request->data['Course']['end_date'] = $date;
+			}
+			
 			
 			$this->Course->create();
 			if ($this->Course->save($this->request->data)) {
