@@ -27,14 +27,14 @@
 			<legend><?php echo __('Waitlist or Server Enrolment'); ?></legend>
 		<?php 
 			} else { ?>
-			<legend><?php echo __('Add Enrolment'); ?></legend>
+			<legend><?php echo __('Confirm Role'); ?></legend>
 		<?php
 			}
 		?>
 	<?php
 		echo $this->Form->hidden('id');
 		echo $this->Form->hidden('user_id', array('value'=>$authUser['id']));
-		echo $this->Form->input('course_id', array('class' => 'form-control', 'div' => 'form-group'));
+		echo $this->Form->hidden('course_id', array('class' => 'form-control', 'div' => 'form-group'));
 		echo $this->Form->hidden('enrolment_date', array(
 		'selected' => $course_enrolment_date,
         'class' => 'form-control',
