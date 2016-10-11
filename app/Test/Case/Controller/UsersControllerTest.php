@@ -55,8 +55,9 @@ class UsersControllerTest extends ControllerTestCase {
 		$this->assertInternalType('array', $this->vars['user']);
 		$expected = array(
           'User' => array(
-			'id' => 1,
+			'id' => '1',
 			'username' => 'johndoe',
+			'full_name' => 'John Doe',
 			'password' => '34534532',
 			'first_name' => 'John',
 			'last_name' => 'Doe',
