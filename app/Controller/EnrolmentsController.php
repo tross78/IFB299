@@ -190,7 +190,9 @@ class EnrolmentsController extends AppController {
 		$this->set("is_teacher", $is_teacher);
 		$this->set("is_kitchen", $is_kitchen);
 
-
+		//Ag: Manually set enrolment date to current date
+		$this->request->data['Enrolment']['enrolment_date'] = date('Y-m-d');
+		
 		//AG: Code to set waitlist to 1 if course is full.
 		if ($course_full && $is_student) {
 			$this->request->data['Enrolment']['waitlist'] = 1;
