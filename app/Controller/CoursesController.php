@@ -176,6 +176,29 @@ class CoursesController extends AppController {
 			throw new NotFoundException(__('Invalid course'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			
+			//AG: course length in days
+			$cdays = $this->request->data['Course']['days'];
+			
+			//AG: course start date to be incremented below depending on course length
+			$sdate = new DateTime(implode('-', array(
+					$this->request->data['Course']['start_date']['year'],
+					$this->request->data['Course']['start_date']['month'],
+					$this->request->data['Course']['start_date']['day']
+					)));
+			
+			//Ag: Manually set end date to correct date depending on length
+			if ($cdays == "three"){
+				$sdate->add(new DateInterval('P3D'));
+			}else if ($cdays == "ten"){
+				$sdate->add(new DateInterval('P10D'));
+			}else{
+				$sdate->add(new DateInterval('P30D'));	
+			}
+			
+			//AG: updates new end date.
+			$this->request->data['Course']['end_date'] = $sdate->format('Y-m-d');
+			
 			if ($this->Course->save($this->request->data)) {
 				$this->Flash->success(__('The course has been saved.'));
 				return $this->redirect(array('action' => 'index'));

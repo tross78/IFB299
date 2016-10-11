@@ -275,6 +275,8 @@ class EnrolmentsController extends AppController {
 			throw new NotFoundException(__('Invalid enrolment'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			//Ag: Manually set enrolment date to current date
+			$this->request->data['Enrolment']['enrolment_date'] = date('Y-m-d');
 			if ($this->Enrolment->save($this->request->data)) {
 				$this->Flash->success(__('The enrolment has been saved.'));
 				return $this->redirect(array('action' => 'index'));

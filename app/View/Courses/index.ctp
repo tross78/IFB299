@@ -75,7 +75,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $course['Course']['id'])); ?>
 			<?php
-				if ($is_old) {
+				if (AuthComponent::user('permission') != 'student') {
 					echo $this->Html->link(__('Enrol'), array('controller' => 'enrolments', 'action' => 'add', 'course_id' => $course['Course']['id']));
 				}
 			?>
