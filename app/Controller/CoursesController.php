@@ -155,7 +155,7 @@ class CoursesController extends AppController {
 			//AG: updates new end date.
 			$this->request->data['Course']['end_date'] = $edate->format('Y-m-d');
 			
-			if (($sdate->format('Y-m-d')) < ($current_date->format('Y-m-d'))){
+			if (($sdate->format('Y-m-d')) < $current_date){
 				$this->Flash->error(__('You cannot schedule a course for a date that has already past.'));
 			}else{
 				$this->Course->create();
@@ -208,7 +208,7 @@ class CoursesController extends AppController {
 			//AG: updates new end date.
 			$this->request->data['Course']['end_date'] = $edate->format('Y-m-d');
 			
-			if (($sdate->format('Y-m-d')) < ($current_date->format('Y-m-d'))){
+			if (($sdate->format('Y-m-d')) < $current_date){
 				$this->Flash->error(__('You cannot schedule a course for a date that has already past.'));
 			}else{
 				if ($this->Course->save($this->request->data)) {
