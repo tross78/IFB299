@@ -79,7 +79,7 @@ class EnrolmentsController extends AppController {
 		//AG: Grabs the gender of the user currently logged in.
 		$user_gender = AuthComponent::user('gender');
 
-		
+
 		//AG: Unused Variable to determine wether the current course is of mixed gender. May need it in the future though.
 		$is_mixed = $this->Enrolment->Course->find('all', array(
 					'fields' => array('Course.id'),
@@ -89,7 +89,7 @@ class EnrolmentsController extends AppController {
 						"Course.id" => $this->params['named']['course_id']
 					))
 			);
-			
+
 		//AG: Unused variable to determine wether the current course is of mixed gender. May need it in the future though.
 		$is_male = $this->Enrolment->Course->find('all', array(
 					'fields' => array('Course.id'),
@@ -99,7 +99,7 @@ class EnrolmentsController extends AppController {
 						"Course.id" => $this->params['named']['course_id']
 					))
 			);
-			
+
 		//AG: Unused variable to determine wether the current course is of mixed gender. May need it in the future though.
 		$is_female = $this->Enrolment->Course->find('all', array(
 					'fields' => array('Course.id'),
@@ -174,7 +174,7 @@ class EnrolmentsController extends AppController {
 		$this->set("manager_full", $manager_full);
 		$this->set("teacher_full", $teacher_full);
 		$this->set("kitchen_full", $kitchen_full);
-		
+
 		//AG: post conditions after the enrolment form has been submitted
 		if ($this->request->is('post')) {
 
@@ -192,7 +192,7 @@ class EnrolmentsController extends AppController {
 
 
 		//AG: Code to set waitlist to 1 if course is full.
-		if ($course_full && $is_student) {		
+		if ($course_full && $is_student) {
 			$this->request->data['Enrolment']['waitlist'] = 1;
 		}
 
@@ -230,10 +230,10 @@ class EnrolmentsController extends AppController {
 					'Course.days' => 'ten'
 				))
 				) > 0;
-		//added this so if they are old they will be given server permissions. If anything is broken this is it. 
+		//added this so if they are old they will be given server permissions. If anything is broken this is it.
 		if (($old_compare) && (AuthComponent::user('permission') == "student")) {
 			$this->Enrolment->User->id = AuthComponent::user('id');
-			$this->Enrolment->User->saveField('permission',"server"); 
+			$this->Enrolment->User->saveField('permission',"server");
 		}
 		$this->set('is_old', $old_compare);
 		$course_enrolment_date = NULL;
@@ -379,46 +379,54 @@ class EnrolmentsController extends AppController {
 		);
 		return null; */
 	}
-	
+
 	//checking which courses have a start date is 10 days from the current date
 	//this function has to be automatically executed each day, cronjob looked like a good method
-	public function checkForConfirmationDate() {
+	public function confirmationEmail() {
 
-		//boolean variable that is true if current date matches desired date to send out confirmation email
-		$dateMatches = FALSE;
+	  //ZT: the date the email should be sent must be 10 days prior to the starting course date,
+	  //    therefore the starting date must equal the current date plus 10 days
+	  $current_date_plus_ten = date('Y-m-d', strtotime('+10 days'));
 
-		//current day, year and month
-		$current_day = date('d');
-		$current_month = date('m');
-		$current_year = date('Y');
+	  //ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
+	  // Extraction: from COURSES table
+	  $retrieveStartDates = $this->Enrolment->Course->find('all', array(
+	    'fields' => array('Course.id'),
+	        'conditions' => array(
+	          'DATE(Course.start_date) == ' => $current_date_plus_ten,
+	        ))
+	    );
 
-		//get the start date of a course
-		$start_date = array('fields' => array('Course.start_date'));
+	  //ZT: find user ID's that have the same course Id has the one that relates to start date retrieved
+	  // Extraction: from ENROLMENTS table
+	  $retrieveUserIDs = $this->Enrolment->find('all', array(
+	    'fields' => array('Enrolment.course_id', 'Enrolment.user_id'),
+	        'conditions' => array(
+	          'Enrolment.course_id == ' => $retrieveStartDates,
+	        ))
+	    );
 
-		//divide the start date of the course into individual variables
-		$start_day = date('d', $start_date);
-		$start_month = date('m', $start_date);
-		$start_year = date('Y', $start_date);
+	  //ZT: find emails of users which have a user ID in the '$retrieveUserEmail' array
+	  // Extraction: from USERS table
+	  for ($i = 0; $i < sizeof($retrieveUserIDs); $i++) {
 
-		//check that is the same month and year, and current day is 10 days prior to start day
-		if ($current_month == $start_month && $current_year == $start_year && $current_day == $start_day - 10) {
-			$dateMatches = TRUE;
-		}
+	    $retrieveUserEmail = $this->Enrolment->User->find('all', array(
+	      'fields' => array('User.email_address'),
+	          'conditions' => array(
+	            'User.id == ' => $retrieveUserIDs[$i],
+	          ))
+	      );
 
-		//check which course the matched date applies to, and send emails to participants enrolled in that course
-		$query = TableRegistry::get('courses')->find();
+	      $Email = new CakeEmail('gmail');
+	  		$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
+	  		$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));
+	  		$Email->returnPath('admin@team-hawk.herokuapp.com');
+	  		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
+	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
+	  		$Email->to($retrieveUserEmail[0]);
+	  		$Email->subject('About');
+	  		$Email->send('Hi, this is a confirmation email for your Meditation course.');
 
-		$row_count = 3; //needs to be based on how many participants enrolled in the relative course
-		for($i = 0; $i < $row_count; $i++) { //maybe using a foreach instead would be better, not sure how to yet
-			$Email = new CakeEmail('gmail');
-			$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
-			$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));
-			$Email->returnPath('admin@team-hawk.herokuapp.com');
-			$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
-			$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
-			$Email->to($this->request->data['User']['email_address']);
-			$Email->subject('About');
-			$Email->send('Hi '. $this->request->data['User']['first_name'] . ', Welcome to Hawke Meditation Centre!');
-		}
+	  }
 	}
 }
