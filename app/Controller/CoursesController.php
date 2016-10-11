@@ -40,8 +40,8 @@ class CoursesController extends AppController {
 					) > 0;
 			$this->set('is_old', TRUE);
 
-			// if not old and is not manager, filter to only ten day courses 
-			if (!$is_old && AuthComponent::user('permission') != 'manager') {
+			// if student, filter to only ten day courses 
+			if (AuthComponent::user('permission') == 'student') {
 				$options = array(
 					'conditions' => array(
 						'Course.days' => 'ten',
@@ -66,7 +66,7 @@ class CoursesController extends AppController {
 				);
 				$this->Paginator->settings = $options;
                 //if user is old but not the manager, filter any day courses
-			} else if ($is_old && AuthComponent::user('permission') != 'manager') {
+			} else if (AuthComponent::user('permission') == 'server') {
                 $options = array(
                     'conditions' => array(
                         'Course.gender' => array(AuthComponent::user('gender'), 'mixed')
@@ -128,8 +128,7 @@ class CoursesController extends AppController {
  * @return void
  */
 	public function add() {
-		
-		
+		$current_date = date('Y-m-d');
 		if ($this->request->is('post')) {
 			//AG: course length in days
 			$cdays = $this->request->data['Course']['days'];
@@ -153,14 +152,18 @@ class CoursesController extends AppController {
 			//AG: updates new end date.
 			$this->request->data['Course']['end_date'] = $sdate->format('Y-m-d');
 			
-			
-			$this->Course->create();
-			if ($this->Course->save($this->request->data)) {
-				$this->Flash->success(__('The course has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Flash->error(__('The course could not be saved. Please, try again.'));
+			if (($sdate->format('Y-m-d')) < $current_date){
+				$this->Flash->error(__('You cannot schedule a course for a date that has already past.'));
+			}else{
+				$this->Course->create();
+				if ($this->Course->save($this->request->data)) {
+					$this->Flash->success(__('The course has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Flash->error(__('The course could not be saved. Please, try again.'));
+				}
 			}
+			
 		}
 	}
 
