@@ -39,20 +39,36 @@ class UserFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'username' => 'Lorem ipsum dolor sit a',
-			'password' => 'Lorem ipsum dolor sit amet',
-			'first_name' => 'Lorem ipsum dolor sit amet',
-			'last_name' => 'Lorem ipsum dolor sit amet',
+			'username' => 'johndoe',
+			'password' => '34534532',
+			'first_name' => 'John',
+			'last_name' => 'Doe',
 			'date_of_birth' => '2016-09-30',
-			'gender' => 'Lorem ips',
-			'email_address' => 'Lorem ipsum dolor sit amet',
+			'gender' => 'male',
+			'email_address' => 'tyson.ross@gmail.com',
 			'residential_address' => 'Lorem ipsum dolor sit amet',
 			'dietary_requirements' => 'Lorem ipsum dolor sit amet',
 			'medical_requirements' => 'Lorem ipsum dolor sit amet',
 			'created' => '2016-09-30 10:13:28',
 			'modified' => '2016-09-30 10:13:28',
-			'permission' => 'Lorem ips'
+			'permission' => 'student'
 		),
+		array(
+			'id' => 2,
+			'username' => 'janedoe',
+			'password' => '356345353',
+			'first_name' => 'Jane',
+			'last_name' => 'Doe',
+			'date_of_birth' => '2016-10-30',
+			'gender' => 'female',
+			'email_address' => 'tyson.ross@gmail.com',
+			'residential_address' => 'Lorem ipsum dolor sit amet',
+			'dietary_requirements' => 'Lorem ipsum dolor sit amet',
+			'medical_requirements' => 'Lorem ipsum dolor sit amet',
+			'created' => '2016-09-30 10:13:28',
+			'modified' => '2016-09-30 10:13:28',
+			'permission' => 'manager'
+		)
 	);
 
 }

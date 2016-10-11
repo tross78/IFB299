@@ -31,10 +31,34 @@ class EnrolmentFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'user_id' => 1,
+			'course_id' => 2,
+			'enrolment_date' => '2016-01-01',
+			'role' => 'student',
+			'waitlist' => 0
+		),
+		array(
+			'id' => 2,
+			'user_id' => 2,
 			'course_id' => 1,
-			'enrolment_date' => '2016-09-30',
-			'role' => 'Lorem ips',
-			'waitlist' => 1
+			'enrolment_date' => '2016-08-01',
+			'role' => 'manager',
+			'waitlist' => 0
+		),
+		array(
+			'id' => 3,
+			'user_id' => 1,
+			'course_id' => 3,
+			'enrolment_date' => '2016-07-01',
+			'role' => 'kitchen-helper',
+			'waitlist' => 0
+		),
+		array(
+			'id' => 4,
+			'user_id' => 2,
+			'course_id' => 3,
+			'enrolment_date' => '2016-07-01',
+			'role' => 'student',
+			'waitlist' => 0
 		),
 	);
 

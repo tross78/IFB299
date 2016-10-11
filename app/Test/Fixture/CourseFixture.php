@@ -37,13 +37,37 @@ class CourseFixture extends CakeTestFixture {
 			'id' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
 			'description' => 'Lorem ipsum dolor sit amet',
-			'start_date' => '2016-09-30',
-			'end_date' => '2016-09-30',
+			'start_date' => '2016-08-01',
+			'end_date' => '2016-08-30',
 			'days' => 'Lorem ips',
-			'enrolments' => 1,
-			'enrolments_male' => 1,
-			'enrolments_female' => 1,
-			'gender' => 'Lorem ips'
+			'enrolments' => 0,
+			'enrolments_male' => 0,
+			'enrolments_female' => 0,
+			'gender' => 'female'
+		),
+		array(
+			'id' => 2,
+			'name' => 'Lorem ipsum dolor sit amet',
+			'description' => 'Lorem ipsum dolor sit amet',
+			'start_date' => '2016-01-01',
+			'end_date' => '2016-01-10',
+			'days' => 'Lorem ips',
+			'enrolments' => 0,
+			'enrolments_male' => 0,
+			'enrolments_female' => 0,
+			'gender' => 'male'
+		),
+		array(
+			'id' => 3,
+			'name' => 'Lorem ipsum dolor sit amet',
+			'description' => 'Lorem ipsum dolor sit amet',
+			'start_date' => '2016-07-01',
+			'end_date' => '2016-07-03',
+			'days' => 'Lorem ips',
+			'enrolments' => 0,
+			'enrolments_male' => 0,
+			'enrolments_female' => 0,
+			'gender' => 'mixed'
 		),
 	);
 

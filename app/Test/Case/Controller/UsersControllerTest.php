@@ -51,7 +51,11 @@ class UsersControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testView() {
-		$this->markTestIncomplete('testView not implemented.');
+		$this->get('/users/view/1');
+		// Check for a 2xx response code
+		$this->assertResponseOk();
+		// Assert partial response content
+		$this->assertResponseContains('johndoe');
 	}
 
 /**
