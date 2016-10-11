@@ -352,7 +352,7 @@ class EnrolmentsController extends AppController {
 						'Enrolment.id' => 1
 					))
 			);
-			//echo $this('sql_dump');
+			echo $this('sql_dump');
 
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
