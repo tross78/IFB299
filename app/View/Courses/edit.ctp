@@ -36,6 +36,7 @@
         'placeholder' => 'Start Date',
 		'dateFormat' => 'DYM',
 		'minYear' => date('Y'),
+		'maxYear' => date('Y')+1,
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'
     ));?>
