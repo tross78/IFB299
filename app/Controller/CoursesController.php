@@ -194,7 +194,11 @@ class CoursesController extends AppController {
 					)));
 			
 			//AG: end date. Set initially as the start date to be modified below
-			$edate = $sdate;
+			$edate =  new DateTime(implode('-', array(
+					$this->request->data['Course']['start_date']['year'],
+					$this->request->data['Course']['start_date']['month'],
+					$this->request->data['Course']['start_date']['day']
+					)));
 			
 			//Ag: Manually set end date to correct date depending on length
 			if ($cdays == "three"){
