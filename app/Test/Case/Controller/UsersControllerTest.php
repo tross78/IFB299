@@ -52,10 +52,26 @@ class UsersControllerTest extends ControllerTestCase {
  */
 	public function testView() {
 		$this->testAction('/users/view/1');
-		// Check for a 2xx response code
-		$this->assertResponseOk();
-		// Assert partial response content
-		$this->assertResponseContains('johndoe');
+		$this->assertInternalType('array', $this->vars['user']);
+		$expected = array(
+          'User' => array(
+			'id' => 1,
+			'username' => 'johndoe',
+			'password' => '34534532',
+			'first_name' => 'John',
+			'last_name' => 'Doe',
+			'date_of_birth' => '2016-09-30',
+			'gender' => 'male',
+			'email_address' => 'tyson.ross@gmail.com',
+			'residential_address' => 'Lorem ipsum dolor sit amet',
+			'dietary_requirements' => 'Lorem ipsum dolor sit amet',
+			'medical_requirements' => 'Lorem ipsum dolor sit amet',
+			'created' => '2016-09-30 10:13:28',
+			'modified' => '2016-09-30 10:13:28',
+			'permission' => 'student'
+          )
+		);
+	  $this->assertEquals($expected, $this->vars['user']);
 	}
 
 /**
