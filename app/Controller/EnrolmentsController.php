@@ -343,7 +343,6 @@ class EnrolmentsController extends AppController {
  */
 	//a function to handle the enrolment of the user who has been on the waitlist for the longest
 	public function waitlistEnrol(){
-		echo "it's ya boy";
 		$studentCap = 2;
 		$longest = $this->Enrolment->find('first', array(
 					'fields' => array('MAX(Enrolment.id) AS id', 'Enrolment.course_id'),
@@ -362,28 +361,17 @@ class EnrolmentsController extends AppController {
 						'Enrolment.role' => 'student',
 					))
 			) >= $studentCap;
-		//	echo $this->Enrolment('sql_dump');
 
 			$this->set("course_full", $course_full);
 			if(!$course_full) {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($longest->request->data)) {
-					$this->Flash->success(__('The enrolment has been saved.'));
 					return $this->redirect(array('action' => 'index'));
 				} else {
 					$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
 				}
 			}
-			$this->Flash->error(__($longest));
-
-		/*
-		$enrollee =
-		echo $this->Enrolment->field(
-			'course_id',
-			array('created <' => date('Y-m-d H:i:s')),
-			'created ASC'
-		);
-		return null; */
+			$this->Flash->success(__($longest);
 	}
 
 	//checking which courses have a start date is 10 days from the current date
