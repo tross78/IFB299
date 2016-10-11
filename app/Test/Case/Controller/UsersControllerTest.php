@@ -41,7 +41,8 @@ class UsersControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testIndex() {
-		$this->markTestIncomplete('testIndex not implemented.');
+		$this->testAction('/users/index');
+    	$this->assertInternalType('array', $this->vars['users']);
 	}
 
 /**
