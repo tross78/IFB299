@@ -133,26 +133,29 @@ class CoursesController extends AppController {
 			//AG: course length in days
 			$cdays = $this->request->data['Course']['days'];
 			
-			//AG: course start date to be incremented below depending on course length
+			//AG: course start date
 			$sdate = new DateTime(implode('-', array(
 					$this->request->data['Course']['start_date']['year'],
 					$this->request->data['Course']['start_date']['month'],
 					$this->request->data['Course']['start_date']['day']
 					)));
 			
+			//AG: end date. Set initially as the start date to be modified below
+			$edate = $sdate;
+			
 			//Ag: Manually set end date to correct date depending on length
 			if ($cdays == "three"){
-				$sdate->add(new DateInterval('P3D'));
+				$edate->add(new DateInterval('P3D'));
 			}else if ($cdays == "ten"){
-				$sdate->add(new DateInterval('P10D'));
+				$edate->add(new DateInterval('P10D'));
 			}else{
-				$sdate->add(new DateInterval('P30D'));	
+				$edate->add(new DateInterval('P30D'));	
 			}
 			
 			//AG: updates new end date.
-			$this->request->data['Course']['end_date'] = $sdate->format('Y-m-d');
+			$this->request->data['Course']['end_date'] = $edate->format('Y-m-d');
 			
-			if (($sdate->format('Y-m-d')) < $current_date){
+			if (($sdate->format('Y-m-d')) < ($current_date->format('Y-m-d'))){
 				$this->Flash->error(__('You cannot schedule a course for a date that has already past.'));
 			}else{
 				$this->Course->create();
@@ -178,35 +181,42 @@ class CoursesController extends AppController {
 		if (!$this->Course->exists($id)) {
 			throw new NotFoundException(__('Invalid course'));
 		}
+		$current_date = date('Y-m-d');
 		if ($this->request->is(array('post', 'put'))) {
-			
 			//AG: course length in days
 			$cdays = $this->request->data['Course']['days'];
 			
-			//AG: course start date to be incremented below depending on course length
+			//AG: course start date
 			$sdate = new DateTime(implode('-', array(
 					$this->request->data['Course']['start_date']['year'],
 					$this->request->data['Course']['start_date']['month'],
 					$this->request->data['Course']['start_date']['day']
 					)));
 			
+			//AG: end date. Set initially as the start date to be modified below
+			$edate = $sdate;
+			
 			//Ag: Manually set end date to correct date depending on length
 			if ($cdays == "three"){
-				$sdate->add(new DateInterval('P3D'));
+				$edate->add(new DateInterval('P3D'));
 			}else if ($cdays == "ten"){
-				$sdate->add(new DateInterval('P10D'));
+				$edate->add(new DateInterval('P10D'));
 			}else{
-				$sdate->add(new DateInterval('P30D'));	
+				$edate->add(new DateInterval('P30D'));	
 			}
 			
 			//AG: updates new end date.
-			$this->request->data['Course']['end_date'] = $sdate->format('Y-m-d');
+			$this->request->data['Course']['end_date'] = $edate->format('Y-m-d');
 			
-			if ($this->Course->save($this->request->data)) {
-				$this->Flash->success(__('The course has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Flash->error(__('The course could not be saved. Please, try again.'));
+			if (($sdate->format('Y-m-d')) < ($current_date->format('Y-m-d'))){
+				$this->Flash->error(__('You cannot schedule a course for a date that has already past.'));
+			}else{
+				if ($this->Course->save($this->request->data)) {
+					$this->Flash->success(__('The course has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Flash->error(__('The course could not be saved. Please, try again.'));
+				}
 			}
 		} else {
 			$options = array('conditions' => array('Course.' . $this->Course->primaryKey => $id));
