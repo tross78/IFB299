@@ -192,7 +192,7 @@ class EnrolmentsController extends AppController {
 
 		//Ag: Manually set enrolment date to current date
 		$this->request->data['Enrolment']['enrolment_date'] = date('Y-m-d');
-		
+
 		//AG: Code to set waitlist to 1 if course is full.
 		if ($course_full && $is_student) {
 			$this->request->data['Enrolment']['waitlist'] = 1;
@@ -352,6 +352,7 @@ class EnrolmentsController extends AppController {
 						'Enrolment.id' => 1,
 					))
 			);
+
 			//echo $this('sql_dump');
 
 		$course_full = $this->Enrolment->find('count', array(
@@ -373,6 +374,7 @@ class EnrolmentsController extends AppController {
 					$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
 				}
 			}
+			$this->Flash->error(__($longest));
 
 		/*
 		$enrollee =
