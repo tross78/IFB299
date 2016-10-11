@@ -51,7 +51,7 @@ class UsersControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testView() {
-		$this->get('/users/view/1');
+		$this->testAction('/users/view/1');
 		// Check for a 2xx response code
 		$this->assertResponseOk();
 		// Assert partial response content
