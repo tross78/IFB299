@@ -17,7 +17,7 @@ class CoursesController extends AppController {
 	public $is_old = FALSE;
 
 	public $helpers = array(
-		'CourseEnrolmentHelper'
+		'CourseEnrolment'
 	);
 
 /**
