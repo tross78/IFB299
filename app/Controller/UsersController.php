@@ -20,7 +20,7 @@ class UsersController extends AppController {
 		parent::beforeFilter();
 		// Allow users to register and logout.
     	$this->Auth->allow('add', 'logout');
-		$this->Auth->disallow('index');
+		$this->Auth->deny('index');
 	}
 
 	public function emailWelcomeMessage() {
