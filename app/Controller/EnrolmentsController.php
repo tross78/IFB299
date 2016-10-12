@@ -361,8 +361,8 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $studentCap;
 
-			$this->set("course_full"), $course_full;
-			//$this->set("longest"), $longest;
+			$this->set("course_full", $course_full);
+			$this->set("longest", $longest);
 
 			if(!$course_full) {
 				$this->Enrolment->create();
