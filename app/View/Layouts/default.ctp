@@ -48,11 +48,11 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <?php echo $this->Html->script("html5shiv"); ?>
-    <![endif]--> 
+    <![endif]-->
 </head>
 <body>
 	<div class="page-container bg-warning">
-	<div class="jumbotron"><div class="block-center text-center"><img src="http://meditationwordpresstheme.en.websitesexamples.com/wp-content/uploads/2015/05/logo_meditation.png?quality=100.3016082509160" class="" style="
+	<div class="jumbotron"><div class="block-center text-center"><img src="http://i.imgur.com/PccZnZv.png" class="" style="
     max-height: 80px;
 "></div></div>
 			<div class="navbar navbar-inverse">
@@ -60,14 +60,14 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 					<div class="navbar-header">
 						<?php echo $this->Html->link($cakeDescription, '/', array('class' => 'navbar-brand')); ?>
 					</div>
-					<?php 
+					<?php
 						$currentUrl = Router::normalize($this->request->here);
 					?>
 					<ul class="nav navbar-nav">
 						<li <?php if (strpos($currentUrl, '/home' !== false) || $currentUrl === '/') echo 'class="active"';  ?> ><a href="/">Home</a></li>
 						<li <?php if (strpos($currentUrl, '/about') !== false) echo 'class="active"';  ?> ><a href="/about">About</a></li>
-						<li <?php if (strpos($currentUrl, '/donations') !== false) echo 'class="active"';  ?> ><a href="/donations">Donations</a></li> 
-						<li <?php if (strpos($currentUrl, '/contact') !== false) echo 'class="active"';  ?> ><a href="/contact">Contact Us</a></li> 
+						<li <?php if (strpos($currentUrl, '/donations') !== false) echo 'class="active"';  ?> ><a href="/donations">Donations</a></li>
+						<li <?php if (strpos($currentUrl, '/contact') !== false) echo 'class="active"';  ?> ><a href="/contact">Contact Us</a></li>
 						<li <?php if (strpos($currentUrl, '/courses') !== false) echo 'class="active"';  ?> ><a href="/courses/">Courses</a></li>
 						<?php if (AuthComponent::user('id')):?>
 							<li <?php if (strpos($currentUrl, '/enrolments') !== false) echo 'class="active"';  ?> ><a href="/enrolments/">Enrolments</a></li>
@@ -76,11 +76,11 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 							<li <?php if (strpos($currentUrl, '/users') !== false) echo 'class="active"';  ?> ><a href="/users/">Users</a></li>
 						<?php endif;?>
 					</ul>
-					
+
 						<?php if (AuthComponent::user('id')) { ?>
 							<ul class="nav navbar-nav navbar-right">
 								<li class="nav navbar-text" style=" "><span class="pull-left glyphicon glyphicon-user"></span> <a href="/users/view/<?= AuthComponent::user('id') ?>" style="padding:0;margin-left:25px;"><?= AuthComponent::user('full_name') ?></a></li>
-								
+
 								<li class="nav navbr-text" style="margin:0;"><a href="/users/edit/<?= AuthComponent::user('id') ?>">Edit</a></li>
 								<li><?= $this->Html->link('Log out', array('controller' => 'users', 'action' => 'logout')); ?></li>
 							</ul>
