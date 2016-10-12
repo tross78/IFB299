@@ -53,7 +53,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 <body>
 	<div class="page-container bg-warning">
 	<div class="jumbotron"><div class="block-center text-center"><img src="http://i.imgur.com/6qkgM1Y.png" class="" style="
-    max-height: 80px;
+    max-height: 100px;
 "></div></div>
 			<div class="navbar navbar-inverse">
 				<div class="container-fluid">
