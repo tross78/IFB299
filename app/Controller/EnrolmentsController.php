@@ -349,7 +349,7 @@ class EnrolmentsController extends AppController {
 					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.waitlist' => 1,
-						'Enrolment.id' => 1
+						//'Enrolment.id' => 1
 					))
 			);
 
@@ -363,6 +363,8 @@ class EnrolmentsController extends AppController {
 
 			$this->set("course_full", $course_full);
 			$this->set("longest", $longest);
+
+			$this->Flash->error(__($this->longest));
 
 			if(!$course_full) {
 				$this->Enrolment->create();
