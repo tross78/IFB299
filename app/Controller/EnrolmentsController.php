@@ -68,7 +68,7 @@ class EnrolmentsController extends AppController {
  */
 	public function add() {
 		//AG: the following are the capacities for each possible enrolment role in a course, (students -> kitchen-helpers -> assistant-teachers -> managers)
-		$studentCap = 2;	//set to 2 for testing purposes to test '$course_full', normal student capacity will be 26.
+		$studentCap = 1;	//set to 2 for testing purposes to test '$course_full', normal student capacity will be 26.
 		$kitchenCap = 1; //set to 1 for testing purposes to test '$kitchen_full', normal student capacity will be 5.
 		$teacherCap = 1; //normal assistant-teacher capacity is 1.
 		$managerCap = 1; //normal manager capacity is 1.
@@ -352,7 +352,6 @@ class EnrolmentsController extends AppController {
 						'Enrolment.id' => 1
 					))
 			);
-			echo $this('sql_dump');
 
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
@@ -362,15 +361,19 @@ class EnrolmentsController extends AppController {
 					))
 			) >= $studentCap;
 
+			$this->set("course_full"), $course_full);
+			$this->set("longest"), $longest);
+
 			$this->set("course_full", $course_full);
 			if(!$course_full) {
 				$this->Enrolment->create();
-				if ($this->Enrolment->save($longest->request->data)) {
+				if ($this->Enrolment->save($this->longest->request->data)) {
 					return $this->redirect(array('action' => 'index'));
 				} else {
 					$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
 				}
 			}
+
 	}
 
 	//checking which courses have a start date is 10 days from the current date
