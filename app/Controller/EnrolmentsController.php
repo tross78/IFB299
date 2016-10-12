@@ -326,7 +326,7 @@ class EnrolmentsController extends AppController {
 			if ($this->Enrolment->delete()) {
 				$this->waitlistEnrol();
 				$this->request->data['Enrolment']['waitlist'] = 0;
-				//$this->Flash->success(__('The enrolment has been deleted.'));
+				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
 				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
 			}
