@@ -357,7 +357,7 @@ class EnrolmentsController extends AppController {
 					'fields' => array('Course.id'),
 					'contain' => array('Course', 'User'),
 					'conditions' => array(
-						'Enrolment.role' => 'student',
+						'Enrolment.role' => 'student'
 					))
 			) >= $studentCap;
 
