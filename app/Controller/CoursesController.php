@@ -16,6 +16,10 @@ class CoursesController extends AppController {
 	public $components = array('Paginator');
 	public $is_old = FALSE;
 
+	public $helpers = array(
+		'CourseEnrolmentHelper'
+	);
+
 /**
  * index method
  *
