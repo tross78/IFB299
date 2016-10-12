@@ -345,8 +345,6 @@ class EnrolmentsController extends AppController {
 	public function waitlistEnrol(){
 		$studentCap = 1;
 		$longest = $this->Enrolment->find('first', array(
-					'fields' => array('MAX(Enrolment.id) AS id', 'Enrolment.course_id'),
-					'contain' => array('Course', 'User'),
 					'conditions' => array(
 						'Enrolment.waitlist' => 1,
 						//'Enrolment.id' => 1
