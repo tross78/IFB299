@@ -42,8 +42,17 @@ class UsersController extends AppController {
 			return true;
 		}
 
-		if (in_array($this->action, array('index', 'edit', 'delete'))) {
+		if (in_array($this->action, array('edit', 'delete'))) {
 			if ($user['id'] == $this->Auth->user('id') || $user['permission'] == 'manager') {
+				return true;
+			} else {
+				return false;
+			}
+			
+		}
+
+		if (in_array($this->action, array('index'))) {
+			if ($user['permission'] == 'manager') {
 				return true;
 			} else {
 				return false;
