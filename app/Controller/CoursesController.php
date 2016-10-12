@@ -40,6 +40,16 @@ class CoursesController extends AppController {
 					) > 0;
 			$this->set('is_old', TRUE);
 
+			$course_users = $this->Course->Enrolment->find('all', array(
+			'fields' => array('Enrolment.id', 'Enrolment.user_id', 'User.dietary_requirements'),
+			'contain' => array('Course', 'User'),
+			'conditions' => array(
+				'user_id' => AuthComponent::user('id'),
+				'Course.days' => 'ten'
+			))
+			) > 0;
+			
+
 			// if student, filter to only ten day courses 
 			if (AuthComponent::user('permission') == 'student') {
 				$options = array(

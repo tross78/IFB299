@@ -20,6 +20,7 @@ class UsersController extends AppController {
 		parent::beforeFilter();
 		// Allow users to register and logout.
     	$this->Auth->allow('add', 'logout');
+		$this->Auth->disallow('index');
 	}
 
 	public function emailWelcomeMessage() {
@@ -41,7 +42,7 @@ class UsersController extends AppController {
 			return true;
 		}
 
-		if (in_array($this->action, array('edit', 'delete'))) {
+		if (in_array($this->action, array('index', 'edit', 'delete'))) {
 			if ($user['id'] == $this->Auth->user('id') || $user['permission'] == 'manager') {
 				return true;
 			} else {
