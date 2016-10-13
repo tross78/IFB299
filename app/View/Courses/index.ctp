@@ -71,11 +71,9 @@
 					</div>
 				</div>
 			<?php } ?>
-			<?php 
-					$courseEnrolments = $this->CourseEnrolment->getEnrolments((int)$course['Course']['id']);
-					echo 'enrolment listing here';
+			<?php $courseEnrolments = $this->CourseEnrolment->getEnrolments((int)$course['Course']['id']);
 					foreach($courseEnrolments as $courseEnrolment) {
-						echo 'enrolment';
+						echo $courseEnrolment['Enrolment']['user_id'];
 					}
 				?>
 	</td>
