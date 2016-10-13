@@ -70,14 +70,14 @@
 						<?php echo $enrolments_female_percent; ?>%
 					</div>
 				</div>
-				<?php 
+			<?php } ?>
+			<?php 
 					$courseEnrolments = $this->CourseEnrolment->getEnrolments((int)$course['Course']['id']);
 					echo 'enrolment listing here';
 					foreach($courseEnrolments as $courseEnrolment) {
 						echo 'enrolment';
 					}
 				?>
-			<?php } ?>
 	</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $course['Course']['id'])); ?>
