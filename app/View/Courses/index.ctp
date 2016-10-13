@@ -82,10 +82,10 @@
 						$hasDietary = isset($courseEnrolment['User']['dietary_requirements']) && $courseEnrolment['User']['dietary_requirements'] != '';
 						$hasMedical = isset($courseEnrolment['User']['medical_requirements']) && $courseEnrolment['User']['medical_requirements'] != '';
 						if ($hasDietary) {
-							echo '<i class="glyphicon glyphicon-alert"></i><span> Has dietary</span>';
+							echo '<i class="diet-med-alert glyphicon glyphicon-alert"></i><span> Dietary</span>';
 						}
 						if ($hasMedical) {
-							echo '<i class="glyphicon glyphicon-alert"></i><span> Has medical</span>';
+							echo '<i class="diet-med-alert glyphicon glyphicon-alert"></i><span> Medical</span>';
 						}
 						echo '<br>';
 					}
