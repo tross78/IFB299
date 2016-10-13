@@ -71,7 +71,7 @@
 					</div>
 				</div>
 				<?php 
-					$courseEnrolments = $this->CourseEnrolment((int)$course['Course']['id']);
+					$courseEnrolments = $this->CourseEnrolment->getEnrolments((int)$course['Course']['id']);
 				?>
 			<?php } ?>
 	</td>
