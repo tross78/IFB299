@@ -70,6 +70,9 @@
 						<?php echo $enrolments_female_percent; ?>%
 					</div>
 				</div>
+				<?php 
+					$courseEnrolments = $this->CourseEnrolment((int)$course['Course']['id']);
+				?>
 			<?php } ?>
 	</td>
 		<td class="actions">
