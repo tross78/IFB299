@@ -12,7 +12,7 @@ class CourseEnrolmentHelper extends AppHelper {
 				)
 			));
         // create output.... 
-        return $output; 
+        return $this->data; 
    } 
 
 } 
