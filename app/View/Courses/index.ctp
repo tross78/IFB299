@@ -79,8 +79,10 @@
 						$userFullName = $courseEnrolment['User']['first_name'] . ' ' . $courseEnrolment['User']['last_name'];
 						echo $this->Html->link(__($userFullName), array('controller' => 'users', 'action' => 'view',  $courseEnrolment['Enrolment']['user_id']));
 						// check vars if not empty and not null. Unusual method but accounts for '0' = empty PHP bug.
-						$hasDietary = isset($courseEnrolment['User']['dietary_requirements']) && $courseEnrolment['User']['dietary_requirements'] != '';
-						$hasMedical = isset($courseEnrolment['User']['medical_requirements']) && $courseEnrolment['User']['medical_requirements'] != '';
+						$dietaryField = $courseEnrolment['User']['dietary_requirements'];
+						$medicalField = $courseEnrolment['User']['medical_requirements'];
+						$hasDietary = isset($dietaryField) && $dietaryField != '' && $dietaryField != 'none' && $dietaryField != 'no';
+						$hasMedical = isset($medicalField) && $medicalField != '' && $medicalField != 'none' && $medicalField != 'no';
 						if ($hasDietary) {
 							echo '<i class="diet-med-alert glyphicon glyphicon-alert"></i><span> Dietary</span>';
 						}
