@@ -73,7 +73,8 @@
 			<?php } ?>
 			<?php $courseEnrolments = $this->CourseEnrolment->getEnrolments((int)$course['Course']['id']);
 					foreach($courseEnrolments as $courseEnrolment) {
-						echo $this->Html->link(__($courseEnrolment['User']['full_name']), array('controller' => 'user', 'action' => 'view', 'user_id' => $course['User']['id']));
+						$userFullName = $courseEnrolment['User']['first_name'] . ' ' . $courseEnrolment['User']['last_name'];
+						echo $this->Html->link(__($userFullName), array('controller' => 'user', 'action' => 'view', 'user_id' => $course['User']['id']));
 						echo $courseEnrolment['Enrolment']['user_id'] . '\n';
 					}
 				?>
