@@ -74,7 +74,7 @@
 			
 			<?php 
 				// if anything else than student
-				if (AuthComponent::user('permission') != 'student') {
+				if (AuthComponent::user('permission') && AuthComponent::user('permission') != 'student') {
 				// add auth to here for just managers and servers
 				$courseEnrolments = $this->CourseEnrolment->getEnrolments((int)$course['Course']['id']);
 					foreach($courseEnrolments as $courseEnrolment) {
