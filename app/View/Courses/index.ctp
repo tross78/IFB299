@@ -81,9 +81,13 @@
 						// check vars if not empty and not null. Unusual method but accounts for '0' = empty PHP bug.
 						$hasDietary = isset($courseEnrolment['User']['dietary_requirements']) && $courseEnrolment['User']['dietary_requirements'] != '';
 						$hasMedical = isset($courseEnrolment['User']['medical_requirements']) && $courseEnrolment['User']['medical_requirements'] != '';
-						if ($hasDietary || $hasMedical) {
-							echo '<i class="glyphicon glyphicon-alert">Has condition</i>';
+						if ($hasDietary) {
+							echo '<i class="glyphicon glyphicon-alert"></i><span> Has dietary</span>';
 						}
+						if ($hasMedical) {
+							echo '<i class="glyphicon glyphicon-alert"></i><span> Has medical</span>';
+						}
+						echo '<br>';
 					}
 				?>
 	</td>
