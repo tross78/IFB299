@@ -31,15 +31,18 @@
 		echo $this->Form->input('gender', $gender_attributes)
 		?>
 
-	<?php echo $this->Form->input('start_date', array(
-        'class' => 'form-control',
-        'placeholder' => 'Start Date',
-		'dateFormat' => 'DYM',
-		'minYear' => date('Y'),
-		'maxYear' => date('Y') + 1,
-		'between' => '<div class="form-inline form-group">',
-        'after' => '</div>'
-    ));?>
+		<?php
+		echo $this->Form->input('capacity', array('class' => 'form-control', 'type' => 'number', 'div' => 'form-group'));
+		?>
+		<?php echo $this->Form->input('start_date', array(
+					'class' => 'form-control',
+					'placeholder' => 'Start Date',
+			'dateFormat' => 'DYM',
+			'minYear' => date('Y'),
+			'maxYear' => date('Y') + 1,
+			'between' => '<div class="form-inline form-group">',
+					'after' => '</div>'
+			));?>
 	<?php echo $this->Form->hidden('end_date', array(
        'class' => 'form-control',
         'placeholder' => 'End Date',

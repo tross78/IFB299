@@ -62,7 +62,7 @@
 				<h6>Female</h6>
 				<div class="progress">
 					<?php
-					$enrolments_female_percent = intval(($course['Course']['enrolments_female'] / 26) * 100);
+					$enrolments_female_percent = intval(($course['Course']['enrolments_female'] / $course['Course']['capacity']) * 100);
 					?>
 					<div class="progress-bar" role="progressbar"
 						 aria-valuenow="<?php echo $enrolments_female_percent; ?>" aria-valuemin="0" aria-valuemax="100"
