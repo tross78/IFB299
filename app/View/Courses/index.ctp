@@ -14,8 +14,8 @@
 	</tr>
 	</thead>
 	<tbody>
-	<?php 
-		foreach ($courses as $course): 
+	<?php
+		foreach ($courses as $course):
 	?>
 	<tr>
 		<td><?php echo h($course['Course']['name']); ?>&nbsp;</td>
@@ -40,7 +40,7 @@
 				<h6>Female</h6>
 				<div class="progress">
 					<?php
-					$enrolments_female_percent = intval(($course['Course']['enrolments_female'] / 26) * 100);
+					$enrolments_female_percent = intval(($course['Course']['enrolments_female'] / $course['Course']['capacity']) * 100);
 					?>
 					<div class="progress-bar" role="progressbar"
 						 aria-valuenow="<?php echo $enrolments_female_percent; ?>" aria-valuemin="0" aria-valuemax="100"
@@ -52,7 +52,7 @@
 				<h6>Male</h6>
 				<div class="progress">
 					<?php
-					$enrolments_male_percent = intval(($course['Course']['enrolments_male'] / 26) * 100);
+					$enrolments_male_percent = intval(($course['Course']['enrolments_male'] / $course['Course']['capacity']) * 100);
 					?>
 					<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $enrolments_male_percent; ?>"
 						 aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $enrolments_male_percent; ?>%">
@@ -71,8 +71,8 @@
 					</div>
 				</div>
 			<?php } ?>
-			
-			<?php 
+
+			<?php
 				// if anything else than student
 				if (AuthComponent::user('permission') && AuthComponent::user('permission') != 'student') {
 				// add auth to here for just managers and servers
@@ -104,11 +104,11 @@
 				}
 			?>
 
-			<?php 
+			<?php
 				if (AuthComponent::user('permission') == 'manager') {
 					echo $this->Html->link(__('Edit'), array('action' => 'edit', $course['Course']['id']));
 					echo '&nbsp;';
-					echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $course['Course']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $course['Course']['id']))); 
+					echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $course['Course']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $course['Course']['id'])));
 				}
 			?>
 		</td>
@@ -116,7 +116,7 @@
 <?php endforeach; ?>
 	</tbody>
 	</table>
-		<?php 
+		<?php
 		if ($this->Paginator->hasPage(2)):
 		?>
 		<p class="small">
@@ -133,7 +133,7 @@
 		?>
 		</ul>
 	<?php endif; ?>
-	<?php 
+	<?php
 		if (AuthComponent::user('permission') == 'manager') {
 			echo $this->Html->link(
 				$this->Html->tag('i', '', array('class' => 'glyphicon glyphicon-plus')) . " Add Course",
