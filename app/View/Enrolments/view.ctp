@@ -8,7 +8,7 @@
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($enrolment['Enrolment']['User']['full_name'], array('controller' => 'users', 'action' => 'view', $enrolment['Enrolment']['user_id'])); ?>
+			<?php echo $this->Html->link($enrolment['User']['full_name'], array('controller' => 'users', 'action' => 'view', $enrolment['User']['id'])); ?>
 			<br><br>
 		</dd>
 		<dt><?php echo __('Course'); ?></dt>
