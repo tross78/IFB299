@@ -59,25 +59,25 @@
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
 		
-		$class_options = array('relaxation' => 'Relaxation','tai-chi' => 'tai-chi', 'yin-deep-stretch' => 'yin-deep-stretch', 'mindfulness-101' => 'mindfulness-101', 'zen-mediation' => 'zen-mediation');
+		$class_options = array('relaxation' => 'Relaxation','tai-chi' => 'Tai Chi', 'yin-deep-stretch' => 'Yin Deep Stretch', 'mindfulness-101' => 'Mindfulness 101', 'zen-mediation' => 'Zen Mediation');
 
 		echo $this->Form->input('class_one', array(
         'class' => 'form-control',
-        'placeholder' => '9am Class',
+        'label' => '9am Class',
 		'options' => $class_options,
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
 
 		echo $this->Form->input('class_two', array(
         'class' => 'form-control',
-        'placeholder' => '12pm Class',
+        'label' => '12pm Class',
 		'options' => $class_options,
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
 
 		echo $this->Form->input('class_three', array(
         'class' => 'form-control',
-        'placeholder' => '3pm Class',
+        'label' => '3pm Class',
 		'options' => $class_options,
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));		
