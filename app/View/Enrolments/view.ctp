@@ -1,11 +1,11 @@
 <div class="enrolments view">
 <h2><?php echo __('Enrolment'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($enrolment['Enrolment']['id']); ?>
-			<br><br>
-		</dd>
+		//<dt><?php echo __('Id'); ?></dt>
+		//<dd>
+			//<?php echo h($enrolment['Enrolment']['id']); ?>
+			//<br><br>
+		//</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($user['User']['full_name'], array('controller' => 'users', 'action' => 'view', $user['User']['id'])); ?>
