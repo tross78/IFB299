@@ -35,7 +35,7 @@ class UsersController extends AppController {
 		$Email->send('Hello there '. $this->request->data['User']['first_name'] . ',' .
 									'On behalf of the team here at the Hawke Meditation Centre, welcome and thanks for signing up!
 									Now that you have signed up feel free to register for one of our 10 day Introductory courses
-									or contact us with any questions you have.'  'We hope to see you soon!' 
+									or contact us with any questions you have.' . 'We hope to see you soon!' .
 								'- The Hawke Centre Team');
 	}
 
