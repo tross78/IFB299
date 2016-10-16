@@ -53,26 +53,17 @@ class EnrolmentsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function view($id = null, $course_id = null, $user_id = null) {
 		if (!$this->Enrolment->exists($id)) {
 			throw new NotFoundException(__('Invalid enrolment'));
 		}
 		$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
-		//$options1 = array('conditions' => array('Course.' . $this->Enrolment->Course->primaryKey => $course_id));
-		//$options2 = array('conditions' => array('User.' . $this->Enrolment->User->primaryKey => $user_id));
+		$options1 = array('conditions' => array('Course.' . $this->Enrolment->Course->primaryKey => $course_id));
+		$options2 = array('conditions' => array('User.' . $this->Enrolment->User->primaryKey => $user_id));
 		
 		$this->set('enrolment', $this->Enrolment->find('first', $options));
-		
-		$this->Enrolment->recursive = 0;
-		$this->Paginator->settings = array(
-        'Enrolments' => array(
-            'order' => array('Course.name' => 'desc'),
-            'group' => array('Course.name', 'User.name')
-			)
-		);
-		$this->set('enrolments', $this->Paginator->paginate());
-		//$this->set('course', $this->Enrolment->Course->find('first', $options1));
-		//$this->set('user', $this->Enrolment->User->find('first', $options2));
+		$this->set('course', $this->Enrolment->Course->find('first', $options1));
+		$this->set('user', $this->Enrolment->User->find('first', $options2));
 	}
 
 /**

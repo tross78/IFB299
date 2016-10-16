@@ -28,7 +28,7 @@
 			<td><?php echo h($enrolment['Enrolment']['role']); ?>&nbsp;</td>
 			<td><?php echo h($enrolment['Enrolment']['waitlist']); ?>&nbsp;</td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('action' => 'view', $enrolment['Enrolment']['id'])); ?>
+				<?php echo $this->Html->link(__('View'), array('action' => 'view', $enrolment['Enrolment']['id'], $enrolment['Enrolment']['course_id'], $enrolment['Enrolment']['user_id'])); ?>
 				<?php if (AuthComponent::user('permission') == 'manager'):?>
 					<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $enrolment['Enrolment']['id'])); ?>
 				<?php endif; ?>

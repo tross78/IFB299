@@ -8,12 +8,12 @@
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($enrolments['User']['full_name'], array('controller' => 'users', 'action' => 'view', $enrolment['User']['id'])); ?>
+			<?php echo $this->Html->link($user['User']['full_name'], array('controller' => 'users', 'action' => 'view', $user['User']['id'])); ?>
 			<br><br>
 		</dd>
 		<dt><?php echo __('Course'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($enrolments['Course']['name'], array('controller' => 'courses', 'action' => 'view', $enrolment['Course']['id'])); ?>
+			<?php echo $this->Html->link($course['Course']['name'], array('controller' => 'courses', 'action' => 'view', $course['Course']['id'])); ?>
 			<br><br>
 		</dd>
 		<dt><?php echo __('9am Class'); ?></dt>
