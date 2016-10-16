@@ -4,11 +4,11 @@
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
 			<?php echo h($enrolment['Enrolment']['id']); ?>
-			<br>
+			<br><br>
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($enrolment['User']['full_name'], array('controller' => 'users', 'action' => 'view', $enrolment['User']['id'])); ?>
+			<?php echo $this->Html->link($enrolment['User']['full_name'], array('controller' => 'users', 'action' => 'view', $enrolment['Enrolment']['user_id'])); ?>
 			<br>
 		</dd>
 		<dt><?php echo __('Course'); ?></dt>
