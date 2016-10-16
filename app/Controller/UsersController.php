@@ -32,10 +32,10 @@ class UsersController extends AppController {
 		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
 		$Email->to($this->request->data['User']['email_address']);
 		$Email->subject('Welcome to Hawke Meditation Centre!');
-		$Email->send('Hello there '. $this->request->data['User']['first_name'] . ',' "\n"
+		$Email->send('Hello there '. $this->request->data['User']['first_name'] . ',' <br>
 									'On behalf of the team here at the Hawke Meditation Centre, welcome and thanks for signing up!
 									Now that you have signed up feel free to register for one of our 10 day Introductory courses
-									or contact us with any questions you have.' "\n" 'We hope to see you soon!' "\n\n"
+									or contact us with any questions you have.' <br> 'We hope to see you soon!' <br><br>
 								'- The Hawke Centre Team');
 	}
 
