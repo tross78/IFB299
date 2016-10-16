@@ -190,6 +190,9 @@ class EnrolmentsController extends AppController {
 		$this->set("is_teacher", $is_teacher);
 		$this->set("is_kitchen", $is_kitchen);
 
+		//Ag: Manually set user_id
+		$this->request->data['Enrolment']['user_id'] = AuthComponent::user('gender');
+		
 		//Ag: Manually set enrolment date to current date
 		$this->request->data['Enrolment']['enrolment_date'] = date('Y-m-d');
 
