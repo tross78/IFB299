@@ -31,8 +31,12 @@ class UsersController extends AppController {
 		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
 		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
 		$Email->to($this->request->data['User']['email_address']);
-		$Email->subject('About');
-		$Email->send('Hi '. $this->request->data['User']['first_name'] . ', Welcome to Hawke Meditation Centre!');
+		$Email->subject('Welcome to Hawke Meditation Centre!');
+		$Email->send('Hello there '. $this->request->data['User']['first_name'] . ',' "\n"
+									'On behalf of the team here at the Hawke Meditation Centre, welcome and thanks for signing up!
+									Now that you have signed up feel free to register for one of our 10 day Introductory courses
+									or contact us with any questions you have.' "\n" 'We hope to see you soon!' "\n\n"
+								'- The Hawke Centre Team');
 	}
 
 
@@ -48,7 +52,7 @@ class UsersController extends AppController {
 			} else {
 				return false;
 			}
-			
+
 		}
 
 		if (in_array($this->action, array('index'))) {
@@ -57,7 +61,7 @@ class UsersController extends AppController {
 			} else {
 				return false;
 			}
-			
+
 		}
 
 		return parent::isAuthorized($user);
@@ -70,7 +74,7 @@ class UsersController extends AppController {
 	public function login() {
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
-				$permision_check = AuthComponent::user('permission');	
+				$permision_check = AuthComponent::user('permission');
 
 				if ($permision_check == 'terminated'){
 					$this->Flash->error(__('This account has been terminated by a manager. You will not be able to login.'));
@@ -124,7 +128,7 @@ class UsersController extends AppController {
 				$this->emailWelcomeMessage();
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				
+
 				$this->Flash->error(__('The user could not be saved. Please, try again.'));
 			}
 		}
