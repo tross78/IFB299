@@ -370,7 +370,7 @@ class EnrolmentsController extends AppController {
             'field' => array('Enrolment.id'),
             'contain' => array('Enrolment'),
             'conditions' => array(
-                'Enrolment.waitlist' => 'yes'
+                'waitlist' => 'yes'
             )
         ));
 
