@@ -1,7 +1,7 @@
 <div class="enrolments form">
 <?php echo $this->Form->create('Enrolment'); ?>
 <p>
-<?php 
+<?php
 	if ($is_old) {
 		echo 'student has completed prior course';
 	}
@@ -25,14 +25,13 @@
 		<?php
 			if ($course_full) { ?>
 			<legend><?php echo __('Waitlist or Server Enrolment'); ?></legend>
-		<?php 
+		<?php
 			} else { ?>
 			<legend><?php echo __('Confirm Role'); ?></legend>
 		<?php
 			}
 		?>
 	<?php
-		echo $studentCap;
 		echo $this->Form->hidden('id');
 		echo $this->Form->hidden('user_id', array('value'=>$authUser['id']));
 		echo $this->Form->input('course_id', array('class' => 'form-control', 'div' => 'form-group'));
@@ -44,24 +43,24 @@
 		'minYear' => date('Y'),	//unfortunately, there is no built-in minMonth or minDay, Don't really need it here though seeing as we will parse in the current date every time.
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
-		
+
 		if (AuthComponent::user('permission') == 'manager') {
 			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper', 'manager' => 'manager');
 		} elseif($is_old || (AuthComponent::user('permission') == "server")){
-			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper');		
+			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper');
 		} else {
 			$role_options = array('student' => 'student');
 		}
-		
+
 		echo $this->Form->input('role', array(
         'class' => 'form-control',
         'placeholder' => 'Role',
 		'options' => $role_options,
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
-		
+
 		echo "<br><strong>Students and Assistant Teachers Must Select Unique Classes:</strong><br><br>";
-		
+
 		$class_options = array('empty' => 'Please select a class','relaxation' => 'Relaxation','tai-chi' => 'Tai Chi', 'yin-deep-stretch' => 'Yin Deep Stretch', 'mindfulness-101' => 'Mindfulness 101', 'zen-mediation' => 'Zen Mediation');
 
 		echo $this->Form->input('class_one', array(
@@ -83,7 +82,7 @@
         'label' => '3pm Class',
 		'options' => $class_options,
 		'between' => '<div class="form-inline form-group">',
-        'after' => '</div>'));		
+        'after' => '</div>'));
 	?>
 	</fieldset>
 	<?php echo $this->Form->submit('Submit', array(

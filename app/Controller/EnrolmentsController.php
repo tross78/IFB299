@@ -249,8 +249,8 @@ class EnrolmentsController extends AppController {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id']));  //might move these into their own method later on
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
 					} else {
-                        $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id']));
-                        $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
+            $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id']));
+            $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
 					}
 
 					return $this->redirect(array('action' => 'index'));
@@ -362,10 +362,24 @@ class EnrolmentsController extends AppController {
 */
 
 		$this->request->allowMethod('post', 'delete');
+		$user_gender = AuthComponent::user('gender');
 //		if (!$commenced){
 			if ($this->Enrolment->delete()) {
 			//	$this->waitlistEnrol();
-
+			$deletedId = $this->Enrolment->find('first', array(
+					'field' => array('Enrolment.Course_id'),
+					'contain' => array('Enrolment'),
+							'conditions' => array(
+									'Enrolment.id' => $id
+							)
+					));
+					if ($user_gender == 'male') {
+						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
+						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
+					} else {
+						$this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $deletedId));
+						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
+					}
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
 				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
