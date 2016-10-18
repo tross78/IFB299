@@ -10,12 +10,12 @@
     <p><span class="label label-default">DOB</span> <span><?php echo h($user['User']['date_of_birth']); ?> </span></p>
     <p><span class="label label-default">Gender</span> <span><?php echo h($user['User']['gender']); ?> </span></p>
     <p><span class="label label-default">Email</span> <span><?php echo h($user['User']['email_address']); ?> </span></p>
-    <p><span class="label label-default">Residential</span> <span><?php echo h($user['User']['residential_address']); ?> <</span></p>
+    <p><span class="label label-default">Residential</span> <span><?php echo h($user['User']['residential_address']); ?></span></p>
     </p>
     <h4>Dietary &amp; Medical Requirements</h4>
     <p class="well">
-      <p><span class="label label-default">Dietary</span> <?php echo h($user['User']['dietary_requirements']); ?></span></p>
-      <p><span class="label label-default">Medical</span> <?php echo h($user['User']['medical_requirements']); ?></span></p>
+      <p><span class="label label-default">Dietary</span> <span><?php echo h($user['User']['dietary_requirements']); ?></span></p>
+      <p><span class="label label-default">Medical</span> <span><?php echo h($user['User']['medical_requirements']); ?></span></p>
     </p>
     <h4>Permission</h4>
     <p class="well"><?php echo h($user['User']['permission']); ?></p>
