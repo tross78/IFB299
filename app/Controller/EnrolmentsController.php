@@ -366,13 +366,15 @@ class EnrolmentsController extends AppController {
 //		if (!$commenced){
 			if ($this->Enrolment->delete()) {
 			//	$this->waitlistEnrol();
-			$deletedId = $this->Enrolment->find('first', array(
+			$before = $this->Enrolment->find('first', array(
 					'field' => array('Enrolment.Course_id'),
 					'contain' => array('Enrolment'),
 							'conditions' => array(
 									'Enrolment.id' => $id
 							)
 					));
+					$deletedId = $before['Enrolment']['course_id'];
+
 					if ($user_gender == 'male') {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
