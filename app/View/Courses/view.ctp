@@ -47,4 +47,12 @@
 			<br><br>
 		</dd>
 	</dl>
+	<h4>Course Enrolments</h4>
+	<div class="well">
+     <?php
+        foreach ($enrolments as $enrol) {
+		  echo "<p>" . $this->Html->link($enrol['User']['full_name'], array('controller' => 'users', 'action' => 'view', $enrol['User']['id'])) . "</p>";
+        }
+      ?>
+    </div>
 </div>
