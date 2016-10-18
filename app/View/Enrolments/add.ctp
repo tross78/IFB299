@@ -59,7 +59,11 @@
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
 		
-		$class_options = array('relaxation' => 'Relaxation','tai-chi' => 'Tai Chi', 'yin-deep-stretch' => 'Yin Deep Stretch', 'mindfulness-101' => 'Mindfulness 101', 'zen-mediation' => 'Zen Mediation');
+		<br><br>
+		
+		echo "Students and Assistant Teachers Must Select Unique Classes";
+		
+		$class_options = array('empty' => 'Please select a class','relaxation' => 'Relaxation','tai-chi' => 'Tai Chi', 'yin-deep-stretch' => 'Yin Deep Stretch', 'mindfulness-101' => 'Mindfulness 101', 'zen-mediation' => 'Zen Mediation');
 
 		echo $this->Form->input('class_one', array(
         'class' => 'form-control',

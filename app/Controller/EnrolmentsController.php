@@ -194,15 +194,17 @@ class EnrolmentsController extends AppController {
 		$is_manager = $this->request->data['Enrolment']['role'] == 'manager';
 		$is_teacher = $this->request->data['Enrolment']['role'] == 'assistant-teacher';
 		$is_kitchen = $this->request->data['Enrolment']['role'] == 'kitchen-helper';
-
+		
 		//AG: More sets
 		$this->set("is_student", $is_student);
 		$this->set("is_manager", $is_manager);
 		$this->set("is_teacher", $is_teacher);
 		$this->set("is_kitchen", $is_kitchen);
-
-		//Ag: Manually set user_id
-		//$this->request->data['Enrolment']['user_id'] = AuthComponent::user('id');
+		
+		//AG: Checks class selections
+		$one = $this->request->data['Enrolment']['class_one'];
+		$two = $this->request->data['Enrolment']['class_two'];
+		$three = $this->request->data['Enrolment']['class_three'];
 		
 		//Ag: Manually set enrolment date to current date
 		$this->request->data['Enrolment']['enrolment_date'] = date('Y-m-d');
@@ -223,7 +225,11 @@ class EnrolmentsController extends AppController {
 				$this->Flash->error(__('This course and its waitlist is full. Your enrolment has not be saved.'));
 			} elseif (($is_male && $user_gender == 'female')||($is_female && $user_gender == 'male')){
 				$this->Flash->error(__('Not even managers can enrol in courses for opposite gender.'));
-			}  else {
+			} elseif ($is_student || $is_teacher){
+				if ($one == $two || $one == $three || $two == $three){
+					$this->Flash->error(__('Class selections must be unique'));
+				}
+			}    else {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($this->request->data)) {
 					$this->Flash->success(__('The enrolment has been saved.'));
