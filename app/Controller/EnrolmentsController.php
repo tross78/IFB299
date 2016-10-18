@@ -222,8 +222,8 @@ class EnrolmentsController extends AppController {
 				if ($this->Enrolment->save($this->request->data)) {
 					$this->Flash->success(__('The enrolment has been saved.'));
 					if ($user_gender == 'male') {
-						$this->Enrolment->Course->enrolments_male =+ 1;
-						$this->Enrolment->Course->enrolments =+ 1;
+						$this->Enrolment->Course->set(array('courses.enrolments_male' => 'courses.enrolments_male + 1')); //no h8
+						$this->Enrolment->Course->set(array('courses.enrolments' => 'courses.enrolments + 1'));
 					} else {
 						$this->Enrolment->Course->enrolments_female =+ 1;
 						$this->Enrolment->Course->enrolments =+ 1;
@@ -340,7 +340,7 @@ class EnrolmentsController extends AppController {
 //		if (!$commenced){
 			if ($this->Enrolment->delete()) {
 				$this->waitlistEnrol();
-				$this->request->data['Enrolment']['waitlist'] = 0;
+				//$this->request->data['Enrolment']['waitlist'] = 0;
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
 				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
@@ -362,7 +362,7 @@ class EnrolmentsController extends AppController {
 		$studentCap = 1;
 		$longest = $this->Enrolment->find('first', array(
 					'conditions' => array(
-						'Enrolment.waitlist' => 1,
+						//Enrolment.waitlist' => 1,
 						//'Enrolment.id' => 1
 					))
 			);
