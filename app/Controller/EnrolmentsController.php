@@ -60,7 +60,7 @@ class EnrolmentsController extends AppController {
 		$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
 		$options1 = array('conditions' => array('Course.' . $this->Enrolment->Course->primaryKey => $course_id));
 		$options2 = array('conditions' => array('User.' . $this->Enrolment->User->primaryKey => $user_id));
-		
+
 		$this->set('enrolment', $this->Enrolment->find('first', $options));
 		$this->set('course', $this->Enrolment->Course->find('first', $options1));
 		$this->set('user', $this->Enrolment->User->find('first', $options2));
@@ -73,13 +73,15 @@ class EnrolmentsController extends AppController {
  */
 	public function add() {
 		//HG: student cap is now set through creating a course
-		$studentCap = $this->Enrolment->Course->find('first', array(
+		$test = $this->Enrolment->Course->find('first', array(
 		    'field' => array('Course.capacity'),
-		    'contain' => array('Course'),
+		    'contain' => array('Enrolment'),
             'conditions' => array(
                 'Course.id' => $this->params['named']['course_id']
             )
         ));
+				$studentCap = $test['Course']['capacity'];
+
 		$kitchenCap = 1; //set to 1 for testing purposes to test '$kitchen_full', normal student capacity will be 5.
 		$teacherCap = 1; //normal assistant-teacher capacity is 1.
 		$managerCap = 1; //normal manager capacity is 1.
@@ -185,6 +187,7 @@ class EnrolmentsController extends AppController {
 		$this->set("manager_full", $manager_full);
 		$this->set("teacher_full", $teacher_full);
 		$this->set("kitchen_full", $kitchen_full);
+		$this->set("studentCap", $studentCap);
 
 		//AG: post conditions after the enrolment form has been submitted
 		if ($this->request->is('post')) {
@@ -201,15 +204,26 @@ class EnrolmentsController extends AppController {
 		$this->set("is_teacher", $is_teacher);
 		$this->set("is_kitchen", $is_kitchen);
 
-		//Ag: Manually set user_id
-		//$this->request->data['Enrolment']['user_id'] = AuthComponent::user('id');
-		
+		//AG: Checks class selections
+		$one = $this->request->data['Enrolment']['class_one'];
+		$two = $this->request->data['Enrolment']['class_two'];
+		$three = $this->request->data['Enrolment']['class_three'];
+
 		//Ag: Manually set enrolment date to current date
 		$this->request->data['Enrolment']['enrolment_date'] = date('Y-m-d');
+
+		//Ag: Manually set classes if manager or kitchen helper
+		if ($is_manager||$is_kitchen){
+			$this->request->data['Enrolment']['class_one'] = "n/a";
+			$this->request->data['Enrolment']['class_two'] = "n/a";
+			$this->request->data['Enrolment']['class_three'] = "n/a";
+		}
 
 		//AG: Code to set waitlist to 1 if course is full.
 		if ($course_full && $is_student) {
 			$this->request->data['Enrolment']['waitlist'] = 'yes';
+		}else{
+			$this->request->data['Enrolment']['waitlist'] = 'no';
 		}
 
 	//AG: The following displays error messages to the user if they are unable to enroll. Otherwise, it enrols them and saves the data in the database.
@@ -223,7 +237,11 @@ class EnrolmentsController extends AppController {
 				$this->Flash->error(__('This course and its waitlist is full. Your enrolment has not be saved.'));
 			} elseif (($is_male && $user_gender == 'female')||($is_female && $user_gender == 'male')){
 				$this->Flash->error(__('Not even managers can enrol in courses for opposite gender.'));
-			}  else {
+			} elseif (($is_student || $is_teacher)&&($one == $two || $one == $three || $two == $three)){
+					$this->Flash->error(__('Class selections must be unique.'));
+			} elseif (($is_student || $is_teacher)&&($one == 'empty' || $two == 'empty' || $three == 'empty')){
+					$this->Flash->error(__('You must make a Valid class selection for EACH time slot.'));
+			} else {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($this->request->data)) {
 					$this->Flash->success(__('The enrolment has been saved.'));
@@ -231,8 +249,8 @@ class EnrolmentsController extends AppController {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id']));  //might move these into their own method later on
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
 					} else {
-                        $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id']));
-                        $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
+            $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id']));
+            $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
 					}
 
 					return $this->redirect(array('action' => 'index'));
@@ -344,10 +362,24 @@ class EnrolmentsController extends AppController {
 */
 
 		$this->request->allowMethod('post', 'delete');
+		$user_gender = AuthComponent::user('gender');
 //		if (!$commenced){
 			if ($this->Enrolment->delete()) {
 			//	$this->waitlistEnrol();
-
+			$deletedId = $this->Enrolment->find('first', array(
+					'field' => array('Enrolment.Course_id'),
+					'contain' => array('Enrolment'),
+							'conditions' => array(
+									'Enrolment.id' => $id
+							)
+					));
+					if ($user_gender == 'male') {
+						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
+						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
+					} else {
+						$this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $deletedId));
+						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
+					}
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
 				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));

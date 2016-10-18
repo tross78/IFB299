@@ -42,7 +42,7 @@
     <div class="well">
       <?php
         foreach ($enrolments as $enrol) {
-          echo "<p>" . h($enrol['Course']['name']) . "</p>";
+		  echo "<p>" . $this->Html->link($enrol['Course']['name'], array('controller' => 'enrolments', 'action' => 'view', $enrol['Enrolment']['id'], $enrol['Enrolment']['course_id'], $enrol['Enrolment']['user_id'])) . "</p>";
         }
       ?>
     </div>

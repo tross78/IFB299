@@ -72,6 +72,7 @@ class CoursesController extends AppController {
 						'Course.enrolments',
 						'Course.enrolments_male',
 						'Course.enrolments_female',
+						'Course.capacity',
 					),
 					'order' => array(
 						'Course.name' => 'DESC'
@@ -96,6 +97,7 @@ class CoursesController extends AppController {
                         'Course.enrolments',
                         'Course.enrolments_male',
                         'Course.enrolments_female',
+						'Course.capacity',
                     ),
                     'order' => array(
                         'Course.name' => 'DESC'
@@ -134,6 +136,15 @@ class CoursesController extends AppController {
 		}
 		$options = array('conditions' => array('Course.' . $this->Course->primaryKey => $id));
 		$this->set('course', $this->Course->find('first', $options));
+		
+		$this->set('enrolments', $this->Course->Enrolment->find('all', array(
+			'fields' => array('Enrolment.id', 'Enrolment.user_id', 'Enrolment.course_id', 'Enrolment.role', 'User.id', 'User.first_name', 'User.last_name'),
+			'contain' => array('User'),
+			'conditions' => array(
+				'course_id' => $id
+			))
+		));
+		
 	}
 
 /**
