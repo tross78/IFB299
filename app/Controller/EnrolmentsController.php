@@ -208,6 +208,13 @@ class EnrolmentsController extends AppController {
 		
 		//Ag: Manually set enrolment date to current date
 		$this->request->data['Enrolment']['enrolment_date'] = date('Y-m-d');
+		
+		//Ag: Manually set classes if manager or kitchen helper
+		if ($is_manager||$is_kitchen){
+			$this->request->data['Enrolment']['class_one'] = "n/a";
+			$this->request->data['Enrolment']['class_two'] = "n/a";
+			$this->request->data['Enrolment']['class_three'] = "n/a";
+		}
 
 		//AG: Code to set waitlist to 1 if course is full.
 		if ($course_full && $is_student) {
@@ -225,11 +232,11 @@ class EnrolmentsController extends AppController {
 				$this->Flash->error(__('This course and its waitlist is full. Your enrolment has not be saved.'));
 			} elseif (($is_male && $user_gender == 'female')||($is_female && $user_gender == 'male')){
 				$this->Flash->error(__('Not even managers can enrol in courses for opposite gender.'));
-			} elseif ($is_student || $is_teacher){
-				if ($one == $two || $one == $three || $two == $three){
-					$this->Flash->error(__('Class selections must be unique'));
-				}
-			}    else {
+			} elseif (($is_student || $is_teacher)&&($one == $two || $one == $three || $two == $three)){
+					$this->Flash->error(__('Class selections must be unique.'));
+			} elseif (($is_student || $is_teacher)&&($one == 'empty' || $two == 'empty' || $three == 'empty')){
+					$this->Flash->error(__('Please select classes to enrol in.'));
+			} else {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($this->request->data)) {
 					$this->Flash->success(__('The enrolment has been saved.'));
