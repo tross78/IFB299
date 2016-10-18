@@ -1,9 +1,9 @@
 <div class="users view">
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h1><span class="glyphicon glyphicon-user"></span> <?php echo h($user['User']['username']); ?></h1>
+    <h1 class="panel-title"><span class="glyphicon glyphicon-user"></span> <?php echo h($user['User']['username']); ?></h1>
   </div>
-  <div class="panel-content">
+  <div class="panel-body">
   <h3>Name</h3>
     <p><?php echo h($user['User']['first_name']); ?> <?php echo h($user['User']['last_name']); ?></p>
     <h3>Date Of Birth</h3>
