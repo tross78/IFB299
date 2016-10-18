@@ -225,8 +225,8 @@ class EnrolmentsController extends AppController {
 					if ($user_gender == 'male') {
 					    $connection = ConnectionManager::get('default');
                         $connection->update('courses', ['enolments_male' => 'enrolments_male+1']);
-                        
-						$this->Enrolment->Course->set(courses.enrolments_male => courses.enrolments_male + 1); //no h8
+
+						//$this->Enrolment->Course->set(courses.enrolments_male => courses.enrolments_male + 1); //no h8
 						$this->Enrolment->Course->set(array('courses.enrolments' => 'courses.enrolments + 1'));
 					} else {
 						$this->Enrolment->Course->enrolments_female =+ 1;
