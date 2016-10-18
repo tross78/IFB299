@@ -221,6 +221,8 @@ class EnrolmentsController extends AppController {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($this->request->data)) {
 					$this->Flash->success(__('The enrolment has been saved.'));
+                    $this->Enrolment->Course->set(array('courses.enrolments_male' => 'courses.enrolments_male + 1')); //no h8
+                    $this->Enrolment->Course->set(array('courses.enrolments' => 'courses.enrolments + 1'));
 					if ($user_gender == 'male') {
 						$this->Enrolment->Course->set(array('courses.enrolments_male' => 'courses.enrolments_male + 1')); //no h8
 						$this->Enrolment->Course->set(array('courses.enrolments' => 'courses.enrolments + 1'));
