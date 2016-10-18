@@ -41,8 +41,8 @@
     <h4>Enrolments</h4>
     <p class="well">
       <?php
-        foreach ($enrolments as $enrolment) {
-          echo h($enrolment['Course']['name']);
+        foreach ($enrolments as $enrol) {
+          echo h($enrol['Course']['name']);
         }
       ?>
     </p>
