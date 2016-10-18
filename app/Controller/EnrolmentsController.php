@@ -203,7 +203,7 @@ class EnrolmentsController extends AppController {
 
 		//AG: Code to set waitlist to 1 if course is full.
 		if ($course_full && $is_student) {
-			$this->request->data['Enrolment']['waitlist'] = 1;
+			$this->request->data['Enrolment']['waitlist'] = 'yes';
 		}
 
 	//AG: The following displays error messages to the user if they are unable to enroll. Otherwise, it enrols them and saves the data in the database.
