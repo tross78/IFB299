@@ -151,6 +151,7 @@ class UsersController extends AppController {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
+		$this->request->data = $this->User->formatDOB($this->request->data);
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->User->save($this->request->data)) {
 				$this->Flash->success(__('The user has been saved.'));
