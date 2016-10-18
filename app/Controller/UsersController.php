@@ -107,7 +107,19 @@ class UsersController extends AppController {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+		
 		$this->set('user', $this->User->find('first', $options));
+
+		$enrolments = $this->User->Enrolment->find('all', array(
+		'fields' => array('Enrolment.id', 'Course.id', 'Course.name', 'Enrolment.user_id', 'User.id'),
+		'contain' => array('User', 'Course'),
+		'conditions' => array(
+			'user_id' => $id
+		))
+		);
+
+		$this->set('enrolments', $enrolments);
+
 	}
 
 /**

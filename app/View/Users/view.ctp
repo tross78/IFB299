@@ -38,6 +38,14 @@
       <p><span class="label label-danger">Dietary</span> <span><?php echo h($user['User']['dietary_requirements']); ?></span></p>
       <p><span class="label label-danger">Medical</span> <span><?php echo h($user['User']['medical_requirements']); ?></span></p>
     </div>
+    <h4>Enrolments</h4>
+    <p class="well">
+      <?php
+        foreach ($enrolments as $enrolment) {
+          echo h($enrolment['Course']['name']);
+        }
+      ?>
+    </p>
     <h4>Permission</h4>
     <p class="well"><?php echo h($user['User']['permission']); ?></p>
   </div>
