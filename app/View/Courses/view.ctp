@@ -51,7 +51,7 @@
 	<div class="well">
      <?php
         foreach ($enrolments as $enrol) {
-		  $name = (($enrol['User']['first_name']) . " " . ($enrol['User']['last_name']) . ": &nbsp;&nbsp;&nbsp; " . ($enrol['Enrolment']['role']));
+		  $name = (($enrol['User']['first_name']) . " " . ($enrol['User']['last_name']) . ": " . "&nbsp;" . "&nbsp; &nbsp;" . ($enrol['Enrolment']['role']));
 		  echo "<p>" . $this->Html->link($name, array('controller' => 'users', 'action' => 'view', $enrol['User']['id'])) . "</p>";
         }
       ?>
