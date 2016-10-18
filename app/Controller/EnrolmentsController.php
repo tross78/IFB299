@@ -325,7 +325,6 @@ class EnrolmentsController extends AppController {
 //once the start date has been reached, or passed.
 
 	public function delete($id = null) {
-        $user_gender = AuthComponent::user('gender');
 		$this->Enrolment->id = $id;
 		if (!$this->Enrolment->exists()) {
 			throw new NotFoundException(__('Invalid enrolment'));
@@ -348,17 +347,9 @@ class EnrolmentsController extends AppController {
 //		if (!$commenced){
 			if ($this->Enrolment->delete()) {
 				$this->waitlistEnrol();
-				//$this->request->data['Enrolment']['waitlist'] = 0;
 
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
-                if ($user_gender == 'male') {
-                    $this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id']));
-                    $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
-                } else {
-                    $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id']));
-                    $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
-                }
 				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
 			}
 //		} else {
@@ -375,13 +366,13 @@ class EnrolmentsController extends AppController {
 	//a function to handle the enrolment of the user who has been on the waitlist for the longest
 	//HG this does not work
 	public function waitlistEnrol(){
-		$studentCap = 1;
-		$longest = $this->Enrolment->find('first', array(
-					'conditions' => array(
-						//Enrolment.waitlist' => 1,
-						//'Enrolment.id' => 1
-					))
-			);
+        $longest = $this->Enrolment->Course->find('first', array(
+            'field' => array('Enrolment.id'),
+            'contain' => array('Enrolment'),
+            'conditions' => array(
+                'Enrolment.waitlist' => 'yes'
+            )
+        ));
 
 		$course_full = $this->Enrolment->find('count', array(
 					'fields' => array('Course.id'),
@@ -389,22 +380,14 @@ class EnrolmentsController extends AppController {
 					'conditions' => array(
 						'Enrolment.role' => 'student'
 					))
-			) >= $studentCap;
+			) >= 2;
 
 			$this->set("course_full", $course_full);
 			$this->set("longest", $longest);
 
 			$this->Flash->error(__($this->longest));
 
-			if(!$course_full) {
-				$this->Enrolment->create();
-				if ($this->Enrolment->save($this->longest->request->data)) {
-					return $this->redirect(array('action' => 'index'));
-				} else {
-
-					$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
-				}
-			}
+        $this->Enrolment->updateAll(array('waitlist' => 'no'), array('Enrolment.id' => $longest));
 
 	}
 
