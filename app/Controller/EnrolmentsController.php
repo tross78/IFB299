@@ -224,10 +224,15 @@ class EnrolmentsController extends AppController {
 					if ($user_gender == 'male') {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
+					} elseif($user_gender == 'female'){
+                        $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
+                        $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
 					} else {
-						$this->Enrolment->Course->enrolments_female =+ 1;
-						$this->Enrolment->Course->enrolments =+ 1;
-					}
+                        $this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
+                        $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
+                        $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
+                        $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
+                    }
 					return $this->redirect(array('action' => 'index'));
 				} else {
 					$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
