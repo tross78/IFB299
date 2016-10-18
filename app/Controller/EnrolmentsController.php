@@ -222,8 +222,8 @@ class EnrolmentsController extends AppController {
 				if ($this->Enrolment->save($this->request->data)) {
 					$this->Flash->success(__('The enrolment has been saved.'));
 					if ($user_gender == 'male') {
-						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('id' => 'enrolments.course_id')); //no h8
-						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('id' => 'enrolments.course_id'));
+						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
+						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
 					} else {
 						$this->Enrolment->Course->enrolments_female =+ 1;
 						$this->Enrolment->Course->enrolments =+ 1;
