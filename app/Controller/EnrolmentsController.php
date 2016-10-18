@@ -79,7 +79,7 @@ class EnrolmentsController extends AppController {
             'conditions' => array(
                 'Course.id' => $this->params['named']['course_id']
             )
-        ));	//set to 2 for testing purposes to test '$course_full', normal student capacity will be 26.
+        ));
 		$kitchenCap = 1; //set to 1 for testing purposes to test '$kitchen_full', normal student capacity will be 5.
 		$teacherCap = 1; //normal assistant-teacher capacity is 1.
 		$managerCap = 1; //normal manager capacity is 1.
@@ -228,10 +228,10 @@ class EnrolmentsController extends AppController {
 				if ($this->Enrolment->save($this->request->data)) {
 					$this->Flash->success(__('The enrolment has been saved.'));
 					if ($user_gender == 'male') {
-						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
+						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id']));  //might move these into their own method later on
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
 					} else {
-                        $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
+                        $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id']));
                         $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
 					}
 
@@ -353,10 +353,10 @@ class EnrolmentsController extends AppController {
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
                 if ($user_gender == 'male') {
-                    $this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
+                    $this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id']));
                     $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
                 } else {
-                    $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
+                    $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id']));
                     $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
                 }
 				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
