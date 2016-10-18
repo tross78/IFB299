@@ -5,15 +5,18 @@
   </div>
   <div class="panel-body">
   <h4>Details</h4>
-    <p class="well"><span class="label label-default">Name</span> <?php echo h($user['User']['first_name']); ?> <?php echo h($user['User']['last_name']); ?> <span class="label label-default">DOB</span> <?php echo h($user['User']['date_of_birth']); ?> <span class="label label-default">Gender</span> <?php echo h($user['User']['gender']); ?> </p>
-    <h4>Email Address</h4>
-    <p class="well"><?php echo h($user['User']['email_address']); ?></p>
-    <h4>Residential Address</h4>
-    <p class="well"><?php echo h($user['User']['residential_address']); ?></p>
-    <h4>Dietary Requirements</h4>
-    <p class="well"><?php echo h($user['User']['dietary_requirements']); ?></p>
-    <h4>Medical Requirements</h4>
-    <p class="well"><?php echo h($user['User']['medical_requirements']); ?></p>
+    <p class="well">
+      <p class="label label-default">Name</p> <?php echo h($user['User']['first_name']); ?> <?php echo h($user['User']['last_name']); ?> 
+      <p class="label label-default">DOB</p> <?php echo h($user['User']['date_of_birth']); ?> 
+      <p class="label label-default">Gender</p> <?php echo h($user['User']['gender']); ?> 
+      <p class="label label-default">Email</p> <?php echo h($user['User']['email_address']); ?>
+      <p class="label label-default">Residential</p> <?php echo h($user['User']['residential_address']); ?>
+    </p>
+    <h4>Dietary &amp; Medical Requirements</h4>
+    <p class="well">
+      <p class="label label-default">Dietary</p> <?php echo h($user['User']['dietary_requirements']); ?></p>
+      <p class="label label-default">Medical</p> <?php echo h($user['User']['medical_requirements']); ?></p>
+    </p>
     <h4>Permission</h4>
     <p class="well"><?php echo h($user['User']['permission']); ?></p>
   </div>
