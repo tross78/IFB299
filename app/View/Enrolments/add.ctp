@@ -59,8 +59,6 @@
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
 		
-		<br><br>
-		
 		echo "Students and Assistant Teachers Must Select Unique Classes";
 		
 		$class_options = array('empty' => 'Please select a class','relaxation' => 'Relaxation','tai-chi' => 'Tai Chi', 'yin-deep-stretch' => 'Yin Deep Stretch', 'mindfulness-101' => 'Mindfulness 101', 'zen-mediation' => 'Zen Mediation');
