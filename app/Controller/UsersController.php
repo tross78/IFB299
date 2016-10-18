@@ -151,6 +151,8 @@ class UsersController extends AppController {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
+
+		$this->set('user', $this->User->find('first',  array('conditions' => array('User.' . $this->User->primaryKey => $id))));
 		
 		if ($this->request->is(array('post', 'put'))) {
 			$this->request->data = $this->User->formatDOB($this->request->data);
