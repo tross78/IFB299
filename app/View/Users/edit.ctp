@@ -12,7 +12,7 @@
 			<div class="form-group">
 			<div data-component="HawkeDatePicker">
 				<div data-reactroot="" class="react-flex react-date-field react-date-field--theme-default react-date-field--picker-position-bottom react-flex-v2--align-items-center react-flex-v2--row react-flex-v2--display-inline-flex">
-					<?php echo $this->Form->input('date_of_birth', array('type' => 'text')); ?>
+					<?php echo $this->Form->input('date_of_birth', array('type' => 'text', 'value' => echo $this->Form->input('date_of_birth')); ?>
 					<div class="react-date-field__calendar-icon">
 						<div class="react-date-field__calendar-icon-inner"></div>
 					</div>
