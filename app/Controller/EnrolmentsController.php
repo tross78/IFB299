@@ -75,7 +75,7 @@ class EnrolmentsController extends AppController {
 		//HG: student cap is now set through creating a course
 		$studentCap = $this->Enrolment->Course->find('first', array(
 		    'field' => array('Course.capacity'),
-		    'contain' => array('Course'),
+		    'contain' => array('Enrolment'),
             'conditions' => array(
                 'Course.id' => $this->params['named']['course_id']
             )
