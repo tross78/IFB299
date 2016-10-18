@@ -73,13 +73,15 @@ class EnrolmentsController extends AppController {
  */
 	public function add() {
 		//HG: student cap is now set through creating a course
-		$studentCap = $this->Enrolment->Course->find('first', array(
+		$the_course = $this->Enrolment->Course->find('first', array(
 		    'field' => array('Course.capacity'),
 		    'contain' => array('Enrolment'),
             'conditions' => array(
                 'Course.id' => $this->params['named']['course_id']
             )
         ));
+		
+		$studentCap = ($the_course[Course][capacity]);
 		$kitchenCap = 1; //set to 1 for testing purposes to test '$kitchen_full', normal student capacity will be 5.
 		$teacherCap = 1; //normal assistant-teacher capacity is 1.
 		$managerCap = 1; //normal manager capacity is 1.
@@ -185,6 +187,7 @@ class EnrolmentsController extends AppController {
 		$this->set("manager_full", $manager_full);
 		$this->set("teacher_full", $teacher_full);
 		$this->set("kitchen_full", $kitchen_full);
+		$this->set("studentCap", $studentCap);
 
 		//AG: post conditions after the enrolment form has been submitted
 		if ($this->request->is('post')) {
