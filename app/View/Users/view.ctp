@@ -6,11 +6,28 @@
   <div class="panel-body">
   <h4>Details</h4>
     <div class="well">
-      <p><span class="label label-default">Name</span> <span><?php echo h($user['User']['first_name']); ?> <?php echo h($user['User']['last_name']); ?> </span></p>
-      <p><span class="label label-default">DOB</span> <span><?php echo h($user['User']['date_of_birth']); ?> </span></p>
-      <p><span class="label label-default">Gender</span> <span><?php echo h($user['User']['gender']); ?> </span></p>
-      <p><span class="label label-default">Email</span> <span><?php echo h($user['User']['email_address']); ?> </span></p>
-      <p><span class="label label-default">Residential</span> <span><?php echo h($user['User']['residential_address']); ?></span></p>
+      <table>
+        <tr>
+          <td><span class="label label-default">Name</span></td>
+          <td><?php echo h($user['User']['first_name']); ?> <?php echo h($user['User']['last_name']); ?> </span></td>
+        </tr>
+        <tr>
+          <td><span class="label label-default">DOB</span></td>
+          <td><?php echo h($user['User']['date_of_birth']); ?></td>
+        </tr>
+        <tr>
+          <td><span class="label label-default">Gender</span></td>
+          <td><?php echo h($user['User']['gender']); ?></td>
+        </tr>
+        <tr>
+          <td><span class="label label-default">Email</span></td>
+          <td><?php echo h($user['User']['email_address']); ?></td>
+        </tr>
+        <tr>
+          <td><span class="label label-default">Residential</span></td>
+          <td><?php echo h($user['User']['residential_address']); ?></td>
+        </tr>
+      </table>
     </div>
     <h4>Dietary &amp; Medical Requirements</h4>
     <div class="well">
