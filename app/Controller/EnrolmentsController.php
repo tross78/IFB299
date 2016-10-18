@@ -60,7 +60,7 @@ class EnrolmentsController extends AppController {
 		$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
 		$options1 = array('conditions' => array('Course.' . $this->Enrolment->Course->primaryKey => $course_id));
 		$options2 = array('conditions' => array('User.' . $this->Enrolment->User->primaryKey => $user_id));
-		
+
 		$this->set('enrolment', $this->Enrolment->find('first', $options));
 		$this->set('course', $this->Enrolment->Course->find('first', $options1));
 		$this->set('user', $this->Enrolment->User->find('first', $options2));
@@ -73,14 +73,15 @@ class EnrolmentsController extends AppController {
  */
 	public function add() {
 		//HG: student cap is now set through creating a course
-		$studentCap = $this->Enrolment->Course->find('first', array(
+		$test = $this->Enrolment->Course->find('first', array(
 		    'field' => array('Course.capacity'),
 		    'contain' => array('Enrolment'),
             'conditions' => array(
                 'Course.id' => $this->params['named']['course_id']
             )
         ));
-		
+				$studentCap = $test['Course']['capacity'];
+
 		$kitchenCap = 1; //set to 1 for testing purposes to test '$kitchen_full', normal student capacity will be 5.
 		$teacherCap = 1; //normal assistant-teacher capacity is 1.
 		$managerCap = 1; //normal manager capacity is 1.
@@ -196,21 +197,21 @@ class EnrolmentsController extends AppController {
 		$is_manager = $this->request->data['Enrolment']['role'] == 'manager';
 		$is_teacher = $this->request->data['Enrolment']['role'] == 'assistant-teacher';
 		$is_kitchen = $this->request->data['Enrolment']['role'] == 'kitchen-helper';
-		
+
 		//AG: More sets
 		$this->set("is_student", $is_student);
 		$this->set("is_manager", $is_manager);
 		$this->set("is_teacher", $is_teacher);
 		$this->set("is_kitchen", $is_kitchen);
-		
+
 		//AG: Checks class selections
 		$one = $this->request->data['Enrolment']['class_one'];
 		$two = $this->request->data['Enrolment']['class_two'];
 		$three = $this->request->data['Enrolment']['class_three'];
-		
+
 		//Ag: Manually set enrolment date to current date
 		$this->request->data['Enrolment']['enrolment_date'] = date('Y-m-d');
-		
+
 		//Ag: Manually set classes if manager or kitchen helper
 		if ($is_manager||$is_kitchen){
 			$this->request->data['Enrolment']['class_one'] = "n/a";
