@@ -39,15 +39,15 @@
       <p><span class="label label-danger">Medical</span> <span><?php echo h($user['User']['medical_requirements']); ?></span></p>
     </div>
     <h4>Course Enrolments</h4>
-    <p class="well">
+    <div class="well">
       <?php
         foreach ($enrolments as $enrol) {
           echo "<p>" . h($enrol['Course']['name']) . "</p>";
         }
       ?>
-    </p>
+    </div>
     <h4>Permission</h4>
-    <p class="well"><?php echo h($user['User']['permission']); ?></p>
+    <div class="well"><?php echo h($user['User']['permission']); ?></div>
   </div>
 </div>
 </div>
