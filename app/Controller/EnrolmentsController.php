@@ -72,8 +72,14 @@ class EnrolmentsController extends AppController {
  * @return void
  */
 	public function add() {
-		//AG: the following are the capacities for each possible enrolment role in a course, (students -> kitchen-helpers -> assistant-teachers -> managers)
-		$studentCap = 1;	//set to 2 for testing purposes to test '$course_full', normal student capacity will be 26.
+		//HG: student cap is now set through creating a course
+		$studentCap = $this->Enrolment->Course->find('first', array(
+		    'field' => array('Course.capacity'),
+		    'contain' => array('Course'),
+            'conditions' => array(
+                'Course.id' => $this->params['named']['course_id']
+            )
+        ));	//set to 2 for testing purposes to test '$course_full', normal student capacity will be 26.
 		$kitchenCap = 1; //set to 1 for testing purposes to test '$kitchen_full', normal student capacity will be 5.
 		$teacherCap = 1; //normal assistant-teacher capacity is 1.
 		$managerCap = 1; //normal manager capacity is 1.
@@ -340,13 +346,6 @@ class EnrolmentsController extends AppController {
 
 		$this->request->allowMethod('post', 'delete');
 //		if (!$commenced){
-        if ($user_gender == 'male') {
-            $this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
-            $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $this->params['named']['course_id']));
-        } else {
-            $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
-            $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $this->params['named']['course_id']));
-        }
 			if ($this->Enrolment->delete()) {
 				$this->waitlistEnrol();
 				//$this->request->data['Enrolment']['waitlist'] = 0;
