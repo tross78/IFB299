@@ -111,11 +111,11 @@ class UsersController extends AppController {
 		$this->set('user', $this->User->find('first', $options));
 
 		$enrolments = $this->User->Enrolment->find('all', array(
-		'fields' => array('Enrolment.id', 'Course.id', 'Course.name', 'Enrolment.user_id', 'User.id'),
-		'contain' => array('User', 'Course'),
-		'conditions' => array(
-			'user_id' => $id
-		))
+			'fields' => array('Enrolment.id', 'Course.name', 'Enrolment.user_id'),
+			'contain' => array('Course', 'User'),
+			'conditions' => array(
+				'Enrolment.user_id' => $id
+			))
 		);
 
 		$this->set('enrolments', $enrolments);
