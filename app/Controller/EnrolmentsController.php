@@ -235,7 +235,7 @@ class EnrolmentsController extends AppController {
 			} elseif (($is_student || $is_teacher)&&($one == $two || $one == $three || $two == $three)){
 					$this->Flash->error(__('Class selections must be unique.'));
 			} elseif (($is_student || $is_teacher)&&($one == 'empty' || $two == 'empty' || $three == 'empty')){
-					$this->Flash->error(__('Please select classes to enrol in.'));
+					$this->Flash->error(__('You MUST make a valid class selection for EACH time slot.'));
 			} else {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($this->request->data)) {
