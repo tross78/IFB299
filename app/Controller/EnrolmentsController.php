@@ -224,15 +224,11 @@ class EnrolmentsController extends AppController {
 					if ($user_gender == 'male') {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
-					} elseif($user_gender == 'female'){
-                        $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
-                        $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
 					} else {
-                        $this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
-                        $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
                         $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
                         $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
-                    }
+					}
+
 					return $this->redirect(array('action' => 'index'));
 				} else {
 					$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
@@ -323,6 +319,7 @@ class EnrolmentsController extends AppController {
 //once the start date has been reached, or passed.
 
 	public function delete($id = null) {
+        $user_gender = AuthComponent::user('gender');
 		$this->Enrolment->id = $id;
 		if (!$this->Enrolment->exists()) {
 			throw new NotFoundException(__('Invalid enrolment'));
@@ -346,6 +343,13 @@ class EnrolmentsController extends AppController {
 			if ($this->Enrolment->delete()) {
 				$this->waitlistEnrol();
 				//$this->request->data['Enrolment']['waitlist'] = 0;
+                if ($user_gender == 'male') {
+                    $this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
+                    $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $this->params['named']['course_id']));
+                } else {
+                    $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $this->params['named']['course_id'])); //no h8
+                    $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $this->params['named']['course_id']));
+                }
 				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
 				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
