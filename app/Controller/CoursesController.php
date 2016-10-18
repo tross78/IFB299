@@ -72,6 +72,7 @@ class CoursesController extends AppController {
 						'Course.enrolments',
 						'Course.enrolments_male',
 						'Course.enrolments_female',
+						'Course.capacity',
 					),
 					'order' => array(
 						'Course.name' => 'DESC'
@@ -96,6 +97,7 @@ class CoursesController extends AppController {
                         'Course.enrolments',
                         'Course.enrolments_male',
                         'Course.enrolments_female',
+						'Course.capacity',
                     ),
                     'order' => array(
                         'Course.name' => 'DESC'
