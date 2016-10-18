@@ -138,7 +138,7 @@ class CoursesController extends AppController {
 		$this->set('course', $this->Course->find('first', $options));
 		
 		$this->set('enrolments', $this->Course->Enrolment->find('all', array(
-			'fields' => array('Enrolment.id', 'User.name', 'Enrolment.user_id', 'Enrolment.course_id', 'User.id'),
+			'fields' => array('Enrolment.id', 'Enrolment.user_id', 'Enrolment.course_id', 'User.id', 'User.first_name'),
 			'contain' => array('Enrolment', 'User'),
 			'conditions' => array(
 				'course_id' => $id
