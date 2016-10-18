@@ -14,8 +14,8 @@
     </div>
     <h4>Dietary &amp; Medical Requirements</h4>
     <div class="well">
-      <p><span class="label label-default">Dietary</span> <span><?php echo h($user['User']['dietary_requirements']); ?></span></p>
-      <p><span class="label label-default">Medical</span> <span><?php echo h($user['User']['medical_requirements']); ?></span></p>
+      <p><span class="label label-danger">Dietary</span> <span><?php echo h($user['User']['dietary_requirements']); ?></span></p>
+      <p><span class="label label-danger">Medical</span> <span><?php echo h($user['User']['medical_requirements']); ?></span></p>
     </div>
     <h4>Permission</h4>
     <p class="well"><?php echo h($user['User']['permission']); ?></p>
