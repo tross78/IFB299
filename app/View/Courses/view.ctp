@@ -47,7 +47,7 @@
 			<br><br>
 		</dd>
 	</dl>
-	<h4>Course Enrolments</h4>
+	<h4>Course Enrolments:</h4>
 	<div class="well">
      <?php
         foreach ($enrolments as $enrol) {
