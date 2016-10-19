@@ -4,6 +4,7 @@
       width: 1150px;
 	    height: 50px;
 	    width: auto\9;
+      border-radius: 50%;
     }
 
     .img2 {
@@ -12,7 +13,7 @@
       width: 450px;
       height: 450px;
       width: auto\9;
-      border-radius: 10px;
+      border-radius: 15px;
     }
 
 </style>
