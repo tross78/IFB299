@@ -17,6 +17,8 @@
     <p>The general public have been of great help over the years, making gracious donations to assist in supporting the centre while asking nothing in return. A true act of kindness we believe. For contractual reasons we cannot accept donations via our website, however if you would like to make a donation, please feel free to phone or email the centre. Our contact details can be found under the ‘Contact Us’ tab.</p>
     <p>All donations can either be made towards the “General Fund” or the “Building Fund”. Over the years, we’ve found that the community and students tend to dedicate 50% of their contributions to each fund.</p>
     <p>We thank you for your support!</p>
+  </div>
+  <div>
   <img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 </div>
 <div class="row top30">
