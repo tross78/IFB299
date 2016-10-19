@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 use Cake\ORM\TableRegistry;
 /**
  * Enrolments Controller
