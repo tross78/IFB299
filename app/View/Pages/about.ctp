@@ -7,21 +7,12 @@
     }
 
     .img2 {
-      position: relative;
+      float: right;
       max-width: 100%;
+      width: 600px;
+      height: 600px;
       width: auto\9;
     }
-
-    .info_text {
-      float: left;
-    }
-
-    .img2_wrap_right {
-      width: 300px;
-      height: 100%;
-      float: right;
-    }
-
 
 </style>
 
@@ -37,7 +28,6 @@
 </div>
 <img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 <br></br>
-<div class = "info_text">
   <div class = "col-sm-8 well">
     <h3>Course Information &amp; Registration</h3>
       <h4>Courses</h4>
@@ -50,9 +40,7 @@
       <p>Once a course becomes full, the centre continues to accept registrations for up to 7 more people and puts each registrant on a waiting list.</p>
       <h4>Registrant Confirmation</h4>
       <p>The centre sends an email ten days earlier than the course commencement date to all registered students to confirm their attendance. If the centre doesn’t receive a reply within 2 days or the registered student declines the offer, the vacant place is made available to students on the waiting list if they exist.</p>
-    <div class = "img2_wrap_right">
+    </div>
+    <div>
         <img class = "img2" src="http://i.imgur.com/XaaEHwo.jpg" alt = ""/>
     </div>
-  </div>
-
-</div>
