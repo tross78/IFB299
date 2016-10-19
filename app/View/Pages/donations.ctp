@@ -19,7 +19,6 @@
   </div>
   <img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 </div>
-<br></br>
 <div class="row">
     <div class="col-xs-8 col-sm-6 well">
       <h3>General Fund</h3>
