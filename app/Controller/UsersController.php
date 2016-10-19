@@ -132,7 +132,7 @@ class UsersController extends AppController {
 			
 			if ($this->User->save($this->request->data)) {
 				$this->Flash->success(__('The user has been saved.'));
-				//$this->emailWelcomeMessage();
+				$this->emailWelcomeMessage();
 				return $this->redirect(array('action' => 'index'));
 			} else {
 
