@@ -313,9 +313,9 @@ class CoursesController extends AppController {
 		foreach ($enrolledIDS as $enrolledID) {
 
 	    	$Email = new CakeEmail('gmail');
-	  		$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
-	  		$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));
-	  		$Email->returnPath('admin@team-hawk.herokuapp.com');
+/*	  		$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
+	  		$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));*/
+	  		$Email->returnPath('teamhawkemeditation@gmail.com');
 	  		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
 	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
 	  		$Email->to($enrolledID['User']['email_address']);
