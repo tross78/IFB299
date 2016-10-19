@@ -9,8 +9,8 @@
     .img2 {
       float: right;
       max-width: 100%;
-      width: 600px;
-      height: 600px;
+      width: 300px;
+      height: 300px;
       width: auto\9;
     }
 
