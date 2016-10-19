@@ -320,7 +320,7 @@ class CoursesController extends AppController {
 	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
 	  		$Email->to($enrolledID['User']['email_address']);
 	  		$Email->subject('Changes to your Meditation Course');
-	  		$Email->send('Hi ' + $enrolledID['User']['first_name'] +'./n/nThe course you have enrolled in beggining on the' + $enrolledID['Course']['start_date'] + ' is no longer being continued. We are sorry for the inconvenience. /n/nTeam Hawke');
+	  		$Email->send('Hi ' . $enrolledID['User']['first_name'] .'./n/nThe course you have enrolled in beggining on the' . $enrolledID['Course']['start_date'] . ' is no longer being continued. We are sorry for the inconvenience. /n/nTeam Hawke');
 
 	  }
 
