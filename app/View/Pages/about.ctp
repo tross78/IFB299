@@ -9,8 +9,8 @@
     .img2 {
       float: right;
       max-width: 100%;
-      width: 500px;
-      height: 500px;
+      width: 550px;
+      height: 550px;
       width: auto\9;
     }
 
@@ -28,7 +28,7 @@
 </div>
 <img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 <br></br>
-  <div class = "col-sm-6.5 well">
+  <div class = "col-sm-6 well">
     <h3>Course Information &amp; Registration</h3>
       <h4>Courses</h4>
       <p>We currently offer an 10 day introductory course for all new students, while returning students that have completed the introductory course have the option of enrolling in our 3 day Express, or 30 day Buddhist course as well.<p>
