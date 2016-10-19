@@ -311,10 +311,10 @@ class CoursesController extends AppController {
 
 		for ($i = 0; $i < sizeof($enrolledIDS); $i++) {
 
-	    $mailList = $this->Course->Enrolment->find('all', array(
+	    $mailList = $this->Course->Enrolment->User->find('all', array(
 	      'fields' => array('User.email_address'),
 	          'conditions' => array(
-	            'User.id == ' => $enrolledIDS[$i[7]],
+	            'User.id == ' => $enrolledIDS[$i],
 	          ))
 	      );
 
@@ -325,7 +325,7 @@ class CoursesController extends AppController {
 	  		$Email->returnPath('admin@team-hawk.herokuapp.com');
 	  		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
 	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
-	  		$Email->to($enrolledIDS[0]);
+	  		$Email->to($mailList[0]);
 	  		$Email->subject('Changes to your Meditation Course');
 	  		$Email->send('Hi, the course you have recently enrolled in is no longer being continued. We are sorry for the inconvenience.');
 
