@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 use Cake\ORM\TableRegistry;
 /**
  * Enrolments Controller
@@ -245,10 +246,10 @@ class EnrolmentsController extends AppController {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($this->request->data)) {
 					$this->Flash->success(__('The enrolment has been saved.'));
-					if ($user_gender == 'male') {
+					if ($user_gender == 'male' && $is_student) {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id']));  //might move these into their own method later on
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
-					} else {
+					} elseif ($user_gender == 'female' && $is_student){
             $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id']));
             $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
 					}
@@ -343,6 +344,11 @@ class EnrolmentsController extends AppController {
 //once the start date has been reached, or passed.
 
 	public function delete($id = null) {
+		$is_student = $this->request->data['Enrolment']['role'] == 'student';
+
+		$this->set("is_student", $is_student);
+
+
 		$this->Enrolment->id = $id;
 		if (!$this->Enrolment->exists()) {
 			throw new NotFoundException(__('Invalid enrolment'));
@@ -372,11 +378,35 @@ $before = $this->Enrolment->find('first', array(
 		));
 		$deletedId = $before['Enrolment']['course_id'];
 
+		$test = $this->Enrolment->Course->find('first', array(
+				'field' => array('Course.capacity'),
+				'contain' => array('Enrolment'),
+						'conditions' => array(
+								'Course.id' => $deletedId
+						)
+				));
+				$studentCap = $test['Course']['capacity'];
+
+		$course_full = $this->Enrolment->find('count', array(
+					'fields' => array('Course.id'),
+					'contain' => array('Course', 'User'),
+					'conditions' => array(
+						'Enrolment.role' => 'student',
+						'User.gender' => $user_gender,
+						"Course.id" => $deletedId
+					))
+			) >= $studentCap;
+
+
 			if ($this->Enrolment->delete()) {
-					if ($user_gender == 'male') {
+				if($course_full) {
+					echo "lol";
+					waitlistEnrol();
+				}
+					if ($user_gender == 'male' && $is_student) {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
-					} else {
+					} elseif ('female' && $is_student) {
 						$this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $deletedId));
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
 					}
@@ -399,24 +429,14 @@ $before = $this->Enrolment->find('first', array(
 	//a function to handle the enrolment of the user who has been on the waitlist for the longest
 	//HG this does not work
 	public function waitlistEnrol(){
-        $longest = $this->Enrolment->find('first', array(
+        $bazinga = $this->Enrolment->find('first', array(
             'field' => array('Enrolment.id'),
             'contain' => array('Enrolment'),
             'conditions' => array(
                 'Enrolment.waitlist' => 'yes'
             )
         ));
-
-		$course_full = $this->Enrolment->find('count', array(
-					'fields' => array('Course.id'),
-					'contain' => array('Course', 'User'),
-					'conditions' => array(
-						'Enrolment.role' => 'student'
-					))
-			) >= 2;
-
-			$this->set("course_full", $course_full);
-			$this->set("longest", $longest);
+				$longest = $bazinga['Enrolment']['waitlist'];
 
 			$this->Flash->error(__($this->longest));
 
