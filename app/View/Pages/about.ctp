@@ -9,6 +9,7 @@
   when it comes to putting your new meditative skills to use! We hope to see you soon!</p>
 </div>
 <img src="http://i.imgur.com/2bP73ei.jpg"  style="width:1200px;height:50px;">
+<br></br>
 <div>
   <div class = "col-md-8 well">
     <h3>Course Information &amp; Registration</h3>
