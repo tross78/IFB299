@@ -325,7 +325,7 @@ class CoursesController extends AppController {
 	  		$Email->returnPath('admin@team-hawk.herokuapp.com');
 	  		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
 	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
-	  		$Email->to($retrieveUserEmail[0]);
+	  		$Email->to($enrolledIDS[0]);
 	  		$Email->subject('Changes to your Meditation Course');
 	  		$Email->send('Hi, the course you have recently enrolled in is no longer being continued. We are sorry for the inconvenience.');
 
