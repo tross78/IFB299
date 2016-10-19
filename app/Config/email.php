@@ -15,10 +15,9 @@ class EmailConfig {
 		$this->fast = EmailDsn::parse(env('EMAIL_FAST_URL'));
 
 		$this->gmail = array(
-        'host' => 'mail.tpg.com.au',
-        'port' => 25,
-        'username' => env('GMAIL_USERNAME'),
-		'password' => env('GMAIL_PASSWORD'),
+        'host' => 'smtp.sendgrid.net',
+        'port' => 465,
+        'apikey' => env('SENDGRIND_KEY'),
         'transport' => 'Smtp'
 		);
 	}
