@@ -343,6 +343,11 @@ class EnrolmentsController extends AppController {
 //once the start date has been reached, or passed.
 
 	public function delete($id = null) {
+		$is_student = $this->request->data['Enrolment']['role'] == 'student';
+
+		$this->set("is_student", $is_student);
+
+
 		$this->Enrolment->id = $id;
 		if (!$this->Enrolment->exists()) {
 			throw new NotFoundException(__('Invalid enrolment'));
@@ -372,8 +377,29 @@ $before = $this->Enrolment->find('first', array(
 		));
 		$deletedId = $before['Enrolment']['course_id'];
 
+		$test = $this->Enrolment->Course->find('first', array(
+				'field' => array('Course.capacity'),
+				'contain' => array('Enrolment'),
+						'conditions' => array(
+								'Course.id' => $deletedId
+						)
+				));
+				$studentCap = $test['Course']['capacity'];
+
+		$course_full = $this->Enrolment->find('count', array(
+					'fields' => array('Course.id'),
+					'contain' => array('Course', 'User'),
+					'conditions' => array(
+						'Enrolment.role' => 'student',
+						'User.gender' => $user_gender,
+						"Course.id" => $deletedId
+					))
+			) >= $studentCap;
+
+
 			if ($this->Enrolment->delete()) {
 				if($course_full) {
+					echo "lol";
 					$this->waitlistEnrol();
 				}
 					if ($user_gender == 'male' && $is_student) {
