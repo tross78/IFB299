@@ -15,7 +15,7 @@ class EmailConfig {
 		$this->fast = EmailDsn::parse(env('EMAIL_FAST_URL'));
 
 		$this->gmail = array(
-        'host' => 'ssl://smtp.gmail.com',
+        'host' => 'mail.tpg.com.au',
         'port' => 465,
         'username' => env('GMAIL_USERNAME'),
 		'password' => env('GMAIL_PASSWORD'),
