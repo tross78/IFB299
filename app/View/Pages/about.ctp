@@ -1,3 +1,10 @@
+<style>
+  .img1 { /* basic responsive img */
+	    max-width: 100%;
+	    height: 50px;
+	    width: auto\9; /* IE8 */
+}
+</style>
 
 <div class="col-sm-12 well">
   <h2 class = "text-center">About the Hawke Centre</h2>
@@ -9,7 +16,7 @@
   relax or rehabilitate during your stay. And we can be sure that what you learn here will last you a lifetime
   when it comes to putting your new meditative skills to use! We hope to see you soon!</p>
 </div>
-<img src="http://i.imgur.com/2bP73ei.jpg" height = "50" width = "1100" width = "auto">
+<img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 <br></br>
 <div>
   <div class = "col-md-8 well">
