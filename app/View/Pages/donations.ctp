@@ -18,6 +18,7 @@
     <p>We thank you for your support!</p>
   </div>
   <img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
+  <br>
 </div>
 <div class="row">
     <div class="col-xs-8 col-sm-6 well">
