@@ -372,7 +372,7 @@ class EnrolmentsController extends AppController {
 									'Enrolment.id' => $id
 							)
 					));
-					$deletedId = $before['Enrolment']['course_id'];
+					$deletedId = $before['Course']['id'];
 
 					if ($user_gender == 'male') {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
