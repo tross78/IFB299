@@ -39,7 +39,7 @@
 <?php endforeach; ?>
 	</tbody>
 	</table>
-		<?php 
+		<?php
 		if ($this->Paginator->hasPage(2)):
 		?>
 		<p class="small">

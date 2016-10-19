@@ -364,16 +364,16 @@ class EnrolmentsController extends AppController {
 		$this->request->allowMethod('post', 'delete');
 		$user_gender = AuthComponent::user('gender');
 //		if (!$commenced){
+$before = $this->Enrolment->find('first', array(
+		'field' => array('Enrolment.course_id'),
+				'conditions' => array(
+						'Enrolment.id' => $id
+				)
+		));
+		$deletedId = $before['Enrolment']['course_id'];
+							$this->Flash->success(__($deletedId));
 			if ($this->Enrolment->delete()) {
-			//	$this->waitlistEnrol();
-			$before = $this->Enrolment->find('first', array(
-					'field' => array('Enrolment.Course_id'),
-					'contain' => array('Enrolment'),
-							'conditions' => array(
-									'Enrolment.id' => $id
-							)
-					));
-					$deletedId = $before['Course']['course_id'];
+
 
 					if ($user_gender == 'male') {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
@@ -382,7 +382,8 @@ class EnrolmentsController extends AppController {
 						$this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $deletedId));
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
 					}
-				$this->Flash->success(__('The enrolment has been deleted.'));
+
+				//$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
 				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
 			}
