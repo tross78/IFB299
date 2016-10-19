@@ -10,11 +10,10 @@
   when it comes to putting your new meditative skills to use! We hope to see you soon!</p>
 </div>
 
-<div style="max-width:500px;height:50px;width:auto\9;">
+<div style="float:left;width:50px;height:50px;">
     <img src="http://i.imgur.com/2bP73ei.jpg">
-    <br>
 </div>
-
+<br></br>
 <div>
   <div class = "col-md-8 well">
     <h3>Course Information &amp; Registration</h3>
