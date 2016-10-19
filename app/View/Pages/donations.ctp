@@ -4,6 +4,7 @@
       width: 1200px;
 	    height: 50px;
 	    width: auto\9;
+      border-radius: 50%;
 }
 </style>
 
