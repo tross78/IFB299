@@ -23,6 +23,14 @@
     <div data-component="HomeCarousel"></div>
 </div>
 
+<style>
+  .img1 {
+	    max-width: 100%;
+      width: 1150px;
+	    height: 50px;
+	    width: auto\9;
+}
+</style>
 
 
 <div class="row top30">
@@ -39,6 +47,9 @@
         <?php endif; ?>
         </div>
 </div>
+
+<img class = "img1" src="http://i.imgur.com/TGDVyAS.jpg" alt = ""/>
+<br></br>
 
 <div class = "row top30">
   <div class = "col-sm-12 well">
