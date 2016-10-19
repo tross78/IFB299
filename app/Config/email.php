@@ -16,10 +16,11 @@ class EmailConfig {
 
 		$this->gmail = array(
         'host' => 'mail.tpg.com.au',
-        'port' => 465,
+        'port' => 25,
         'username' => env('GMAIL_USERNAME'),
 		'password' => env('GMAIL_PASSWORD'),
-        'transport' => 'Smtp'
+        'transport' => 'Smtp',
+		'tls' => true
 		);
 	}
 
