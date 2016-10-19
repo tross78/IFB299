@@ -48,7 +48,7 @@
         </div>
 </div>
 
-<img class = "img1" src="http://i.imgur.com/TGDVyAS.jpg" alt = ""/>
+<img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 <br></br>
 
 <div class = "row top30">
