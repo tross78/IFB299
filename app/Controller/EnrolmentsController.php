@@ -371,10 +371,8 @@ $before = $this->Enrolment->find('first', array(
 				)
 		));
 		$deletedId = $before['Enrolment']['course_id'];
-							$this->Flash->success(__($deletedId));
+
 			if ($this->Enrolment->delete()) {
-
-
 					if ($user_gender == 'male') {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
@@ -383,7 +381,7 @@ $before = $this->Enrolment->find('first', array(
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
 					}
 
-				//$this->Flash->success(__('The enrolment has been deleted.'));
+				$this->Flash->success(__('The enrolment has been deleted.'));
 			} else {
 				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
 			}
