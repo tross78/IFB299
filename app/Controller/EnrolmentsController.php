@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 use Cake\ORM\TableRegistry;
 /**
  * Enrolments Controller
@@ -374,7 +375,7 @@ $before = $this->Enrolment->find('first', array(
 
 			if ($this->Enrolment->delete()) {
 				if($course_full) {
-					$this->waitlistEnrol();
+					this->waitlistEnrol();
 				}
 					if ($user_gender == 'male' && $is_student) {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
