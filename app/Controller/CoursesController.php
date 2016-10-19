@@ -293,6 +293,44 @@ class CoursesController extends AppController {
 		if (!$this->Course->exists()) {
 			throw new NotFoundException(__('Invalid course'));
 		}*/
+
+/*$this->Course->Enrolment->find('all', array(
+			'fields' => array('Enrolment.id', 'Enrolment.user_id', 'Enrolment.course_id', 'Enrolment.role', 'User.id', 'User.first_name', 'User.last_name'),
+			'contain' => array('User'),
+			'conditions' => array(
+				'course_id' => $id
+			))
+		)*/
+
+
+		$enrolledIDS = $this->Course->Enrolment->find('all', array(
+			'field' => array('Enrolment.user_id'),
+			'contain' => array('User'),
+			'conditions' => array(
+				'course_id' => $id)));
+
+		for ($i = 0; $i < sizeof($enrolledIDS); $i++) {
+
+	    $mailList = $this->Course->Enrolment->find('all', array(
+	      'fields' => array('User.email_address'),
+	          'conditions' => array(
+	            'User.id == ' => $enrolledIDS[$i],
+	          ))
+	      );
+
+
+	    	$Email = new CakeEmail('gmail');
+	  		$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
+	  		$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));
+	  		$Email->returnPath('admin@team-hawk.herokuapp.com');
+	  		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
+	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
+	  		$Email->to($enrolledIDS[0]);
+	  		$Email->subject('Changes to your Meditation Course');
+	  		$Email->send('Hi, the course you have recently enrolled in is no longer being continued. We are sorry for the inconvenience.');
+
+	  }
+
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Course->delete()) {
 

@@ -29,7 +29,7 @@
 		<td><?php echo h($course['Course']['end_date']); ?>&nbsp;</td>
 		<td>
 			<?php if ($course['Course']['gender'] == "male") { ?>
-				<h6>Male</h6>
+				<h6>Capacity</h6>
 				<div class="progress">
 					<?php
 					$enrolments_male_percent = intval(($course['Course']['enrolments_male'] / $course['Course']['capacity']) * 100);
@@ -40,7 +40,7 @@
 					</div>
 				</div>
 			<?php } else if ($course['Course']['gender'] == "female") { ?>
-				<h6>Female</h6>
+				<h6>Capacity</h6>
 				<div class="progress">
 					<?php
 					$enrolments_female_percent = intval(($course['Course']['enrolments_female'] / $course['Course']['capacity']) * 100);
@@ -77,7 +77,7 @@
 
 			<?php
 				// if anything else than student.
-				if (AuthComponent::user('permission') != 'student') {
+				if (AuthComponent::user('permission') == 'manager' || AuthComponent::user('permission') == 'server') {
 				// add auth to here for just managers and servers
 				$courseEnrolments = $this->CourseEnrolment->getEnrolments((int)$course['Course']['id']);
 					foreach($courseEnrolments as $courseEnrolment) {
