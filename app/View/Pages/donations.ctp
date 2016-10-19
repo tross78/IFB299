@@ -20,8 +20,7 @@
   </div>
   <img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 </div>
-<br></br>
-<div class="row">
+<div class="row top30">
     <div class="col-xs-8 col-sm-6 well">
       <h3>General Fund</h3>
       <p>Donations made into the "General Fund" will help finance running of the courses themselves. This includes covering costs such as equipment, meals and the running of day-to-day course activities. Without the generous donations from the community, these courses would not have been possible to run.</p>
