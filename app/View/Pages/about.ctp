@@ -1,8 +1,3 @@
-img {
-    max-width: 100%;
-    height: 50px;
-    width: auto\9;
-}
 
 <div class="col-sm-12 well">
   <h2 class = "text-center">About the Hawke Centre</h2>
@@ -15,7 +10,7 @@ img {
   when it comes to putting your new meditative skills to use! We hope to see you soon!</p>
 </div>
 
-<div style="max-width:500px;">
+<div style="max-width:500px;height:50px;width:auto\9;">
     <img src="http://i.imgur.com/2bP73ei.jpg">
     <br>
 </div>
