@@ -12,6 +12,7 @@
       width: 450px;
       height: 450px;
       width: auto\9;
+      border-radius: 10px;
     }
 
 </style>
