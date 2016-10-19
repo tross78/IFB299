@@ -29,9 +29,9 @@
 			<td><?php echo h($enrolment['Enrolment']['waitlist']); ?>&nbsp;</td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('action' => 'view', $enrolment['Enrolment']['id'], $enrolment['Enrolment']['course_id'], $enrolment['Enrolment']['user_id'])); ?>
-				<?php if (AuthComponent::user('permission') == 'manager'):?>
+				<?php //if (AuthComponent::user('permission') == 'manager'):?>
 					<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $enrolment['Enrolment']['id'])); ?>
-				<?php endif; ?>
+				<?php //endif; ?>
 				<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $enrolment['Enrolment']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $enrolment['Enrolment']['id']))); ?>
 			</td>
 		<?php endif; ?>
