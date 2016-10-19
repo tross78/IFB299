@@ -314,7 +314,7 @@ class CoursesController extends AppController {
 	    $mailList = $this->Course->Enrolment->find('all', array(
 	      'fields' => array('User.email_address'),
 	          'conditions' => array(
-	            'User.id == ' => $enrolledIDS[$i],
+	            'User.id == ' => $enrolledIDS[$i[7]],
 	          ))
 	      );
 
