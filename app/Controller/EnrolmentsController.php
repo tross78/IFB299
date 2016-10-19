@@ -373,6 +373,9 @@ $before = $this->Enrolment->find('first', array(
 		$deletedId = $before['Enrolment']['course_id'];
 
 			if ($this->Enrolment->delete()) {
+				if($course_full) {
+					this->waitlistEnrol();
+				}
 					if ($user_gender == 'male' && $is_student) {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
@@ -399,24 +402,14 @@ $before = $this->Enrolment->find('first', array(
 	//a function to handle the enrolment of the user who has been on the waitlist for the longest
 	//HG this does not work
 	public function waitlistEnrol(){
-        $longest = $this->Enrolment->find('first', array(
+        $bazinga = $this->Enrolment->find('first', array(
             'field' => array('Enrolment.id'),
             'contain' => array('Enrolment'),
             'conditions' => array(
                 'Enrolment.waitlist' => 'yes'
             )
         ));
-
-		$course_full = $this->Enrolment->find('count', array(
-					'fields' => array('Course.id'),
-					'contain' => array('Course', 'User'),
-					'conditions' => array(
-						'Enrolment.role' => 'student'
-					))
-			) >= 2;
-
-			$this->set("course_full", $course_full);
-			$this->set("longest", $longest);
+				$longest = $bazinga['Enrolment']['waitlist'];
 
 			$this->Flash->error(__($this->longest));
 
