@@ -1,7 +1,7 @@
 <style>
   .img1 {
 	    max-width: 100%;
-      width: 1150px;
+      width: 1200px;
 	    height: 50px;
 	    width: auto\9;
 }
