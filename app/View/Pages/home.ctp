@@ -46,9 +46,8 @@
             </div>
         <?php endif; ?>
         </div>
+      <img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 </div>
-
-<img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 
 <div class = "row top30">
   <div class = "col-sm-12 well">
