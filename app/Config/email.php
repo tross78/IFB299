@@ -19,8 +19,7 @@ class EmailConfig {
         'port' => 25,
         'username' => env('GMAIL_USERNAME'),
 		'password' => env('GMAIL_PASSWORD'),
-        'transport' => 'Smtp',
-		'tls' => true
+        'transport' => 'Smtp'
 		);
 	}
 
