@@ -17,7 +17,7 @@ class EmailConfig {
 		$this->gmail = array(
         'host' => 'smtp.sendgrid.net',
         'port' => 465,
-        'apikey' => env('SENDGRIND_KEY'),
+        'apikey' => env('SENDGRID_KEY'),
         'transport' => 'Smtp'
 		);
 	}
