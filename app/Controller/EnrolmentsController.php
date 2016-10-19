@@ -245,10 +245,10 @@ class EnrolmentsController extends AppController {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($this->request->data)) {
 					$this->Flash->success(__('The enrolment has been saved.'));
-					if ($user_gender == 'male') {
+					if ($user_gender == 'male' && $is_student) {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id']));  //might move these into their own method later on
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
-					} else {
+					} elseif ($user_gender == 'female' && $is_student){
             $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id']));
             $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
 					}
@@ -373,10 +373,10 @@ $before = $this->Enrolment->find('first', array(
 		$deletedId = $before['Enrolment']['course_id'];
 
 			if ($this->Enrolment->delete()) {
-					if ($user_gender == 'male') {
+					if ($user_gender == 'male' && $is_student) {
 						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
-					} else {
+					} elseif ('female' && $is_student) {
 						$this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $deletedId));
 						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
 					}
