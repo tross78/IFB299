@@ -1,3 +1,11 @@
+<style>
+  .img1 { /* basic responsive img */
+	    max-width: 100%;
+      width: 1150px;
+	    height: 50px;
+	    width: auto\9; /* IE8 */
+}
+</style>
 
 <div class="row top30">
   <div class="col-sm-12 well">
@@ -10,7 +18,8 @@
     <p>We thank you for your support!</p>
   </div>
 </div>
-
+<img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
+<br></br>
 <div class="row">
     <div class="col-xs-8 col-sm-6 well">
       <h3>General Fund</h3>
@@ -20,7 +29,4 @@
       <h3>Building Fund</h3>
       <p>Donations made into the "Building Fund" go towards covering the costs of water/electrical bills, building maintenance, renovations, and even entirely new facilities for the centre. We have big plans for the improvement and expansion of our centre and we hope through its use, we can give back to the community.</p>
     </div>
-    <form>
-      <input type="submit" name="select" value="select" >
-    </form>
 </div>
