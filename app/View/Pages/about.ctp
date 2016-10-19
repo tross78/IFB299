@@ -8,7 +8,7 @@
   relax or rehabilitate during your stay. And we can be sure that what you learn here will last you a lifetime
   when it comes to putting your new meditative skills to use! We hope to see you soon!</p>
 </div>
-<img src="http://i.imgur.com/2bP73ei.jpg"  style="float:right;width:100px;height:50px;">
+<img src="http://i.imgur.com/2bP73ei.jpg"  style="float:right;height:50px;float:left;">
 <br></br>
 <div>
   <div class = "col-md-8 well">
