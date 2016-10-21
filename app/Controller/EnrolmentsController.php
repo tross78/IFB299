@@ -430,14 +430,13 @@ class EnrolmentsController extends AppController {
 						echo "be gone foul beast";
 						$bazinga = $this->Enrolment->find('first', array(
 		            'field' => array('Enrolment.id'),
-		            'contain' => array('Enrolment'),
 		            'conditions' => array(
 		                'Enrolment.waitlist' => 'yes'
 		            )
 		        ));
 						$longest = $bazinga['Enrolment']['waitlist'];
 
-		        $this->Enrolment->updateAll(array('waitlist' => 'no'), array('Enrolment.id' => $longest));
+		        $this->Enrolment->updateAll(array('Enrolment.waitlist' => 'no'), array('Enrolment.id' => $longest));
 						echo $longest;
 					}
 						if ($user_gender == 'male' && $is_student) {
