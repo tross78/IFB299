@@ -358,6 +358,7 @@ class EnrolmentsController extends AppController {
 			$this->Flash->error(__($this->longest));
 
         $this->Enrolment->updateAll(array('waitlist' => 'no'), array('Enrolment.id' => $longest));
+				echo $longest;
 
 	}
 
