@@ -336,93 +336,7 @@ class EnrolmentsController extends AppController {
 		$this->set(compact('users', 'courses'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-//JM: added check to make sure you cannot withdraw from a courese
-//once the start date has been reached, or passed.
 
-	public function delete($id = null) {
-		$is_student = $this->request->data['Enrolment']['role'] == 'student';
-
-		$this->set("is_student", $is_student);
-
-
-		$this->Enrolment->id = $id;
-		if (!$this->Enrolment->exists()) {
-			throw new NotFoundException(__('Invalid enrolment'));
-		}
-
-		$c_date = date('Y-m-d');
-
-//commented cause it was giving me an error and idk why
-/*		$commenced = $this->Enrolment->Course->find('all', array(
-			'fields' => array('Course.start_date', 'Course.id'),
-					'contain' => array('Course', 'Enrolment'),
-					'conditions' => array(
-						'DATE(Course.start_date) < ' => $c_date
-						//'Course.id' => $this->params['named']['course_id']
-					))
-			);
-*/
-
-		$this->request->allowMethod('post', 'delete');
-		$user_gender = AuthComponent::user('gender');
-//		if (!$commenced){
-$before = $this->Enrolment->find('first', array(
-		'field' => array('Enrolment.course_id'),
-				'conditions' => array(
-						'Enrolment.id' => $id
-				)
-		));
-		$deletedId = $before['Enrolment']['course_id'];
-
-		$test = $this->Enrolment->Course->find('first', array(
-				'field' => array('Course.capacity'),
-				'contain' => array('Enrolment'),
-						'conditions' => array(
-								'Course.id' => $deletedId
-						)
-				));
-				$studentCap = $test['Course']['capacity'];
-
-		$course_full = $this->Enrolment->find('count', array(
-					'fields' => array('Course.id'),
-					'contain' => array('Course', 'User'),
-					'conditions' => array(
-						'Enrolment.role' => 'student',
-						'User.gender' => $user_gender,
-						"Course.id" => $deletedId
-					))
-			) >= $studentCap;
-
-
-			if ($this->Enrolment->delete()) {
-				if($course_full) {
-					echo "lol";
-					$this->waitlistEnrol();
-				}
-					if ($user_gender == 'male' && $is_student) {
-						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
-						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
-					} elseif ('female' && $is_student) {
-						$this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $deletedId));
-						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
-					}
-
-				$this->Flash->success(__('The enrolment has been deleted.'));
-			} else {
-				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
-			}
-//		} else {
-//			$this->Flash->error(_('You cannot withdraw from a course after it has commenced.'));
-//		}
-		return $this->redirect(array('action' => 'index'));
-	}
 
 /**
  * waitlistAutoEnrol method
@@ -446,6 +360,92 @@ $before = $this->Enrolment->find('first', array(
         $this->Enrolment->updateAll(array('waitlist' => 'no'), array('Enrolment.id' => $longest));
 
 	}
+
+	/**
+	 * delete method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	//JM: added check to make sure you cannot withdraw from a courese
+	//once the start date has been reached, or passed.
+
+		public function delete($id = null) {
+			$is_student = $this->request->data['Enrolment']['role'] == 'student';
+
+			$this->set("is_student", $is_student);
+
+
+			$this->Enrolment->id = $id;
+			if (!$this->Enrolment->exists()) {
+				throw new NotFoundException(__('Invalid enrolment'));
+			}
+
+			$c_date = date('Y-m-d');
+	//commented cause it was giving me an error and idk why
+	/*		$commenced = $this->Enrolment->Course->find('all', array(
+				'fields' => array('Course.start_date', 'Course.id'),
+						'contain' => array('Course', 'Enrolment'),
+						'conditions' => array(
+							'DATE(Course.start_date) < ' => $c_date
+							//'Course.id' => $this->params['named']['course_id']
+						))
+				);
+	*/
+			$this->request->allowMethod('post', 'delete');
+			$user_gender = AuthComponent::user('gender');
+	//		if (!$commenced){
+	$before = $this->Enrolment->find('first', array(
+			'field' => array('Enrolment.course_id'),
+					'conditions' => array(
+							'Enrolment.id' => $id
+					)
+			));
+			$deletedId = $before['Enrolment']['course_id'];
+
+			$test = $this->Enrolment->Course->find('first', array(
+					'field' => array('Course.capacity'),
+					'contain' => array('Enrolment'),
+							'conditions' => array(
+									'Course.id' => $deletedId
+							)
+					));
+					$studentCap = $test['Course']['capacity'];
+
+					//AG: to check if the number of students on the waitlist for this course has reached the waitlist capacity.
+					$wait_full = $this->Enrolment->find('count', array(
+								'fields' => array('Course.id'),
+								'contain' => array('Course'),
+								'conditions' => array(
+									'Enrolment.waitlist' => 'yes',
+									'Course.id' => $deletedId
+								))
+						) >= 1;
+
+
+				if ($this->Enrolment->delete()) {
+					if($wait_full) {
+						echo "lol";
+						$this->waitlistEnrol();
+					}
+						if ($user_gender == 'male' && $is_student) {
+							$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
+							$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
+						} elseif ('female' && $is_student) {
+							$this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $deletedId));
+							$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
+						}
+
+					$this->Flash->success(__('The enrolment has been deleted.'));
+				} else {
+					$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
+				}
+	//		} else {
+	//			$this->Flash->error(_('You cannot withdraw from a course after it has commenced.'));
+	//		}
+			return $this->redirect(array('action' => 'index'));
+		}
 
 	//checking which courses have a start date is 10 days from the current date
 	//this function has to be automatically executed each day, cronjob looked like a good method
