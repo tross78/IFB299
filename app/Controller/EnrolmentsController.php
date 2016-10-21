@@ -254,6 +254,8 @@ class EnrolmentsController extends AppController {
 							$this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id']));
 							$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
 						}
+					} else {
+						echo "DO NOTHING";
 					}
 					return $this->redirect(array('action' => 'index'));
 				} else {
