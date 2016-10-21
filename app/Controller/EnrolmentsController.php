@@ -373,9 +373,9 @@ class EnrolmentsController extends AppController {
 	//once the start date has been reached, or passed.
 
 		public function delete($id = null) {
-			$is_student = $this->request->data['Enrolment']['role'] == 'student';
+			//$is_student = $this->request->data['Enrolment']['role'] == 'student';
 
-			$this->set("is_student", $is_student);
+			//$this->set("is_student", $is_student);
 
 
 			$this->Enrolment->id = $id;
@@ -430,6 +430,7 @@ class EnrolmentsController extends AppController {
 						echo "be gone foul beast";
 						$bazinga = $this->Enrolment->find('first', array(
 		            'field' => array('Enrolment.id'),
+								'contain' => array('Enrolment'),
 		            'conditions' => array(
 		                'Enrolment.waitlist' => 'yes'
 		            )
@@ -439,10 +440,10 @@ class EnrolmentsController extends AppController {
 		        $this->Enrolment->updateAll(array('waitlist' => "'no'"), array('Enrolment.id' => $longest));
 						echo $longest;
 					}
-						if ($user_gender == 'male' && $is_student) {
+						if ($user_gender == 'male'/* && $is_student*/) {
 							$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
 							$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
-						} elseif ('female' && $is_student) {
+						} elseif ('female' /*&& $is_student*/) {
 							$this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $deletedId));
 							$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
 						}
