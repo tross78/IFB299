@@ -427,8 +427,17 @@ class EnrolmentsController extends AppController {
 
 				if ($this->Enrolment->delete()) {
 					if($wait_full) {
-						echo "lol";
-						$this->waitlistEnrol();
+						$bazinga = $this->Enrolment->find('first', array(
+		            'field' => array('Enrolment.id'),
+		            'contain' => array('Enrolment'),
+		            'conditions' => array(
+		                'Enrolment.waitlist' => 'yes'
+		            )
+		        ));
+						$longest = $bazinga['Enrolment']['waitlist'];
+
+		        $this->Enrolment->updateAll(array('waitlist' => 'no'), array('Enrolment.id' => $longest));
+						echo $longest;
 					}
 						if ($user_gender == 'male' && $is_student) {
 							$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
