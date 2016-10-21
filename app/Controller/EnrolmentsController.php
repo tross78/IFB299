@@ -427,6 +427,7 @@ class EnrolmentsController extends AppController {
 
 				if ($this->Enrolment->delete()) {
 					if($wait_full) {
+						echo "be gone foul beast";
 						$bazinga = $this->Enrolment->find('first', array(
 		            'field' => array('Enrolment.id'),
 		            'contain' => array('Enrolment'),
