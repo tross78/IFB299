@@ -346,19 +346,38 @@ class EnrolmentsController extends AppController {
 	//a function to handle the enrolment of the user who has been on the waitlist for the longest
 	//HG this does not work
 	public function waitlistEnrol(){
-        $bazinga = $this->Enrolment->find('first', array(
-            'field' => array('Enrolment.id'),
-            'contain' => array('Enrolment'),
-            'conditions' => array(
-                'Enrolment.waitlist' => 'yes'
-            )
-        ));
-				$longest = $bazinga['Enrolment']['waitlist'];
+			//HG find the courseID that we are deleting the user from
+			$before = $this->Enrolment->find('first', array(
+					'field' => array('Enrolment.course_id'),
+							'conditions' => array(
+									'Enrolment.id' => $id
+							)
+					));
+					$deletedId = $before['Enrolment']['course_id'];
+		//HG student cap
+					$test = $this->Enrolment->Course->find('first', array(
+							'field' => array('Course.capacity'),
+							'contain' => array('Enrolment'),
+									'conditions' => array(
+											'Course.id' => $deletedId
+									)
+							));
+							$studentCap = $test['Course']['capacity'];
 
-			$this->Flash->error(__($this->longest));
-
-        $this->Enrolment->updateAll(array('waitlist' => 'no'), array('Enrolment.id' => $longest));
-				echo $longest;
+							$bazinga = $this->Enrolment->find('first', array(
+								'contains' => array('Enrolment'),
+									'conditions' => array(
+											'Enrolment.waitlist' => 'yes'
+									)
+							));
+							if($bazinga) {
+								$longest = $bazinga['Enrolment']['user_id'];
+							}
+							/*$this->Enrolment->updateAll(array('waitlist' => "'no'"),array('course_id' => 90),array('user_id' => $longest)	);*/
+							$this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
+							if ($this->Enrolment->id) {
+								$this->Enrolment->saveField('waitlist', 'no');
+							}
 
 	}
 
@@ -374,10 +393,7 @@ class EnrolmentsController extends AppController {
 
 		public function delete($id = null) {
 			//$is_student = $this->request->data['Enrolment']['role'] == 'student';
-
 			//$this->set("is_student", $is_student);
-
-
 			$this->Enrolment->id = $id;
 			if (!$this->Enrolment->exists()) {
 				throw new NotFoundException(__('Invalid enrolment'));
@@ -398,24 +414,6 @@ class EnrolmentsController extends AppController {
 			$user_gender = AuthComponent::user('gender');
 	//		if (!$commenced){
 
-	//HG find the courseID that we are deleting the user from
-	$before = $this->Enrolment->find('first', array(
-			'field' => array('Enrolment.course_id'),
-					'conditions' => array(
-							'Enrolment.id' => $id
-					)
-			));
-			$deletedId = $before['Enrolment']['course_id'];
-//HG student cap
-			$test = $this->Enrolment->Course->find('first', array(
-					'field' => array('Course.capacity'),
-					'contain' => array('Enrolment'),
-							'conditions' => array(
-									'Course.id' => $deletedId
-							)
-					));
-					$studentCap = $test['Course']['capacity'];
-
 					//AG: to check if the number of students on the waitlist for this course has reached the waitlist capacity.
 					$wait_full = $this->Enrolment->find('count', array(
 								'fields' => array('Course.id'),
@@ -429,24 +427,7 @@ class EnrolmentsController extends AppController {
 
 				if ($this->Enrolment->delete()) {
 					if($wait_full) {
-						echo "be gone foul beast";
-						$bazinga = $this->Enrolment->find('first', array(
-							'contains' => array('Enrolment'),
-		            'conditions' => array(
-		                'Enrolment.waitlist' => 'yes'
-		            )
-		        ));
-						if($bazinga) {
-							$longest = $bazinga['Enrolment']['user_id'];
-						}
-		        /*$this->Enrolment->updateAll(array('waitlist' => "'no'"),array('course_id' => 90),array('user_id' => $longest)	);*/
-						$this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
-						if ($this->Enrolment->id) {
-							$this->Enrolment->saveField('waitlist', 'no');
-						}
-						echo $longest;
-						$this->Flash->success(__($longest, $deletedId));
-						echo $deletedId;
+						$this->waitlistEnrol();
 					}
 						if ($user_gender == 'male'/* && $is_student*/) {
 							$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
