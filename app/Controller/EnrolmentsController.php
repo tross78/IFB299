@@ -220,7 +220,7 @@ class EnrolmentsController extends AppController {
 			$this->request->data['Enrolment']['class_three'] = "n/a";
 		}
 
-		//AG: Code to set waitlist to 1 if course is full.
+		//AG: Code to set waitlist to yes if course is full.
 		if ($course_full && $is_student) {
 			$this->request->data['Enrolment']['waitlist'] = 'yes';
 		}else{
@@ -439,10 +439,13 @@ class EnrolmentsController extends AppController {
 						if($bazinga) {
 							$longest = $bazinga['Enrolment']['user_id'];
 						}
-		        $this->Enrolment->updateAll(array('waitlist' => "'no'"),
-						 														array('course_id' => 90), 
+		        /*$this->Enrolment->updateAll(array('waitlist' => "'no'"),
+						 														array('course_id' => 90),
 																				array('user_id' => $longest)
 																				);
+																				*/
+					$data = array('Enrolment' => array('course_id' => $deletedId, 'user_id' => $longest, 'waitlist' => "'no'"));
+					$this->Enrolment->save($data);
 						echo $longest;
 						$this->Flash->success(__($longest, $deletedId));
 						echo $deletedId;
