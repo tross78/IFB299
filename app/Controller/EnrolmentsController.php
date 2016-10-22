@@ -439,13 +439,11 @@ class EnrolmentsController extends AppController {
 						if($bazinga) {
 							$longest = $bazinga['Enrolment']['user_id'];
 						}
-		        /*$this->Enrolment->updateAll(array('waitlist' => "'no'"),
-						 														array('course_id' => 90),
-																				array('user_id' => $longest)
-																				);
-																				*/
-					$data = array('Enrolment' => array('course_id' => $deletedId, 'user_id' => $longest, 'waitlist' => "'no'"));
-					$this->Enrolment->save($data);
+		        /*$this->Enrolment->updateAll(array('waitlist' => "'no'"),array('course_id' => 90),array('user_id' => $longest)	);*/
+						$this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
+						if ($this->Enrolment->id) {
+							$this->Enrolment->saveField('waitlist', "'no'");
+						}
 						echo $longest;
 						$this->Flash->success(__($longest, $deletedId));
 						echo $deletedId;
