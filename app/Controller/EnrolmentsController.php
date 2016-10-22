@@ -441,6 +441,7 @@ class EnrolmentsController extends AppController {
 						}
 		        $this->Enrolment->updateAll(array('waitlist' => "'no'"), array('Enrolment.id' => $deletedId), array('Enrolment.user_id' => $longest));
 						echo $longest;
+						$this->Flash-success(__($longest, $deletedId));
 						echo $deletedId;
 					}
 						if ($user_gender == 'male'/* && $is_student*/) {
@@ -451,7 +452,7 @@ class EnrolmentsController extends AppController {
 							$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
 						}
 
-					$this->Flash->success(__('The enrolment has been deleted.'));
+					//$this->Flash->success(__('The enrolment has been deleted.'));
 				} else {
 					$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
 				}
