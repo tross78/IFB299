@@ -304,9 +304,34 @@ class EnrolmentsController extends AppController {
 			$courses = $this->Enrolment->Course->find('list');
 		}
 		$this->set(compact('users', 'courses', 'course_enrolment_date'));
-		
-		$this->confirmationEmail();
+
+		$this->blah();
 	}
+
+public blah($id = null) {
+
+	$this->Course->id = $id;
+
+	$enrolledIDS = $this->Course->Enrolment->find('all', array(
+		'field' => array('Enrolment.user_id','User.email_address', 'Course.start_date', 'User.first_name'),
+		'contain' => array('User', 'Course'),
+		'conditions' => array(
+			'course_id' => $id)));
+
+	foreach ($enrolledIDS as $enrolledID) {
+
+			$Email = new CakeEmail('gmail');
+/*	  		$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
+			$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));*/
+			$Email->returnPath('teamhawkemeditation@gmail.com');
+			$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
+			$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
+			$Email->to($enrolledID['User']['email_address']);
+			$Email->subject('Changes to your Meditation Course');
+			$Email->send('Hi ' . $enrolledID['User']['first_name'] .'./n/nThe course you have enrolled in beggining on the' . $enrolledID['Course']['start_date'] . ' is no longer being continued. We are sorry for the inconvenience. /n/nTeam Hawke');
+
+	}
+}
 
 /**
  * edit method
