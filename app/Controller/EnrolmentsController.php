@@ -337,50 +337,6 @@ class EnrolmentsController extends AppController {
 	}
 
 
-
-/**
- * waitlistAutoEnrol method
- *
- * @return void
- */
-	//a function to handle the enrolment of the user who has been on the waitlist for the longest
-	//HG this does not work
-	public function waitlistEnrol(){
-			//HG find the courseID that we are deleting the user from
-			$before = $this->Enrolment->find('first', array(
-					'field' => array('Enrolment.course_id'),
-							'conditions' => array(
-									'Enrolment.id' => $id
-							)
-					));
-					$deletedId = $before['Enrolment']['course_id'];
-		//HG student cap
-					$test = $this->Enrolment->Course->find('first', array(
-							'field' => array('Course.capacity'),
-							'contain' => array('Enrolment'),
-									'conditions' => array(
-											'Course.id' => $deletedId
-									)
-							));
-							$studentCap = $test['Course']['capacity'];
-
-							$bazinga = $this->Enrolment->find('first', array(
-								'contains' => array('Enrolment'),
-									'conditions' => array(
-											'Enrolment.waitlist' => 'yes'
-									)
-							));
-							if($bazinga) {
-								$longest = $bazinga['Enrolment']['user_id'];
-							}
-							/*$this->Enrolment->updateAll(array('waitlist' => "'no'"),array('course_id' => 90),array('user_id' => $longest)	);*/
-							$this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
-							if ($this->Enrolment->id) {
-								$this->Enrolment->saveField('waitlist', 'no');
-							}
-
-	}
-
 	/**
 	 * delete method
 	 *
@@ -393,6 +349,7 @@ class EnrolmentsController extends AppController {
 
 		public function delete($id = null) {
 			//$is_student = $this->request->data['Enrolment']['role'] == 'student';
+
 			//$this->set("is_student", $is_student);
 			$this->Enrolment->id = $id;
 			if (!$this->Enrolment->exists()) {
@@ -412,17 +369,25 @@ class EnrolmentsController extends AppController {
 	*/
 			$this->request->allowMethod('post', 'delete');
 			$user_gender = AuthComponent::user('gender');
+	//		if (!$commenced){
 
-			//HG find the courseID that we are deleting the user from
-			$before = $this->Enrolment->find('first', array(
-					'field' => array('Enrolment.course_id'),
+	//HG find the courseID that we are deleting the user from
+	$before = $this->Enrolment->find('first', array(
+			'field' => array('Enrolment.course_id'),
+					'conditions' => array(
+							'Enrolment.id' => $id
+					)
+			));
+			$deletedId = $before['Enrolment']['course_id'];
+//HG student cap
+			$test = $this->Enrolment->Course->find('first', array(
+					'field' => array('Course.capacity'),
+					'contain' => array('Enrolment'),
 							'conditions' => array(
-									'Enrolment.id' => $id
+									'Course.id' => $deletedId
 							)
 					));
-					$deletedId = $before['Enrolment']['course_id'];
-					
-	//		if (!$commenced){
+					$studentCap = $test['Course']['capacity'];
 
 					//AG: to check if the number of students on the waitlist for this course has reached the waitlist capacity.
 					$wait_full = $this->Enrolment->find('count', array(
@@ -437,7 +402,21 @@ class EnrolmentsController extends AppController {
 
 				if ($this->Enrolment->delete()) {
 					if($wait_full) {
-						$this->waitlistEnrol();
+						echo "be gone foul beast";
+						$bazinga = $this->Enrolment->find('first', array(
+							'contains' => array('Enrolment'),
+		            'conditions' => array(
+		                'Enrolment.waitlist' => 'yes'
+		            )
+		        ));
+						if($bazinga) {
+							$longest = $bazinga['Enrolment']['user_id'];
+						}
+		        /*$this->Enrolment->updateAll(array('waitlist' => "'no'"),array('course_id' => 90),array('user_id' => $longest)	);*/
+						$this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
+						if ($this->Enrolment->id) {
+							$this->Enrolment->saveField('waitlist', 'no');
+						}
 					}
 						if ($user_gender == 'male'/* && $is_student*/) {
 							$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
