@@ -403,6 +403,7 @@ class EnrolmentsController extends AppController {
 				if ($this->Enrolment->delete()) {
 					if($wait_full) {
 						echo "be gone foul beast";
+
 						$bazinga = $this->Enrolment->find('first', array(
 							'contains' => array('Enrolment'),
 		            'conditions' => array(
@@ -411,11 +412,10 @@ class EnrolmentsController extends AppController {
 		        ));
 						if($bazinga) {
 							$longest = $bazinga['Enrolment']['user_id'];
-						}
-		        /*$this->Enrolment->updateAll(array('waitlist' => "'no'"),array('course_id' => 90),array('user_id' => $longest)	);*/
-						$this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
-						if ($this->Enrolment->id) {
-							$this->Enrolment->saveField('waitlist', 'no');
+							$this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
+							if ($this->Enrolment->id) {
+								$this->Enrolment->saveField('waitlist', 'no');
+							}
 						}
 					}
 						if ($user_gender == 'male'/* && $is_student*/) {
