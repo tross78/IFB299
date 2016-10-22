@@ -474,8 +474,6 @@ class EnrolmentsController extends AppController {
 	      );
 
 	      $Email = new CakeEmail('gmail');
-	  		$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
-	  		$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));
 	  		$Email->returnPath('admin@team-hawk.herokuapp.com');
 	  		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
 	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
