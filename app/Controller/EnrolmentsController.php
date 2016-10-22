@@ -412,6 +412,16 @@ class EnrolmentsController extends AppController {
 	*/
 			$this->request->allowMethod('post', 'delete');
 			$user_gender = AuthComponent::user('gender');
+
+			//HG find the courseID that we are deleting the user from
+			$before = $this->Enrolment->find('first', array(
+					'field' => array('Enrolment.course_id'),
+							'conditions' => array(
+									'Enrolment.id' => $id
+							)
+					));
+					$deletedId = $before['Enrolment']['course_id'];
+					
 	//		if (!$commenced){
 
 					//AG: to check if the number of students on the waitlist for this course has reached the waitlist capacity.
