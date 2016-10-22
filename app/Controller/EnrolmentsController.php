@@ -304,7 +304,8 @@ class EnrolmentsController extends AppController {
 			$courses = $this->Enrolment->Course->find('list');
 		}
 		$this->set(compact('users', 'courses', 'course_enrolment_date'));
-
+		
+		$this->confirmationEmail();
 	}
 
 /**
