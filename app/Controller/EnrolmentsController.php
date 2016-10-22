@@ -431,7 +431,7 @@ class EnrolmentsController extends AppController {
 					if($wait_full) {
 						echo "be gone foul beast";
 						$bazinga = $this->Enrolment->find('first', array(
-							'contains' => 'Enrolment',
+							'contains' => array('Enrolment'),
 		            'conditions' => array(
 		                'Enrolment.waitlist' => 'yes'
 		            )
