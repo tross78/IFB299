@@ -372,22 +372,22 @@ class EnrolmentsController extends AppController {
 	//		if (!$commenced){
 
 	//HG find the courseID that we are deleting the user from
-	$before = $this->Enrolment->find('first', array(
+	$courseId = $this->Enrolment->find('first', array(
 			'field' => array('Enrolment.course_id'),
 					'conditions' => array(
 							'Enrolment.id' => $id
 					)
 			));
-			$deletedId = $before['Enrolment']['course_id'];
+			$deletedId = $courseId['Enrolment']['course_id'];
 //HG student cap
-			$test = $this->Enrolment->Course->find('first', array(
+			$capStudent = $this->Enrolment->Course->find('first', array(
 					'field' => array('Course.capacity'),
 					'contain' => array('Enrolment'),
 							'conditions' => array(
 									'Course.id' => $deletedId
 							)
 					));
-					$studentCap = $test['Course']['capacity'];
+					$studentCap = $capStudent['Course']['capacity'];
 
 					//AG: to check if the number of students on the waitlist for this course has reached the waitlist capacity.
 					$wait_full = $this->Enrolment->find('count', array(
@@ -402,16 +402,14 @@ class EnrolmentsController extends AppController {
 
 				if ($this->Enrolment->delete()) {
 					if($wait_full) {
-						echo "be gone foul beast";
-
-						$bazinga = $this->Enrolment->find('first', array(
+						$inWaitlist = $this->Enrolment->find('first', array(
 							'contains' => array('Enrolment'),
 		            'conditions' => array(
 		                'Enrolment.waitlist' => 'yes'
 		            )
 		        ));
-						if($bazinga) {
-							$longest = $bazinga['Enrolment']['user_id'];
+						if($inWaitlist) {
+							$longest = $inWaitlist['Enrolment']['user_id'];
 							$this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
 							if ($this->Enrolment->id) {
 								$this->Enrolment->saveField('waitlist', 'no');
@@ -426,7 +424,7 @@ class EnrolmentsController extends AppController {
 							$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
 						}
 
-					//$this->Flash->success(__('The enrolment has been deleted.'));
+					$this->Flash->success(__('The enrolment has been deleted.'));
 				} else {
 					$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
 				}
