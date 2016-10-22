@@ -397,6 +397,8 @@ class EnrolmentsController extends AppController {
 			$this->request->allowMethod('post', 'delete');
 			$user_gender = AuthComponent::user('gender');
 	//		if (!$commenced){
+
+	//HG find the courseID that we are deleting the user from
 	$before = $this->Enrolment->find('first', array(
 			'field' => array('Enrolment.course_id'),
 					'conditions' => array(
@@ -404,7 +406,7 @@ class EnrolmentsController extends AppController {
 					)
 			));
 			$deletedId = $before['Enrolment']['course_id'];
-
+//HG student cap
 			$test = $this->Enrolment->Course->find('first', array(
 					'field' => array('Course.capacity'),
 					'contain' => array('Enrolment'),
@@ -429,14 +431,17 @@ class EnrolmentsController extends AppController {
 					if($wait_full) {
 						echo "be gone foul beast";
 						$bazinga = $this->Enrolment->find('first', array(
+							'contains' => 'Enrolment',
 		            'conditions' => array(
 		                'Enrolment.waitlist' => 'yes'
 		            )
 		        ));
-						$longest = $bazinga['Enrolment']['user_id'];
-
+						if($bazinga) {
+							$longest = $bazinga['Enrolment']['user_id'];
+						}
 		        $this->Enrolment->updateAll(array('waitlist' => "'no'"), array('Enrolment.id' => $deletedId), array('Enrolment.user_id' => $longest));
 						echo $longest;
+						echo $deletedId;
 					}
 						if ($user_gender == 'male'/* && $is_student*/) {
 							$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
