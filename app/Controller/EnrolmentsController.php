@@ -440,25 +440,27 @@ class EnrolmentsController extends AppController {
 
 	  //ZT: the date the email should be sent must be 10 days prior to the starting course date,
 	  //    therefore the starting date must equal the current date plus 10 days
-	  $current_date_plus_ten = date('Y-m-d', strtotime('+10 days'));
+		$current_date = date('Y-m-d');
 
-	  //ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
-	  // Extraction: from COURSES table
-	  $retrieveStartDates = $this->Enrolment->Course->find('all', array(
-	    'fields' => array('Course.id'),
-	        'conditions' => array(
-	          'DATE(Course.start_date) == ' => $current_date_plus_ten,
-	        ))
-	    );
+		$current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
 
-	  //ZT: find user ID's that have the same course Id has the one that relates to start date retrieved
-	  // Extraction: from ENROLMENTS table
-	  $retrieveUserIDs = $this->Enrolment->find('all', array(
-	    'fields' => array('Enrolment.course_id', 'Enrolment.user_id'),
-	        'conditions' => array(
-	          'Enrolment.course_id == ' => $retrieveStartDates,
-	        ))
-	    );
+		//ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
+		// Extraction: from COURSES table
+		$retrieveCourseIDs = $this->Enrolment->Course->find('all', array(
+		  'fields' => array('Course.id'),
+		      'conditions' => array(
+		        'DATE(Course.start_date) == ' => $current_date_plus_ten,
+		      ))
+		  );
+
+		//ZT: find user ID's that have the same course Id as the one that relates to start date retrieved
+		// Extraction: from ENROLMENTS table
+		$retrieveUserIDs = $this->Enrolment->find('all', array(
+		  'fields' => array('Enrolment.course_id', 'Enrolment.user_id'),
+		      'conditions' => array(
+		        'Enrolment.course_id == ' => $retrieveCourseIDs,
+		      ))
+		  );
 
 	  //ZT: find emails of users which have a user ID in the '$retrieveUserEmail' array
 	  // Extraction: from USERS table
@@ -477,7 +479,7 @@ class EnrolmentsController extends AppController {
 	  		$Email->returnPath('admin@team-hawk.herokuapp.com');
 	  		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
 	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
-	  		$Email->to($retrieveUserEmail[0]);
+	  		$Email->to($retrieveUserEmail[$i]);
 	  		$Email->subject('About');
 	  		$Email->send('Hi, this is a confirmation email for your Meditation course.');
 
