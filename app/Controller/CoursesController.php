@@ -371,7 +371,7 @@ class CoursesController extends AppController {
 		      ))
 		  );
 		if (!$retrieveCourseIDs) {
-			echo "Nothing was found."
+			echo "Nothing was found.";
 		}
 
 
