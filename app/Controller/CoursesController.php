@@ -352,8 +352,6 @@ class CoursesController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 
-	//checking which courses have a start date is 10 days from the current date
-	//this function has to be automatically executed each day, cronjob looked like a good method
 	public function confirmationEmail() {
 
 		$current_date = date('2016-10-19');
@@ -374,7 +372,7 @@ class CoursesController extends AppController {
 			$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
 			$Email->to($userID['User']['email_address']);
 			$Email->subject('Your course begins soon!');
-			$Email->send('Hello ' . $userID['User']['first_name'] . "\n\n" . ', Sending a friendly reminder that your Meditation course begins in 10 days time on the ' . $enrolledID['Course']['start_date'] . "\n\n" . 'If for any reason you find you can' . 't' . ' attend, please notify us by email or phone call as soon as possible.' . "\n\n" . 'Thank you, we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
+			$Email->send('Hello ' . $userID['User']['first_name'] . "\n\n" . ', Sending a friendly reminder that your Meditation course begins in 10 days time on the ' . $userID['Course']['start_date'] . "\n\n" . 'If for any reason you find you can' . 't' . ' attend, please notify us by email or phone call as soon as possible.' . "\n\n" . 'Thank you, we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
 
 		}
 	}
