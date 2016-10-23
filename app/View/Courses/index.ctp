@@ -153,9 +153,13 @@
 				array('class' => 'btn btn-primary', 'escape' => false)
 				);
 		}
+		?>
+	<div>
+	<?php
 		if (AuthComponent::user('permission') == 'manager') {
-			echo $this->Html->link(__('Bestil'), array('action' => 'confirmationEmail'));
+			echo $this->Html->link(__('Send out email'), array('action' => 'confirmationEmail'));
 		}
 	?>
+	</div>
 
 </div>
