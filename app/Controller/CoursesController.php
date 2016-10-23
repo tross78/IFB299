@@ -358,7 +358,7 @@ class CoursesController extends AppController {
 
 	  // ZT: the date the email should be sent must be 10 days prior to the starting course date,
 	  //    therefore the starting date must equal the current date plus 10 days
-		$current_date = date('Y-m-d');
+		$current_date = 3;//date('Y-m-d');
 
 		// $current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
 
@@ -367,11 +367,11 @@ class CoursesController extends AppController {
 		$retrieveCourseIDs = $this->Enrolment->Course->find('all', array(
 		  'fields' => array('Course.id'),
 		      'conditions' => array(
-		        'DATE(Course.start_date) == ' => $current_date,
+		        'Course.start_date == ' => $current_date,
 		      ))
 		  );
 		if (!$retrieveCourseIDs) {
-			echo "Nothing was found."
+			echo "Nothing was found.";
 		}
 
 
