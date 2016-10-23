@@ -351,11 +351,13 @@ class EnrolmentsController extends AppController {
 					$this->Flash->error(__('Class selections must be unique.'));
 			} elseif (($is_student || $is_teacher)&&($one == 'empty' || $two == 'empty' || $three == 'empty')){
 					$this->Flash->error(__('You must make a Valid class selection for EACH time slot.'));
-			}else($this->Enrolment->save($this->request->data)) {
-				$this->Flash->success(__('The enrolment has been saved.'));
-				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
+				if ($this->Enrolment->save($this->request->data)) {
+					$this->Flash->success(__('The enrolment has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
+				}
 			}
 		} else {
 			$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
