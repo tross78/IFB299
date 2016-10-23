@@ -80,12 +80,15 @@
 			<?php } ?>
 
 			<?php
+
+
+
 				// if anything else than student.
 				if (AuthComponent::user('permission') == 'manager' || AuthComponent::user('permission') == 'server') {
 				// add auth to here for just managers and servers
 				$courseEnrolments = $this->CourseEnrolment->getEnrolments((int)$course['Course']['id']);
 					foreach($courseEnrolments as $courseEnrolment) {
-						if (/*AuthComponent::user('permission') == 'manager' || */(AuthComponent::user('id') == $courseEnrolment['User']['id'] && $courseEnrolment['User']['role'] == 'kitchen-helper')) {
+						if (/*AuthComponent::user('permission') == 'manager' || */(AuthComponent::user('id') == $courseEnrolment['User']['id'] && $courseEnrolment['Enrolment']['role'] == 'kitchen-helper')) {
 							$userFullName = $courseEnrolment['User']['first_name'] . ' ' . $courseEnrolment['User']['last_name'];
 							echo $this->Html->link(__($userFullName), array('controller' => 'users', 'action' => 'view',  $courseEnrolment['Enrolment']['user_id']));
 							// check vars if not empty and not null. Unusual method but accounts for '0' = empty PHP bug.
