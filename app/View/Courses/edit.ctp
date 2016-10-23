@@ -25,8 +25,7 @@
 			'type' => 'radio',
 			'before' => '<label class="control-label">Gender</label>',
 			'options' => $gender_options,
-			'class' => false,
-			'value' => 'male'
+			'class' => false
 		);
 		echo $this->Form->input('gender', $gender_attributes)
 		?>
