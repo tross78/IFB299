@@ -76,7 +76,7 @@
               <td><?php echo "Dinner"; ?></td>
             </tr>
 			<tr>
-              <td><span class="label label-success">11pm</span></td>
+              <td><span class="label label-success">10pm</span></td>
               <td><?php echo "Lights Out"; ?></td>
             </tr>
         </tbody>
