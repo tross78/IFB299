@@ -373,8 +373,8 @@ class CoursesController extends AppController {
 			$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
 			$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
 			$Email->to($userID['User']['email_address']);
-			$Email->subject('Changes to your Meditation Course');
-			$Email->send('Hello, your course starts in 10 days.');
+			$Email->subject('Your course begins soon!');
+			$Email->send('Hello ' . $userID['User']['first_name'] . "\n\n" . ', Sending a friendly reminder that your Meditation course begins in 10 days time on the ' . $enrolledID['Course']['start_date'] . "\n\n" . 'If for any reason you find you can' . 't' . ' attend, please notify us by email or phone call as soon as possible.' . "\n\n" . 'Thank you, we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
 
 		}
 	}
