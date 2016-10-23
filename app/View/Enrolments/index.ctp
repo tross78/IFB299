@@ -1,6 +1,9 @@
 <div class="enrolments index">
 <div class="panel panel-primary">
-	<h2><?php echo __('Enrolments'); ?></h2>
+<div class="panel-heading">
+    <h2 class="panel-title"><?php echo __('Enrolments'); ?></h2>
+  </div>
+   <div class="panel-body">
 	<table class="table">
 	<thead>
 	<tr>
@@ -57,5 +60,6 @@
 		?>
 		</ul>
 	<?php endif; ?>
+	</div>
 	</div>
 </div>
