@@ -1,5 +1,41 @@
 <div class="courses view">
 <h2><?php echo __('Course'); ?></h2>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1 class="panel-title"><?php echo h($course['Course']['name']); ?></h1>
+  </div>
+  <div class="panel-body">
+  <h4>Details</h4>
+    <div class="well">
+      <table class="table table-condensed">
+        <thead>
+            <tr>
+              <td><span class="label label-default">Description</span></td>
+              <td><?php echo h($course['Course']['description']); ?></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td><span class="label label-default">Days</span></td>
+              <td><?php echo h($course['Course']['days']); ?></td>
+            </tr>
+            <tr>
+              <td><span class="label label-default">Gender</span></td>
+              <td><?php echo h($course['Course']['gender']); ?></td>
+            </tr>
+            <tr>
+              <td><span class="label label-default">Dates</span></td>
+              <td><?php echo h($course['Course']['start_date']). " - " h($course['Course']['end_date']). ; ?></td>
+            </tr>
+            <tr>
+              <td><span class="label label-default">Capacity</span></td>
+              <td><?php echo h($course['Course']['capacity']); ?></td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+ </div>
 	<dl class="dl-horizontal">
 		<dt><?php echo __('Name'); ?></dt>
 		<dd>
