@@ -12,7 +12,8 @@
 			'type' => 'radio',
 			'before' => '<label class="control-label">Days</label>',
 			'options' => $days_options,
-			'class' => false
+			'class' => false,
+			'value' => 'three'
 		);
 		echo $this->Form->input('days', $days_attributes);
 	?>
