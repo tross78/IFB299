@@ -319,7 +319,7 @@ class EnrolmentsController extends AppController {
 			throw new NotFoundException(__('Invalid enrolment'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			
+
 			//AG: checks to see what the current user has attempted to enroll as
 			$is_student = $this->request->data['Enrolment']['role'] == 'student';
 			$is_manager = $this->request->data['Enrolment']['role'] == 'manager';
@@ -336,17 +336,17 @@ class EnrolmentsController extends AppController {
 			$one = $this->request->data['Enrolment']['class_one'];
 			$two = $this->request->data['Enrolment']['class_two'];
 			$three = $this->request->data['Enrolment']['class_three'];
-			
+
 			//Ag: Manually set enrolment date to current date
 			$this->request->data['Enrolment']['enrolment_date'] = date('Y-m-d');
-			
+
 			//Ag: Manually set classes if manager or kitchen helper
 			if ($is_manager||$is_kitchen){
 			$this->request->data['Enrolment']['class_one'] = "n/a";
 			$this->request->data['Enrolment']['class_two'] = "n/a";
 			$this->request->data['Enrolment']['class_three'] = "n/a";
 			}
-			
+
 			if (($is_student || $is_teacher)&&($one == $two || $one == $three || $two == $three)){
 					$this->Flash->error(__('Class selections must be unique.'));
 			} elseif (($is_student || $is_teacher)&&($one == 'empty' || $two == 'empty' || $three == 'empty')){
@@ -466,53 +466,4 @@ class EnrolmentsController extends AppController {
 			return $this->redirect(array('action' => 'index'));
 		}
 
-	//checking which courses have a start date is 10 days from the current date
-	//this function has to be automatically executed each day, cronjob looked like a good method
-	public function confirmationEmail() {
-
-	  //ZT: the date the email should be sent must be 10 days prior to the starting course date,
-	  //    therefore the starting date must equal the current date plus 10 days
-		$current_date = date('Y-m-d');
-
-		$current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
-
-		//ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
-		// Extraction: from COURSES table
-		$retrieveCourseIDs = $this->Enrolment->Course->find('all', array(
-		  'fields' => array('Course.id'),
-		      'conditions' => array(
-		        'DATE(Course.start_date) == ' => $current_date_plus_ten,
-		      ))
-		  );
-
-		//ZT: find user ID's that have the same course Id as the one that relates to start date retrieved
-		// Extraction: from ENROLMENTS table
-		$retrieveUserIDs = $this->Enrolment->find('all', array(
-		  'fields' => array('Enrolment.course_id', 'Enrolment.user_id'),
-		      'conditions' => array(
-		        'Enrolment.course_id == ' => $retrieveCourseIDs,
-		      ))
-		  );
-
-	  //ZT: find emails of users which have a user ID in the '$retrieveUserEmail' array
-	  // Extraction: from USERS table
-	  for ($i = 0; $i < sizeof($retrieveUserIDs); $i++) {
-
-	    $retrieveUserEmail = $this->Enrolment->User->find('all', array(
-	      'fields' => array('User.email_address'),
-	          'conditions' => array(
-	            'User.id == ' => $retrieveUserIDs[$i],
-	          ))
-	      );
-
-	      $Email = new CakeEmail('gmail');
-	  		$Email->returnPath('admin@team-hawk.herokuapp.com');
-	  		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
-	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
-	  		$Email->to($retrieveUserEmail[$i]);
-	  		$Email->subject('About');
-	  		$Email->send('Hi, this is a confirmation email for your Meditation course.');
-
-	  }
-	}
 }
