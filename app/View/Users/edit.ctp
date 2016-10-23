@@ -26,8 +26,7 @@
 			'type' => 'radio',
 			'before' => '<label class="control-label">Gender</label>',
 			'options' => $gender_options,
-			'class' => false,
-			'value' => 'male'
+			'class' => false
 		);
 		echo $this->Form->input('gender', $gender_attributes);
 		echo $this->Form->input('email_address', array('class' => 'form-control', 'div' => 'form-group'));
@@ -40,8 +39,7 @@
 			'type' => 'radio',
 			'before' => '<label class="control-label">Permissions</label>',
 			'options' => $permission_options,
-			'class' => false,
-			'value' => 'student'
+			'class' => false
 		);
 		// only managers can elevate permissions
 		// Would like to make it that managers can't edit other managers but not really a priority.
