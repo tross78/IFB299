@@ -1,5 +1,9 @@
 <div class="courses index">
-	<h2><?php echo __('Courses'); ?></h2>
+<div class="panel panel-primary">
+<div class="panel-heading">
+	<h2 class="panel-title"><?php echo __('Courses'); ?></h2>
+</div>
+	<div class="panel-body">
 	<table class="table">
 	<thead>
 	<tr>
@@ -139,6 +143,7 @@
 		?>
 		</ul>
 	<?php endif; ?>
+	</div>
 	<?php
 		if (AuthComponent::user('permission') == 'manager') {
 			echo $this->Html->link(
