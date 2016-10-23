@@ -31,6 +31,9 @@
 		echo $this->Form->input('gender', $gender_attributes)
 		?>
 
+		<?php
+		echo $this->Form->input('capacity', array('class' => 'form-control', 'type' => 'number', 'div' => 'form-group'));
+		?>
 	<?php echo $this->Form->input('start_date', array(
         'class' => 'form-control',
         'placeholder' => 'Start Date',
