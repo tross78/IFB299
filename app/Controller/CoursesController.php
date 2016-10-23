@@ -354,15 +354,13 @@ class CoursesController extends AppController {
 
 	public function confirmationEmail() {
 
-		$current_date = date('2016-10-19');
-
 		$current_date_plus_ten = date('Y-m-d', strtotime('+10 days'));
 
 		$userIDS = $this->Course->Enrolment->find('all', array(
 			'field' => array('Enrolment.user_id','Enrolment.course_id','User.email_address', 'Course.start_date'),
 			'contain' => array('User', 'Course'),
 			'conditions' => array(
-				'start_date' => $current_date)));
+				'start_date' => $current_date_plus_ten)));
 
 		foreach ($userIDS as $userID) {
 
