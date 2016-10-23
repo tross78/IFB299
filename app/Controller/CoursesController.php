@@ -360,7 +360,7 @@ class CoursesController extends AppController {
 	  //    therefore the starting date must equal the current date plus 10 days
 		$current_date = date('Y-m-d');
 
-		$current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
+		// $current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
 
 		//ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
 		// Extraction: from COURSES table
