@@ -370,15 +370,22 @@ class CoursesController extends AppController {
 		        'DATE(Course.start_date) == ' => $current_date,
 		      ))
 		  );
+		if (!$retrieveCourseIDs) {
+			echo "Nothing was found."
+		}
+		else {
+
+
+		}
 
 		//ZT: find user ID's that have the same course Id as the one that relates to start date retrieved
 		// Extraction: from ENROLMENTS table
-		$retrieveUserIDs = $this->Enrolment->find('all', array(
-		  'fields' => array('Enrolment.course_id', 'Enrolment.user_id'),
-		      'conditions' => array(
-		        'Enrolment.course_id == ' => $retrieveCourseIDs,
-		      ))
-		  );
+		// $retrieveUserIDs = $this->Enrolment->find('all', array(
+		//   'fields' => array('Enrolment.course_id', 'Enrolment.user_id'),
+		//       'conditions' => array(
+		//         'Enrolment.course_id == ' => $retrieveCourseIDs,
+		//       ))
+		//   );
 
 	  //ZT: find emails of users which have a user ID in the '$retrieveUserEmail' array
 	  // Extraction: from USERS table
