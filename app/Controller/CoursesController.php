@@ -53,9 +53,9 @@ class CoursesController extends AppController {
 				'Course.days' => 'ten'
 			))
 			) > 0;
-			
 
-			// if student, filter to only ten day courses 
+
+			// if student, filter to only ten day courses
 			if (AuthComponent::user('permission') == 'student') {
 				$options = array(
 					'conditions' => array(
@@ -137,7 +137,7 @@ class CoursesController extends AppController {
 		}
 		$options = array('conditions' => array('Course.' . $this->Course->primaryKey => $id));
 		$this->set('course', $this->Course->find('first', $options));
-		
+
 		$this->set('enrolments', $this->Course->Enrolment->find('all', array(
 			'fields' => array('Enrolment.id', 'Enrolment.user_id', 'Enrolment.course_id', 'Enrolment.role', 'User.id', 'User.first_name', 'User.last_name'),
 			'contain' => array('User'),
@@ -145,7 +145,7 @@ class CoursesController extends AppController {
 				'course_id' => $id
 			))
 		));
-		
+
 	}
 
 /**
@@ -158,33 +158,33 @@ class CoursesController extends AppController {
 		if ($this->request->is('post')) {
 			//AG: course length in days
 			$cdays = $this->request->data['Course']['days'];
-			
+
 			//AG: end date. Set initially as the start date to be modified below
 			$edate = new DateTime(implode('-', array(
 					$this->request->data['Course']['start_date']['year'],
 					$this->request->data['Course']['start_date']['month'],
 					$this->request->data['Course']['start_date']['day']
 					)));
-			
+
 			//Ag: Manually set end date to correct date depending on length
 			if ($cdays == "three"){
 				$edate->add(new DateInterval('P3D'));
 			}else if ($cdays == "ten"){
 				$edate->add(new DateInterval('P10D'));
 			}else{
-				$edate->add(new DateInterval('P30D'));	
+				$edate->add(new DateInterval('P30D'));
 			}
-			
+
 			//AG: updates new end date.
 			$this->request->data['Course']['end_date'] = $edate->format('Y-m-d');
-			
+
 			//AG: course start date
 			$sdate = new DateTime(implode('-', array(
 					$this->request->data['Course']['start_date']['year'],
 					$this->request->data['Course']['start_date']['month'],
 					$this->request->data['Course']['start_date']['day']
 					)));
-			
+
 			if (($sdate->format('Y-m-d')) < $current_date){
 				$this->Flash->error(__('You cannot schedule a course for a date that has already past.'));
 			}else if ($this->request->data['Course']['name'] == ""){
@@ -202,7 +202,7 @@ class CoursesController extends AppController {
 					$this->Flash->error(__('The course could not be saved. Please, try again.'));
 				}
 			}
-			
+
 		}
 	}
 
@@ -221,33 +221,33 @@ class CoursesController extends AppController {
 		if ($this->request->is(array('post', 'put'))) {
 			//AG: course length in days
 			$cdays = $this->request->data['Course']['days'];
-			
+
 			//AG: end date. Set initially as the start date to be modified below
 			$edate =  new DateTime(implode('-', array(
 					$this->request->data['Course']['start_date']['year'],
 					$this->request->data['Course']['start_date']['month'],
 					$this->request->data['Course']['start_date']['day']
 					)));
-			
+
 			//Ag: Manually set end date to correct date depending on length
 			if ($cdays == "three"){
 				$edate->add(new DateInterval('P3D'));
 			}else if ($cdays == "ten"){
 				$edate->add(new DateInterval('P10D'));
 			}else{
-				$edate->add(new DateInterval('P30D'));	
+				$edate->add(new DateInterval('P30D'));
 			}
-			
+
 			//AG: updates new end date.
 			$this->request->data['Course']['end_date'] = $edate->format('Y-m-d');
-			
+
 			//AG: course start date
 			$sdate = new DateTime(implode('-', array(
 					$this->request->data['Course']['start_date']['year'],
 					$this->request->data['Course']['start_date']['month'],
 					$this->request->data['Course']['start_date']['day']
 					)));
-			
+
 			if (($sdate->format('Y-m-d')) < $current_date){
 				$this->Flash->error(__('You cannot schedule a course for a date that has already past.'));
 			}else if ($this->request->data['Course']['name'] == ""){
@@ -334,7 +334,7 @@ class CoursesController extends AppController {
 	  		$Email->subject('Changes to your Meditation Course');
 	  		//LEAVE LINES SPACED HOW THEY ARE - used to make email look good.
 	  		$Email->send('Hi ' . $enrolledID['User']['first_name'] .',
-	  			The course you have enrolled in beggining on the ' . $enrolledID['Course']['start_date'] . ' is no longer being continued. We are sorry for the inconvenience. 
+	  			The course you have enrolled in beggining on the ' . $enrolledID['Course']['start_date'] . ' is no longer being continued. We are sorry for the inconvenience.
 
 	  			Team Hawke');
 
@@ -351,4 +351,57 @@ class CoursesController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+	//checking which courses have a start date is 10 days from the current date
+	//this function has to be automatically executed each day, cronjob looked like a good method
+	public function confirmationEmail() {
+
+	  //ZT: the date the email should be sent must be 10 days prior to the starting course date,
+	  //    therefore the starting date must equal the current date plus 10 days
+		$current_date = date('Y-m-d');
+
+		$current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
+
+		//ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
+		// Extraction: from COURSES table
+		$retrieveCourseIDs = $this->Enrolment->Course->find('all', array(
+		  'fields' => array('Course.id'),
+		      'conditions' => array(
+		        'DATE(Course.start_date) == ' => $current_date_plus_ten,
+		      ))
+		  );
+
+		//ZT: find user ID's that have the same course Id as the one that relates to start date retrieved
+		// Extraction: from ENROLMENTS table
+		$retrieveUserIDs = $this->Enrolment->find('all', array(
+		  'fields' => array('Enrolment.course_id', 'Enrolment.user_id'),
+		      'conditions' => array(
+		        'Enrolment.course_id == ' => $retrieveCourseIDs,
+		      ))
+		  );
+
+	  //ZT: find emails of users which have a user ID in the '$retrieveUserEmail' array
+	  // Extraction: from USERS table
+	  for ($i = 0; $i < sizeof($retrieveUserIDs); $i++) {
+
+	    $retrieveUserEmail = $this->Enrolment->User->find('all', array(
+	      'fields' => array('User.email_address'),
+	          'conditions' => array(
+	            'User.id == ' => $retrieveUserIDs[$i],
+	          ))
+	      );
+
+	      $Email = new CakeEmail('gmail');
+	  		$Email->returnPath('admin@team-hawk.herokuapp.com');
+	  		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
+	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
+	  		$Email->to($retrieveUserEmail[$i]);
+	  		$Email->subject('About');
+	  		$Email->send('Hi, this is a confirmation email for your Meditation course.');
+
+	  }
+	}
+
+
+
 }
