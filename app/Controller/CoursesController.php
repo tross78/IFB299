@@ -360,7 +360,7 @@ class CoursesController extends AppController {
 	  //    therefore the starting date must equal the current date plus 10 days
 		$current_date = date('2016-10-23');
 
-		$current_date_plus_ten = date('Y-m-d', strtotime('+10 days'))
+		$current_date_plus_ten = date('Y-m-d', strtotime('+10 days'));
 
 		echo $current_date_plus_ten;
 		//$current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
