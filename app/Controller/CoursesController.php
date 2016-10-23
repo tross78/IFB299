@@ -373,10 +373,7 @@ class CoursesController extends AppController {
 		if (!$retrieveCourseIDs) {
 			echo "Nothing was found."
 		}
-		else {
 
-
-		}
 
 		//ZT: find user ID's that have the same course Id as the one that relates to start date retrieved
 		// Extraction: from ENROLMENTS table
