@@ -38,17 +38,17 @@
 	<table class="table table-condensed">
 	<thead>
             <tr>
-              <td><span class="label label-primary">9am</span></td>
+              <td><span class="label label-pink arrowed-right">9am</span></td>
               <td><?php echo h($enrolment['Enrolment']['class_one']); ?></td>
             </tr>
         </thead>
         <tbody>
             <tr>
-              <td><span class="label label-primary">12pm</span></td>
+              <td><span class="label label-pink arrowed-right">12pm</span></td>
               <td><?php echo h($enrolment['Enrolment']['class_two']); ?></td>
             </tr>
             <tr>
-              <td><span class="label label-primary">3pm</span></td>
+              <td><span class="label label-pink arrowed-right">3pm</span></td>
               <td><?php echo h($enrolment['Enrolment']['class_three']); ?></td>
             </tr>
         </tbody>
