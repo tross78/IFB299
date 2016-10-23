@@ -144,6 +144,7 @@
 		</ul>
 	<?php endif; ?>
 	</div>
+	</div>
 	<?php
 		if (AuthComponent::user('permission') == 'manager') {
 			echo $this->Html->link(
