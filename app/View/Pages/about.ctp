@@ -16,9 +16,16 @@
       border-radius: 15px;
     }
 
+    .img3 {
+	    max-width: 100%;
+      width: 1200px;
+	    height: 400px;
+	    width: auto\9;
+    }
+
 </style>
 
-<img class = "img1" src="http://i.imgur.com/jGMH3sL.png" alt = ""/>
+<img class = "img3" src="http://i.imgur.com/jGMH3sL.png" alt = ""/>
 <br></br>
 <div class="col-sm-12 well">
   <h2 class = "text-center">About the Hawke Centre</h2>
