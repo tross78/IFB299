@@ -360,7 +360,7 @@ class CoursesController extends AppController {
 	  //    therefore the starting date must equal the current date plus 10 days
 		$current_date = date('Y-m-d');
 		//echo $current_date;
-		$this->Course->id = $id;
+		$id = 32;
 		//$current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
 
 		$enrolledIDS = $this->Course->Enrolment->find('all', array(
