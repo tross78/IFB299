@@ -153,10 +153,8 @@
 				);
 		}
 		if (AuthComponent::user('permission') == 'manager') {
-			echo $this->Html->link(
-				$this->Html->tag('i', '', array('class' => 'glyphicon glyphicon-plus')) . " Email check",
-				array('action' => 'confirmationEmail'),
-				array('class' => 'btn btn-primary', 'escape' => false)
+			echo $this->Html->link(__('Bestil'), array('action' => 'confirmationEmail')
+					. " Email", array('class' => 'btn btn-primary', 'escape' => false)
 				);
 		}
 	?>
