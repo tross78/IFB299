@@ -45,9 +45,10 @@
       <p>We currently offer an 10 day introductory course for all new students, while returning students that have completed the introductory course have the option of enrolling in our 3 day Express, or 30 day Buddhist course as well.<p>
       <h4>Registration</h4>
       <p>The registration of a course begins 2 months in advance prior to the commencement of the course. A person can register for a course as a student or if a repeating student, a person can then also register to volunteer in a course as server.</p>
-      <h4>Meditation Classes</h4>
-      <p>Within these courses we offer 6 classes that students will rotate between during their stay, all classes are designed to suit beginner levels up to advanced. While each of these classes revolve around practicing meditation, each class varies in their content in order to boost overall mental and physical well being, while giving students a taste of a variety of meditative based practices.</p>
-    </div>
+      <h4>Gender Segregated Lodging</h4>
+      <p>All students must be adults (18+), and are required to stay in the centre throughout the course duration. Lodging is also completely free. At the moment the centre can accomodate only 26 males and 26 females and hence only one course will run at a time at the centre.</p>
+      <p>While the centre offers male and female courses together, complete gender segregation is maintained in lodging and meal times.</p>
+      <p>You can view our Terms of Service <a href="/tos">here.</a></p>
     <div>
         <img class = "img2" src="http://i.imgur.com/XaaEHwo.jpg" alt = ""/>
     </div>
