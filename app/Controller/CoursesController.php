@@ -356,61 +356,27 @@ class CoursesController extends AppController {
 	//this function has to be automatically executed each day, cronjob looked like a good method
 	public function confirmationEmail() {
 
-		$current_date = date('2016-10-23');
+		$current_date = date('2016-10-19');
 
 		$current_date_plus_ten = date('Y-m-d', strtotime('+10 days'));
 
-
-		$enrolledIDS = $this->Course->Enrolment->find('all', array(
+		$userIDS = $this->Course->Enrolment->find('all', array(
 			'field' => array('Enrolment.user_id','Enrolment.course_id','User.email_address', 'Course.start_date'),
 			'contain' => array('User', 'Course'),
 			'conditions' => array(
 				'start_date' => $current_date)));
 
-		//ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
-		// Extraction: from COURSES table
-		// $retrieveCourseIDs = $this->Enrolment->Course->find('all', array(
-		//   'fields' => array('Course.id'),
-		// 	'contain' => array('Course'),
-		//       'conditions' => array(
-		//         'DATE(Course.start_date) >' => $current_date,
-		//       ))
-		//   );
-		// if (!$retrieveCourseIDs) {
-		// 	echo "Nothing was found.";
-		// }
+		foreach ($userIDS as $userID) {
 
+			$Email = new CakeEmail('gmail');
+			$Email->returnPath('teamhawkemeditation@gmail.com');
+			$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
+			$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
+			$Email->to($userID['User']['email_address']);
+			$Email->subject('Changes to your Meditation Course');
+			$Email->send('Hello, your course starts in 10 days.');
 
-		//ZT: find user ID's that have the same course Id as the one that relates to start date retrieved
-		// Extraction: from ENROLMENTS table
-		// $retrieveUserIDs = $this->Enrolment->find('all', array(
-		//   'fields' => array('Enrolment.course_id', 'Enrolment.user_id'),
-		//       'conditions' => array(
-		//         'Enrolment.course_id == ' => $retrieveCourseIDs,
-		//       ))
-		//   );
-
-	  //ZT: find emails of users which have a user ID in the '$retrieveUserEmail' array
-	  // Extraction: from USERS table
-	  // for ($i = 0; $i < sizeof($retrieveUserIDs); $i++) {
-		//
-	  //   $retrieveUserEmail = $this->Enrolment->User->find('all', array(
-	  //     'fields' => array('User.email_address'),
-	  //         'conditions' => array(
-	  //           'User.id == ' => $retrieveUserIDs[$i],
-	  //         ))
-	  //     );
-		//
-	  //     $Email = new CakeEmail('gmail');
-	  // 		$Email->returnPath('admin@team-hawk.herokuapp.com');
-	  // 		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
-	  // 		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
-	  // 		$Email->to($retrieveUserEmail[$i]);
-	  // 		$Email->subject('About');
-	  // 		$Email->send('Hi, this is a confirmation email for your Meditation course.');
-		//
-	  // }
-
+		}
 	}
 
 
