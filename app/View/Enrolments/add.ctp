@@ -40,13 +40,13 @@
         'class' => 'form-control',
         'placeholder' => 'Enrolment Date',
 		'dateFormat' => 'DYM',
-		'minYear' => date('Y'),	//unfortunately, there is no built-in minMonth or minDay, Don't really need it here though seeing as we will parse in the current date every time.
+		'minYear' => date('Y'),
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
 
 		if (AuthComponent::user('permission') == 'manager') {
 			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper', 'manager' => 'manager');
-		} elseif($is_old || (AuthComponent::user('permission') == "server")){
+		} elseif(AuthComponent::user('permission') == "server"){
 			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper');
 		} else {
 			$role_options = array('student' => 'student');

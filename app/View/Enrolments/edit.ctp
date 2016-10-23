@@ -14,7 +14,7 @@
 		
 		if (AuthComponent::user('permission') == 'manager') {
 			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper', 'manager' => 'manager');
-		} elseif($is_old || (AuthComponent::user('permission') == "server")){
+		} elseif(AuthComponent::user('permission') == "server"){
 			$role_options = array('student' => 'student','assistant-teacher' => 'assistant-teacher', 'kitchen-helper' => 'kitchen-helper');		
 		} else {
 			$role_options = array('student' => 'student');
@@ -26,6 +26,8 @@
 		'options' => $role_options,
 		'between' => '<div class="form-inline form-group">',
         'after' => '</div>'));
+		
+		echo "<br><strong>Students and Assistant Teachers Must Select Unique Classes:</strong><br><br>";
 		
 		$class_options = array('relaxation' => 'Relaxation','tai-chi' => 'Tai Chi', 'yin-deep-stretch' => 'Yin Deep Stretch', 'mindfulness-101' => 'Mindfulness 101', 'zen-mediation' => 'Zen Mediation');
 

@@ -319,9 +319,39 @@ class EnrolmentsController extends AppController {
 			throw new NotFoundException(__('Invalid enrolment'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			
+			//AG: checks to see what the current user has attempted to enroll as
+			$is_student = $this->request->data['Enrolment']['role'] == 'student';
+			$is_manager = $this->request->data['Enrolment']['role'] == 'manager';
+			$is_teacher = $this->request->data['Enrolment']['role'] == 'assistant-teacher';
+			$is_kitchen = $this->request->data['Enrolment']['role'] == 'kitchen-helper';
+
+			//AG: More sets
+			$this->set("is_student", $is_student);
+			$this->set("is_manager", $is_manager);
+			$this->set("is_teacher", $is_teacher);
+			$this->set("is_kitchen", $is_kitchen);
+
+			//AG: Checks class selections
+			$one = $this->request->data['Enrolment']['class_one'];
+			$two = $this->request->data['Enrolment']['class_two'];
+			$three = $this->request->data['Enrolment']['class_three'];
+			
 			//Ag: Manually set enrolment date to current date
 			$this->request->data['Enrolment']['enrolment_date'] = date('Y-m-d');
-			if ($this->Enrolment->save($this->request->data)) {
+			
+			//Ag: Manually set classes if manager or kitchen helper
+			if ($is_manager||$is_kitchen){
+			$this->request->data['Enrolment']['class_one'] = "n/a";
+			$this->request->data['Enrolment']['class_two'] = "n/a";
+			$this->request->data['Enrolment']['class_three'] = "n/a";
+			}
+			
+			if (($is_student || $is_teacher)&&($one == $two || $one == $three || $two == $three)){
+					$this->Flash->error(__('Class selections must be unique.'));
+			} elseif (($is_student || $is_teacher)&&($one == 'empty' || $two == 'empty' || $three == 'empty')){
+					$this->Flash->error(__('You must make a Valid class selection for EACH time slot.'));
+			}else($this->Enrolment->save($this->request->data)) {
 				$this->Flash->success(__('The enrolment has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
