@@ -332,7 +332,8 @@ class CoursesController extends AppController {
 	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
 	  		$Email->to($enrolledID['User']['email_address']);
 	  		$Email->subject('Changes to your Meditation Course');
-	  		$Email->send('Hi ' . $enrolledID['User']['first_name'] .'
+	  		//LEAVE LINES SPACED HOW THEY ARE - used to make email look good.
+	  		$Email->send('Hi ' . $enrolledID['User']['first_name'] .',
 	  			The course you have enrolled in beggining on the ' . $enrolledID['Course']['start_date'] . ' is no longer being continued. We are sorry for the inconvenience. 
 
 	  			Team Hawke');
