@@ -359,8 +359,9 @@ class CoursesController extends AppController {
 	  // ZT: the date the email should be sent must be 10 days prior to the starting course date,
 	  //    therefore the starting date must equal the current date plus 10 days
 		$current_date = date('Y-m-d');
+		echo $current_date;
 
-		$current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
+		//$current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
 
 		//ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
 		// Extraction: from COURSES table
