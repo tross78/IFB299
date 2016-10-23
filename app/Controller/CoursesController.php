@@ -369,7 +369,7 @@ class CoursesController extends AppController {
 			'conditions' => array(
 				'course_id' => $id)));
 
-		echo $enrolledIDs;
+		echo $enrolledIDs[0];
 		//ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
 		// Extraction: from COURSES table
 		// $retrieveCourseIDs = $this->Enrolment->Course->find('all', array(
