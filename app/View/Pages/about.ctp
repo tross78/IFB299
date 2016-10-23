@@ -49,6 +49,7 @@
       <p>All students must be adults (18+), and are required to stay in the centre throughout the course duration. Lodging is also completely free. At the moment the centre can accomodate only 26 males and 26 females and hence only one course will run at a time at the centre.</p>
       <p>While the centre offers male and female courses together, complete gender segregation is maintained in lodging and meal times.</p>
       <p>You can view our Terms of Service <a href="/tos">here.</a></p>
+    </div>
     <div>
         <img class = "img2" src="http://i.imgur.com/XaaEHwo.jpg" alt = ""/>
     </div>
