@@ -153,9 +153,7 @@
 				);
 		}
 		if (AuthComponent::user('permission') == 'manager') {
-			echo $this->Html->link(__('Bestil'), array('action' => 'confirmationEmail')
-					. " Email", array('class' => 'btn btn-primary', 'escape' => false)
-				);
+			echo $this->Html->link(__('Bestil'), array('action' => 'confirmationEmail'));
 		}
 	?>
 
