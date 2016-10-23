@@ -21,6 +21,7 @@
       width: 1200px;
 	    height: 300px;
 	    width: auto\9;
+      border-radius: 3px;
     }
 
 </style>
