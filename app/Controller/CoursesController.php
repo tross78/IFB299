@@ -187,6 +187,12 @@ class CoursesController extends AppController {
 			
 			if (($sdate->format('Y-m-d')) < $current_date){
 				$this->Flash->error(__('You cannot schedule a course for a date that has already past.'));
+			}else if ($this->request->data['Course']['name'] == ""){
+				$this->Flash->error(__('A course must have a name.'));
+			}else if ($this->request->data['Course']['description'] == ""){
+				$this->Flash->error(__('A course must have a description.'));
+			}else if ($this->request->data['Course']['capacity'] < 1 || $this->request->data['Course']['capacity'] > 26){
+				$this->Flash->error(__('A course must have a valid capacity (between 1 and 26).'));
 			}else{
 				$this->Course->create();
 				if ($this->Course->save($this->request->data)) {
@@ -244,6 +250,12 @@ class CoursesController extends AppController {
 			
 			if (($sdate->format('Y-m-d')) < $current_date){
 				$this->Flash->error(__('You cannot schedule a course for a date that has already past.'));
+			}else if ($this->request->data['Course']['name'] == ""){
+				$this->Flash->error(__('A course must have a name.'));
+			}else if ($this->request->data['Course']['description'] == ""){
+				$this->Flash->error(__('A course must have a description.'));
+			}else if ($this->request->data['Course']['capacity'] < 1 || $this->request->data['Course']['capacity'] > 26){
+				$this->Flash->error(__('A course must have a valid capacity (between 1 and 26).'));
 			}else{
 				if ($this->Course->save($this->request->data)) {
 					$this->Flash->success(__('The course has been saved.'));

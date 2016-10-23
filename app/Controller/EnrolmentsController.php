@@ -220,7 +220,7 @@ class EnrolmentsController extends AppController {
 			$this->request->data['Enrolment']['class_three'] = "n/a";
 		}
 
-		//AG: Code to set waitlist to 1 if course is full.
+		//AG: Code to set waitlist to yes if course is full.
 		if ($course_full && $is_student) {
 			$this->request->data['Enrolment']['waitlist'] = 'yes';
 		}else{
@@ -246,14 +246,17 @@ class EnrolmentsController extends AppController {
 				$this->Enrolment->create();
 				if ($this->Enrolment->save($this->request->data)) {
 					$this->Flash->success(__('The enrolment has been saved.'));
-					if ($user_gender == 'male' && $is_student) {
-						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id']));  //might move these into their own method later on
-						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
-					} elseif ($user_gender == 'female' && $is_student){
-            $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id']));
-            $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
+					if(!$course_full) {
+						if ($user_gender == 'male' && $is_student) {
+							$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male+1'), array('Course.id' => $this->params['named']['course_id']));  //might move these into their own method later on
+							$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
+						} elseif ($user_gender == 'female' && $is_student){
+							$this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female+1'), array('Course.id' => $this->params['named']['course_id']));
+							$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments+1'), array('Course.id' => $this->params['named']['course_id']));
+						}
+					} else {
+						echo "DO NOTHING";
 					}
-
 					return $this->redirect(array('action' => 'index'));
 				} else {
 					$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
@@ -316,13 +319,45 @@ class EnrolmentsController extends AppController {
 			throw new NotFoundException(__('Invalid enrolment'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			
+			//AG: checks to see what the current user has attempted to enroll as
+			$is_student = $this->request->data['Enrolment']['role'] == 'student';
+			$is_manager = $this->request->data['Enrolment']['role'] == 'manager';
+			$is_teacher = $this->request->data['Enrolment']['role'] == 'assistant-teacher';
+			$is_kitchen = $this->request->data['Enrolment']['role'] == 'kitchen-helper';
+
+			//AG: More sets
+			$this->set("is_student", $is_student);
+			$this->set("is_manager", $is_manager);
+			$this->set("is_teacher", $is_teacher);
+			$this->set("is_kitchen", $is_kitchen);
+
+			//AG: Checks class selections
+			$one = $this->request->data['Enrolment']['class_one'];
+			$two = $this->request->data['Enrolment']['class_two'];
+			$three = $this->request->data['Enrolment']['class_three'];
+			
 			//Ag: Manually set enrolment date to current date
 			$this->request->data['Enrolment']['enrolment_date'] = date('Y-m-d');
-			if ($this->Enrolment->save($this->request->data)) {
-				$this->Flash->success(__('The enrolment has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+			
+			//Ag: Manually set classes if manager or kitchen helper
+			if ($is_manager||$is_kitchen){
+			$this->request->data['Enrolment']['class_one'] = "n/a";
+			$this->request->data['Enrolment']['class_two'] = "n/a";
+			$this->request->data['Enrolment']['class_three'] = "n/a";
+			}
+			
+			if (($is_student || $is_teacher)&&($one == $two || $one == $three || $two == $three)){
+					$this->Flash->error(__('Class selections must be unique.'));
+			} elseif (($is_student || $is_teacher)&&($one == 'empty' || $two == 'empty' || $three == 'empty')){
+					$this->Flash->error(__('You must make a Valid class selection for EACH time slot.'));
 			} else {
-				$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
+				if ($this->Enrolment->save($this->request->data)) {
+					$this->Flash->success(__('The enrolment has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Flash->error(__('The enrolment could not be saved. Please, try again.'));
+				}
 			}
 		} else {
 			$options = array('conditions' => array('Enrolment.' . $this->Enrolment->primaryKey => $id));
@@ -333,116 +368,103 @@ class EnrolmentsController extends AppController {
 		$this->set(compact('users', 'courses'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-//JM: added check to make sure you cannot withdraw from a courese
-//once the start date has been reached, or passed.
 
-	public function delete($id = null) {
-		$is_student = $this->request->data['Enrolment']['role'] == 'student';
+	/**
+	 * delete method
+	 *
+	 * @throws NotFoundException
+	 * @param string $id
+	 * @return void
+	 */
+	//JM: added check to make sure you cannot withdraw from a courese
+	//once the start date has been reached, or passed.
 
-		$this->set("is_student", $is_student);
+		public function delete($id = null) {
+			//$is_student = $this->request->data['Enrolment']['role'] == 'student';
 
-
-		$this->Enrolment->id = $id;
-		if (!$this->Enrolment->exists()) {
-			throw new NotFoundException(__('Invalid enrolment'));
-		}
-
-		$c_date = date('Y-m-d');
-
-//commented cause it was giving me an error and idk why
-/*		$commenced = $this->Enrolment->Course->find('all', array(
-			'fields' => array('Course.start_date', 'Course.id'),
-					'contain' => array('Course', 'Enrolment'),
-					'conditions' => array(
-						'DATE(Course.start_date) < ' => $c_date
-						//'Course.id' => $this->params['named']['course_id']
-					))
-			);
-*/
-
-		$this->request->allowMethod('post', 'delete');
-		$user_gender = AuthComponent::user('gender');
-//		if (!$commenced){
-$before = $this->Enrolment->find('first', array(
-		'field' => array('Enrolment.course_id'),
-				'conditions' => array(
-						'Enrolment.id' => $id
-				)
-		));
-		$deletedId = $before['Enrolment']['course_id'];
-
-		$test = $this->Enrolment->Course->find('first', array(
-				'field' => array('Course.capacity'),
-				'contain' => array('Enrolment'),
-						'conditions' => array(
-								'Course.id' => $deletedId
-						)
-				));
-				$studentCap = $test['Course']['capacity'];
-
-		$course_full = $this->Enrolment->find('count', array(
-					'fields' => array('Course.id'),
-					'contain' => array('Course', 'User'),
-					'conditions' => array(
-						'Enrolment.role' => 'student',
-						'User.gender' => $user_gender,
-						"Course.id" => $deletedId
-					))
-			) >= $studentCap;
-
-
-			if ($this->Enrolment->delete()) {
-				if($course_full) {
-					echo "lol";
-					waitlistEnrol();
-				}
-					if ($user_gender == 'male' && $is_student) {
-						$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
-						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
-					} elseif ('female' && $is_student) {
-						$this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $deletedId));
-						$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
-					}
-
-				$this->Flash->success(__('The enrolment has been deleted.'));
-			} else {
-				$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
+			//$this->set("is_student", $is_student);
+			$this->Enrolment->id = $id;
+			if (!$this->Enrolment->exists()) {
+				throw new NotFoundException(__('Invalid enrolment'));
 			}
-//		} else {
-//			$this->Flash->error(_('You cannot withdraw from a course after it has commenced.'));
-//		}
-		return $this->redirect(array('action' => 'index'));
-	}
 
-/**
- * waitlistAutoEnrol method
- *
- * @return void
- */
-	//a function to handle the enrolment of the user who has been on the waitlist for the longest
-	//HG this does not work
-	public function waitlistEnrol(){
-        $bazinga = $this->Enrolment->find('first', array(
-            'field' => array('Enrolment.id'),
-            'contain' => array('Enrolment'),
-            'conditions' => array(
-                'Enrolment.waitlist' => 'yes'
-            )
-        ));
-				$longest = $bazinga['Enrolment']['waitlist'];
+			$c_date = date('Y-m-d');
+	//commented cause it was giving me an error and idk why
+	/*		$commenced = $this->Enrolment->Course->find('all', array(
+				'fields' => array('Course.start_date', 'Course.id'),
+						'contain' => array('Course', 'Enrolment'),
+						'conditions' => array(
+							'DATE(Course.start_date) < ' => $c_date
+							//'Course.id' => $this->params['named']['course_id']
+						))
+				);
+	*/
+			$this->request->allowMethod('post', 'delete');
+			$user_gender = AuthComponent::user('gender');
+	//		if (!$commenced){
 
-			$this->Flash->error(__($this->longest));
+	//HG find the courseID that we are deleting the user from
+	$courseId = $this->Enrolment->find('first', array(
+			'field' => array('Enrolment.course_id'),
+					'conditions' => array(
+							'Enrolment.id' => $id
+					)
+			));
+			$deletedId = $courseId['Enrolment']['course_id'];
+//HG student cap
+			$capStudent = $this->Enrolment->Course->find('first', array(
+					'field' => array('Course.capacity'),
+					'contain' => array('Enrolment'),
+							'conditions' => array(
+									'Course.id' => $deletedId
+							)
+					));
+					$studentCap = $capStudent['Course']['capacity'];
 
-        $this->Enrolment->updateAll(array('waitlist' => 'no'), array('Enrolment.id' => $longest));
+					//AG: to check if the number of students on the waitlist for this course has reached the waitlist capacity.
+					$wait_full = $this->Enrolment->find('count', array(
+								'fields' => array('Course.id'),
+								'contain' => array('Course'),
+								'conditions' => array(
+									'Enrolment.waitlist' => 'yes',
+									'Course.id' => $deletedId
+								))
+						) >= 1;
 
-	}
+
+				if ($this->Enrolment->delete()) {
+					if($wait_full) {
+						$inWaitlist = $this->Enrolment->find('first', array(
+							'contains' => array('Enrolment'),
+		            'conditions' => array(
+		                'Enrolment.waitlist' => 'yes'
+		            )
+		        ));
+						if($inWaitlist) {
+							$longest = $inWaitlist['Enrolment']['user_id'];
+							$this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
+							if ($this->Enrolment->id) {
+								$this->Enrolment->saveField('waitlist', 'no');
+							}
+						}
+					}
+						if ($user_gender == 'male'/* && $is_student*/) {
+							$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
+							$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
+						} elseif ('female' /*&& $is_student*/) {
+							$this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $deletedId));
+							$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
+						}
+
+					$this->Flash->success(__('The enrolment has been deleted.'));
+				} else {
+					$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
+				}
+	//		} else {
+	//			$this->Flash->error(_('You cannot withdraw from a course after it has commenced.'));
+	//		}
+			return $this->redirect(array('action' => 'index'));
+		}
 
 	//checking which courses have a start date is 10 days from the current date
 	//this function has to be automatically executed each day, cronjob looked like a good method
@@ -450,25 +472,27 @@ $before = $this->Enrolment->find('first', array(
 
 	  //ZT: the date the email should be sent must be 10 days prior to the starting course date,
 	  //    therefore the starting date must equal the current date plus 10 days
-	  $current_date_plus_ten = date('Y-m-d', strtotime('+10 days'));
+		$current_date = date('Y-m-d');
 
-	  //ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
-	  // Extraction: from COURSES table
-	  $retrieveStartDates = $this->Enrolment->Course->find('all', array(
-	    'fields' => array('Course.id'),
-	        'conditions' => array(
-	          'DATE(Course.start_date) == ' => $current_date_plus_ten,
-	        ))
-	    );
+		$current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
 
-	  //ZT: find user ID's that have the same course Id has the one that relates to start date retrieved
-	  // Extraction: from ENROLMENTS table
-	  $retrieveUserIDs = $this->Enrolment->find('all', array(
-	    'fields' => array('Enrolment.course_id', 'Enrolment.user_id'),
-	        'conditions' => array(
-	          'Enrolment.course_id == ' => $retrieveStartDates,
-	        ))
-	    );
+		//ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
+		// Extraction: from COURSES table
+		$retrieveCourseIDs = $this->Enrolment->Course->find('all', array(
+		  'fields' => array('Course.id'),
+		      'conditions' => array(
+		        'DATE(Course.start_date) == ' => $current_date_plus_ten,
+		      ))
+		  );
+
+		//ZT: find user ID's that have the same course Id as the one that relates to start date retrieved
+		// Extraction: from ENROLMENTS table
+		$retrieveUserIDs = $this->Enrolment->find('all', array(
+		  'fields' => array('Enrolment.course_id', 'Enrolment.user_id'),
+		      'conditions' => array(
+		        'Enrolment.course_id == ' => $retrieveCourseIDs,
+		      ))
+		  );
 
 	  //ZT: find emails of users which have a user ID in the '$retrieveUserEmail' array
 	  // Extraction: from USERS table
@@ -482,12 +506,10 @@ $before = $this->Enrolment->find('first', array(
 	      );
 
 	      $Email = new CakeEmail('gmail');
-	  		$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
-	  		$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));
 	  		$Email->returnPath('admin@team-hawk.herokuapp.com');
 	  		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
 	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
-	  		$Email->to($retrieveUserEmail[0]);
+	  		$Email->to($retrieveUserEmail[$i]);
 	  		$Email->subject('About');
 	  		$Email->send('Hi, this is a confirmation email for your Meditation course.');
 
