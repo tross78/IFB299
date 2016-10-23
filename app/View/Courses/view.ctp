@@ -25,7 +25,7 @@
             </tr>
             <tr>
               <td><span class="label label-default">Dates</span></td>
-              <td><?php echo h($course['Course']['start_date']). " - "; ?> <?php echo h($course['Course']['end_date']). ; ?></td>
+              <td><?php echo h($course['Course']['start_date']). " - "; ?> <?php echo h($course['Course']['end_date']); ?> </span></td>
             </tr>
             <tr>
               <td><span class="label label-default">Capacity</span></td>
