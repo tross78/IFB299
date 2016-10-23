@@ -363,7 +363,7 @@ class CoursesController extends AppController {
 		$id = 32;
 		//$current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
 
-		$enrolledIDS = $this->Enrolment->Course->find('all', array(
+		$enrolledIDS = $this->Course->Enrolment->find('all', array(
 			'field' => array('Enrolment.user_id','Enrolment.course_id','User.email_address', 'Course.start_date'),
 			'contain' => array('User', 'Course'),
 			'conditions' => array(
