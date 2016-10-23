@@ -356,8 +356,8 @@ class CoursesController extends AppController {
 	//this function has to be automatically executed each day, cronjob looked like a good method
 	public function confirmationEmail() {
 
-	  ZT: the date the email should be sent must be 10 days prior to the starting course date,
-	     therefore the starting date must equal the current date plus 10 days
+	  // ZT: the date the email should be sent must be 10 days prior to the starting course date,
+	  //    therefore the starting date must equal the current date plus 10 days
 		$current_date = date('Y-m-d');
 
 		$current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
