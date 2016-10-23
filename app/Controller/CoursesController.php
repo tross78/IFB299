@@ -356,32 +356,32 @@ class CoursesController extends AppController {
 	//this function has to be automatically executed each day, cronjob looked like a good method
 	public function confirmationEmail() {
 
-	  //ZT: the date the email should be sent must be 10 days prior to the starting course date,
-	  //    therefore the starting date must equal the current date plus 10 days
-		// $current_date = date('Y-m-d');
-		//
-		// $current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
-		//
-		// //ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
-		// // Extraction: from COURSES table
-		// $retrieveCourseIDs = $this->Enrolment->Course->find('all', array(
-		//   'fields' => array('Course.id'),
-		//       'conditions' => array(
-		//         'DATE(Course.start_date) == ' => $current_date_plus_ten,
-		//       ))
-		//   );
-		//
-		// //ZT: find user ID's that have the same course Id as the one that relates to start date retrieved
-		// // Extraction: from ENROLMENTS table
-		// $retrieveUserIDs = $this->Enrolment->find('all', array(
-		//   'fields' => array('Enrolment.course_id', 'Enrolment.user_id'),
-		//       'conditions' => array(
-		//         'Enrolment.course_id == ' => $retrieveCourseIDs,
-		//       ))
-		//   );
-		//
-	  // //ZT: find emails of users which have a user ID in the '$retrieveUserEmail' array
-	  // // Extraction: from USERS table
+	  ZT: the date the email should be sent must be 10 days prior to the starting course date,
+	     therefore the starting date must equal the current date plus 10 days
+		$current_date = date('Y-m-d');
+
+		$current_date_plus_ten = $current_date->add(new DateInterval('P10D'));
+
+		//ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
+		// Extraction: from COURSES table
+		$retrieveCourseIDs = $this->Enrolment->Course->find('all', array(
+		  'fields' => array('Course.id'),
+		      'conditions' => array(
+		        'DATE(Course.start_date) == ' => $current_date_plus_ten,
+		      ))
+		  );
+
+		//ZT: find user ID's that have the same course Id as the one that relates to start date retrieved
+		// Extraction: from ENROLMENTS table
+		$retrieveUserIDs = $this->Enrolment->find('all', array(
+		  'fields' => array('Enrolment.course_id', 'Enrolment.user_id'),
+		      'conditions' => array(
+		        'Enrolment.course_id == ' => $retrieveCourseIDs,
+		      ))
+		  );
+
+	  //ZT: find emails of users which have a user ID in the '$retrieveUserEmail' array
+	  // Extraction: from USERS table
 	  // for ($i = 0; $i < sizeof($retrieveUserIDs); $i++) {
 		//
 	  //   $retrieveUserEmail = $this->Enrolment->User->find('all', array(
@@ -400,7 +400,7 @@ class CoursesController extends AppController {
 	  // 		$Email->send('Hi, this is a confirmation email for your Meditation course.');
 		//
 	  // }
-		echo "blah di blah";
+
 	}
 
 
