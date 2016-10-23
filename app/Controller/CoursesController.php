@@ -365,7 +365,7 @@ class CoursesController extends AppController {
 			'field' => array('Enrolment.user_id','Enrolment.course_id','User.email_address', 'Course.start_date'),
 			'contain' => array('User', 'Course'),
 			'conditions' => array(
-				'start_date >=' => $current_date)));
+				'start_date ==' => $current_date)));
 
 		//ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
 		// Extraction: from COURSES table
