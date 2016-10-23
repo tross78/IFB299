@@ -1,1 +1,3 @@
-blah
+task :scheduler do
+  
+end
