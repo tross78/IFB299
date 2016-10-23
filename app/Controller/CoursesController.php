@@ -367,7 +367,6 @@ class CoursesController extends AppController {
 		// Extraction: from COURSES table
 		$retrieveCourseIDs = $this->Enrolment->Course->find('all', array(
 		  'fields' => array('Course.id'),
-			'contain' => array('User', 'Course'),
 		      'conditions' => array(
 		        'Course.start_date' => $current_date,
 		      ))
