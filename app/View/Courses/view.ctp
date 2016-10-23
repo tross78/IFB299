@@ -4,7 +4,7 @@
     <h1 class="panel-title"><?php echo h($course['Course']['name']); ?></h1>
   </div>
   <div class="panel-body">
-  <h4>Details</h4>
+  <h4>Course Details</h4>
     <div class="well">
       <table class="table table-condensed">
         <thead>
@@ -37,7 +37,7 @@
           </tbody>
       </table>
     </div>
-	<h4>Course Enrolments:</h4>
+	<h4>Course Enrolments</h4>
 	<div class="well">
      <?php
         foreach ($enrolments as $enrol) {
