@@ -47,7 +47,7 @@
       <h4>Registration</h4>
       <p>The registration of a course begins 2 months in advance prior to the commencement of the course. A person can register for a course as a student or if a repeating student, a person can then also register to volunteer in a course as server.</p>
       <h4>Gender Segregated Lodging</h4>
-      <p>All students must be adults (18+), and are required to stay in the centre throughout the course duration. Lodging is also completely free. At the moment the centre can accomodate only 26 males and 26 females and hence only one course will run at a time at the centre.</p>
+      <p>All students must be adults (18+), and are required to stay in the centre throughout the course duration. At the moment the centre can only accomodate 26 males and 26 females and hence only one course will run at a time at the centre.</p>
       <p>While the centre offers male and female courses together, complete gender segregation is maintained in lodging and meal times.</p>
       <p>You can view our Terms of Service <a href="/tos">here.</a></p>
     </div>
