@@ -364,15 +364,15 @@ class CoursesController extends AppController {
 
 		//ZT: retrieve the start date and relative course id for dates that match the '$current_date_plus_ten'
 		// Extraction: from COURSES table
-		$retrieveCourseIDs = $this->Enrolment->Course->find('all', array(
-		  'fields' => array('Course.id'),
-		      'conditions' => array(
-		        'Course.start_date == ' => $current_date,
-		      ))
-		  );
-		if (!$retrieveCourseIDs) {
-			echo "Nothing was found.";
-		}
+		// $retrieveCourseIDs = $this->Enrolment->Course->find('all', array(
+		//   'fields' => array('Course.id'),
+		//       'conditions' => array(
+		//         'Course.start_date == ' => $current_date,
+		//       ))
+		//   );
+		// if (!$retrieveCourseIDs) {
+		// 	echo "Nothing was found.";
+		// }
 
 
 		//ZT: find user ID's that have the same course Id as the one that relates to start date retrieved
