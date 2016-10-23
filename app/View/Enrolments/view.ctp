@@ -9,7 +9,7 @@
       <table class="table table-condensed">
         <thead>
             <tr>
-              <td><span class="label label-default">User</span></td>
+              <td><span class="label label-default">Course</span></td>
               <td><?php echo $this->Html->link($course['Course']['name'], array('controller' => 'courses', 'action' => 'view', $course['Course']['id'])); ?></td>
             </tr>
         </thead>
