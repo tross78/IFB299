@@ -157,7 +157,7 @@
 	<div>
 	<?php
 		if (AuthComponent::user('permission') == 'manager') {
-			echo $this->Html->link(__('Send out email'), array('action' => 'confirmationEmail'));
+			echo $this->Html->link(__('Send out email'), array('action' => 'confirmationEmail'), array('class' => 'btn btn-primary', 'escape' => false));
 		}
 	?>
 	</div>
