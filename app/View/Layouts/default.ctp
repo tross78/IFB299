@@ -697,12 +697,12 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			overflow: hidden;
 			-webkit-animation-name: carousel-anim; /* Safari 4.0 - 8.0 */
 			-webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
-			-webkit-animation-delay: 0.5s;
+			-webkit-animation-delay: 2s;
 			-webkit-animation-fill-mode: forwards;
 			animation-name: carousel-anim;
 			animation-duration: 2s;
 			animation-fill-mode: forwards;
-			animation-delay: 0.5s;
+			animation-delay: 2s;
 		}
 
 		.content {
