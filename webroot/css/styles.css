@@ -65,12 +65,12 @@ html,body{height:100%;}
 }
 
 .home-carousel-row {
-    height:0px;
+	height:0px;
     overflow: hidden;
     -webkit-animation-name: carousel-anim; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
-    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-delay: 0.5s;
     animation-name: carousel-anim;
-    animation-fill-mode: forwards;
     animation-duration: 2s;
+    animation-delay: 0.5s;
 }
