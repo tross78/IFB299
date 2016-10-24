@@ -678,9 +678,11 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 
 		.jumbotron .block-center {
 			margin: -120px 0 0 0;
-			 -webkit-animation-name: logo-anim; /* Safari 4.0 - 8.0 */
+			-webkit-animation-name: logo-anim; /* Safari 4.0 - 8.0 */
 			-webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+			-webkit-animation-fill-mode: forwards;
 			animation-name: logo-anim;
+			animation-fill-mode: forwards;
 			animation-duration: 2s;
 		}
 
@@ -696,8 +698,10 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			-webkit-animation-name: carousel-anim; /* Safari 4.0 - 8.0 */
 			-webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
 			-webkit-animation-delay: 0.5s;
+			-webkit-animation-fill-mode: forwards;
 			animation-name: carousel-anim;
 			animation-duration: 2s;
+			animation-fill-mode: forwards;
 			animation-delay: 0.5s;
 		}
 
