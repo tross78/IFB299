@@ -676,7 +676,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			to {margin: 0;}
 		}
 
-		.jumbotron .block-center {
+		.home .jumbotron .block-center {
 			margin: -120px 0 0 0;
 			-webkit-animation-name: logo-anim; /* Safari 4.0 - 8.0 */
 			-webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
@@ -692,7 +692,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			to {height:292px ;}
 		}
 
-		.home-carousel-row {
+		.home .home-carousel-row {
 			height:0px;
 			overflow: hidden;
 			-webkit-animation-name: carousel-anim; /* Safari 4.0 - 8.0 */
