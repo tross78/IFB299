@@ -94,10 +94,10 @@
 							$medicalField = $courseEnrolment['User']['medical_requirements'];
 							$hasDietary = isset($dietaryField) && $dietaryField != '' && $dietaryField != 'none' && $dietaryField != 'no';
 							$hasMedical = isset($medicalField) && $medicalField != '' && $medicalField != 'none' && $medicalField != 'no';
-							if ($hasDietary && $courseEnrolment['Enrolment']['role'] == 'kitchen-helper') {
+							if ($hasDietary && ($courseEnrolment['Enrolment']['role'] == 'kitchen-helper' || AuthComponent::user('permission') == 'manager')) {
 								echo '<i class="diet-med-alert glyphicon glyphicon-alert"></i><span> Dietary</span>';
 							}
-							if ($hasMedical && $courseEnrolment['Enrolment']['role'] == 'assistant-teacher') {
+							if ($hasMedical && ($courseEnrolment['Enrolment']['role'] == 'assistant-teacher' || AuthComponent::user('permission') == 'manager')) {
 								echo '<i class="diet-med-alert glyphicon glyphicon-alert"></i><span> Medical</span>';
 							}
 							echo '<br>';
