@@ -421,19 +421,16 @@ class EnrolmentsController extends AppController {
                         $longest = $inWaitlist['Enrolment']['user_id'];
 
                         //this is a mess
-                        $userIDS = $this->Enrolment->Course->find('all', array(
+                        $userIDS = $this->Enrolment->find('all', array(
                             'field' => array('Enrolment.user_id','User.email_address', 'User.first_name', 'Course.name'),
                             'contain' => array('User', 'Course'),
                             'conditions' => array(
                                 'course_id' => $deletedId,
                                 'user_id' => $longest
                             )));
-
-
                         $this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
                         if ($this->Enrolment->id) {
                             $this->Enrolment->saveField('waitlist', 'no');
-
                             foreach ($userIDS as $userID) {
                                 //send email
                                 $Email = new CakeEmail('gmail');
@@ -445,7 +442,6 @@ class EnrolmentsController extends AppController {
                                 $Email->send('Hello ' . $userID['User']['first_name'] . ',' . "\n\n" . 'you have been successfully enrolled into' . $userID['Course']['name'] . ' from the waitlist!.' . "\n\n" . 'Thank you and we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
                                 $this->Flash->success(__($userID['User']['email_address']));
                             }
-
                         }
                     }
                 }
