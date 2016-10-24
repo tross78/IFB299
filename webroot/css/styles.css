@@ -54,10 +54,10 @@ html,body{height:100%;}
         transition: opacity 1.5s;
     }
 
-#body.loaded .fadein {
+body.loaded .fadein {
     opacity: 1;
 }
 
-#body.loaded .jumbotron .block-center {
+body.loaded .jumbotron .block-center {
     margin:0;
 }
