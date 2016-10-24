@@ -425,10 +425,10 @@ class EnrolmentsController extends AppController {
                             $userIDs = $this->Enrolment->find('all', array(
                                 'contains' => array('Enrolment'),
                                 'conditions' => array(
-                                    'Enrolment.user_id' => $longest
+                                    'Enrolment.waitlist' => 'yes',
+                                    'Enrolment.course_id' => $deletedId
                                 )
                             ));
-
                             foreach ($userIDs as $userID) {
                                 //send email
                                 $Email = new CakeEmail('gmail');
