@@ -5,7 +5,16 @@
 	    height: 50px;
 	    width: auto\9;
       border-radius: 50%;
-}
+  }
+
+  .img2 {
+	    max-width: 100%;
+      width: 1200px;
+	    height: 300px;
+	    width: auto\9;
+      border-radius: 5px;
+  }
+
 </style>
 
 <div class="row top30">
@@ -22,5 +31,5 @@
   <img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 </div>
 <div>
-    
+    <img class = "img1" src="http://i.imgur.com/aM9I0ux.png" alt = ""/>
 </div>
