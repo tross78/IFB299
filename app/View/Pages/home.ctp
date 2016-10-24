@@ -41,7 +41,7 @@
     <p>If you’d like to be a part of our ever-growing community, book a course, or even just keep up to date on our available services, then don’t hesitate to sign up today! It’s absolutely free and with no strings attached.</p>
     <p>To find out more about us or the courses we have on offer, feel free to browse the relevant pages on the navigation bar located at the top of this page.</p>
     <p>Thank you for visiting our page. We hope to be seeing you soon!</p>
-    <p> - <i>Centre Managers.</i></p>
+    <p> - <i>The Hawke Centre Team</i></p>
     <?php if (!AuthComponent::user('id')): ?>
             <div class="text-center">
                 <a href="/users/add" class="text-center btn btn-lg btn-primary">Become a Member</a>
