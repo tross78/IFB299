@@ -664,7 +664,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 
 				
 		.jumbotron {
-			background-image: url("/img/wov.png");
+			background: url("/img/wov.png") repeat #91836b;
 			height:130px;
 			padding: 15px 0px 15px 0px;
 			margin-bottom: 0;
