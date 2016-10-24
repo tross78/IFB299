@@ -30,10 +30,10 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 	<?php
 		//echo $this->Html->meta('icon');
 		echo $this->Html->meta('favicon.ico','img/favicon.ico',array('type' => 'icon'));
-		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('styles');
-		echo $this->fetch('meta');
 		echo $this->fetch('css');
+		echo $this->Html->css('bootstrap.min');
+		echo $this->fetch('meta');
 		echo $this->fetch('script');
 	?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
