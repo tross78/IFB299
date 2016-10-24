@@ -369,7 +369,7 @@ class EnrolmentsController extends AppController {
 
 		$current_enrolled_course = $this->Enrolment->Course->find('list', array(
 					'fields' => array('Course.id', 'Course.name'),
-					'contain' => array('Enrolment'),
+					'contain' => array('Course', 'Enrolment'),
 					'conditions' => array(
 						"Course.id" => $this->params['named']['course_id']
 					)));
