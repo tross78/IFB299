@@ -62,14 +62,17 @@ body.loaded .jumbotron .block-center {
     margin:0;
 }
 
-.home-carousel-row * {
+.home-carousel-row {
     -moz-transition: height 1.5s;
     -webkit-transition: height 1.5s;
     -o-transition: height 1.5s;
     transition: height 1.5s;
     height:0px;
+    position:fixed;
 }
 
-body.loaded .home-carousel-row * {
+body.loaded .home-carousel-row {
     height:auto;
+    position:initial;
 }
+
