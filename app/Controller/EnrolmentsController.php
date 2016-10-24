@@ -430,9 +430,7 @@ class EnrolmentsController extends AppController {
                                 $Email->to($userID['User']['email_address']);
                                 $Email->subject('You have been auto enrolled from the waitlist!');
                                 $Email->send('Hello ' . $userID['User']['first_name'] . ',' . "\n\n" . 'you have been successfully enrolled into' . $userID['Course']['name'] . ' from the waitlist!.' . "\n\n" . 'Thank you and we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
-                                echo $userID['User']['email_address'];
-                                echo $userID['User']['first_name'];
-                                echo $userID['Course']['name'];
+                                $this->Flash->success(__($userID['User']['email_address']));
                             }
 
                         }
@@ -446,7 +444,7 @@ class EnrolmentsController extends AppController {
                     $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
                 }
 
-                $this->Flash->success(__('The enrolment has been deleted.'));
+               // $this->Flash->success(__('The enrolment has been deleted.'));
             } else {
                 $this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
             }
