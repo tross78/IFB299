@@ -21,13 +21,6 @@
   <div>
   <img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 </div>
-<div class="row top30">
-    <div class="col-xs-8 col-sm-6 well">
-      <h3>General Fund</h3>
-      <p>Donations made into the "General Fund" will help finance running of the courses themselves. This includes covering costs such as equipment, meals and the running of day-to-day course activities. Without the generous donations from the community, these courses would not have been possible to run.</p>
-    </div>
-    <div class="col-xs-4 col-sm-6 well">
-      <h3>Building Fund</h3>
-      <p>Donations made into the "Building Fund" go towards covering the costs of water/electrical bills, building maintenance, renovations, and even entirely new facilities for the centre. We have big plans for the improvement and expansion of our centre and we hope through its use, we can give back to the community.</p>
-    </div>
+<div>
+    
 </div>
