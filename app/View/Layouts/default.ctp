@@ -669,30 +669,36 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			padding: 15px 0px 15px 0px;
 			margin-bottom: 0;
 		}
+
+		/* The logo animation */
+		@keyframes logo-anim {
+			from {margin: -120px 0 0 0;}
+			to {margin: 0;}
+		}
+
 		.jumbotron .block-center {
 			margin: -120px 0 0 0;
-			-moz-transition: margin 0.5s;
-			-webkit-transition: margin 0.5s;
-			-o-transition: margin 0.5s;
-			transition: margin 0.5s;
+			 -webkit-animation-name: logo-anim; /* Safari 4.0 - 8.0 */
+			-webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+			animation-name: logo-anim;
+			animation-duration: 2s;
 		}
-		body.loaded .jumbotron .block-center {
-			margin:0;
+
+		/* The carosel animation */
+		@keyframes carousel-anim {
+			from {height: 0;}
+			to {height:292px ;}
 		}
 
 		.home-carousel-row {
-			-moz-transition: height 1.5s;
-			-webkit-transition: height 1.5s;
-			-o-transition: height 1.5s;
-			transition: height 1.5s;
 			height:0px;
 			overflow: hidden;
+			-webkit-animation-name: carousel-anim; /* Safari 4.0 - 8.0 */
+			-webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+			animation-name: carousel-anim;
+			animation-duration: 2s;
 		}
-
-		body.loaded .home-carousel-row {
-			height:292px;
-		}
-
+		
 		.content {
 			padding-bottom:80px;
 		}
