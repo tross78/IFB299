@@ -376,94 +376,85 @@ class EnrolmentsController extends AppController {
 	 * @param string $id
 	 * @return void
 	 */
-	//JM: added check to make sure you cannot withdraw from a courese
-	//once the start date has been reached, or passed.
-
 		public function delete($id = null) {
-			//$is_student = $this->request->data['Enrolment']['role'] == 'student';
+            $this->Enrolment->id = $id;
+            if (!$this->Enrolment->exists()) {
+                throw new NotFoundException(__('Invalid enrolment'));
+            }
 
-			//$this->set("is_student", $is_student);
-			$this->Enrolment->id = $id;
-			if (!$this->Enrolment->exists()) {
-				throw new NotFoundException(__('Invalid enrolment'));
-			}
 
-			$c_date = date('Y-m-d');
-	//commented cause it was giving me an error and idk why
-	/*		$commenced = $this->Enrolment->Course->find('all', array(
-				'fields' => array('Course.start_date', 'Course.id'),
-						'contain' => array('Course', 'Enrolment'),
-						'conditions' => array(
-							'DATE(Course.start_date) < ' => $c_date
-							//'Course.id' => $this->params['named']['course_id']
-						))
-				);
-	*/
-			$this->request->allowMethod('post', 'delete');
-			$user_gender = AuthComponent::user('gender');
-	//		if (!$commenced){
+            $this->request->allowMethod('post', 'delete');
+            $user_gender = AuthComponent::user('gender');
 
-	//HG find the courseID that we are deleting the user from
-	$courseId = $this->Enrolment->find('first', array(
-			'field' => array('Enrolment.course_id'),
-					'conditions' => array(
-							'Enrolment.id' => $id
-					)
-			));
-			$deletedId = $courseId['Enrolment']['course_id'];
+            //HG find the courseID that we are deleting the user from
+            $courseId = $this->Enrolment->find('first', array(
+                'field' => array('Enrolment.course_id'),
+                'conditions' => array(
+                    'Enrolment.id' => $id
+                )
+            ));
+            $deletedId = $courseId['Enrolment']['course_id'];
 //HG student cap
-			$capStudent = $this->Enrolment->Course->find('first', array(
-					'field' => array('Course.capacity'),
-					'contain' => array('Enrolment'),
-							'conditions' => array(
-									'Course.id' => $deletedId
-							)
-					));
-					$studentCap = $capStudent['Course']['capacity'];
+            $capStudent = $this->Enrolment->Course->find('first', array(
+                'field' => array('Course.capacity'),
+                'contain' => array('Enrolment'),
+                'conditions' => array(
+                    'Course.id' => $deletedId
+                )
+            ));
+            $studentCap = $capStudent['Course']['capacity'];
 
-					//AG: to check if the number of students on the waitlist for this course has reached the waitlist capacity.
-					$wait_full = $this->Enrolment->find('count', array(
-								'fields' => array('Course.id'),
-								'contain' => array('Course'),
-								'conditions' => array(
-									'Enrolment.waitlist' => 'yes',
-									'Course.id' => $deletedId
-								))
-						) >= 1;
+            //AG: to check if the number of students on the waitlist for this course has reached the waitlist capacity.
+            $wait_full = $this->Enrolment->find('count', array(
+                        'fields' => array('Course.id'),
+                        'contain' => array('Course'),
+                        'conditions' => array(
+                            'Enrolment.waitlist' => 'yes',
+                            'Course.id' => $deletedId
+                        ))
+                ) >= 1;
 
 
-				if ($this->Enrolment->delete()) {
-					if($wait_full) {
-						$inWaitlist = $this->Enrolment->find('first', array(
-							'contains' => array('Enrolment'),
-		            'conditions' => array(
-		                'Enrolment.waitlist' => 'yes'
-		            )
-		        ));
-						if($inWaitlist) {
-							$longest = $inWaitlist['Enrolment']['user_id'];
-							$this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
-							if ($this->Enrolment->id) {
-								$this->Enrolment->saveField('waitlist', 'no');
-							}
-						}
-					}
-						if ($user_gender == 'male'/* && $is_student*/) {
-							$this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
-							$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
-						} elseif ('female' /*&& $is_student*/) {
-							$this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $deletedId));
-							$this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
-						}
+            if ($this->Enrolment->delete()) {
+                if ($wait_full) {
+                    $inWaitlist = $this->Enrolment->find('first', array(
+                        'contains' => array('Enrolment'),
+                        'conditions' => array(
+                            'Enrolment.waitlist' => 'yes'
+                        )
+                    ));
+                    if ($inWaitlist) {
+                        $longest = $inWaitlist['Enrolment']['user_id'];
+                        $this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
+                        if ($this->Enrolment->id) {
+                            $this->Enrolment->saveField('waitlist', 'no');
 
-					$this->Flash->success(__('The enrolment has been deleted.'));
-				} else {
-					$this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
-				}
-	//		} else {
-	//			$this->Flash->error(_('You cannot withdraw from a course after it has commenced.'));
-	//		}
-			return $this->redirect(array('action' => 'index'));
+                            //send email
+                            $Email = new CakeEmail('gmail');
+                            $Email->returnPath('teamhawkemeditation@gmail.com');
+                            $Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
+                            $Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
+                            $Email->to($longest['User']['email_address']);
+                            $Email->subject('You have been auto enrolled from the waitlist!');
+                            $Email->send('Hello ' . $longest['User']['first_name'] . ',' . "\n\n" . 'you have been successfully enrolled into' . $longest['Course']['name'] . ' from the waitlist!.' . "\n\n" .'Thank you and we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
+
+
+                        }
+                    }
+                }
+                if ($user_gender == 'male'/* && $is_student*/) {
+                    $this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
+                    $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
+                } elseif ('female' /*&& $is_student*/) {
+                    $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $deletedId));
+                    $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
+                }
+
+                $this->Flash->success(__('The enrolment has been deleted.'));
+            } else {
+                $this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
+            }
+            return $this->redirect(array('action' => 'index'));
 		}
 
 }
