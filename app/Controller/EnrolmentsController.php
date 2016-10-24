@@ -418,16 +418,17 @@ class EnrolmentsController extends AppController {
 
                     if ($inWaitlist) {
                         $longest = $inWaitlist['Enrolment']['user_id'];
+                        $userIDs = $this->Enrolment->find('all', array(
+                            'contains' => array('Enrolment'),
+                            'conditions' => array(
+                                'Enrolment.waitlist' => 'yes'
+                            )
+                        ));
                         $this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
                         if ($this->Enrolment->id) {
                             $this->Enrolment->saveField('waitlist', 'no');
 
-                            $userIDs = $this->Enrolment->find('all', array(
-                                'contains' => array('Enrolment'),
-                                'conditions' => array(
-                                    'Enrolment.waitlist' => 'yes'
-                                )
-                            ));
+
                             foreach ($userIDs as $userID) {
                                 //send email
                                 $Email = new CakeEmail('gmail');
