@@ -719,7 +719,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 		</footer>
     </div>
 		<?php 
-		echo $this->Html->script("bundle") 
+		echo $this->Html->script("bundle");
 		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('styles');
 		?>
