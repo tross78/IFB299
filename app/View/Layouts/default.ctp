@@ -692,7 +692,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 		body.loaded .home-carousel-row {
 			height:292px;
 		}
-		
+
 		.content {
 			padding-bottom:80px;
 		}
@@ -762,10 +762,10 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			</div>
 		</footer>
     </div>
+		<script type="text/javascript" async src="/js/bundle.js"></script>
 		<?php 
-		echo $this->Html->script("bundle");
-		echo $this->Html->css('bootstrap.min');
-		echo $this->Html->css('styles');
+			echo $this->Html->css('bootstrap.min');
+			echo $this->Html->css('styles');
 		?>
 </body>
 </html>
