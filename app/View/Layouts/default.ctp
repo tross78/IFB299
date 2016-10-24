@@ -698,7 +698,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			animation-name: carousel-anim;
 			animation-duration: 2s;
 		}
-		
+
 		.content {
 			padding-bottom:80px;
 		}
@@ -716,7 +716,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 </head>
 <body onload="document.body.setAttribute('class','loaded')">
 	<div class="page-container bg-warning">
-	<div class="jumbotron"><div class="block-center text-center"><img src="http://i.imgur.com/AC7FygY.png" class="" style="
+	<div class="jumbotron"><div class="block-center text-center"><img src="/img/logo.png" class="" style="
     max-height: 100px;
 "></div></div>
 			<div class="navbar navbar-inverse">
