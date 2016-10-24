@@ -421,7 +421,7 @@ class EnrolmentsController extends AppController {
                         $longest = $inWaitlist['Enrolment']['user_id'];
 
                         //this is a mess
-                        $userIDS = $this->Enrolment->find('all', array(
+                        $userIDS = $this->Enrolment->Course->find('all', array(
                             'field' => array('Enrolment.user_id','User.email_address', 'User.first_name', 'Course.name'),
                             'contain' => array('User', 'Course'),
                             'conditions' => array(
