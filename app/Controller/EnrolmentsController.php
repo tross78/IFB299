@@ -368,7 +368,7 @@ class EnrolmentsController extends AppController {
 		//TR: Added var for fixed course on edit view
 
 		$current_enrolled_course = $this->Enrolment->Course->find('list', array(
-					'fields' => array('Enrolment.course_id', 'Course.id', 'Course.name'),
+					'fields' => array('Course.id', 'Course.name'),
 					'contain' => array('Enrolment'),
 					'conditions' => array(
 						"Course.id" => $this->params['named']['course_id']
