@@ -394,15 +394,6 @@ class EnrolmentsController extends AppController {
                 )
             ));
             $deletedId = $courseId['Enrolment']['course_id'];
-//HG student cap
-            $capStudent = $this->Enrolment->Course->find('first', array(
-                'field' => array('Course.capacity'),
-                'contain' => array('Enrolment'),
-                'conditions' => array(
-                    'Course.id' => $deletedId
-                )
-            ));
-            $studentCap = $capStudent['Course']['capacity'];
 
             //AG: to check if the number of students on the waitlist for this course has reached the waitlist capacity.
             $wait_full = $this->Enrolment->find('count', array(
