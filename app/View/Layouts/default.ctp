@@ -40,10 +40,24 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 	<!-- Critical CSS -->
 	<style>
 
-		@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
-
 		body {
-		margin: 0;
+			margin: 0;
+		}
+
+		.jumbotron,.jumbotron .h1,.jumbotron h1{color:inherit}
+		.list-group-item>.badge{float:right}
+		.list-group-item>.badge+.badge{margin-right:5px}
+		.nav-pills>li>a>.badge{margin-left:3px}
+		.jumbotron{padding-top:30px;padding-bottom:30px;margin-bottom:30px;background-color:#eee}
+		.jumbotron p{margin-bottom:15px;font-size:21px;font-weight:200}
+		.alert .alert-link,.close{font-weight:700}
+		.alert,.thumbnail{margin-bottom:20px}
+		.jumbotron>hr{border-top-color:#d5d5d5}
+		.container .jumbotron,.container-fluid .jumbotron{border-radius:6px;padding-left:15px;padding-right:15px}
+		.jumbotron .container{max-width:100%}
+		@media screen and (min-width:768px){.jumbotron{padding-top:48px;padding-bottom:48px}
+		.container .jumbotron,.container-fluid .jumbotron{padding-left:60px;padding-right:60px}
+		.jumbotron .h1,.jumbotron h1{font-size:63px}
 		}
 
 		.jumbotron {
@@ -682,7 +696,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 		}
 
 		@-ms-viewport {
-		width: device-width;
+			width: device-width;
 		}
 </style>
     <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
