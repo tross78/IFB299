@@ -422,25 +422,23 @@ class EnrolmentsController extends AppController {
                         if ($this->Enrolment->id) {
                             $this->Enrolment->saveField('waitlist', 'no');
 
-                            /*$userIDs = $this->Enrolment->find('all', array(
+                            $userIDs = $this->Enrolment->find('all', array(
                                 'contains' => array('Enrolment'),
                                 'conditions' => array(
-                                    'Enrolment.waitlist' => 'yes',
-                                    'Enrolment.course_id' => $deletedId
+                                    'Enrolment.waitlist' => 'yes'
                                 )
                             ));
                             foreach ($userIDs as $userID) {
-                            */
                                 //send email
                                 $Email = new CakeEmail('gmail');
                                 $Email->returnPath('teamhawkemeditation@gmail.com');
                                 $Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
                                 $Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
-                                $Email->to($inWaitlist['User']['email_address']);
+                                $Email->to($userID['User']['email_address']);
                                 $Email->subject('You have been auto enrolled from the waitlist!');
-                                $Email->send('Hello ' . $inWaitlist['User']['first_name'] . ',' . "\n\n" . 'you have been successfully enrolled into' . $inWaitlist['Course']['name'] . ' from the waitlist!.' . "\n\n" . 'Thank you and we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
-                                $this->Flash->success(__($inWaitlist['User']['email_address']));
-                           // }
+                                $Email->send('Hello ' . $userID['User']['first_name'] . ',' . "\n\n" . 'you have been successfully enrolled into' . $userID['Course']['name'] . ' from the waitlist!.' . "\n\n" . 'Thank you and we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
+                                $this->Flash->success(__($userID['User']['email_address']));
+                            }
 
                         }
                     }
