@@ -596,31 +596,31 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 		}
 
 		@media screen and (min-width:768px) {
-		.carousel-control .glyphicon-chevron-left,
-		.carousel-control .glyphicon-chevron-right {
-			width: 30px;
-			height: 30px;
-			margin-top: -10px;
-			font-size: 30px;
-		}
+			.carousel-control .glyphicon-chevron-left,
+			.carousel-control .glyphicon-chevron-right {
+				width: 30px;
+				height: 30px;
+				margin-top: -10px;
+				font-size: 30px;
+			}
 
-		.carousel-control .glyphicon-chevron-left {
-			margin-left: -10px;
-		}
+			.carousel-control .glyphicon-chevron-left {
+				margin-left: -10px;
+			}
 
-		.carousel-control .glyphicon-chevron-right {
-			margin-right: -10px;
-		}
+			.carousel-control .glyphicon-chevron-right {
+				margin-right: -10px;
+			}
 
-		.carousel-caption {
-			left: 20%;
-			right: 20%;
-			padding-bottom: 30px;
-		}
+			.carousel-caption {
+				left: 20%;
+				right: 20%;
+				padding-bottom: 30px;
+			}
 
-		.carousel-indicators {
-			bottom: 20px;
-		}
+			.carousel-indicators {
+				bottom: 20px;
+			}
 		}
 
 		.container-fluid:after,
@@ -665,7 +665,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 				
 		.jumbotron {
 			background: url("/img/wov.png") repeat #91836b;
-			height:130px;
+			height:80px;
 			padding: 15px 0px 15px 0px;
 			margin-bottom: 0;
 		}
@@ -677,7 +677,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 		}
 
 		.home .jumbotron .block-center {
-			margin: -120px 0 0 0;
+			margin: -100px 0 0 0;
 			-webkit-animation-name: logo-anim; /* Safari 4.0 - 8.0 */
 			-webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
 			-webkit-animation-fill-mode: forwards;
@@ -723,7 +723,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 <body>
 	<div class="page-container bg-warning">
 	<div class="jumbotron"><div class="block-center text-center"><img src="/img/logo.png" class="" style="
-    max-height: 100px;
+    max-height: 50px;
 "></div></div>
 			<div class="navbar navbar-inverse">
 				<div class="container-fluid">

@@ -2,7 +2,7 @@ html,body{height:100%;}
 
 .jumbotron {
     background: url("/img/wov.png") repeat #91836b;
-    height:130px;
+    height:80px;
     padding: 15px 0px 15px 0px;
     margin-bottom: 0;
 }
