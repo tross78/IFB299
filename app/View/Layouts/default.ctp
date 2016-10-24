@@ -672,7 +672,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 
 		/* The logo animation */
 		@keyframes logo-anim {
-			from {margin: -120px 0 0 0;}
+			from {margin: -100px 0 0 0;}
 			to {margin: 0;}
 		}
 
