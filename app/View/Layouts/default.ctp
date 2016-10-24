@@ -46,6 +46,37 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 		margin: 0;
 		}
 
+		.jumbotron {
+			background-image: url("/img/wov.png");
+			height:130px;
+			padding: 15px 0px 15px 0px;
+			margin-bottom: 0;
+		}
+		.jumbotron .block-center {
+			margin: -120px 0 0 0;
+			-moz-transition: margin 0.5s;
+			-webkit-transition: margin 0.5s;
+			-o-transition: margin 0.5s;
+			transition: margin 0.5s;
+		}
+		body.loaded .jumbotron .block-center {
+			margin:0;
+		}
+
+		.home-carousel-row {
+			-moz-transition: height 1.5s;
+			-webkit-transition: height 1.5s;
+			-o-transition: height 1.5s;
+			transition: height 1.5s;
+			height:0px;
+			overflow: hidden;
+		}
+
+		body.loaded .home-carousel-row {
+			height:292px;
+		}
+
+
 		html {
 		font-family: sans-serif;
 		-ms-text-size-adjust: 100%;
