@@ -50,7 +50,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
     <?php echo $this->Html->script("html5shiv"); ?>
     <![endif]-->
 </head>
-<body>
+<body onload="document.body.setAttribute('class','loaded')">
 	<div class="page-container bg-warning">
 	<div class="jumbotron"><div class="block-center text-center"><img src="http://i.imgur.com/AC7FygY.png" class="" style="
     max-height: 100px;
