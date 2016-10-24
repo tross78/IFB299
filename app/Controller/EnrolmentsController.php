@@ -409,6 +409,7 @@ class EnrolmentsController extends AppController {
 
             if ($this->Enrolment->delete()) {
                 if ($wait_full) {
+
                     $inWaitlist = $this->Enrolment->find('first', array(
                         'contains' => array('Enrolment'),
                         'conditions' => array(
@@ -418,18 +419,22 @@ class EnrolmentsController extends AppController {
 
                     if ($inWaitlist) {
                         $longest = $inWaitlist['Enrolment']['user_id'];
-                        $userIDs = $this->Enrolment->find('all', array(
-                            'contains' => array('Enrolment'),
+
+                        //this is a mess
+                        $userIDS = $this->Enrolment->find('all', array(
+                            'field' => array('Enrolment.user_id','User.email_address', 'User.first_name'),
+                            'contain' => array('User'),
                             'conditions' => array(
-                                'Enrolment.waitlist' => 'yes'
-                            )
-                        ));
+                                'course_id' => $deletedId,
+                                'user_id' => $longest
+                            )));
+
+
                         $this->Enrolment->id = $this->Enrolment->field('id', array('course_id' => $deletedId, 'user_id' => $longest));
                         if ($this->Enrolment->id) {
                             $this->Enrolment->saveField('waitlist', 'no');
 
-
-                            foreach ($userIDs as $userID) {
+                            foreach ($userIDS as $userID) {
                                 //send email
                                 $Email = new CakeEmail('gmail');
                                 $Email->returnPath('teamhawkemeditation@gmail.com');
