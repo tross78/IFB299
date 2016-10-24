@@ -1,4 +1,12 @@
-
+<style>
+  .img1 {
+	    max-width: 100%;
+      width: 1200px;
+	    height: 50px;
+	    width: auto\9;
+      border-radius: 50%;
+  }
+</style>
 <div class="row top30">
 <div class="col-sm-12 well">
 <h2>Contact Us</h2>
@@ -15,4 +23,7 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+</div>
+<div>
+<img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 </div>
