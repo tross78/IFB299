@@ -44,53 +44,6 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			margin: 0;
 		}
 
-		.jumbotron,.jumbotron .h1,.jumbotron h1{color:inherit}
-		.list-group-item>.badge{float:right}
-		.list-group-item>.badge+.badge{margin-right:5px}
-		.nav-pills>li>a>.badge{margin-left:3px}
-		.jumbotron{padding-top:30px;padding-bottom:30px;margin-bottom:30px;background-color:#eee}
-		.jumbotron p{margin-bottom:15px;font-size:21px;font-weight:200}
-		.alert .alert-link,.close{font-weight:700}
-		.alert,.thumbnail{margin-bottom:20px}
-		.jumbotron>hr{border-top-color:#d5d5d5}
-		.container .jumbotron,.container-fluid .jumbotron{border-radius:6px;padding-left:15px;padding-right:15px}
-		.jumbotron .container{max-width:100%}
-		@media screen and (min-width:768px){.jumbotron{padding-top:48px;padding-bottom:48px}
-		.container .jumbotron,.container-fluid .jumbotron{padding-left:60px;padding-right:60px}
-		.jumbotron .h1,.jumbotron h1{font-size:63px}
-		}
-
-		.jumbotron {
-			background-image: url("/img/wov.png");
-			height:130px;
-			padding: 15px 0px 15px 0px;
-			margin-bottom: 0;
-		}
-		.jumbotron .block-center {
-			margin: -120px 0 0 0;
-			-moz-transition: margin 0.5s;
-			-webkit-transition: margin 0.5s;
-			-o-transition: margin 0.5s;
-			transition: margin 0.5s;
-		}
-		body.loaded .jumbotron .block-center {
-			margin:0;
-		}
-
-		.home-carousel-row {
-			-moz-transition: height 1.5s;
-			-webkit-transition: height 1.5s;
-			-o-transition: height 1.5s;
-			transition: height 1.5s;
-			height:0px;
-			overflow: hidden;
-		}
-
-		body.loaded .home-carousel-row {
-			height:292px;
-		}
-
-
 		html {
 		font-family: sans-serif;
 		-ms-text-size-adjust: 100%;
@@ -698,6 +651,52 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 		@-ms-viewport {
 			width: device-width;
 		}
+
+		.navbar-brand {
+			min-width: 220px;
+			margin-left: 20px !important;
+		}
+
+		.page-container {
+			background: url(/img/bg-pattern.png) repeat #fcf8e3;
+			min-height:100%;
+		}
+
+				
+		.jumbotron {
+			background-image: url("/img/wov.png");
+			height:130px;
+			padding: 15px 0px 15px 0px;
+			margin-bottom: 0;
+		}
+		.jumbotron .block-center {
+			margin: -120px 0 0 0;
+			-moz-transition: margin 0.5s;
+			-webkit-transition: margin 0.5s;
+			-o-transition: margin 0.5s;
+			transition: margin 0.5s;
+		}
+		body.loaded .jumbotron .block-center {
+			margin:0;
+		}
+
+		.home-carousel-row {
+			-moz-transition: height 1.5s;
+			-webkit-transition: height 1.5s;
+			-o-transition: height 1.5s;
+			transition: height 1.5s;
+			height:0px;
+			overflow: hidden;
+		}
+
+		body.loaded .home-carousel-row {
+			height:292px;
+		}
+		
+		.content {
+			padding-bottom:80px;
+		}
+
 </style>
     <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
     <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
