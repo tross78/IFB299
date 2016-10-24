@@ -68,11 +68,10 @@ body.loaded .jumbotron .block-center {
     -o-transition: height 1.5s;
     transition: height 1.5s;
     height:0px;
-    position:fixed;
+    overflow: hidden;
 }
 
 body.loaded .home-carousel-row {
     height:auto;
-    position:initial;
 }
 
