@@ -17,12 +17,6 @@
 
 <p><b><strong>Email:</strong></b> <a href="mailto:teamhawkemeditation@gmail.com">teamhawkemeditation@gmail.com </a> </p>
 </div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 </div>
 <br>
 <div>
