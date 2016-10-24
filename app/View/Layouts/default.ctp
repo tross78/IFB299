@@ -32,8 +32,8 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 		echo $this->Html->meta('favicon.ico','img/favicon.ico',array('type' => 'icon'));
 		echo $this->fetch('css');
 	?>
-	<link rel="stylesheet/css" href="/css/bootstrap.min.css" type="text/css" media="none" onload="if(media!='all')media='all'">
-	<link rel="stylesheet/css" href="/css/styles.css" type="text/css"  media="none" onload="if(media!='all')media='all'">
+	<link rel="stylesheet/css" href="/css/bootstrap.min.css" media="none" onload="if(media!='all')media='all'">
+	<link rel="stylesheet/css" href="/css/styles.css" media="none" onload="if(media!='all')media='all'">
 	<?php
 		echo $this->fetch('meta');
 		echo $this->fetch('script');
