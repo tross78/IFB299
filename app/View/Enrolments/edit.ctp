@@ -8,7 +8,7 @@
 	?>
 	<label>Course</label>
 	<div class="form-group">
-		<p class="form-group"><?php echo $current_course["name"] ?></p>
+		<p class="form-group"><?php echo $current_course["Course"]["name"] ?></p>
 	<?php
 		echo $this->Form->hidden('course_id');
 		echo $this->Form->hidden('enrolment_date', array(
