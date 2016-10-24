@@ -665,19 +665,19 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 				
 		.jumbotron {
 			background: url("/img/wov.png") repeat #91836b;
-			height:130px;
+			height:80px;
 			padding: 15px 0px 15px 0px;
 			margin-bottom: 0;
 		}
 
 		/* The logo animation */
 		@keyframes logo-anim {
-			from {margin: -120px 0 0 0;}
+			from {margin: -100px 0 0 0;}
 			to {margin: 0;}
 		}
 
 		.jumbotron .block-center {
-			margin: -120px 0 0 0;
+			margin: -100px 0 0 0;
 			-webkit-animation-name: logo-anim; /* Safari 4.0 - 8.0 */
 			-webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
 			-webkit-animation-fill-mode: forwards;
@@ -723,7 +723,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 <body class="home">
 	<div class="page-container bg-warning">
 	<div class="jumbotron"><div class="block-center text-center"><img src="/img/logo.png" class="" style="
-    max-height: 100px;
+    max-height: 50px;
 "></div></div>
 			<div class="navbar navbar-inverse">
 				<div class="container-fluid">
