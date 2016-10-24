@@ -19,8 +19,8 @@
 
 ?>
 
-<div class="row">
-    <div data-component="HomeCarousel" class="homecarousel">    <div data-reactroot="" class="carousel slide">
+<div class="row home-carousel-row">
+    <div data-component="HomeCarousel">    <div data-reactroot="" class="carousel slide">
     <ol class="carousel-indicators"><li class="active"></li><!-- react-text: 4 --> <!-- /react-text --><li></li><!-- react-text: 6 --> <!-- /react-text --><li></li><!-- react-text: 8 --> <!-- /react-text --><li></li><!-- react-text: 10 --> <!-- /react-text --><li></li><!-- react-text: 12 --> <!-- /react-text --></ol><div class="carousel-inner"><div class="item active"><img width="1200" height="300" alt=" " src="http://i.imgur.com/NQpW6hm.jpg"><div class="carousel-caption"></div></div><div class="item"><img width="1200" height="300" alt=" " src="http://i.imgur.com/eV91kxn.jpg"><div class="carousel-caption"></div></div><div class="item"><img width="1200" height="300" alt=" " src="http://i.imgur.com/biVYjls.jpg"><div class="carousel-caption"></div></div><div class="item"><img width="1200" height="300" alt=" " src="http://i.imgur.com/sZRaO9v.jpg"><div class="carousel-caption"></div></div><div class="item"><img width="1200" height="300" alt=" " src="http://i.imgur.com/zQr7xWv.jpg"><div class="carousel-caption"></div></div></div><a class="carousel-control left" role="button" href=""><span class="glyphicon glyphicon-chevron-left"></span></a><a class="carousel-control right" role="button" href=""><span class="glyphicon glyphicon-chevron-right"></span></a></div></div>
 </div>
 
