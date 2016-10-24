@@ -42,12 +42,12 @@ html,body{height:100%;}
 
 /* The logo animation */
 @keyframes logo-anim {
-    from {margin: -120px 0 0 0;}
+    from {margin: -100px 0 0 0;}
     to {margin: 0;}
 }
 
 .home .jumbotron .block-center {
-    margin: -120px 0 0 0;
+    margin: -100px 0 0 0;
     -webkit-animation-name: logo-anim; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
     -webkit-animation-fill-mode: forwards;
