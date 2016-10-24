@@ -86,7 +86,7 @@
 				$courseEnrolments = $this->CourseEnrolment->getEnrolments((int)$course['Course']['id']);
 					foreach($courseEnrolments as $courseEnrolment) {
 						//JM: Check shows managers all enrolled student info, and kitchen help can see med/diet req's of students in their course. 
-						if (AuthComponent::user('permission') == 'manager' || (AuthComponent::user('id') == $courseEnrolment['Enrolment']['user_id'] && $courseEnrolment['Enrolment']['role'] == 'kitchen-helper')) {
+						/*if (AuthComponent::user('permission') == 'manager' || (AuthComponent::user('id') == $courseEnrolment['Enrolment']['user_id'] && $courseEnrolment['Enrolment']['role'] == 'kitchen-helper')) {*/
 							$userFullName = $courseEnrolment['User']['first_name'] . ' ' . $courseEnrolment['User']['last_name'];
 							echo $this->Html->link(__($userFullName), array('controller' => 'users', 'action' => 'view',  $courseEnrolment['Enrolment']['user_id']));
 							// check vars if not empty and not null. Unusual method but accounts for '0' = empty PHP bug.
@@ -94,14 +94,14 @@
 							$medicalField = $courseEnrolment['User']['medical_requirements'];
 							$hasDietary = isset($dietaryField) && $dietaryField != '' && $dietaryField != 'none' && $dietaryField != 'no';
 							$hasMedical = isset($medicalField) && $medicalField != '' && $medicalField != 'none' && $medicalField != 'no';
-							if ($hasDietary) {
+							if ($hasDietary && $courseEnrolment['Enrolment']['role'] == 'kitchen-helper') {
 								echo '<i class="diet-med-alert glyphicon glyphicon-alert"></i><span> Dietary</span>';
 							}
-							if ($hasMedical) {
+							if ($hasMedical && $courseEnrolment['Enrolment']['role'] == 'assistant-teacher') {
 								echo '<i class="diet-med-alert glyphicon glyphicon-alert"></i><span> Medical</span>';
 							}
 							echo '<br>';
-						}
+						/*}*/
 					}
 				}
 				?>
