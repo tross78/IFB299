@@ -57,10 +57,10 @@ $this->layout = 'home';
   </div>
 </div>
 
-<div class="row top30">
+<div id="course-thumbs" class="row top30">
 
     <div class="col-sm-4">
-        <div class="col-sm-12 thumbnail text-center">
+        <div class="col-sm-12 thumbnail text-center home-coursethumb-left">
             <a href = "https://teamhawk-meditation-centre.herokuapp.com/courses/"> <img alt="" class="img-responsive" src="http://3.thailandcamp.com/wp-content/uploads/2012/06/yogapose.jpg"></a>
             <div class="caption">
                 <h4><a href = "https://teamhawk-meditation-centre.herokuapp.com/courses/">Introductory (10 day)</a></h4>
@@ -68,7 +68,7 @@ $this->layout = 'home';
         </div>
     </div>
     <div class="col-sm-4">
-        <div class="col-sm-12 thumbnail text-center">
+        <div class="col-sm-12 thumbnail text-center home-coursethumb-center">
             <a href = "https://teamhawk-meditation-centre.herokuapp.com/courses/"> <img alt="" class="img-responsive" src="http://blog.posturepodiatry.com/wp-content/uploads/2014/11/Yoga-1-300x300.jpg"></a>
             <div class="caption">
                 <h4><a href = "https://teamhawk-meditation-centre.herokuapp.com/courses/">Express (3 day)</a></h4>
@@ -76,7 +76,7 @@ $this->layout = 'home';
         </div>
     </div>
         <div class="col-sm-4">
-        <div class="col-sm-12 thumbnail text-center">
+        <div class="col-sm-12 thumbnail text-center home-coursethumb-right">
         <a href = "https://teamhawk-meditation-centre.herokuapp.com/courses/"> <img alt="" class="img-responsive" src="https://image.spreadshirtmedia.net/image-server/v1/compositions/119596348/views/1,width=300,height=300,appearanceId=29,version=1469440032/buddha-statue-meditation-buddhism-t-shirts-womens-premium-t-shirt.jpg"></a>
             <div class="caption">
                 <h4><a href = "https://teamhawk-meditation-centre.herokuapp.com/courses/">Buddhist (30 day)</a></h4>

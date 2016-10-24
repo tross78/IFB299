@@ -774,6 +774,17 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			</div>
 		</footer>
     </div>
+		<script type="text/javascript">
+			window.onscroll = function() {
+			var scrolltop = (document.documentElement ||
+							document.body.parentNode ||
+							document.body).scrollTop;
+
+			if (scrolltop > 477) {
+				document.getElementById("course-thumbs").classList.add("scrolled");
+			}        
+		};
+		</script>
 		<script type="text/javascript" async src="/js/bundle.js"></script>
 		<?php 
 			echo $this->Html->css('bootstrap.min');
