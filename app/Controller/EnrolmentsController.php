@@ -425,9 +425,9 @@ class EnrolmentsController extends AppController {
                             $Email->returnPath('teamhawkemeditation@gmail.com');
                             $Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
                             $Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
-                            $Email->to($longest['User']['email_address']);
+                            $Email->to($this->Enrolment->id['User']['email_address']);
                             $Email->subject('You have been auto enrolled from the waitlist!');
-                            $Email->send('Hello ' . $longest['User']['first_name'] . ',' . "\n\n" . 'you have been successfully enrolled into' . $longest['Course']['name'] . ' from the waitlist!.' . "\n\n" .'Thank you and we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
+                            $Email->send('Hello ' . $this->Enrolment->id['User']['first_name'] . ',' . "\n\n" . 'you have been successfully enrolled into' . $deletedId['Course']['name'] . ' from the waitlist!.' . "\n\n" .'Thank you and we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
 
 
                         }
