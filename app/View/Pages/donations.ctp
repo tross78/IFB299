@@ -30,6 +30,7 @@
   <div>
   <img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 </div>
+<br>
 <div>
-    <img class = "img1" src="http://i.imgur.com/aM9I0ux.png" alt = ""/>
+    <img class = "img2" src="http://i.imgur.com/aM9I0ux.png" alt = ""/>
 </div>
