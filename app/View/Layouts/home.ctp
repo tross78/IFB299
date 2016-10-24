@@ -720,7 +720,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
     <?php echo $this->Html->script("html5shiv"); ?>
     <![endif]-->
 </head>
-<body>
+<body class="home">
 	<div class="page-container bg-warning">
 	<div class="jumbotron"><div class="block-center text-center"><img src="/img/logo.png" class="" style="
     max-height: 100px;
