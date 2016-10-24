@@ -24,6 +24,7 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 </div>
+<br>
 <div>
 <img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 </div>
