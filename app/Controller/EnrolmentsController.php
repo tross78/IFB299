@@ -406,6 +406,7 @@ class EnrolmentsController extends AppController {
                 ) >= 1;
 
 
+
             if ($this->Enrolment->delete()) {
                 if ($wait_full) {
                     $inWaitlist = $this->Enrolment->find('first', array(
@@ -420,14 +421,24 @@ class EnrolmentsController extends AppController {
                         if ($this->Enrolment->id) {
                             $this->Enrolment->saveField('waitlist', 'no');
 
+
+                            //HG get the user id of the dude being added from waitlist
+                            $userID = $this->Enrolment->find('first', array(
+                                'fields' => array('User.id'),
+                                'contain' => array('User'),
+                                'conditions' => array(
+                                    'User.id' => $longest
+                                )
+                            ));
+                            $idd = $userID['User']['id'];
                             //send email
                             $Email = new CakeEmail('gmail');
                             $Email->returnPath('teamhawkemeditation@gmail.com');
                             $Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
                             $Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
-                            $Email->to($this->Enrolment->id['User']['email_address']);
+                            $Email->to($idd['User']['email_address']);
                             $Email->subject('You have been auto enrolled from the waitlist!');
-                            $Email->send('Hello ' . $this->Enrolment->id['User']['first_name'] . ',' . "\n\n" . 'you have been successfully enrolled into' . $deletedId['Course']['name'] . ' from the waitlist!.' . "\n\n" .'Thank you and we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
+                            $Email->send('Hello ' . $idd['User']['first_name'] . ',' . "\n\n" . 'you have been successfully enrolled into' . $deletedId['Course']['name'] . ' from the waitlist!.' . "\n\n" .'Thank you and we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
 
 
                         }
