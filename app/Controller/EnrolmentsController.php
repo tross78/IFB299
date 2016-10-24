@@ -371,7 +371,7 @@ class EnrolmentsController extends AppController {
 					'fields' => array('Course.id', 'Course.name'),
 					'contain' => array('Enrolment'),
 					'conditions' => array(
-						"Course.id" => $this->params['named']['course_id']
+						"Course.id" =>  $this->request->data['Enrolment']['course_id']
 					)));
 		$this->set(compact('users', 'courses', 'current_enrolled_course'));
 	}
