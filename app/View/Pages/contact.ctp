@@ -17,8 +17,13 @@
 
 <p><b><strong>Email:</strong></b> <a href="mailto:teamhawkemeditation@gmail.com">teamhawkemeditation@gmail.com </a> </p>
 </div>
-</div>
-<br>
 <div>
 <img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 </div>
