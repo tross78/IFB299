@@ -442,11 +442,9 @@ class EnrolmentsController extends AppController {
                                 $Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
                                 $Email->to($userID['User']['email_address']);
                                 $Email->subject('You have been auto enrolled from the waitlist!');
-                                $Email->send('Hello ' . $userID['User']['first_name'] . ',' . "\n\n" . 'you have been successfully enrolled into ' . $userID['Course']['name'] . ' from the waitlist!.' . "\n\n" . 'Thank you and we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
+                                $Email->send('Hello ' . $userID['User']['first_name'] . ',' . "\n\n" . 'you have been successfully enrolled into' . $userID['Course']['name'] . ' from the waitlist!.' . "\n\n" . 'Thank you and we hope to see you soon!' . "\n\n" . '- The Hawke Centre Team');
                                 $this->Flash->success(__($userID['User']['email_address']));
                             }
-
-                        }
                     }
                 }
                 if ($user_gender == 'male'/* && $is_student*/) {
