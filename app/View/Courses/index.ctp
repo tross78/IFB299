@@ -8,7 +8,7 @@
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('description'); ?></th>
+		<!--	<th><?php echo $this->Paginator->sort('description'); ?></th> -->
 			<th><?php echo $this->Paginator->sort('days'); ?></th>
 			<th><?php echo $this->Paginator->sort('gender'); ?></th>
 			<th><?php echo $this->Paginator->sort('start_date'); ?></th>
@@ -25,7 +25,7 @@
 	?>
 	<tr>
 		<td><?php echo h($course['Course']['name']); ?>&nbsp;</td>
-		<td><?php echo h($course['Course']['description']); ?>&nbsp;</td>
+		<!-- <td><?php echo h($course['Course']['description']); ?>&nbsp;</td> -->
 		<td><?php echo h($course['Course']['days']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['gender']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['start_date']); ?>&nbsp;</td>
@@ -84,7 +84,7 @@
 				// add auth to here for just managers and servers
 				$courseEnrolments = $this->CourseEnrolment->getEnrolments((int)$course['Course']['id']);
 					foreach($courseEnrolments as $courseEnrolment) {
-						//JM: Check shows managers all enrolled student info, and kitchen help can see med/diet req's of students in their course. 
+						//JM: Check shows managers all enrolled student info, and kitchen help can see med/diet req's of students in their course.
 						if (AuthComponent::user('permission') == 'manager' || (AuthComponent::user('id') == $courseEnrolment['Enrolment']['user_id'] && $courseEnrolment['Enrolment']['role'] != 'student')) {
 							$userFullName = $courseEnrolment['User']['first_name'] . ' ' . $courseEnrolment['User']['last_name'];
 							echo $this->Html->link(__($userFullName), array('controller' => 'users', 'action' => 'view',  $courseEnrolment['Enrolment']['user_id']));
@@ -123,7 +123,7 @@
 		</td>
 	</tr>
 <?php /*}*/
-	endforeach; 
+	endforeach;
 	?>
 	</tbody>
 	</table>
