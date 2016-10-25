@@ -596,31 +596,31 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 		}
 
 		@media screen and (min-width:768px) {
-			.carousel-control .glyphicon-chevron-left,
-			.carousel-control .glyphicon-chevron-right {
-				width: 30px;
-				height: 30px;
-				margin-top: -10px;
-				font-size: 30px;
-			}
+		.carousel-control .glyphicon-chevron-left,
+		.carousel-control .glyphicon-chevron-right {
+			width: 30px;
+			height: 30px;
+			margin-top: -10px;
+			font-size: 30px;
+		}
 
-			.carousel-control .glyphicon-chevron-left {
-				margin-left: -10px;
-			}
+		.carousel-control .glyphicon-chevron-left {
+			margin-left: -10px;
+		}
 
-			.carousel-control .glyphicon-chevron-right {
-				margin-right: -10px;
-			}
+		.carousel-control .glyphicon-chevron-right {
+			margin-right: -10px;
+		}
 
-			.carousel-caption {
-				left: 20%;
-				right: 20%;
-				padding-bottom: 30px;
-			}
+		.carousel-caption {
+			left: 20%;
+			right: 20%;
+			padding-bottom: 30px;
+		}
 
-			.carousel-indicators {
-				bottom: 20px;
-			}
+		.carousel-indicators {
+			bottom: 20px;
+		}
 		}
 
 		.container-fluid:after,
@@ -676,7 +676,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			to {margin: 0;}
 		}
 
-		.home .jumbotron .block-center {
+		.jumbotron .block-center {
 			margin: -100px 0 0 0;
 			-webkit-animation-name: logo-anim; /* Safari 4.0 - 8.0 */
 			-webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
@@ -692,7 +692,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			to {height:292px ;}
 		}
 
-		.home .home-carousel-row {
+		.home-carousel-row {
 			height:0px;
 			overflow: hidden;
 			-webkit-animation-name: carousel-anim; /* Safari 4.0 - 8.0 */
@@ -709,31 +709,23 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			padding-bottom:80px;
 		}
 
-		.panel-heading>.dropdown .dropdown-toggle,.panel-title,.panel-title>.small,.panel-title>.small>a,.panel-title>a,.panel-title>small,.panel-title>small>a{color:inherit}
-		.panel{margin-bottom:20px;background-color:#fff;border:1px solid transparent;border-radius:4px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
-		.panel-title,.panel>.list-group,.panel>.panel-collapse>.list-group,.panel>.panel-collapse>.table,.panel>.table,.panel>.table-responsive>.table{margin-bottom:0}
-		.panel-body{padding:15px}
-		.panel-heading{padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px}
-		.panel-title{margin-top:0;font-size:16px}
-		.panel>.panel-heading+.panel-collapse>.list-group .list-group-item:first-child{border-top-right-radius:0;border-top-left-radius:0}
-		.panel>.table-responsive:first-child>.table:first-child,.panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child,.panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child,.panel>.table:first-child,.panel>.table:first-child>tbody:first-child>tr:first-child,.panel>.table:first-child>thead:first-child>tr:first-child{border-top-right-radius:3px;border-top-left-radius:3px}
-		.list-group+.panel-footer,.panel-heading+.list-group .list-group-item:first-child{border-top-width:0}
-		.panel>.panel-collapse>.table caption,.panel>.table caption,.panel>.table-responsive>.table caption{padding-left:15px;padding-right:15px}
-		.panel>.panel-body+.table,.panel>.panel-body+.table-responsive,.panel>.table+.panel-body,.panel>.table-responsive+.panel-body{border-top:1px solid #ddd}
-		.panel>.table>tbody:first-child>tr:first-child td,.panel>.table>tbody:first-child>tr:first-child th{border-top:0}
-		.panel>.table-bordered,.panel>.table-responsive>.table-bordered{border:0}
-		.panel>.table-bordered>tbody>tr>td:first-child,.panel>.table-bordered>tbody>tr>th:first-child,.panel>.table-bordered>tfoot>tr>td:first-child,.panel>.table-bordered>tfoot>tr>th:first-child,.panel>.table-bordered>thead>tr>td:first-child,.panel>.table-bordered>thead>tr>th:first-child,
-		.panel-primary{border-color:#8e856f}
-		.panel-primary>.panel-heading{color:#fff;background-color:#8e856f;border-color:#8e856f}
-		.panel-primary>.panel-heading+.panel-collapse>.panel-body{border-top-color:#8e856f}
-		.panel-primary>.panel-heading .badge{color:#8e856f;background-color:#fff}
-		.panel-primary>.panel-footer+.panel-collapse>.panel-body{border-bottom-color:#8e856f}
-		.table{width:100%;max-width:100%;margin-bottom:20px}
-		.table>tbody>tr>td,.table>tbody>tr>th,.table>tfoot>tr>td,.table>tfoot>tr>th,.table>thead>tr>td,.table>thead>tr>th{padding:8px;line-height:1.42857143;vertical-align:top;border-top:1px solid #ddd}
-		.table>thead>tr>th{vertical-align:bottom;border-bottom:2px solid #ddd}
-		.table>caption+thead>tr:first-child>td,.table>caption+thead>tr:first-child>th,.table>colgroup+thead>tr:first-child>td,.table>colgroup+thead>tr:first-child>th,.table>thead:first-child>tr:first-child>td,.table>thead:first-child>tr:first-child>th{border-top:0}
-		.table>tbody+tbody{border-top:2px solid #ddd}
-		.table .table{background-color:#fff}
+		@keyframes course-thumbs-anim {
+			from {opacity: 0;}
+			to {opacity:1 ;}
+		}
+
+		.home #course-thumbs {
+			opacity: 0;
+		}
+
+		.home #course-thumbs.scrolled {
+			-webkit-animation-name: course-thumbs-anim; /* Safari 4.0 - 8.0 */
+			-webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+			-webkit-animation-fill-mode: forwards;
+			animation-name: course-thumbs-anim;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+		}
 
 </style>
     <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
@@ -746,7 +738,7 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
     <?php echo $this->Html->script("html5shiv"); ?>
     <![endif]-->
 </head>
-<body>
+<body class="home">
 	<div class="page-container bg-warning">
 	<div class="jumbotron"><div class="block-center text-center"><img src="/img/logo.png" class="" style="
     max-height: 50px;
@@ -800,6 +792,17 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			</div>
 		</footer>
     </div>
+		<script type="text/javascript">
+			window.onscroll = function() {
+			var scrolltop = (document.documentElement ||
+							document.body.parentNode ||
+							document.body).scrollTop;
+
+			if (scrolltop > 477) {
+				document.getElementById("course-thumbs").classList.add("scrolled");
+			}        
+		};
+		</script>
 		<script type="text/javascript" async src="/js/bundle.js"></script>
 		<?php 
 			echo $this->Html->css('bootstrap.min');

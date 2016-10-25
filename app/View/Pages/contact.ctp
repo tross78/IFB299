@@ -1,4 +1,12 @@
-
+<style>
+  .img1 {
+	    max-width: 100%;
+      width: 1200px;
+	    height: 50px;
+	    width: auto\9;
+      border-radius: 50%;
+  }
+</style>
 <div class="row top30">
 <div class="col-sm-12 well">
 <h2>Contact Us</h2>
@@ -8,6 +16,9 @@
 <p><b><strong>Telephone #:</strong></b> 07 7010 1608</p>
 
 <p><b><strong>Email:</strong></b> <a href="mailto:teamhawkemeditation@gmail.com">teamhawkemeditation@gmail.com </a> </p>
+</div>
+<div>
+<img class = "img1" src="http://i.imgur.com/2bP73ei.jpg" alt = ""/>
 </div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

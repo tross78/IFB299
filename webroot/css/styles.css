@@ -1,18 +1,12 @@
 html,body{height:100%;}
 
 .jumbotron {
-    background-image: url("/img/wov.png");
-    height:130px;
+    background: url("/img/wov.png") repeat #91836b;
+    height:80px;
     padding: 15px 0px 15px 0px;
     margin-bottom: 0;
 }
-.jumbotron .block-center {
-    margin: -120px 0 0 0;
-    -moz-transition: margin 0.5s;
-    -webkit-transition: margin 0.5s;
-    -o-transition: margin 0.5s;
-    transition: margin 0.5s;
-}
+
 .content {
     padding-bottom:80px;
 }
@@ -46,33 +40,55 @@ html,body{height:100%;}
     margin-left:20px;
 }
 
-.fadein {
-        opacity: 0;
-        -moz-transition: opacity 1.5s;
-        -webkit-transition: opacity 1.5s;
-        -o-transition: opacity 1.5s;
-        transition: opacity 1.5s;
-    }
-
-body.loaded .fadein {
-    opacity: 1;
+/* The logo animation */
+@keyframes logo-anim {
+    from {margin: -100px 0 0 0;}
+    to {margin: 0;}
 }
 
-body.loaded .jumbotron .block-center {
-    margin:0;
+.home .jumbotron .block-center {
+    margin: -100px 0 0 0;
+    -webkit-animation-name: logo-anim; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-fill-mode: forwards;
+    animation-name: logo-anim;
+    animation-fill-mode: forwards;
+    animation-duration: 2s;
 }
 
-.home-carousel-row {
-    -moz-transition: height 1.5s;
-    -webkit-transition: height 1.5s;
-    -o-transition: height 1.5s;
-    transition: height 1.5s;
-    height:0px;
-    position:fixed;
+/* The carosel animation */
+@keyframes carousel-anim {
+    from {height: 0;}
+    to {height:292px ;}
 }
 
-body.loaded .home-carousel-row {
-    height:auto;
-    position:initial;
+.home .home-carousel-row {
+	height:0px;
+    overflow: hidden;
+    -webkit-animation-name: carousel-anim; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-delay: 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: carousel-anim;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
 }
 
+@keyframes course-thumbs-anim {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+.home #course-thumbs {
+    opacity: 0;
+}
+
+.home #course-thumbs.scrolled {
+    -webkit-animation-name: course-thumbs-anim; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-fill-mode: forwards;
+    animation-name: course-thumbs-anim;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}

@@ -12,27 +12,27 @@ export default class HomeCarousel extends React.Component {
     return (
     <Carousel>
       <CarouselItem>
-        <img width={1200} height={300} alt=" " src="http://i.imgur.com/NQpW6hm.jpg"/>
+        <img width={1200} height={300} alt=" " src="/img/home-slider1.jpg"/>
         <CarouselCaption>
         </CarouselCaption>
       </CarouselItem>
       <CarouselItem>
-        <img width={1200} height={300} alt=" " src="http://i.imgur.com/eV91kxn.jpg"/>
+        <img width={1200} height={300} alt=" " src="/img/home-slider2.jpg"/>
         <CarouselCaption>
         </CarouselCaption>
       </CarouselItem>
       <CarouselItem>
-        <img width={1200} height={300} alt=" " src="http://i.imgur.com/biVYjls.jpg"/>
+        <img width={1200} height={300} alt=" " src="/img/home-slider3.jpg"/>
         <CarouselCaption>
         </CarouselCaption>
       </CarouselItem>
       <CarouselItem>
-        <img width={1200} height={300} alt=" " src="http://i.imgur.com/sZRaO9v.jpg"/>
+        <img width={1200} height={300} alt=" " src="/img/home-slider4.jpg"/>
         <CarouselCaption>
         </CarouselCaption>
       </CarouselItem>
       <CarouselItem>
-        <img width={1200} height={300} alt=" " src="http://i.imgur.com/zQr7xWv.jpg"/>
+        <img width={1200} height={300} alt=" " src="/img/home-slider5.jpg"/>
         <CarouselCaption>
         </CarouselCaption>
       </CarouselItem>
