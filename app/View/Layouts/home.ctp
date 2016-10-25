@@ -709,6 +709,24 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			padding-bottom:80px;
 		}
 
+		@keyframes course-thumbs-anim {
+			from {opacity: 0;}
+			to {opacity:1 ;}
+		}
+
+		.home #course-thumbs {
+			opacity: 0;
+		}
+
+		.home #course-thumbs.scrolled {
+			-webkit-animation-name: course-thumbs-anim; /* Safari 4.0 - 8.0 */
+			-webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+			-webkit-animation-fill-mode: forwards;
+			animation-name: course-thumbs-anim;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+		}
+
 </style>
     <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
     <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
