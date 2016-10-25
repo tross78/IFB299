@@ -29,7 +29,7 @@ class CoursesController extends AppController {
 	public function index() {
 		$this->Course->recursive = 0;
 		$this->set('is_old', FALSE);
-
+		$course_list = $this->Paginator->paginate('Course');
 		// if user logged in, filter courses
 		if (AuthComponent::user('id')) {
 			// find only 10 day courses unless old student
@@ -109,8 +109,6 @@ class CoursesController extends AppController {
 
             }
 
-			$this->set('courses', $this->Paginator->paginate('Course'));
-
 		} else {
 			// $options = array(
 			// 	'conditions' => array(
@@ -118,9 +116,17 @@ class CoursesController extends AppController {
 			// 	)
 			// );
 			// $this->Paginator->settings = $options;
-			$this->set('courses', $this->Paginator->paginate('Course'));
 		}
 
+		if ($this->params['named']['days']) {
+			$days = $this->params['named']['days'];
+			
+			$course_list = $this->Course->Enrolment->find('all', array(
+			'conditions' => array(
+				'days' => $days
+			)));
+		}
+		$this->set('courses', $course_list);
 		//$enrolments = $this->Course->Enrolment->find('list');
 	}
 
