@@ -133,7 +133,7 @@
 		</td>
 	</tr>
 <?php endforeach; ?>
-<?php endif; ?>
+<?php } ?>
 	</tbody>
 	</table>
 		<?php
