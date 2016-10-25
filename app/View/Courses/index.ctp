@@ -14,15 +14,14 @@
 			<th><?php echo $this->Paginator->sort('start_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('end_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('enrolments'); ?></th>
-			<th><?php echo $this->Paginator->sort('males'); ?></th>
-			<th><?php echo $this->Paginator->sort('females'); ?></th>
-			<th><?php echo $this->Paginator->sort('capacity'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
 	<?php
+		//$current_date = date('Y-m-d');
 		foreach ($courses as $course):
+		//	if ($current_date < $course['Course']['start_date'] || AuthComponent::user('permission') == 'manager') {
 	?>
 	<tr>
 		<td><?php echo h($course['Course']['name']); ?>&nbsp;</td>
@@ -106,9 +105,6 @@
 				}
 				?>
 	</td>
-	<td><?php echo h($course['Course']['enrolments_male']); ?>&nbsp;</td>
-	<td><?php echo h($course['Course']['enrolments_female']); ?>&nbsp;</td>
-	<td><?php echo h($course['Course']['capacity']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $course['Course']['id'])); ?>
 			<?php
@@ -126,7 +122,9 @@
 			?>
 		</td>
 	</tr>
-<?php endforeach; ?>
+<?php /*}*/
+	endforeach; 
+	?>
 	</tbody>
 	</table>
 		<?php
