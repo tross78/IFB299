@@ -22,9 +22,9 @@
 	</thead>
 	<tbody>
 	<?php
-		$current_date = date('Y-m-d');
+		//$current_date = date('Y-m-d');
 		foreach ($courses as $course):
-			if ($current_date < $course['Course']['start_date']) {
+		//	if ($current_date < $course['Course']['start_date']) {
 	?>
 	<tr>
 		<td><?php echo h($course['Course']['name']); ?>&nbsp;</td>
@@ -128,7 +128,7 @@
 			?>
 		</td>
 	</tr>
-<?php }
+<?php /*}*/
 	endforeach; 
 	?>
 	</tbody>
