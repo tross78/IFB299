@@ -25,12 +25,6 @@
 		foreach ($courses as $course):
 	?>
 	<tr>
-
-	<?php
-		$current_date = date('Y-m-d');
-		if ($current_date < $$course['Course']['start_date']) {
-	?>
-
 		<td><?php echo h($course['Course']['name']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['description']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['days']); ?>&nbsp;</td>
@@ -133,7 +127,6 @@
 		</td>
 	</tr>
 <?php endforeach; ?>
-<?php } ?>
 	</tbody>
 	</table>
 		<?php
