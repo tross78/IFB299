@@ -310,7 +310,7 @@ class EnrolmentsController extends AppController {
 			
 			//AG: Grabs the cuurrent enrolment for user_id manual set.
 			$Uid = $this->Enrolment->find('first', array(
-					'contain' => array('Enrolment'),
+					'field' => array('Enrolment.id', 'Enrolment.user_id'),
 					'conditions' => array(
 						"Enrolment.id" => $id
 					))
