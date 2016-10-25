@@ -118,12 +118,12 @@ class CoursesController extends AppController {
 			// $this->Paginator->settings = $options;
 		}
 
-		if ($this->params['named']['days']) {
+		if ($this->params['named']) {
 			$days = $this->params['named']['days'];
 			
-			$course_list = $this->Course->Enrolment->find('all', array(
+			$course_list = $this->Course->find('all', array(
 			'conditions' => array(
-				'days' => $days
+				'days' => (int)$days
 			)));
 		}
 		$this->set('courses', $course_list);
