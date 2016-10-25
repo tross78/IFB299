@@ -123,7 +123,7 @@ class CoursesController extends AppController {
 			
 			$course_list = $this->Course->find('all', array(
 			'conditions' => array(
-				'days' => (int)$days
+				'days' => $days
 			)));
 		}
 		$this->set('courses', $course_list);
