@@ -9,7 +9,7 @@
 
   table {
     border-collapse: collapse;
-    width: 100%;
+    width: 40%;
   }
 
   td {
@@ -48,15 +48,15 @@
   </tr>
   <tr>
     <td>Friday</td>
-    <td>9:00am - 5:00pm</td>
+    <td>8:00am - 3:00pm</td>
   </tr>
   <tr>
     <td>Saturday</td>
-    <td>9:00am - 5:00pm</td>
+    <td>Closed</td>
   </tr>
   <tr>
     <td>Sunday</td>
-    <td>9:00am - 5:00pm</td>
+    <td>Closed</td>
   </tr>
 </table>
 </div>
