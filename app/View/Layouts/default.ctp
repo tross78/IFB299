@@ -709,23 +709,25 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			padding-bottom:80px;
 		}
 
-		@keyframes course-thumbs-anim {
-			from {opacity: 0;}
-			to {opacity:1 ;}
-		}
-
-		.home #course-thumbs {
-			opacity: 0;
-		}
-
-		.home #course-thumbs.scrolled {
-			-webkit-animation-name: course-thumbs-anim; /* Safari 4.0 - 8.0 */
-			-webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
-			-webkit-animation-fill-mode: forwards;
-			animation-name: course-thumbs-anim;
-			animation-duration: 1s;
-			animation-fill-mode: forwards;
-		}
+		.panel-heading>.dropdown .dropdown-toggle,.panel-title,.panel-title>.small,.panel-title>.small>a,.panel-title>a,.panel-title>small,.panel-title>small>a{color:inherit}
+		.panel{margin-bottom:20px;background-color:#fff;border:1px solid transparent;border-radius:4px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+		.panel-title,.panel>.list-group,.panel>.panel-collapse>.list-group,.panel>.panel-collapse>.table,.panel>.table,.panel>.table-responsive>.table{margin-bottom:0}
+		.panel-body{padding:15px}
+		.panel-heading{padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px}
+		.panel-title{margin-top:0;font-size:16px}
+		.panel>.panel-heading+.panel-collapse>.list-group .list-group-item:first-child{border-top-right-radius:0;border-top-left-radius:0}
+		.panel>.table-responsive:first-child>.table:first-child,.panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child,.panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child,.panel>.table:first-child,.panel>.table:first-child>tbody:first-child>tr:first-child,.panel>.table:first-child>thead:first-child>tr:first-child{border-top-right-radius:3px;border-top-left-radius:3px}
+		.list-group+.panel-footer,.panel-heading+.list-group .list-group-item:first-child{border-top-width:0}
+		.panel>.panel-collapse>.table caption,.panel>.table caption,.panel>.table-responsive>.table caption{padding-left:15px;padding-right:15px}
+		.panel>.panel-body+.table,.panel>.panel-body+.table-responsive,.panel>.table+.panel-body,.panel>.table-responsive+.panel-body{border-top:1px solid #ddd}
+		.panel>.table>tbody:first-child>tr:first-child td,.panel>.table>tbody:first-child>tr:first-child th{border-top:0}
+		.panel>.table-bordered,.panel>.table-responsive>.table-bordered{border:0}
+		.panel>.table-bordered>tbody>tr>td:first-child,.panel>.table-bordered>tbody>tr>th:first-child,.panel>.table-bordered>tfoot>tr>td:first-child,.panel>.table-bordered>tfoot>tr>th:first-child,.panel>.table-bordered>thead>tr>td:first-child,.panel>.table-bordered>thead>tr>th:first-child,
+		.panel-primary{border-color:#8e856f}
+		.panel-primary>.panel-heading{color:#fff;background-color:#8e856f;border-color:#8e856f}
+		.panel-primary>.panel-heading+.panel-collapse>.panel-body{border-top-color:#8e856f}
+		.panel-primary>.panel-heading .badge{color:#8e856f;background-color:#fff}
+		.panel-primary>.panel-footer+.panel-collapse>.panel-body{border-bottom-color:#8e856f}
 
 </style>
     <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
