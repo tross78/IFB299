@@ -121,7 +121,7 @@ class CoursesController extends AppController {
 		if ($this->params['named']['days']) {
 			$days = $this->params['named']['days'];
 			
-			$course_list = $this->Course->Enrolment->find('all', array(
+			$course_list = $this->Course->find('all', array(
 			'conditions' => array(
 				'days' => $days
 			)));
