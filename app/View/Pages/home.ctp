@@ -38,7 +38,7 @@ $this->layout = 'home';
 
 <div class="row top30">
 <div class="col-sm-12 well">
-  <h2>Welcome to the Hawke Meditation Homepage</h2></center>
+  <center><h2>Welcome to the Hawke Meditation Homepage</h2></center>
     <p>Welcome to the Meditation Centre home page. We are a local, donation based, community driven service that provides professionally developed mediation courses to enrolled members of the public.</p>
     <p>If you’d like to be a part of our ever-growing community, book a course, or even just keep up to date on our available services, then don’t hesitate to sign up today! It’s absolutely free and with no strings attached.</p>
     <p>- The Hawke Centre Team</p>
