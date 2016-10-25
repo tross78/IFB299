@@ -4,5 +4,4 @@ class HelloShell extends AppShell {
         $this->out('Hello world.');
     }
 }
-
 ?>
