@@ -128,7 +128,7 @@
 			?>
 		</td>
 	</tr>
-<?php }
+<?php endif;
 	endforeach; 
 ?>
 	</tbody>
