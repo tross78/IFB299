@@ -1,3 +1,3 @@
 #!/bin/sh
 
-php -f app/email.php
+php -f app/Console/Command/AutomatedEmail.php
