@@ -20,6 +20,7 @@ class User extends AppModel {
 		'full_name' => 'CONCAT(User.first_name, " ", User.last_name)'
 	);
 
+	// validation rules for signup form
 	public $validate = array(
 		'username' => array(
 			'notBlank' => array(

@@ -24,6 +24,7 @@ class UsersController extends AppController {
 	}
 
 	public function emailWelcomeMessage() {
+		// create new email and populate
 		$Email = new CakeEmail('gmail');
 		$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
 		$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));
@@ -42,6 +43,7 @@ class UsersController extends AppController {
 			return true;
 		}
 
+		// only manager can mass edit or delete, registered user can self edit or delete
 		if (in_array($this->action, array('edit', 'delete'))) {
 			if ($user['id'] == $this->Auth->user('id') || $user['permission'] == 'manager') {
 				return true;
@@ -51,6 +53,7 @@ class UsersController extends AppController {
 
 		}
 
+		// only manager can view all users
 		if (in_array($this->action, array('index'))) {
 			if ($user['permission'] == 'manager') {
 				return true;
@@ -59,7 +62,7 @@ class UsersController extends AppController {
 			}
 
 		}
-
+		// only registered users can view their profile
 		if ($this->action === 'view') {
 			if ($user['id'] == $this->Auth->user('id')) {
 				return true;
@@ -80,6 +83,7 @@ class UsersController extends AppController {
 			if ($this->Auth->login()) {
 				$permision_check = AuthComponent::user('permission');
 
+				// check if user is has terminated param, then redirect
 				if ($permision_check == 'terminated'){
 					$this->Flash->error(__('This account has been terminated by a manager. You will not be able to login.'));
 					$this->Auth->logout();
@@ -117,7 +121,7 @@ class UsersController extends AppController {
 		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 		
 		$this->set('user', $this->User->find('first', $options));
-
+		// find all enrolments user is in
 		$this->set('enrolments', $this->User->Enrolment->find('all', array(
 			'fields' => array('Enrolment.id', 'Course.id', 'Course.name', 'Enrolment.user_id', 'Enrolment.course_id', 'User.id'),
 			'contain' => array('Course', 'User'),

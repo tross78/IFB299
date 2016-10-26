@@ -111,15 +111,10 @@ class CoursesController extends AppController {
             }
 
 		} else {
-			// $options = array(
-			// 	'conditions' => array(
-			// 		'Course.days' => 'ten'
-			// 	)
-			// );
-			// $this->Paginator->settings = $options;
 			$course_list = $this->Paginator->paginate('Course');
 		}
 
+		// filter on course days if its in the url params
 		if ($this->params['named']) {
 			$days = $this->params['named']['days'];
 
@@ -129,7 +124,6 @@ class CoursesController extends AppController {
 			)));
 		}
 		$this->set('courses', $course_list);
-		//$enrolments = $this->Course->Enrolment->find('list');
 	}
 
 /**

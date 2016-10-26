@@ -44,6 +44,7 @@ class EnrolmentsController extends AppController {
             'group' => array('Course.name', 'User.name', 'User.role')
 			)
 		);
+		// filter on course name, user name, user role
 		$this->set('enrolments', $this->Paginator->paginate());
 	}
 
