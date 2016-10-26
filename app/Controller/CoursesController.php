@@ -81,6 +81,7 @@ class CoursesController extends AppController {
 					'limit' => 10
 				);
 				$this->Paginator->settings = $options;
+				$course_list = $this->Paginator->paginate('Course');
                 //if user is old but not the manager, filter any day courses
 			} else if (AuthComponent::user('permission') == 'server') {
                 $options = array(
