@@ -106,7 +106,7 @@ class CoursesController extends AppController {
                     'limit' => 10
                 );
                 $this->Paginator->settings = $options;
-
+				$course_list = $this->Paginator->paginate('Course');
             }
 
 		} else {
@@ -116,6 +116,7 @@ class CoursesController extends AppController {
 			// 	)
 			// );
 			// $this->Paginator->settings = $options;
+			$course_list = $this->Paginator->paginate('Course');
 		}
 
 		if ($this->params['named']) {
