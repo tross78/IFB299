@@ -727,6 +727,14 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 			animation-fill-mode: forwards;
 		}
 
+		.panel{margin-bottom:20px;background-color:#fff;border:1px solid transparent;border-radius:4px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+		.panel-title,.panel>.list-group,.panel>.panel-collapse>.list-group,.panel>.panel-collapse>.table,.panel>.table,.panel>.table-responsive>.table{margin-bottom:0}
+		.panel-body{padding:15px}
+		.panel-heading{padding:10px 15px;border-bottom:1px solid transparent;border-top-right-radius:3px;border-top-left-radius:3px}
+
+		.panel-info {
+			border-color: #bce8f1;
+		}
 </style>
     <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
     <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
@@ -793,10 +801,26 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 		</footer>
     </div>
 		<script type="text/javascript">
+
+			function getDocumentScrollTop(doc) 
+			{
+			doc = doc || document;
+			win = doc.defaultView || doc.parentWindow; //parentWindow is for IE < 9
+
+			result = 0;
+			if("pageYOffset" in win) //I'don't know why they use this, probably they tested it to be faster than doing: if(typeof win.pageYOffset !== 'undefined')
+				result = win.pageYOffset;
+			else
+				result = (jQuery.support.boxModel && document.documentElement.scrollTop) || 
+						document.body.scrollTop;
+
+			return result;
+			}
+
 			window.onscroll = function() {
-			var scrolltop = (document.documentElement ||
-							document.body.parentNode ||
-							document.body).scrollTop;
+
+				
+			var scrolltop = getDocumentScrollTop(document);
 
 			if (scrolltop > 477) {
 				document.getElementById("course-thumbs").classList.add("scrolled");

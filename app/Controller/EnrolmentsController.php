@@ -44,6 +44,7 @@ class EnrolmentsController extends AppController {
             'group' => array('Course.name', 'User.name', 'User.role')
 			)
 		);
+		// filter on course name, user name, user role
 		$this->set('enrolments', $this->Paginator->paginate());
 	}
 
@@ -92,17 +93,6 @@ class EnrolmentsController extends AppController {
 
 		//AG: Grabs the gender of the user currently logged in.
 		$user_gender = AuthComponent::user('gender');
-
-
-		//AG: Unused Variable to determine wether the current course is of mixed gender. May need it in the future though.
-		$is_mixed = $this->Enrolment->Course->find('all', array(
-					'fields' => array('Course.id'),
-					'contain' => array('Enrolment'),
-					'conditions' => array(
-						'Course.gender' => 'mixed',
-						"Course.id" => $this->params['named']['course_id']
-					))
-			);
 
 		//AG: Unused variable to determine wether the current course is of mixed gender. May need it in the future though.
 		$is_male = $this->Enrolment->Course->find('all', array(
@@ -180,7 +170,6 @@ class EnrolmentsController extends AppController {
 
 		//AG: sets
 		$this->set("user_gender", $user_gender);
-		$this->set("is_mixed", $is_mixed);
 		$this->set("is_male", $is_male);
 		$this->set("is_female", $is_female);
 		$this->set("course_full", $course_full);
@@ -320,6 +309,14 @@ class EnrolmentsController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 
+			//AG: Grabs the cuurrent enrolment for user_id manual set.
+			$Uid = $this->Enrolment->find('first', array(
+					'field' => array('Enrolment.id', 'Enrolment.user_id'),
+					'conditions' => array(
+						"Enrolment.id" => $id
+					))
+			);
+
 			//AG: checks to see what the current user has attempted to enroll as
 			$is_student = $this->request->data['Enrolment']['role'] == 'student';
 			$is_manager = $this->request->data['Enrolment']['role'] == 'manager';
@@ -339,6 +336,9 @@ class EnrolmentsController extends AppController {
 
 			//Ag: Manually set enrolment date to current date
 			$this->request->data['Enrolment']['enrolment_date'] = date('Y-m-d');
+
+			//Ag: Manually set user name so managers can edit other users without overwriting
+			$this->request->data['Enrolment']['user_id'] = $Uid['Enrolment']['user_id'];
 
 			//Ag: Manually set classes if manager or kitchen helper
 			if ($is_manager||$is_kitchen){
@@ -385,6 +385,7 @@ class EnrolmentsController extends AppController {
 	 * @return void
 	 */
 		public function delete($id = null) {
+					$is_student = $this->request->data['Enrolment']['role'] == 'student';
             $this->Enrolment->id = $id;
             if (!$this->Enrolment->exists()) {
                 throw new NotFoundException(__('Invalid enrolment'));
@@ -456,12 +457,12 @@ class EnrolmentsController extends AppController {
                 if ($user_gender == 'male'/* && $is_student*/) {
                     $this->Enrolment->Course->updateAll(array('enrolments_male' => 'enrolments_male-1'), array('Course.id' => $deletedId));  //might move these into their own method later on
                     $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
-                } elseif ('female' /*&& $is_student*/) {
+                } elseif ($user_gender == 'female'/* && $is_student*/) {
                     $this->Enrolment->Course->updateAll(array('enrolments_female' => 'enrolments_female-1'), array('Course.id' => $deletedId));
                     $this->Enrolment->Course->updateAll(array('enrolments' => 'enrolments-1'), array('Course.id' => $deletedId));
                 }
 
-               // $this->Flash->success(__('The enrolment has been deleted.'));
+                $this->Flash->success(__('The enrolment has been deleted.'));
             } else {
                 $this->Flash->error(__('The enrolment could not be deleted. Please, try again.'));
             }

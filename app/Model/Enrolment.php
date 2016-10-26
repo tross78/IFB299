@@ -11,6 +11,7 @@ class Enrolment extends AppModel {
 public $course_enrolment_date;
 	// The Associations below have been created with all possible keys, those that are not needed can be removed
 
+// validation rules for enrolment form
 public $validate = array(
 		'course_id' => array(
 			'notBlank' => array(
@@ -28,11 +29,6 @@ public $validate = array(
 			)
 		)
 );
-
-public function beforeSave($options = array()) {
-    	//$this->data[$this->alias]['enrolment_date'] = $this->data[$this->alias]['course_enrolment_date'];
-    return true;
-}
 
 /**
  * belongsTo associations

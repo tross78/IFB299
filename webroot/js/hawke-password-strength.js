@@ -1,12 +1,12 @@
 import React from 'react'
+import ReactPasswordStrength from 'react-password-strength'
 
 var HawkePasswordStrength = function() {
-  return (
-    <div class="ReactPasswordStrength">
-      <input type="password" id="UserPassword" name="data[User][password]" placeholder="Password" required="" value="password"/>
-      <div class="ReactPasswordStrength-strength-bar"></div>
-      <span class="ReactPasswordStrength-strength-desc"></span>
-    </div>
-  )
+  return <ReactPasswordStrength
+   minLength={5}
+   minScore={2}
+   scoreWords={['weak', 'okay', 'good', 'strong', 'stronger']}
+   inputProps={{ id:"UserPassword", name: "data[User][password]", placeholder:"Password", autocomplete: "off", required:"required", class:'form-group'}}
+   />;
 }
 export default HawkePasswordStrength;

@@ -8,27 +8,24 @@
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('description'); ?></th>
+		<!--	<th><?php //echo $this->Paginator->sort('description'); ?></th> -->
 			<th><?php echo $this->Paginator->sort('days'); ?></th>
 			<th><?php echo $this->Paginator->sort('gender'); ?></th>
 			<th><?php echo $this->Paginator->sort('start_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('end_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('enrolments'); ?></th>
-			<th><?php echo $this->Paginator->sort('males'); ?></th>
-			<th><?php echo $this->Paginator->sort('females'); ?></th>
-			<th><?php echo $this->Paginator->sort('capacity'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
 	<?php
-		//$current_date = date('Y-m-d');
+		$current_date = date('Y-m-d');
 		foreach ($courses as $course):
-		//	if ($current_date < $course['Course']['start_date']) {
+			if ($current_date < $course['Course']['start_date'] || AuthComponent::user('permission') == 'manager') {
 	?>
 	<tr>
 		<td><?php echo h($course['Course']['name']); ?>&nbsp;</td>
-		<td><?php echo h($course['Course']['description']); ?>&nbsp;</td>
+		<!-- <td><?php //echo h($course['Course']['description']); ?>&nbsp;</td> -->
 		<td><?php echo h($course['Course']['days']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['gender']); ?>&nbsp;</td>
 		<td><?php echo h($course['Course']['start_date']); ?>&nbsp;</td>
@@ -87,7 +84,7 @@
 				// add auth to here for just managers and servers
 				$courseEnrolments = $this->CourseEnrolment->getEnrolments((int)$course['Course']['id']);
 					foreach($courseEnrolments as $courseEnrolment) {
-						//JM: Check shows managers all enrolled student info, and kitchen help can see med/diet req's of students in their course. 
+						//JM: Check shows managers all enrolled student info, and kitchen help can see med/diet req's of students in their course.
 						if (AuthComponent::user('permission') == 'manager' || (AuthComponent::user('id') == $courseEnrolment['Enrolment']['user_id'] && $courseEnrolment['Enrolment']['role'] != 'student')) {
 							$userFullName = $courseEnrolment['User']['first_name'] . ' ' . $courseEnrolment['User']['last_name'];
 							echo $this->Html->link(__($userFullName), array('controller' => 'users', 'action' => 'view',  $courseEnrolment['Enrolment']['user_id']));
@@ -108,9 +105,6 @@
 				}
 				?>
 	</td>
-	<td><?php echo h($course['Course']['enrolments_male']); ?>&nbsp;</td>
-	<td><?php echo h($course['Course']['enrolments_female']); ?>&nbsp;</td>
-	<td><?php echo h($course['Course']['capacity']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $course['Course']['id'])); ?>
 			<?php
@@ -128,8 +122,8 @@
 			?>
 		</td>
 	</tr>
-<?php /*}*/
-	endforeach; 
+<?php }
+	endforeach;
 	?>
 	</tbody>
 	</table>

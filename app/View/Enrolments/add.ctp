@@ -10,13 +10,13 @@
 	<?php elseif ($course_full): ?>
 		<div class="alert alert-danger">The student capacity for this course has been reached, If you continue to enrol you will be waitlisted and notified via email when a placement becomes avaliable.</div>
 	<?php endif;
-	if ($manager_full): ?>
+	if ($manager_full && AuthComponent::user('permission') == 'manager'): ?>
 		<div class="alert alert-danger">The manager capacity for this course has been reached. Please choose another role.</div>
 	<?php endif;
-	if ($teacher_full): ?>
+	if ($teacher_full && AuthComponent::user('permission') == 'server'): ?>
 		<div class="alert alert-danger">The assistant-teacher capacity for this course has been reached. Please choose another role.</div>
 	<?php endif;
-	if ($kitchen_full): ?>
+	if ($kitchen_full && AuthComponent::user('permission') == 'server'): ?>
 		<div class="alert alert-danger">The kitchen-helper capacity for this course has been reached. Please choose another role.</div>
 	<?php endif;
 ?>

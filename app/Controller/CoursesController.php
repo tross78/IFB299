@@ -29,7 +29,7 @@ class CoursesController extends AppController {
 	public function index() {
 		$this->Course->recursive = 0;
 		$this->set('is_old', FALSE);
-
+		$course_list = $this->Paginator->paginate('Course');
 		// if user logged in, filter courses
 		if (AuthComponent::user('id')) {
 			// find only 10 day courses unless old student
@@ -81,6 +81,7 @@ class CoursesController extends AppController {
 					'limit' => 10
 				);
 				$this->Paginator->settings = $options;
+				$course_list = $this->Paginator->paginate('Course');
                 //if user is old but not the manager, filter any day courses
 			} else if (AuthComponent::user('permission') == 'server') {
                 $options = array(
@@ -106,22 +107,23 @@ class CoursesController extends AppController {
                     'limit' => 10
                 );
                 $this->Paginator->settings = $options;
-
+				$course_list = $this->Paginator->paginate('Course');
             }
 
-			$this->set('courses', $this->Paginator->paginate('Course'));
-
 		} else {
-			// $options = array(
-			// 	'conditions' => array(
-			// 		'Course.days' => 'ten'
-			// 	)
-			// );
-			// $this->Paginator->settings = $options;
-			$this->set('courses', $this->Paginator->paginate('Course'));
+			$course_list = $this->Paginator->paginate('Course');
 		}
 
-		//$enrolments = $this->Course->Enrolment->find('list');
+		// filter on course days if its in the url params
+		if ($this->params['named']) {
+			$days = $this->params['named']['days'];
+
+			$course_list = $this->Course->find('all', array(
+			'conditions' => array(
+				'days' => $days
+			)));
+		}
+		$this->set('courses', $course_list);
 	}
 
 /**
@@ -332,7 +334,7 @@ class CoursesController extends AppController {
 	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
 	  		$Email->to($enrolledID['User']['email_address']);
 	  		$Email->subject('Changes to your Meditation Course');
-	  		$Email->send('Hello ' . $enrolledID['User']['first_name'] . ',' . "\n\n" . 'The course you have enrolled in beggining on the ' . $enrolledID['Course']['start_date'] . ' is no longer being continued. We are sorry for the inconvenience.' . "\n\n" . '- The Hawke Centre Team');
+	  		$Email->send('Hello ' . $enrolledID['User']['first_name'] . ',' . "\n\n" . 'The course you have enrolled in beginning on the ' . $enrolledID['Course']['start_date'] . ' is no longer being continued. We are sorry for the inconvenience.' . "\n\n" . '- The Hawke Centre Team');
 	  	}
 
 		$this->request->allowMethod('post', 'delete');
