@@ -414,8 +414,6 @@ class EnrolmentsController extends AppController {
                         ))
                 ) >= 1;
 
-
-
             if ($this->Enrolment->delete()) {
                 if ($wait_full) {
 
@@ -429,7 +427,6 @@ class EnrolmentsController extends AppController {
                     if ($inWaitlist) {
                         $longest = $inWaitlist['Enrolment']['user_id'];
 
-                        //this is a mess
                         $userIDS = $this->Enrolment->find('all', array(
                             'field' => array('Enrolment.user_id','User.email_address', 'User.first_name', 'Course.name'),
                             'contain' => array('User', 'Course'),
