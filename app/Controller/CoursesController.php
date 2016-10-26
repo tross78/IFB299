@@ -81,6 +81,7 @@ class CoursesController extends AppController {
 					'limit' => 10
 				);
 				$this->Paginator->settings = $options;
+				$course_list = $this->Paginator->paginate('Course');
                 //if user is old but not the manager, filter any day courses
 			} else if (AuthComponent::user('permission') == 'server') {
                 $options = array(
@@ -106,7 +107,7 @@ class CoursesController extends AppController {
                     'limit' => 10
                 );
                 $this->Paginator->settings = $options;
-
+				$course_list = $this->Paginator->paginate('Course');
             }
 
 		} else {
@@ -116,11 +117,12 @@ class CoursesController extends AppController {
 			// 	)
 			// );
 			// $this->Paginator->settings = $options;
+			$course_list = $this->Paginator->paginate('Course');
 		}
 
 		if ($this->params['named']) {
 			$days = $this->params['named']['days'];
-			
+
 			$course_list = $this->Course->find('all', array(
 			'conditions' => array(
 				'days' => $days
@@ -356,7 +358,6 @@ class CoursesController extends AppController {
 	public function confirmationEmail() {
 
 		$current_date_plus_ten = date('Y-m-d', strtotime('+10 days'));
-		echo $current_date_plus_ten;
 
 		$userIDS = $this->Course->Enrolment->find('all', array(
 			'field' => array('Enrolment.user_id','Enrolment.course_id','User.email_address', 'Course.start_date'),
