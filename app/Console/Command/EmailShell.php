@@ -1,5 +1,4 @@
 <?php
-App::uses('AppController', 'Controller');
 App::uses('Shell', 'Console');
 App::uses('CakeEmail', 'Network/Email');
 
