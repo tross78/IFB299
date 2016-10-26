@@ -282,41 +282,7 @@ class CoursesController extends AppController {
 
 //JM: Editing funciton to delete enrolled users from the course at the same time
 	public function delete($id = null) {
-		/*$query = $this->Course->Enrolments->find('all', array('conditions' => array("Course.id" => $this->params['named']['course_id'])));
-        $current_date = date('Y-m-d');*/
-
 		$this->Course->id = $id;
-
-        //HG: check if the course has already commenced
-        //dosen't work yet!
-
-/*        $course_started = $this->Course->Enrolment->find('count', array(
-            'fields' => array('Course.id', 'Course.start_date', 'Course.end_date'),
-            'contain' => array('Course'),
-            'conditions' => array(
-                'DATE(Course.start_date) <' => $current_date,
-                'DATE(Course.end_date) >' => $current_date,
-                'Course.id' => $this->params['named']['course_id']
-            )
-        )) > 0;
-        //HG: set
-        $this->set("course_started", $course_started);*/
-
-/*        if($course_started) {
-            throw new CourseStartedException(__('Course already started'));
-        }
-		if (!$this->Course->exists()) {
-			throw new NotFoundException(__('Invalid course'));
-		}*/
-
-/*$this->Course->Enrolment->find('all', array(
-			'fields' => array('Enrolment.id', 'Enrolment.user_id', 'Enrolment.course_id', 'Enrolment.role', 'User.id', 'User.first_name', 'User.last_name'),
-			'contain' => array('User'),
-			'conditions' => array(
-				'course_id' => $id
-			))
-		)*/
-
 
 		$enrolledIDS = $this->Course->Enrolment->find('all', array(
 			'field' => array('Enrolment.user_id','User.email_address', 'Course.start_date', 'User.first_name'),
@@ -327,8 +293,6 @@ class CoursesController extends AppController {
 		foreach ($enrolledIDS as $enrolledID) {
 
 	    	$Email = new CakeEmail('gmail');
-/*	  		$Email->sender('admin@team-hawk.herokuapp.com', 'Hawke Meditation Centre');
-	  		$Email->from(array('admin@team-hawk.herokuapp.com' => 'Hawke Meditation Centre'));*/
 	  		$Email->returnPath('teamhawkemeditation@gmail.com');
 	  		$Email->sender('teamhawkemeditation@gmail.com', 'Hawke Meditation Centre');
 	  		$Email->from(array('teamhawkemeditation@gmail.com' => 'Hawke Meditation Centre'));
