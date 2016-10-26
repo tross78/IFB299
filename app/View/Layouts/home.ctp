@@ -801,10 +801,26 @@ $cakeDescription = __d('cake_dev', 'Hawke Meditation');
 		</footer>
     </div>
 		<script type="text/javascript">
+
+			function getDocumentScrollTop(doc) 
+			{
+			doc = doc || document;
+			win = doc.defaultView || doc.parentWindow; //parentWindow is for IE < 9
+
+			result = 0;
+			if("pageYOffset" in win) //I'don't know why they use this, probably they tested it to be faster than doing: if(typeof win.pageYOffset !== 'undefined')
+				result = win.pageYOffset;
+			else
+				result = (jQuery.support.boxModel && document.documentElement.scrollTop) || 
+						document.body.scrollTop;
+
+			return result;
+			}
+
 			window.onscroll = function() {
-			var scrolltop = (document.documentElement ||
-							document.body.parentNode ||
-							document.body).scrollTop;
+
+				
+			var scrolltop = getDocumentScrollTop(document);
 
 			if (scrolltop > 477) {
 				document.getElementById("course-thumbs").classList.add("scrolled");
