@@ -60,6 +60,14 @@ class UsersController extends AppController {
 
 		}
 
+		if (in_array($this->action, array('view'))) {
+			if ($user['id'] == $this->Auth->user('id')) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
 		return parent::isAuthorized($user);
 	}
 
