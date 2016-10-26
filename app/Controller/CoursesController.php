@@ -122,7 +122,7 @@ class CoursesController extends AppController {
 
 		if ($this->params['named']) {
 			$days = $this->params['named']['days'];
-			
+
 			$course_list = $this->Course->find('all', array(
 			'conditions' => array(
 				'days' => $days
@@ -358,7 +358,6 @@ class CoursesController extends AppController {
 	public function confirmationEmail() {
 
 		$current_date_plus_ten = date('Y-m-d', strtotime('+10 days'));
-		echo $current_date_plus_ten;
 
 		$userIDS = $this->Course->Enrolment->find('all', array(
 			'field' => array('Enrolment.user_id','Enrolment.course_id','User.email_address', 'Course.start_date'),
