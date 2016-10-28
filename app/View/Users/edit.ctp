@@ -42,7 +42,6 @@
 			'class' => false
 		);
 		// only managers can elevate permissions
-		// Would like to make it that managers can't edit other managers but not really a priority.
 		if (AuthComponent::user('permission') == 'manager') {
 			echo $this->Form->input('permission', $permission_attributes);
 		}
