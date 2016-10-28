@@ -8,8 +8,7 @@ class EmailShell extends AppShell {
 
       // $course_id = $this->query("SELECT id FROM courses WHERE start_date = $current_date_plus_ten");
       // $user_ids = $this->query("SELECT id FROM enrolments WHERE course_id = $course_id");
-      // $user_emails = $this->query("SELECT email_address FROM users WHERE")
-
+      // $user_emails = $this->query("SELECT email_address FROM users WHERE");
 
       $userIDS = $this->Course->Enrolment->find('all', array(
         'field' => array('Enrolment.user_id','Enrolment.course_id','User.email_address', 'Course.start_date'),
